@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="host" />
-	<File name="lasagna\lasagne.h" open="0" top="0" tabpos="0">
-		<Cursor position="109" topLine="0" />
+	<File name="SOGI\SOGI.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="1464" topLine="33" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="80" topLine="0" />
+	<File name="SOGI\SOGI.h" open="1" top="0" tabpos="6">
+		<Cursor position="1000" topLine="27" />
+	</File>
+	<File name="SOGI\stack\stack.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="10326" topLine="296" />
+	</File>
+	<File name="lasagne\lasagne.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="439" topLine="9" />
+	</File>
+	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="3">
+		<Cursor position="272" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="0" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

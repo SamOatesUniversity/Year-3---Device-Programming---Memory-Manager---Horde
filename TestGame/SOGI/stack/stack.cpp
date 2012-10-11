@@ -13,27 +13,17 @@
 
 #include "stack.h"
 
-#if defined(_WIN32)
-#   include <windows.h>
-#   include <imagehlp.h>
-
-#   if defined(__MINGW32__)
-#       include <bfd.h> // link against libbfd and libiberty
-#       include <psapi.h> // link against psapi
-#       include <cxxabi.h>
-#   endif
-
-#elif defined(__GNUC__)
-#   include <dlfcn.h>
-#   include <cxxabi.h>
-#endif
+#include <windows.h>
+#include <imagehlp.h>
+#include <bfd.h> // link against libbfd and libiberty
+#include <psapi.h> // link against psapi
+#include <cxxabi.h>
 
 namespace
 {
     const char * const unknown_function = "[unknown function]";
     const char * const unknown_module = "[unknown module]";
 
-#if defined(__GNUC__)
     std::string demangle(const char *name)
     {
         if (!name)
@@ -52,10 +42,6 @@ namespace
         std::free(d);
         return ret;
     }
-#endif
-
-#if defined(_WIN32)
-
     // Derive from this to disallow copying of your class.
     // c.f. boost::noncopyable
     class uncopyable
@@ -68,15 +54,15 @@ namespace
             uncopyable &operator= (const uncopyable &);
     };
 
-#if defined(__MINGW32__)
-
     // Provides a means to translate a program counter offset in to the name of the corresponding function.
     class bfd_context : uncopyable
     {
-        private:
+        public:
             struct find_data
             {
                 std::string func;
+                int line;
+                std::string file;
                 asymbol **symbol_table;
                 bfd_vma counter;
             };
@@ -125,7 +111,7 @@ namespace
                 bfd_close(abfd_);
             }
 
-            std::string get_function_name(DWORD offset)
+            find_data get_function_data(DWORD offset)
             {
                 find_data data;
                 data.symbol_table = symbol_table_;
@@ -133,7 +119,7 @@ namespace
 
                 bfd_map_over_sections(abfd_, &find_function_name_in_section, &data);
 
-                return data.func;
+                return data;
             }
 
         private:
@@ -156,6 +142,9 @@ namespace
 
                 if (bfd_find_nearest_line(abfd, sec, data.symbol_table, data.counter - vma, &file, &func, &line) && func)
                     data.func = demangle(func);
+
+                data.file = file;
+                data.line = line;
             }
 
         private:
@@ -163,8 +152,6 @@ namespace
             asection *sec_;
             asymbol **symbol_table_;
     };
-
-#endif // __MINGW32__
 
     // g++ spouts warnings if you use {0} to initialize PODs. So we use this instead:
     const struct
@@ -258,9 +245,7 @@ namespace
         lock lk(g_fill_frames_mtx);
 
         symbol_context sc;
-#ifdef __MINGW32__
         bfd_context bfdc;
-#endif
 
         STACKFRAME frame = empty_pod;
         CONTEXT context = empty_pod;
@@ -271,21 +256,12 @@ namespace
 
         RtlCaptureContext_(&context);
 
-#if defined(_M_AMD64)
-        frame.AddrPC.Offset = context.Rip;
-        frame.AddrPC.Mode = AddrModeFlat;
-        frame.AddrStack.Offset = context.Rsp;
-        frame.AddrStack.Mode = AddrModeFlat;
-        frame.AddrFrame.Offset = context.Rbp;
-        frame.AddrFrame.Mode = AddrModeFlat;
-#else
         frame.AddrPC.Offset = context.Eip;
         frame.AddrPC.Mode = AddrModeFlat;
         frame.AddrStack.Offset = context.Esp;
         frame.AddrStack.Mode = AddrModeFlat;
         frame.AddrFrame.Offset = context.Ebp;
         frame.AddrFrame.Mode = AddrModeFlat;
-#endif
 
         HANDLE process = GetCurrentProcess();
         HANDLE thread = GetCurrentThread();
@@ -294,12 +270,7 @@ namespace
         bool has_limit = limit != 0;
         char symbol_buffer[sizeof(IMAGEHLP_SYMBOL) + 255];
         char module_name_raw[MAX_PATH];
-
-#if defined(_M_AMD64)
-        const DWORD machine = IMAGE_FILE_MACHINE_AMD64;
-#else
         const DWORD machine = IMAGE_FILE_MACHINE_I386;
-#endif
 
         while(StackWalk(machine, process, thread, &frame, &context, 0, SymFunctionTableAccess, SymGetModuleBase, 0))
         {
@@ -315,100 +286,48 @@ namespace
             symbol->SizeOfStruct = (sizeof *symbol) + 255;
             symbol->MaxNameLength = 254;
 
-#if defined(_WIN64)
-            DWORD64 module_base = SymGetModuleBase(process, frame.AddrPC.Offset);
-#else
             DWORD module_base = SymGetModuleBase(process, frame.AddrPC.Offset);
-#endif
             std::string module_name = unknown_module;
             if (module_base && GetModuleFileNameA(reinterpret_cast<HINSTANCE>(module_base), module_name_raw, MAX_PATH))
-                module_name = module_name_raw;
+                module_name = ((strrchr(module_name_raw, '\\') ?: __FILE__ - 1) + 1);
 
-#if defined(__MINGW32__)
-                std::string func = bfdc.get_function_name(frame.AddrPC.Offset);
+            bfd_context::find_data funcdata = bfdc.get_function_data(frame.AddrPC.Offset);
 
-                if (func.empty())
-                {
-                    DWORD dummy = 0;
-                    BOOL got_symbol = SymGetSymFromAddr(process, frame.AddrPC.Offset, &dummy, symbol);
-                    func = got_symbol ? symbol->Name : unknown_function;
-                }
-#else
+            const size_t found = funcdata.file.find_last_of("/\\");
+            std::stringstream functionLocation;
+            if (funcdata.line > 0)
+                functionLocation << funcdata.file.substr(found+1) << " (" << funcdata.line << ")";
+            else if(!funcdata.file.empty())
+                functionLocation << funcdata.file.substr(found+1);
+
+            if (funcdata.func.empty())
+            {
+
                 DWORD dummy = 0;
-                BOOL got_symbol = SymGetSymFromAddr(process, frame.AddrPC.Offset, &dummy, symbol);
-                std::string func = got_symbol ? symbol->Name : unknown_function;
-#endif
+                if (SymGetSymFromAddr(process, frame.AddrPC.Offset, &dummy, symbol))
+                {
+                    funcdata.func = symbol->Name;
+                    module_name = functionLocation.str();
+                }
+                else if (funcdata.line != 0)
+                {
+                    funcdata.func = functionLocation.str();
+                }
+                else
+                {
+                    funcdata.func = unknown_function;
+                    module_name = functionLocation.str();
+                }
+            }
+            else
+            {
+                module_name = functionLocation.str();
+            }
 
-            dbg::stack_frame f(reinterpret_cast<const void *>(frame.AddrPC.Offset), func, module_name);
+            dbg::stack_frame f(reinterpret_cast<const void *>(frame.AddrPC.Offset), funcdata.func, module_name);
             frames.push_back(f);
         }
     }
-#elif defined(__GNUC__)
-#   if defined(__i386__) || defined(__amd64__)
-
-    void fill_frames(std::list<dbg::stack_frame> &frames, dbg::stack::depth_type limit)
-    {
-        // Based on code found at:
-        // http://www.tlug.org.za/wiki/index.php/Obtaining_a_stack_trace_in_C_upon_SIGSEGV
-
-        Dl_info info;
-        void **frame = static_cast<void **>(__builtin_frame_address(0));
-        void **bp = static_cast<void **>(*frame);
-        void *ip = frame[1];
-
-        bool has_limit = limit != 0;
-        bool skip = true;
-
-        while(bp && ip && dladdr(ip, &info))
-        {
-            if (skip)
-                skip = false;
-            else
-            {
-                if (has_limit && limit-- == 0) break;
-                frames.push_back(dbg::stack_frame(ip, demangle(info.dli_sname), info.dli_fname));
-
-                if(info.dli_sname && !std::strcmp(info.dli_sname, "main")) break;
-            }
-
-            ip = bp[1];
-            bp = static_cast<void**>(bp[0]);
-        }
-    }
-
-#   elif defined(__ppc__)
-
-    void fill_frames(std::list<dbg::stack_frame> &frames, dbg::stack::depth_type limit)
-    {
-        // Based on code found at:
-        // http://www.informit.com/articles/article.aspx?p=606582&seqNum=4&rl=1
-
-        void *ip = __builtin_return_address(0);
-        void **frame = static_cast<void **>(__builtin_frame_address(1));
-        bool has_limit = limit != 0;
-        Dl_info info;
-
-        do
-        {
-            if (has_limit && limit-- == 0) break;
-
-            if (dladdr(ip, &info))
-                frames.push_back(dbg::stack_frame(ip, demangle(info.dli_sname), info.dli_fname));
-
-            if (frame && (frame = static_cast<void**>(*frame))) ip = *(frame + 2);
-        }
-        while (frame && ip);
-    }
-
-#   else
-        // GNU, but not x86, x64 nor PPC
-#       error "Sorry but dbg::stack is not supported on this architecture"
-#   endif
-#else
-    // Unsupported compiler
-#   error "Sorry but dbg::stack is not supported on this compiler"
-#endif
-
 } // close anonymous namespace
 
 
