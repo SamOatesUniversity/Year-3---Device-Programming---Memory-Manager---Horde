@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="template" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="host">
+				<Option output=".host\template" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".host" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add directory="$(#gph.include)" />
+					<Add directory="$(#gph)\DGE\include" />
+					<Add directory="$(#gph)\DGE\include\SDL" />
+				</Compiler>
+				<Linker>
+					<Add option="-lmingw32" />
+					<Add option="-lopengl32" />
+					<Add option="-lSDLmain" />
+					<Add option="-lSDL" />
+					<Add option="-lSDL_image.dll" />
+					<Add option="-lSDL_mixer" />
+					<Add option="-lSDL_ttf" />
+					<Add option="-liconv" />
+					<Add directory="$(#gph)\DGE\lib\host" />
+					<Add directory="$(#gph.lib)\host" />
+				</Linker>
+			</Target>
+			<Target title="target">
+				<Option output=".target\template.gpe" prefix_auto="0" extension_auto="0" />
+				<Option object_output=".target" />
+				<Option type="0" />
+				<Option compiler="keith_gnu_arm_gcc_compiler" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-fPIC -fno-common -march=armv5te -mtune=arm9tdmi -mapcs" />
+					<Add option="-DGP2X" />
+					<Add directory="$(#gph.include)" />
+					<Add directory="$(#gph)\DGE\include" />
+					<Add directory="$(#gph)\DGE\include\SDL" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lDGE" />
+					<Add option="-lopengles_lite" />
+					<Add option="-lglport" />
+					<Add option="-lSDLmain" />
+					<Add option="-lSDL" />
+					<Add option="-lSDL_image" />
+					<Add option="-lSDL_mixer" />
+					<Add option="-lSDL_ttf" />
+					<Add option="-lpng" />
+					<Add option="-lz" />
+					<Add option="-lts" />
+					<Add option="-lsmpeg" />
+					<Add option="-lfreetype" />
+					<Add directory="$(#gph)\DGE\lib\target" />
+					<Add directory="$(#gph.lib)\target" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-g" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="001.bmp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
