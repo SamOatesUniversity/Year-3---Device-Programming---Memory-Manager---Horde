@@ -36,9 +36,20 @@ const char **CSOGI::GetCallStack()
     std::list<dbg::stack_frame>::const_iterator frame = s.begin();
     while (frame != s.end())
     {
-        std::stringstream str;
-        str << (*frame).instruction << ": " << (*frame).function << " in " << (*frame).module;
-        stackTrace[stackIndex] = str.str().c_str();
+        dbg::stack_frame f = *frame;
+
+        std::stringstream strbuf;
+        strbuf << f.instruction << ": " << f.function << " in " << f.module;
+
+        std::string str = strbuf.str();
+
+        const unsigned int size = str.length();
+        char *line = new char[size];
+        str.copy(line, size);
+        line[size] = 0;
+
+        stackTrace[stackIndex] = line;
+
         stackIndex++;
         ++frame;
     }

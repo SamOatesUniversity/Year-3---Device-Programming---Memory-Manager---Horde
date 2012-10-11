@@ -224,7 +224,7 @@
 1349990254 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1349993778 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
+1349998977 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
 	"SOGI.h"
 
 1349994010 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
@@ -262,7 +262,7 @@
 	<list>
 	<iosfwd>
 
-1349992048 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
+1349999763 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
 	<cassert>
 	<cstring>
 	<cstdlib>
@@ -275,7 +275,5 @@
 	<imagehlp.h>
 	<bfd.h>
 	<psapi.h>
-	<cxxabi.h>
-	<dlfcn.h>
 	<cxxabi.h>
 
