@@ -1,13 +1,10 @@
 # depslib dependency file v1.0
-1349982337 source:e:\university work\uni year three\gdp\testgame\main.cpp
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<unistd.h>
+1349983475 source:e:\university work\uni year three\gdp\testgame\main.cpp
 	"lasagne/lasagne.h"
 
-1349982715 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
+1349988155 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
 	<SDL.h>
+	"../SOGI/SOGI.h"
 
 1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl.h
 	"SDL_main.h"
@@ -223,4 +220,62 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1349990254 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1349993778 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
+	"SOGI.h"
+
+1349994010 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
+	"stack/stack.h"
+	<windows.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+
+1349990797 e:\university work\uni year three\gdp\testgame\sogi\dbg\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1349990871 source:e:\university work\uni year three\gdp\testgame\sogi\dbg\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+	<dlfcn.h>
+	<cxxabi.h>
+
+1349991980 e:\university work\uni year three\gdp\testgame\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1349992048 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+	<dlfcn.h>
+	<cxxabi.h>
 

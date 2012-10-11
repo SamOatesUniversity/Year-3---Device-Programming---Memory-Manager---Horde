@@ -3,6 +3,7 @@
 
 /* Header Includes */
 #include <SDL.h>
+#include "../SOGI/SOGI.h"
 
 class CLasagne {
 private:
@@ -27,5 +28,17 @@ public:
                                 //! Destroys all resources and SDL
     void                        Release();
 };
+
+/*!
+ * \brief delete memory and null the pointer
+ */
+template<typename T>
+void SafeFreeSurface(T*& ptr) {
+	if (ptr)
+	{
+	    SDL_FreeSurface(ptr);
+		ptr = NULL;
+	}
+}
 
 #endif
