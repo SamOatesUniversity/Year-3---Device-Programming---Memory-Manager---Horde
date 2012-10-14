@@ -24,7 +24,7 @@ CLasagne::~CLasagne()
 */
 const bool CLasagne::Create()
 {
-    SHOWERROR("cheese");
+    CEntity3D ent;
 
     // try to initialize sdl video, audio and joystick
     const int result = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK);

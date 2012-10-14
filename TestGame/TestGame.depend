@@ -2,8 +2,9 @@
 1349983475 source:e:\university work\uni year three\gdp\testgame\main.cpp
 	"lasagne/lasagne.h"
 
-1349988155 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
+1350141700 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
 	<SDL.h>
+	"entity/entity3D.h"
 	"../SOGI/SOGI.h"
 
 1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl.h
@@ -221,13 +222,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1349990254 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
+1350141669 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
 	"lasagne.h"
 
 1349998977 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
 	"SOGI.h"
 
-1349994010 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
+1350139357 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
+	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
 	<iostream>
@@ -262,7 +264,7 @@
 	<list>
 	<iosfwd>
 
-1349999763 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
+1349999865 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
 	<cassert>
 	<cstring>
 	<cstdlib>
@@ -276,4 +278,16 @@
 	<bfd.h>
 	<psapi.h>
 	<cxxabi.h>
+
+1350141610 e:\university work\uni year three\gdp\testgame\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+
+1350139273 source:e:\university work\uni year three\gdp\testgame\sogi\sogitypes.cpp
+
+1350141678 source:e:\university work\uni year three\gdp\testgame\lasagne\entity\entity3d.cpp
+	"entity3D.h"
+
+1350141719 e:\university work\uni year three\gdp\testgame\lasagne\entity\entity3d.h
+	"../../SOGI/SOGITypes.h"
 

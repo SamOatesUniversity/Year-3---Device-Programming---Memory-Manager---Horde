@@ -76,8 +76,12 @@
 		</Compiler>
 		<Unit filename="SOGI\SOGI.cpp" />
 		<Unit filename="SOGI\SOGI.h" />
+		<Unit filename="SOGI\SOGITypes.cpp" />
+		<Unit filename="SOGI\SOGITypes.h" />
 		<Unit filename="SOGI\stack\stack.cpp" />
 		<Unit filename="SOGI\stack\stack.h" />
+		<Unit filename="lasagne\entity\entity3D.cpp" />
+		<Unit filename="lasagne\entity\entity3D.h" />
 		<Unit filename="lasagne\lasagne.cpp" />
 		<Unit filename="lasagne\lasagne.h" />
 		<Unit filename="main.cpp" />

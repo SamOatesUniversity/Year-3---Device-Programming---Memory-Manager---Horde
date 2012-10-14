@@ -16,6 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SOGI_HEADER
 #define SOGI_HEADER
 
+#include "SOGITypes.h"
 #include "stack/stack.h"
 
 #include <windows.h>
