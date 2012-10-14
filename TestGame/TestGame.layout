@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="host" />
-	<File name="SOGI\SOGI.cpp" open="1" top="0" tabpos="5">
+	<File name="SOGI\SOGI.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1464" topLine="33" />
 	</File>
-	<File name="SOGI\SOGI.h" open="1" top="0" tabpos="6">
-		<Cursor position="1000" topLine="27" />
+	<File name="SOGI\SOGI.h" open="1" top="0" tabpos="4">
+		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="SOGI\stack\stack.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="10326" topLine="296" />
+	<File name="SOGI\SOGITypes.h" open="1" top="1" tabpos="5">
+		<Cursor position="630" topLine="10" />
+	</File>
+	<File name="SOGI\stack\stack.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="10414" topLine="275" />
+	</File>
+	<File name="lasagne\entity\entity3D.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="52" topLine="0" />
+	</File>
+	<File name="lasagne\entity\entity3D.h" open="1" top="0" tabpos="6">
+		<Cursor position="345" topLine="0" />
 	</File>
 	<File name="lasagne\lasagne.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="439" topLine="9" />
+		<Cursor position="413" topLine="12" />
 	</File>
 	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="3">
-		<Cursor position="272" topLine="0" />
+		<Cursor position="119" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />

@@ -3,6 +3,7 @@
 
 /* Header Includes */
 #include <SDL.h>
+#include "entity/entity3D.h"
 #include "../SOGI/SOGI.h"
 
 class CLasagne {
