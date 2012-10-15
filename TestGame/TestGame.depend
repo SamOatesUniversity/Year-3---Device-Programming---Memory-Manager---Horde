@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1349983475 source:e:\university work\uni year three\gdp\testgame\main.cpp
+1350341182 source:e:\university work\uni year three\gdp\testgame\main.cpp
 	"lasagne/lasagne.h"
 
-1350141700 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
-	<SDL.h>
-	"entity/entity3D.h"
+1350340984 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
 	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<vector>
 
 1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl.h
 	"SDL_main.h"
@@ -222,13 +224,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1350141669 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
+1350340745 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1349998977 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
+1350332921 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
 	"SOGI.h"
 
-1350139357 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
+1350332921 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
 	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
@@ -236,6 +238,13 @@
 	<fstream>
 	<sstream>
 	<string>
+	<io.h>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+	<share.h>
 
 1349990797 e:\university work\uni year three\gdp\testgame\sogi\dbg\stack.h
 	<string>
@@ -279,7 +288,7 @@
 	<psapi.h>
 	<cxxabi.h>
 
-1350141610 e:\university work\uni year three\gdp\testgame\sogi\sogitypes.h
+1350142040 e:\university work\uni year three\gdp\testgame\sogi\sogitypes.h
 	"SOGI.h"
 	<string.h>
 
@@ -572,4 +581,19 @@
 1350317814 c:\users\j9060283\desktop\gdp\testgame\lasagne\lasagne-text.h
 	<SDL.h>
 	<SDL_ttf.h>
+
+1350341055 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+	<sstream>
+
+1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1350341102 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.cpp
+	"lasagne-text.h"
 

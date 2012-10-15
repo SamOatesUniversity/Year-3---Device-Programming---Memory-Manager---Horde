@@ -82,9 +82,7 @@
 		<Unit filename="SOGI\SOGITypes.h" />
 		<Unit filename="SOGI\stack\stack.cpp" />
 		<Unit filename="SOGI\stack\stack.h" />
-		<Unit filename="lasagne\lasagne-text.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="lasagne\lasagne-text.cpp" />
 		<Unit filename="lasagne\lasagne-text.h" />
 		<Unit filename="lasagne\lasagne.cpp" />
 		<Unit filename="lasagne\lasagne.h" />

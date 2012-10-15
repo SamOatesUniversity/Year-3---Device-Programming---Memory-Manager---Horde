@@ -1,30 +1,36 @@
 #ifndef LASAGNE_TEXT_HEADER
 #define LASAGNE_TEXT_HEADER
 
+#include "../SOGI/SOGI.h"
+
 #include <SDL.h>
 #include <SDL_ttf.h>
+
+#include <string>
+#include <sstream>
 
 class CLasagneText {
 private:
 
-    TTF_Font        *m_font;
+    TTF_Font        *m_font;                        //!<
 
     SDL_Surface     *m_surface;                     //!< The text surface to render too
 
     SDL_Rect        m_drawRect;                     //!< The bounds of the draw region
 
 public:
-                    //!< Class constructor
+                    //! Class constructor
                     CLasagneText();
 
-                    //!< Class destructor
+                    //! Class destructor
                     ~CLasagneText();
 
-                    //!< Create the text object
+                    //! Create the text object
     const bool      Create(
-                        const char *text            //!< The string this text object represents
+                        const std::string text      //!< The string this text object represents
                     );
 
+                    //! Create the text object
     void            Render(
                         SDL_Surface *surface        //!< The surface to blit our text surface too
                     );
