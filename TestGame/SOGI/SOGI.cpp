@@ -76,6 +76,8 @@ void CSOGI::LogError(
     // close the file as we have written to it
     logFile.close();
 
+    std::cout << "[" << file << "(" << line << ")] " << errorMessage << "\n";
+
 }
 
 /*
@@ -87,20 +89,7 @@ void CSOGI::ShowError(
         int line                                        //!< The line number where the method was called
     )
 {
-    const char **callStack = GetCallStack();
-
-#if defined(WIN32)
-
-    for (int stackIndex = 0; stackIndex < MAXSTACKTRACE; ++stackIndex)
-    {
-        LogError(callStack[stackIndex]);
-    }
-
-#else
-
-#endif
-
-    SafeArrayDelete(callStack);
+    std::cout << "[" << file << "(" << line << ")] " << errorMessage << "\n";
 }
 
 /*
@@ -112,9 +101,49 @@ void CSOGI::ShowAndLogError(
         int line                                        //!< The line number where the method was called
     )
 {
-    // output the error to the user
-    ShowError(errorMessage, file, line);
+    // Output a call stack
+    const char **callStack = GetCallStack();
+
+    for (int stackIndex = 2; stackIndex < MAXSTACKTRACE; ++stackIndex)
+    {
+        LogError(callStack[stackIndex]);
+    }
+
+    SafeArrayDelete(callStack);
 
     // log the error to file
     LogError(errorMessage, file, line);
+}
+
+/*
+ * \brief Create a console window and redirect output to it
+*/
+void CSOGI::CreateConsoleWindow()
+{
+    AllocConsole();
+
+    CONSOLE_SCREEN_BUFFER_INFO coninfo;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &coninfo);
+    coninfo.dwSize.Y = 20;
+    SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coninfo.dwSize);
+
+    long lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
+    int hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+
+    FILE *fp = _fdopen( hConHandle, "w" );
+    *stdout = *fp;
+
+    setvbuf( stdout, NULL, _IONBF, 0 );
+    lStdHandle = (long)GetStdHandle(STD_INPUT_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen( hConHandle, "r" );
+
+    *stdin = *fp;
+    setvbuf( stdin, NULL, _IONBF, 0 );
+    lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen( hConHandle, "w" );
+
+    *stderr = *fp;
+    setvbuf( stderr, NULL, _IONBF, 0 );
 }

@@ -291,3 +291,285 @@
 1350141719 e:\university work\uni year three\gdp\testgame\lasagne\entity\entity3d.h
 	"../../SOGI/SOGITypes.h"
 
+1350313020 source:c:\users\j9060283\desktop\gdp\testgame\sogi\sogitypes.cpp
+
+1350313020 source:c:\users\j9060283\desktop\gdp\testgame\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+
+1350313020 c:\users\j9060283\desktop\gdp\testgame\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1350317731 source:c:\users\j9060283\desktop\gdp\testgame\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1350317800 c:\users\j9060283\desktop\gdp\testgame\lasagne\lasagne.h
+	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<vector>
+
+1247535246 c:\gph_sdk\dge\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	"SDL_config_amiga.h"
+	"SDL_config_dreamcast.h"
+	"SDL_config_macos.h"
+	"SDL_config_macosx.h"
+	"SDL_config_win32.h"
+	"SDL_config_os2.h"
+	"SDL_config_minimal.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_platform.h
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_amiga.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_dreamcast.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_macos.h
+	"SDL_platform.h"
+	<MacTypes.h>
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_macosx.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_win32.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_os2.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_minimal.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1260439250 c:\gph_sdk\dge\include\sdl\begin_code.h
+
+1260439250 c:\gph_sdk\dge\include\sdl\close_code.h
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1261120008 c:\gph_sdk\dge\include\sdl\sdl_keysym.h
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"pollux_fb_ioctl.h"
+	"close_code.h"
+
+1260439250 c:\gph_sdk\dge\include\sdl\pollux_fb_ioctl.h
+	"pollux_fb_cfg.h"
+
+1268987098 c:\gph_sdk\dge\include\sdl\pollux_fb_cfg.h
+
+1282632388 c:\gph_sdk\dge\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1350316316 c:\users\j9060283\desktop\gdp\testgame\sogi\sogi.h
+	"SOGITypes.h"
+	"stack/stack.h"
+	<windows.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<io.h>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+	<share.h>
+
+1350313020 c:\users\j9060283\desktop\gdp\testgame\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+
+1350317011 source:c:\users\j9060283\desktop\gdp\testgame\main.cpp
+	"lasagne/lasagne.h"
+
+1350316915 source:c:\users\j9060283\desktop\gdp\testgame\sogi\sogi.cpp
+	"SOGI.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1350317814 c:\users\j9060283\desktop\gdp\testgame\lasagne\lasagne-text.h
+	<SDL.h>
+	<SDL_ttf.h>
+

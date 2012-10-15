@@ -19,6 +19,7 @@
 					<Add directory="$(#gph.include)" />
 					<Add directory="$(#gph)\DGE\include" />
 					<Add directory="$(#gph)\DGE\include\SDL" />
+					<Add directory="..\SDL_ttf-2.0.11\include" />
 				</Compiler>
 				<Linker>
 					<Add option="-lmingw32" />
@@ -35,6 +36,7 @@
 					<Add option="-limagehlp" />
 					<Add directory="$(#gph)\DGE\lib\host" />
 					<Add directory="$(#gph.lib)\host" />
+					<Add directory="..\SDL_ttf-2.0.11\lib\x86" />
 				</Linker>
 			</Target>
 			<Target title="target">
@@ -80,8 +82,10 @@
 		<Unit filename="SOGI\SOGITypes.h" />
 		<Unit filename="SOGI\stack\stack.cpp" />
 		<Unit filename="SOGI\stack\stack.h" />
-		<Unit filename="lasagne\entity\entity3D.cpp" />
-		<Unit filename="lasagne\entity\entity3D.h" />
+		<Unit filename="lasagne\lasagne-text.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="lasagne\lasagne-text.h" />
 		<Unit filename="lasagne\lasagne.cpp" />
 		<Unit filename="lasagne\lasagne.h" />
 		<Unit filename="main.cpp" />

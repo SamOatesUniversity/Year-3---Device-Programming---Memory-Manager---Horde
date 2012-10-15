@@ -25,6 +25,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <sstream>
 #include <string>
 
+#include <io.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>     /* for _O_TEXT and _O_BINARY */
+#include <errno.h>     /* for EINVAL */
+#include <sys\stat.h>  /* for _S_IWRITE */
+#include <share.h>     /* for _SH_DENYNO */
+
 // if null isnt defined define it as 0
 #ifndef NULL
     #define NULL 0
@@ -60,6 +68,9 @@ public:
                                 static CSOGI instance;
                                 return instance;
                             }
+
+                            //! Create a console window and redirect output to it
+    void                    CreateConsoleWindow();
 
                             //! Logs an error message to the log file
     void                    LogError(

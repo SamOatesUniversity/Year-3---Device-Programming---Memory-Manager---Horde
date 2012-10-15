@@ -1,10 +1,14 @@
 #ifndef LASAGNE_HEADER
 #define LASAGNE_HEADER
 
+#include "../SOGI/SOGI.h"
+#include "lasagne-text.h"
+
 /* Header Includes */
 #include <SDL.h>
-#include "entity/entity3D.h"
-#include "../SOGI/SOGI.h"
+#include <SDL_ttf.h>
+
+#include <vector>
 
 class CLasagne {
 private:
@@ -12,6 +16,8 @@ private:
     SDL_Surface                 *m_screen;              //!< A pointer to the sdl screen surface
 
     SDL_Joystick                *m_joystick;            //!< A pointer to the sdl joystick
+
+    std::vector<CLasagneText*>  m_textObjects;          //!<
 
 public:
                                 //! Class constructor
@@ -28,6 +34,11 @@ public:
 
                                 //! Destroys all resources and SDL
     void                        Release();
+
+                                //! Shows an error message to the user
+    void                        DisplayError(
+                                    const char *errorMessage                    //!< The error message to display to screen
+                                );
 };
 
 /*!
