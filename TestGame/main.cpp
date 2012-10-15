@@ -14,9 +14,12 @@ int main (int argc, char *argv[])
         return 0;
     }
 
+#if defined(_DEBUG)
     CSOGI::GetInstance().CreateConsoleWindow();
+#endif
 
-    SHOWERROR("Theres a Potatoe in the freezer!");
+    //SHOWERROR("Theres a Potatoe in the freezer!");
+    lasagne->DisplayError("Theres a Potatoe in the freezer!");
 
     // whilst the engine is running loop
 	do

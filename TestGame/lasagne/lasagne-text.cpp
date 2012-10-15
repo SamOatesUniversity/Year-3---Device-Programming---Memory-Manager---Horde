@@ -38,7 +38,7 @@ const bool CLasagneText::Create(
 
     m_surface = TTF_RenderText_Shaded(
         m_font,
-        text,
+        text.c_str(),
         foregroundColor,
         backgroundColor
     );

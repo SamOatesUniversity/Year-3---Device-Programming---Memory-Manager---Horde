@@ -86,7 +86,7 @@ const bool CLasagne::Render()
         }
     }
 
-    for (int textIndex = 0; textIndex < m_textObjects.size(); ++textIndex)
+    for (unsigned int textIndex = 0; textIndex < m_textObjects.size(); ++textIndex)
     {
         //m_textObjects[textIndex]->Render(m_screen);
     }
