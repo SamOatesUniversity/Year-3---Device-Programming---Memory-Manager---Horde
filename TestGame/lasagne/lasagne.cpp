@@ -24,8 +24,6 @@ CLasagne::~CLasagne()
 */
 const bool CLasagne::Create()
 {
-    CEntity3D ent;
-
     // try to initialize sdl video, audio and joystick
     const int result = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK);
     if (result != 0)
@@ -65,6 +63,8 @@ const bool CLasagne::Create()
         }
     }
 
+    TTF_Init();
+
     return true;
 }
 
@@ -86,6 +86,13 @@ const bool CLasagne::Render()
         }
     }
 
+    for (int textIndex = 0; textIndex < m_textObjects.size(); ++textIndex)
+    {
+        //m_textObjects[textIndex]->Render(m_screen);
+    }
+
+    SDL_Flip(m_screen);
+
     return true;
 }
 
@@ -94,6 +101,20 @@ const bool CLasagne::Render()
 */
 void CLasagne::Release()
 {
+    TTF_Quit();
+
     SafeFreeSurface(m_screen);
     SDL_Quit();
+}
+
+/*
+ * \brief Shows an error message to the user
+*/
+void CLasagne::DisplayError(
+        const char *errorMessage                    //!< The error message to display to screen
+    )
+{
+    CLasagneText *text = new CLasagneText();
+    text->Create(errorMessage);
+    m_textObjects.push_back(text);
 }

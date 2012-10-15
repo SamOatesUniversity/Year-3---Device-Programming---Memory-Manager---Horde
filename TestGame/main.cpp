@@ -8,7 +8,15 @@ int main (int argc, char *argv[])
 
     // if we failed to create (setup sdl ect...) then exit
     if (!lasagne->Create())
+    {
+        lasagne->Release();
+        delete lasagne;
         return 0;
+    }
+
+    CSOGI::GetInstance().CreateConsoleWindow();
+
+    SHOWERROR("Theres a Potatoe in the freezer!");
 
     // whilst the engine is running loop
 	do
