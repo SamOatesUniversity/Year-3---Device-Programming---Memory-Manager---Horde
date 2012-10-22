@@ -86,9 +86,9 @@ const bool CLasagne::Render()
         }
     }
 
-    for (unsigned int textIndex = 0; textIndex < m_textObjects.size(); ++textIndex)
+    for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
-        //m_textObjects[textIndex]->Render(m_screen);
+        m_errorText[textIndex]->Render(m_screen, 2, 2 + (textIndex * 14));
     }
 
     SDL_Flip(m_screen);
@@ -116,5 +116,5 @@ void CLasagne::DisplayError(
 {
     CLasagneText *text = new CLasagneText();
     text->Create(errorMessage);
-    m_textObjects.push_back(text);
+    m_errorText.push_back(text);
 }

@@ -28,6 +28,7 @@ CSOGI::CSOGI()
 */
 const char **CSOGI::GetCallStack()
 {
+#ifdef WIN32
     dbg::stack s(MAXSTACKTRACE);
 
     const char **stackTrace = new const char*[MAXSTACKTRACE];
@@ -55,6 +56,9 @@ const char **CSOGI::GetCallStack()
     }
 
     return stackTrace;
+#else
+    return NULL;
+#endif
 }
 
 /*
@@ -120,6 +124,7 @@ void CSOGI::ShowAndLogError(
 */
 void CSOGI::CreateConsoleWindow()
 {
+#ifdef WIN32
     AllocConsole();
 
     CONSOLE_SCREEN_BUFFER_INFO coninfo;
@@ -146,4 +151,5 @@ void CSOGI::CreateConsoleWindow()
 
     *stderr = *fp;
     setvbuf( stderr, NULL, _IONBF, 0 );
+#endif
 }
