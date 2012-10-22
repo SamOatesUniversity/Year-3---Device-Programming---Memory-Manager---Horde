@@ -42,11 +42,17 @@ const bool CLasagneText::Create(
         foregroundColor,
         backgroundColor
     );
+
+    return m_surface != NULL;
 }
 
 void CLasagneText::Render(
-        SDL_Surface *surface        //!< The surface to blit our text surface too
+        SDL_Surface *surface,        //!< The surface to blit our text surface too
+        const int &x,
+        const int &y
     )
 {
+    m_drawRect.x = x;
+    m_drawRect.y = y;
     SDL_BlitSurface(m_surface, NULL, surface, &m_drawRect);
 }

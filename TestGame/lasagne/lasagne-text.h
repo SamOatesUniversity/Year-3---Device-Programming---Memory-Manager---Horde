@@ -32,7 +32,9 @@ public:
 
                     //! Create the text object
     void            Render(
-                        SDL_Surface *surface        //!< The surface to blit our text surface too
+                        SDL_Surface *surface,       //!< The surface to blit our text surface too
+                        const int &x,
+                        const int &y
                     );
 };
 

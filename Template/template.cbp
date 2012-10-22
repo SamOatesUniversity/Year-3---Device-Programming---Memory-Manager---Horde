@@ -37,9 +37,8 @@
 				<Option output=".target\template.gpe" prefix_auto="0" extension_auto="0" />
 				<Option object_output=".target" />
 				<Option type="0" />
-				<Option compiler="keith_gnu_arm_gcc_compiler" />
+				<Option compiler="caanoo_gnu_arm_gcc_compiler" />
 				<Compiler>
-					<Add option="-O3" />
 					<Add option="-fPIC -fno-common -march=armv5te -mtune=arm9tdmi -mapcs" />
 					<Add option="-DGP2X" />
 					<Add directory="$(#gph.include)" />
@@ -47,7 +46,6 @@
 					<Add directory="$(#gph)\DGE\include\SDL" />
 				</Compiler>
 				<Linker>
-					<Add option="-s" />
 					<Add option="-lDGE" />
 					<Add option="-lopengles_lite" />
 					<Add option="-lglport" />

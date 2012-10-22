@@ -17,7 +17,7 @@ private:
 
     SDL_Joystick                *m_joystick;            //!< A pointer to the sdl joystick
 
-    std::vector<CLasagneText*>  m_textObjects;          //!<
+    std::vector<CLasagneText*>  m_errorText;            //!<
 
 public:
                                 //! Class constructor
