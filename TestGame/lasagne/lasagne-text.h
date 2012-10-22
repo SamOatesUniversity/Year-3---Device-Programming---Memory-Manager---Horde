@@ -36,6 +36,10 @@ public:
                         const int &x,
                         const int &y
                     );
+
+public:
+
+    static TTF_Font *font;
 };
 
 #endif

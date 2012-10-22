@@ -19,15 +19,10 @@ int main (int argc, char *argv[])
     //LOGERROR("Theres a Potatoe in the freezer!");
 #endif
 
-    int id = 0;
-
     // whilst the engine is running loop
 	do
 	{
-	    std::stringstream ss;
-	    ss << "Line of text " << id;
-        lasagne->DisplayError(ss.str().c_str());
-        ++id;
+
 	} while (lasagne->Render());
 
     // free up resoures and allocated memory

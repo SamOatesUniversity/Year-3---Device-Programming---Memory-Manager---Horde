@@ -1,5 +1,7 @@
 #include "lasagne-text.h"
 
+TTF_Font *CLasagneText::font = NULL;
+
 /*
 *   \brief Class constructor
 */
@@ -13,7 +15,7 @@ CLasagneText::CLasagneText()
 */
 CLasagneText::~CLasagneText()
 {
-
+    SDL_FreeSurface(m_surface);
 }
 
 /*
@@ -25,19 +27,22 @@ const bool CLasagneText::Create(
 {
     SDL_Color foregroundColor = { 255, 255, 255 };
     SDL_Color backgroundColor = { 0, 0, 0 };
-    m_font = TTF_OpenFont("arial.ttf", 12);
 
-    if (m_font == NULL)
+    if (CLasagneText::font == NULL)
     {
-        std::stringstream errorMessage;
-        errorMessage << "Failed to Create a font. Function TTF_OpenFont('ARIAL.TTF', 12) returned value 'NULL'.";
-        errorMessage << "\nSDL_GetError: " << SDL_GetError();
-        SHOWLOGERROR(errorMessage.str().c_str());
-        return false;
+        CLasagneText::font = TTF_OpenFont("arial.ttf", 12);
+        if (CLasagneText::font == NULL)
+        {
+            std::stringstream errorMessage;
+            errorMessage << "Failed to Create a font. Function TTF_OpenFont('ARIAL.TTF', 12) returned value 'NULL'.";
+            errorMessage << "\nSDL_GetError: " << SDL_GetError();
+            SHOWLOGERROR(errorMessage.str().c_str());
+            return false;
+        }
     }
 
     m_surface = TTF_RenderText_Shaded(
-        m_font,
+        CLasagneText::font,
         text.c_str(),
         foregroundColor,
         backgroundColor
