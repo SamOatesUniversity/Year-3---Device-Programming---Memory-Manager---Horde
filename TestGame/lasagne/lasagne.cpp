@@ -37,7 +37,8 @@ const bool CLasagne::Create()
     }
 
     // try and create a screen surface
-    m_screen = SDL_SetVideoMode(320, 240, 16, SDL_SWSURFACE);
+    m_screenSize.Set(320, 240);
+    m_screen = SDL_SetVideoMode(m_screenSize.x(), m_screenSize.y(), 16, SDL_SWSURFACE);
     if (m_screen == NULL)
     {
         // failed to create the screen
@@ -65,6 +66,12 @@ const bool CLasagne::Create()
 
     TTF_Init();
 
+    for (int starIndex = 0; starIndex < 1000; ++starIndex)
+    {
+        CLasagne3DEntity *const star = new CLasagne3DEntity(m_screenSize);
+        m_3DEntity.push_back(star);
+    }
+
     return true;
 }
 
@@ -73,6 +80,8 @@ const bool CLasagne::Create()
 */
 const bool CLasagne::Render()
 {
+    SDL_FillRect(m_screen, NULL, 0);
+
     SDL_Event event;
     while (SDL_PollEvent (&event))
     {
@@ -86,10 +95,18 @@ const bool CLasagne::Render()
         }
     }
 
+    for (unsigned int starIndex = 0; starIndex < m_3DEntity.size(); ++starIndex)
+    {
+        m_3DEntity[starIndex]->Render(m_screen);
+    }
+
+#ifdef _DEBUG
+    // show error messages
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
         m_errorText[textIndex]->Render(m_screen, 2, 2 + (textIndex * 14));
     }
+#endif
 
     SDL_Flip(m_screen);
 
@@ -117,4 +134,12 @@ void CLasagne::DisplayError(
     CLasagneText *text = new CLasagneText();
     text->Create(errorMessage);
     m_errorText.push_back(text);
+
+    if (m_errorText.size() > 10)
+    {
+        std::vector<CLasagneText*>::iterator it = m_errorText.begin();
+        SafeDelete(*it);
+        m_errorText.erase(it);
+    }
+
 }

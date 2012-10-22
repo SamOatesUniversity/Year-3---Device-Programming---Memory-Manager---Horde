@@ -37,30 +37,30 @@ public:
                         }
 
                         //! Get the x element of the vector
-    T                   &x()
+    T                   x() const
                         {
-                            ASSERT(this->m_size >= (EX+1), "Trying to access vector element greater than the size of the vector");
+                            //ASSERT(this->m_size >= (EX+1), "Trying to access vector element greater than the size of the vector");
                             return m_values[EX];
                         }
 
                         //! Get the y element of the vector
-    T                   &y()
+    T                   y() const
                         {
-                            ASSERT(this->m_size >= (EY+1), "Trying to access vector element greater than the size of the vector");
+                            //ASSERT(this->m_size >= (EY+1), "Trying to access vector element greater than the size of the vector");
                             return m_values[EY];
                         }
 
                         //! Get the z element of the vector
-    T                   &z()
+    T                   z() const
                         {
-                            ASSERT(this->m_size >= (EZ+1), "Trying to access vector element greater than the size of the vector");
+                            //ASSERT(this->m_size >= (EZ+1), "Trying to access vector element greater than the size of the vector");
                             return m_values[EZ];
                         }
 
                         //! Get the w element of the vector
-    T                   &w()
+    T                   w() const
                         {
-                            ASSERT(this->m_size >= (EW+1), "Trying to access vector element greater than the size of the vector");
+                            //ASSERT(this->m_size >= (EW+1), "Trying to access vector element greater than the size of the vector");
                             return m_values[EW];
                         }
 
@@ -69,6 +69,52 @@ public:
                         {
                             memcpy(this, &rhs, sizeof(TVector));
                             return *this;
+                        }
+
+                        //!
+    void                Set(
+                            const T x,
+                            const T y = 0,
+                            const T z = 0,
+                            const T w = 0
+                        )
+                        {
+                            if (this->m_size >= (EX+1)) m_values[EX] = x;
+                            if (this->m_size >= (EY+1)) m_values[EY] = y;
+                            if (this->m_size >= (EZ+1)) m_values[EZ] = z;
+                            if (this->m_size >= (EW+1)) m_values[EW] = w;
+                        }
+
+                        //!
+    void                SetX(
+                            const T x
+                        )
+                        {
+                            m_values[EX] = x;
+                        }
+
+                        //!
+    void                SetY(
+                            const T y
+                        )
+                        {
+                            m_values[EY] = y;
+                        }
+
+                        //!
+    void                SetZ(
+                            const T z
+                        )
+                        {
+                            m_values[EZ] = z;
+                        }
+
+                        //!
+    void                SetW(
+                            const T w
+                        )
+                        {
+                            m_values[EW] = w;
                         }
 };
 

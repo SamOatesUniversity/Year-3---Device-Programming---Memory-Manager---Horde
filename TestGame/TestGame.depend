@@ -1,12 +1,15 @@
 # depslib dependency file v1.0
-1350341182 source:e:\university work\uni year three\gdp\testgame\main.cpp
+1350930627 source:e:\university work\uni year three\gdp\testgame\main.cpp
 	"lasagne/lasagne.h"
 
-1350340984 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
+1350939675 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
 	"../SOGI/SOGI.h"
 	"lasagne-text.h"
+	"lasagne-3dentity.h"
 	<SDL.h>
 	<SDL_ttf.h>
+	<gl/gl.h>
+	<gl/glu.h>
 	<vector>
 
 1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl.h
@@ -224,27 +227,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1350340745 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
+1350940778 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1350332921 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
+1350929400 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
 	"SOGI.h"
 
-1350332921 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
+1350929400 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
 	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
+	<io.h>
+	<share.h>
 	<iostream>
 	<fstream>
 	<sstream>
 	<string>
-	<io.h>
 	<stdlib.h>
 	<stdio.h>
 	<fcntl.h>
 	<errno.h>
 	<sys\stat.h>
-	<share.h>
 
 1349990797 e:\university work\uni year three\gdp\testgame\sogi\dbg\stack.h
 	<string>
@@ -268,12 +271,12 @@
 	<dlfcn.h>
 	<cxxabi.h>
 
-1349991980 e:\university work\uni year three\gdp\testgame\sogi\stack\stack.h
+1350929400 e:\university work\uni year three\gdp\testgame\sogi\stack\stack.h
 	<string>
 	<list>
 	<iosfwd>
 
-1349999865 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
+1350929400 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
 	<cassert>
 	<cstring>
 	<cstdlib>
@@ -288,7 +291,7 @@
 	<psapi.h>
 	<cxxabi.h>
 
-1350142040 e:\university work\uni year three\gdp\testgame\sogi\sogitypes.h
+1350936400 e:\university work\uni year three\gdp\testgame\sogi\sogitypes.h
 	"SOGI.h"
 	<string.h>
 
@@ -582,7 +585,7 @@
 	<SDL.h>
 	<SDL_ttf.h>
 
-1350341055 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.h
+1350930087 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 	<SDL_ttf.h>
@@ -594,7 +597,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1350341102 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.cpp
+1350930156 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.cpp
 	"lasagne-text.h"
 
 1350918145 source:c:\users\j9060283\desktop\dev\testgame\sogi\sogitypes.cpp
@@ -664,4 +667,11 @@
 
 1350920204 source:c:\users\j9060283\desktop\dev\testgame\sogi\sogi.cpp
 	"SOGI.h"
+
+1350941432 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-3dentity.cpp
+	"lasagne-3dentity.h"
+
+1350941575 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-3dentity.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
 
