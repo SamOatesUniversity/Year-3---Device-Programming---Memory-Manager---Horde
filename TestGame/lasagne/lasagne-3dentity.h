@@ -2,6 +2,7 @@
 #define LASAGNE_3DENTITY_HEADER
 
 #include "../SOGI/SOGI.h"
+#include "lasagne-surface.h"
 #include <SDL.h>
 
 #define MAXDEPTH            2000
@@ -9,7 +10,7 @@
 class CLasagne3DEntity {
 private:
 
-    SDL_Surface             *m_image;                       //!<
+    CLasagneSurface         *m_image;                       //!<
 
     TVector<float, 3>       m_position;                     //!<
 

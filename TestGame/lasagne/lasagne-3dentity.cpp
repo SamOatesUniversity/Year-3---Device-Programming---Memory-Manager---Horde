@@ -3,6 +3,9 @@
 
 float CLasagne3DEntity::EYEDISTANCE = 100.0f;
 
+/*
+* \brief Class constructor
+*/
 CLasagne3DEntity::CLasagne3DEntity(
         const TVector<int, 2> screenSize
     ) : m_image(NULL)
@@ -18,18 +21,24 @@ CLasagne3DEntity::CLasagne3DEntity(
         rand() % (MAXDEPTH * 2)
     );
 
-    m_image = SDL_LoadBMP("star.bmp");
+    m_image = new CLasagneSurface(SDL_LoadBMP("star.bmp"));
     if (m_image == NULL)
     {
         SHOWERROR("Failed to load image");
     }
 }
 
+/*
+* \brief Class destructor
+*/
 CLasagne3DEntity::~CLasagne3DEntity()
 {
-    SDL_FreeSurface(m_image);
+    delete m_image;
 }
 
+/*
+* \brief Render the surface, projected into 3D.
+*/
 void CLasagne3DEntity::Render(
         SDL_Surface *screen
     )
@@ -42,8 +51,10 @@ void CLasagne3DEntity::Render(
         m_position.SetZ(MAXDEPTH + (rand() % MAXDEPTH));
 
     // draw the entity in its 3d position
-    SDL_Rect rcRect;
-    rcRect.x = sx;
-    rcRect.y = sy;
-    SDL_BlitSurface(m_image, NULL, screen, &rcRect);
+    //SDL_Rect rcRect;
+    //rcRect.x = sx;
+    //rcRect.y = sy;
+    //SDL_BlitSurface(m_image, NULL, screen, &rcRect);
+
+    m_image->Render(screen, sx, sy, 1.0f, 1.0f);
 }
