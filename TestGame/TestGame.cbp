@@ -83,6 +83,8 @@
 		<Unit filename="SOGI\stack\stack.h" />
 		<Unit filename="lasagne\lasagne-3dentity.cpp" />
 		<Unit filename="lasagne\lasagne-3dentity.h" />
+		<Unit filename="lasagne\lasagne-surface.cpp" />
+		<Unit filename="lasagne\lasagne-surface.h" />
 		<Unit filename="lasagne\lasagne-text.cpp" />
 		<Unit filename="lasagne\lasagne-text.h" />
 		<Unit filename="lasagne\lasagne.cpp" />
