@@ -9,9 +9,6 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 
-#include <gl/gl.h>
-#include <gl/glu.h>
-
 #include <vector>
 
 class CLasagne {
