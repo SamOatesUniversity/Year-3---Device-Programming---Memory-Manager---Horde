@@ -20,34 +20,39 @@ void CLasagneSurface::Render(
         const float scaley
     )
 {
-    const SDL_PixelFormat *const format = m_surface->format;
-
-    const int bpp = format->BitsPerPixel;
+    const SDL_PixelFormat& fmt = *(m_surface->format);
+    SDL_Surface *tempSurface = SDL_CreateRGBSurface(SDL_SWSURFACE, m_surface->w * scalex, m_surface->h * scaley, fmt.BitsPerPixel, fmt.Rmask, fmt.Gmask, fmt.Bmask, fmt.Amask);
 
     SDL_LockSurface(m_surface);
+    SDL_LockSurface(tempSurface);
 
-    const Uint16 start = *((Uint16*)m_surface->pixels);
+    unsigned int *imagePtr = (unsigned int *)m_surface->pixels;
+    unsigned int *targetPtr = (unsigned int *)tempSurface->pixels;
 
     for (int y = 0; y < m_surface->h; ++y)
     {
         for (int x = 0; x < m_surface->w; ++x)
         {
-            const Uint16 pixel = start + ((y * m_surface->w) + x);
-            const SDL_Color *const pixelColor = &(format->palette->colors[pixel]);
+            const int pixelOffset = ((y * m_surface->w) + x);
+            //unsigned int pixel = imagePtr[pixelOffset];
 
-            std::stringstream sstr;
-            sstr << "color (" << x << ", " << y << ") -> " << pixelColor->r << ", " << pixelColor->g << ", " << pixelColor->b;
-            LOGERROR(sstr.str().c_str());
+            //const int targetPixel = ((y * tempSurface->w) + x);
+            targetPtr[pixelOffset] = imagePtr[pixelOffset];
 
+            //std::stringstream sstr;
+            //sstr << "targetPixel (" << targetx << ", " << targety << ") -> " << targetPixel;
+           // LOGERROR(sstr.str().c_str());
         }
     }
 
+    SDL_UnlockSurface(tempSurface);
     SDL_UnlockSurface(m_surface);
 
-
     // draw the entity in its 3d position
-    //SDL_Rect rcRect;
-    //rcRect.x = targetx;
-    //rcRect.y = targety;
-    //SDL_BlitSurface(m_surface, NULL, target, &rcRect);
+    SDL_Rect rcRect;
+    rcRect.x = targetx;
+    rcRect.y = targety;
+    SDL_BlitSurface(tempSurface, NULL, target, &rcRect);
+
+    SDL_FreeSurface(tempSurface);
 }

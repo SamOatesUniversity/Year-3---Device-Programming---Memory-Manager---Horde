@@ -16,7 +16,7 @@ int main (int argc, char *argv[])
 
 #if defined(_DEBUG)
     CSOGI::GetInstance().CreateConsoleWindow();
-    LOGERROR("Theres a Potatoe in the freezer!");
+    //LOGERROR("Theres a Potatoe in the freezer!");
 #endif
 
     // whilst the engine is running loop

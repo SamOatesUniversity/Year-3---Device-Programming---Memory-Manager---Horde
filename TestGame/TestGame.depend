@@ -759,3 +759,85 @@
 1351529709 source:c:\users\j9060283\desktop\device\testgame\lasagne\lasagne-surface.cpp
 	"lasagne-surface.h"
 
+1352131198 source:c:\users\j9060283\desktop\testgame\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+
+1352131198 c:\users\j9060283\desktop\testgame\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1352134090 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-3dentity.cpp
+	"lasagne-3dentity.h"
+
+1352131199 c:\users\j9060283\desktop\testgame\lasagne\lasagne-3dentity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+
+1352131198 c:\users\j9060283\desktop\testgame\sogi\sogi.h
+	"SOGITypes.h"
+	"stack/stack.h"
+	<windows.h>
+	<io.h>
+	<share.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+
+1352131198 c:\users\j9060283\desktop\testgame\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+
+1352131526 c:\users\j9060283\desktop\testgame\lasagne\lasagne-surface.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+
+1352134262 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-surface.cpp
+	"lasagne-surface.h"
+
+1352131199 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-text.cpp
+	"lasagne-text.h"
+
+1352131199 c:\users\j9060283\desktop\testgame\lasagne\lasagne-text.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+	<sstream>
+
+1352131199 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1352131545 c:\users\j9060283\desktop\testgame\lasagne\lasagne.h
+	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	"lasagne-3dentity.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<vector>
+
+1352132903 source:c:\users\j9060283\desktop\testgame\main.cpp
+	"lasagne/lasagne.h"
+
+1352131198 source:c:\users\j9060283\desktop\testgame\sogi\sogi.cpp
+	"SOGI.h"
+
