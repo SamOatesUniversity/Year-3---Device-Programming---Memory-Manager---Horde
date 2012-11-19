@@ -1,18 +1,17 @@
 # depslib dependency file v1.0
-1350930627 source:e:\university work\uni year three\gdp\testgame\main.cpp
+1353352610 source:e:\university work\uni year three\gdp\testgame\main.cpp
 	"lasagne/lasagne.h"
 
-1350939675 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
+1353351844 e:\university work\uni year three\gdp\testgame\lasagne\lasagne.h
 	"../SOGI/SOGI.h"
 	"lasagne-text.h"
 	"lasagne-3dentity.h"
+	"lasagne-music.h"
 	<SDL.h>
 	<SDL_ttf.h>
-	<gl/gl.h>
-	<gl/glu.h>
 	<vector>
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_audio.h"
@@ -31,14 +30,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_main.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_stdinc.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -64,7 +63,7 @@
 	<stdlib.h>
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config.h
 	"SDL_platform.h"
 	"SDL_config_amiga.h"
 	"SDL_config_dreamcast.h"
@@ -74,36 +73,36 @@
 	"SDL_config_os2.h"
 	"SDL_config_minimal.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_platform.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_platform.h
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_amiga.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_amiga.h
 	"SDL_platform.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_dreamcast.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_dreamcast.h
 	"SDL_platform.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_macos.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_macos.h
 	"SDL_platform.h"
 	<MacTypes.h>
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_macosx.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_macosx.h
 	"SDL_platform.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_win32.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_win32.h
 	"SDL_platform.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_os2.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_os2.h
 	"SDL_platform.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_minimal.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_config_minimal.h
 	"SDL_platform.h"
 	<stdarg.h>
 
-1260439250 e:\university work\uni year three\gdp\gph_sdk\\dge\include\begin_code.h
+1260435650 e:\university work\uni year three\gdp\gph_sdk\\dge\include\begin_code.h
 
-1260439250 e:\university work\uni year three\gdp\gph_sdk\\dge\include\close_code.h
+1260435650 e:\university work\uni year three\gdp\gph_sdk\\dge\include\close_code.h
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_audio.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -113,23 +112,23 @@
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_error.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_endian.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_endian.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_mutex.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_thread.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_mutex.h"
@@ -137,24 +136,24 @@
 	<process.h>
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_rwops.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_cdrom.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_cdrom.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_cpuinfo.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_events.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_active.h"
@@ -165,29 +164,29 @@
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_active.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_active.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_keyboard.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keysym.h"
 	"begin_code.h"
 	"close_code.h"
 
-1261120008 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_keysym.h
+1261116408 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_keysym.h
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_mouse.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_video.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -195,45 +194,45 @@
 	"pollux_fb_ioctl.h"
 	"close_code.h"
 
-1260439250 e:\university work\uni year three\gdp\gph_sdk\\dge\include\pollux_fb_ioctl.h
+1260435650 e:\university work\uni year three\gdp\gph_sdk\\dge\include\pollux_fb_ioctl.h
 	"pollux_fb_cfg.h"
 
-1260439250 e:\university work\uni year three\gdp\gph_sdk\\dge\include\pollux_fb_cfg.h
+1260435650 e:\university work\uni year three\gdp\gph_sdk\\dge\include\pollux_fb_cfg.h
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_joystick.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_quit.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_loadso.h
-	"SDL_stdinc.h"
-	"SDL_error.h"
-	"begin_code.h"
-	"close_code.h"
-
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_timer.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_version.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1350940778 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
+1353352518 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1350929400 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
+1350925800 source:e:\university work\uni year three\gdp\testgame\sogi\sogi.cpp
 	"SOGI.h"
 
-1350929400 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
+1350925800 e:\university work\uni year three\gdp\testgame\sogi\sogi.h
 	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
@@ -271,12 +270,12 @@
 	<dlfcn.h>
 	<cxxabi.h>
 
-1350929400 e:\university work\uni year three\gdp\testgame\sogi\stack\stack.h
+1350925800 e:\university work\uni year three\gdp\testgame\sogi\stack\stack.h
 	<string>
 	<list>
 	<iosfwd>
 
-1350929400 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
+1350925800 source:e:\university work\uni year three\gdp\testgame\sogi\stack\stack.cpp
 	<cassert>
 	<cstring>
 	<cstdlib>
@@ -291,7 +290,7 @@
 	<psapi.h>
 	<cxxabi.h>
 
-1350936400 e:\university work\uni year three\gdp\testgame\sogi\sogitypes.h
+1350932800 e:\university work\uni year three\gdp\testgame\sogi\sogitypes.h
 	"SOGI.h"
 	<string.h>
 
@@ -585,19 +584,19 @@
 	<SDL.h>
 	<SDL_ttf.h>
 
-1350930087 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.h
+1350926487 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 	<SDL_ttf.h>
 	<string>
 	<sstream>
 
-1260438948 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_ttf.h
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_ttf.h
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
 
-1350930156 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.cpp
+1350926556 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-text.cpp
 	"lasagne-text.h"
 
 1350918145 source:c:\users\j9060283\desktop\dev\testgame\sogi\sogitypes.cpp
@@ -668,11 +667,12 @@
 1350920204 source:c:\users\j9060283\desktop\dev\testgame\sogi\sogi.cpp
 	"SOGI.h"
 
-1350941432 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-3dentity.cpp
+1353348624 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-3dentity.cpp
 	"lasagne-3dentity.h"
 
-1350941575 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-3dentity.h
+1352113807 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-3dentity.h
 	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
 	<SDL.h>
 
 1351526426 source:c:\users\j9060283\desktop\device\testgame\sogi\stack\stack.cpp
@@ -840,4 +840,30 @@
 
 1352131198 source:c:\users\j9060283\desktop\testgame\sogi\sogi.cpp
 	"SOGI.h"
+
+1352113807 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-surface.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+
+1353348901 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-surface.cpp
+	"lasagne-surface.h"
+
+1353352853 source:e:\university work\uni year three\gdp\testgame\lasagne\lasagne-music.cpp
+	"lasagne-music.h"
+
+1353352266 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-music.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\\dge\include\sdl\sdl_types.h
+	"SDL_stdinc.h"
 

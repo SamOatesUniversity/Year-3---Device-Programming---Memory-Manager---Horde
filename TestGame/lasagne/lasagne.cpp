@@ -66,11 +66,22 @@ const bool CLasagne::Create()
 
     TTF_Init();
 
-    for (int starIndex = 0; starIndex < 1000; ++starIndex)
-    {
-        CLasagne3DEntity *const star = new CLasagne3DEntity(m_screenSize);
-        m_3DEntity.push_back(star);
+    int audio_rate = 22050;
+    Uint16 audio_format = AUDIO_S16; /* 16-bit stereo */
+    int audio_channels = 2;
+    int audio_buffers = 4096;
+    if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers)) {
+        // failed to open the audio from SDL mixer
+        std::stringstream errorMessage;
+        errorMessage << "Failed to open the audio device. Function Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) returned value '0'.";
+        errorMessage << "\nSDL_GetError: " << SDL_GetError();
+        SHOWLOGERROR(errorMessage.str().c_str());
+        return false;
     }
+
+#if defined(_DEBUG)
+    CSOGI::GetInstance().CreateConsoleWindow();
+#endif
 
     return true;
 }
@@ -142,4 +153,16 @@ void CLasagne::DisplayError(
         m_errorText.erase(it);
     }
 
+}
+
+CLasagneMusicFile *CLasagne::CreateMusicFile(
+         const char* musicFile
+    )
+{
+    CLasagneMusicFile *music = new CLasagneMusicFile();
+    if (!music->Create(musicFile)) {
+        return NULL;
+    }
+
+    return music;
 }
