@@ -14,10 +14,15 @@ int main (int argc, char *argv[])
         return 0;
     }
 
-#if defined(_DEBUG)
-    CSOGI::GetInstance().CreateConsoleWindow();
-    //LOGERROR("Theres a Potatoe in the freezer!");
-#endif
+    //for (int starIndex = 0; starIndex < 1000; ++starIndex)
+    //    lasagne->AddEntity("star.bmp");
+
+    CLasagneMusicFile *mario = lasagne->CreateMusicFile("music.ogg");
+    if (mario == NULL)
+    {
+        SHOWLOGERROR("Failed to load the audio file!");
+    }
+    mario->Play();
 
     // whilst the engine is running loop
 	do

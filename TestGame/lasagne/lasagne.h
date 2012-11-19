@@ -4,6 +4,7 @@
 #include "../SOGI/SOGI.h"
 #include "lasagne-text.h"
 #include "lasagne-3dentity.h"
+#include "lasagne-music.h"
 
 /* Header Includes */
 #include <SDL.h>
@@ -43,6 +44,10 @@ public:
                                         //! Shows an error message to the user
     void                                DisplayError(
                                             const char *errorMessage                    //!< The error message to display to screen
+                                        );
+
+    CLasagneMusicFile                   *CreateMusicFile(
+                                            const char* musicFile                       //!< The OGG music file to create the object around
                                         );
 };
 

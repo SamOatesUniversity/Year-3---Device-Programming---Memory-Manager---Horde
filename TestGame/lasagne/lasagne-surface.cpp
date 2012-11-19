@@ -38,10 +38,6 @@ void CLasagneSurface::Render(
 
             //const int targetPixel = ((y * tempSurface->w) + x);
             targetPtr[pixelOffset] = imagePtr[pixelOffset];
-
-            //std::stringstream sstr;
-            //sstr << "targetPixel (" << targetx << ", " << targety << ") -> " << targetPixel;
-           // LOGERROR(sstr.str().c_str());
         }
     }
 
