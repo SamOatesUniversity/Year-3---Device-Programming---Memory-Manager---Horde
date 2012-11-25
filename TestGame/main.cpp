@@ -14,19 +14,38 @@ int main (int argc, char *argv[])
         return 0;
     }
 
-    //for (int starIndex = 0; starIndex < 1000; ++starIndex)
-    //    lasagne->AddEntity("star.bmp");
-
-    CLasagneMusicFile *mario = lasagne->CreateMusicFile("music.ogg");
-    if (mario == NULL)
+    CLasagneMusicFile *genesis = lasagne->LoadMusicFile("music.ogg", MusicEngine::BASS);
+    if (genesis == NULL)
     {
-        SHOWLOGERROR("Failed to load the audio file!");
+        LOGERROR("Failed to load the audio file!");
+        return 0;
     }
-    mario->Play();
+    genesis->Play();
 
+    static const int noofSamples = 1000;
+    CLasagneAudioFile *shaun[noofSamples];
+
+    for (int shaunIndex = 0; shaunIndex < noofSamples; ++shaunIndex)
+    {
+        shaun[shaunIndex] = lasagne->LoadAudioFile("shaun.wav", AudioEngine::BASS);
+        if (shaun[shaunIndex] == NULL)
+        {
+            LOGERROR("Failed to load the shaun audio file!");
+            return 0;
+        }
+    }
+
+    int shaunIndex = 0;
     // whilst the engine is running loop
 	do
 	{
+
+        if (rand() % 2000 == 0 && noofSamples) {
+            if (shaunIndex >= noofSamples) shaunIndex = 0;
+            shaun[shaunIndex]->Play();
+        }
+        shaunIndex++;
+
 
 	} while (lasagne->Render());
 

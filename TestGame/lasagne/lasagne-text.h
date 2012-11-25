@@ -30,6 +30,11 @@ public:
                         const std::string text      //!< The string this text object represents
                     );
 
+                    //! Set the text the object should display
+    void            SetText(
+                        const std::string text      //!< The string this text object represents
+                    );
+
                     //! Create the text object
     void            Render(
                         SDL_Surface *surface,       //!< The surface to blit our text surface too

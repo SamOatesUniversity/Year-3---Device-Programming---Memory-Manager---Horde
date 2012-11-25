@@ -1,9 +1,11 @@
 #include "lasagne-music.h"
 
-CLasagneMusicFile::CLasagneMusicFile() :
-    m_music(NULL)
+CLasagneMusicFile::CLasagneMusicFile(
+        MusicEngine::Enum engine
+    )
 {
-
+    m_sdlMusic = NULL;
+    m_engine = engine;
 }
 
 
@@ -16,12 +18,19 @@ const bool CLasagneMusicFile::Create(
         const char *musicFile
     )
 {
-    if (m_music != NULL) {
-        Mix_FreeMusic(m_music);
-        m_music = NULL;
+    if (m_engine == MusicEngine::SDL) {
+        if (m_sdlMusic != NULL) {
+            Mix_FreeMusic(m_sdlMusic);
+            m_sdlMusic = NULL;
+        }
+
+        m_sdlMusic = Mix_LoadMUS(musicFile);
+        return m_sdlMusic != NULL;
+    }
+    else if (m_engine == MusicEngine::BASS) {
+        m_bassMusic = BASS_StreamCreateFile(FALSE, musicFile, 0, 0, 0);
+        return true;
     }
 
-    m_music = Mix_LoadMUS("music.ogg");
-
-    return m_music != NULL;
+    return NULL;
 }

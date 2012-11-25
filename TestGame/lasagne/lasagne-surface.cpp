@@ -21,7 +21,7 @@ void CLasagneSurface::Render(
     )
 {
     const SDL_PixelFormat& fmt = *(m_surface->format);
-    SDL_Surface *tempSurface = SDL_CreateRGBSurface(SDL_SWSURFACE, m_surface->w * scalex, m_surface->h * scaley, fmt.BitsPerPixel, fmt.Rmask, fmt.Gmask, fmt.Bmask, fmt.Amask);
+    SDL_Surface *tempSurface = SDL_CreateRGBSurface(SDL_SWSURFACE, (int)(m_surface->w * scalex), (int)(m_surface->h * scaley), fmt.BitsPerPixel, fmt.Rmask, fmt.Gmask, fmt.Bmask, fmt.Amask);
 
     SDL_LockSurface(m_surface);
     SDL_LockSurface(tempSurface);

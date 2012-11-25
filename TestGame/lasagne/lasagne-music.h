@@ -3,15 +3,27 @@
 
 #include "SDL.h"
 #include "SDL_mixer.h"
+#include "../BASS/bass.h"
+
+struct MusicEngine {
+    enum Enum {
+        SDL,
+        BASS,
+    };
+};
 
 class CLasagneMusicFile {
 private:
 
-    Mix_Music           *m_music;                           //!< The SDL_Mixer representation of the music file
+    Mix_Music           *m_sdlMusic;                        //!< The SDL_Mixer representation of the music file
+    HSTREAM             m_bassMusic;
+    MusicEngine::Enum   m_engine;                           //!<
 
 public:
                         //! Class constructor
-                        CLasagneMusicFile();
+                        CLasagneMusicFile(
+                            MusicEngine::Enum engine = MusicEngine::SDL
+                        );
 
                         //! Class destructor
                         ~CLasagneMusicFile();
@@ -24,7 +36,12 @@ public:
                         //! Play the music file
     void                Play()
                         {
-                            Mix_PlayMusic(m_music, 0);
+                            if (m_engine == MusicEngine::SDL) {
+                                Mix_PlayMusic(m_sdlMusic, 0);
+                            }
+                            else if (m_engine == MusicEngine::BASS) {
+                                BASS_ChannelPlay(m_bassMusic, FALSE);
+                            }
                         }
 
 };

@@ -79,8 +79,16 @@ const bool CLasagne::Create()
         return false;
     }
 
+    BASS_Init(-1, 44100, 0, NULL, 0);
+
 #if defined(_DEBUG)
     CSOGI::GetInstance().CreateConsoleWindow();
+
+    m_fps.text = new CLasagneText();
+    m_fps.text->Create("FPS: 0");
+    m_fps.fps = 0;
+    m_fps.count = 0;
+    m_fps.time = SDL_GetTicks();
 #endif
 
     return true;
@@ -111,12 +119,28 @@ const bool CLasagne::Render()
         m_3DEntity[starIndex]->Render(m_screen);
     }
 
-#ifdef _DEBUG
+#if defined(_DEBUG)
     // show error messages
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
         m_errorText[textIndex]->Render(m_screen, 2, 2 + (textIndex * 14));
     }
+
+    m_fps.count++;
+    int ticks = SDL_GetTicks();
+    if (ticks - m_fps.time >= 1000)
+    {
+        m_fps.fps = m_fps.count;
+        m_fps.time = ticks;
+        m_fps.count = 0;
+
+        std::stringstream buf;
+        buf << "FPS :" << m_fps.fps;
+
+        m_fps.text->SetText(buf.str());
+    }
+
+    m_fps.text->Render(m_screen, 2, m_screenSize.y() - 16);
 #endif
 
     SDL_Flip(m_screen);
@@ -142,6 +166,7 @@ void CLasagne::DisplayError(
         const char *errorMessage                    //!< The error message to display to screen
     )
 {
+#if defined(_DEBUG)
     CLasagneText *text = new CLasagneText();
     text->Create(errorMessage);
     m_errorText.push_back(text);
@@ -152,17 +177,32 @@ void CLasagne::DisplayError(
         SafeDelete(*it);
         m_errorText.erase(it);
     }
-
+#endif
 }
 
-CLasagneMusicFile *CLasagne::CreateMusicFile(
-         const char* musicFile
+CLasagneMusicFile *CLasagne::LoadMusicFile(
+         const char* musicFile,
+         MusicEngine::Enum engine
     )
 {
-    CLasagneMusicFile *music = new CLasagneMusicFile();
+    CLasagneMusicFile *music = new CLasagneMusicFile(engine);
     if (!music->Create(musicFile)) {
         return NULL;
     }
 
     return music;
 }
+
+CLasagneAudioFile *CLasagne::LoadAudioFile(
+         const char* audioFile,
+         AudioEngine::Enum engine
+    )
+{
+    CLasagneAudioFile *audio = new CLasagneAudioFile(engine);
+    if (!audio->Create(audioFile)) {
+        return NULL;
+    }
+
+    return audio;
+}
+

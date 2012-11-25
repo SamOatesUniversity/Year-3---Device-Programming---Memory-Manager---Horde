@@ -5,6 +5,7 @@
 #include "lasagne-text.h"
 #include "lasagne-3dentity.h"
 #include "lasagne-music.h"
+#include "lasagne-audio.h"
 
 /* Header Includes */
 #include <SDL.h>
@@ -24,6 +25,15 @@ private:
     std::vector<CLasagneText*>          m_errorText;            //!<
 
     std::vector<CLasagne3DEntity*>      m_3DEntity;             //!<
+
+#if defined(_DEBUG)
+    struct {
+        CLasagneText                    *text;                  //!<
+        int                             fps;                    //!<
+        int                             count;                  //!<
+        int                             time;                   //!<
+    } m_fps;
+#endif
 
 public:
                                         //! Class constructor
@@ -46,8 +56,16 @@ public:
                                             const char *errorMessage                    //!< The error message to display to screen
                                         );
 
-    CLasagneMusicFile                   *CreateMusicFile(
-                                            const char* musicFile                       //!< The OGG music file to create the object around
+                                        //! Load a music file
+    CLasagneMusicFile                   *LoadMusicFile(
+                                            const char* musicFile,                      //!< The OGG music file to create the object around
+                                            MusicEngine::Enum engine = MusicEngine::SDL //!<
+                                        );
+
+                                        //! Load a audio file
+    CLasagneAudioFile                   *LoadAudioFile(
+                                            const char* audioFile,                      //!<
+                                            AudioEngine::Enum engine = AudioEngine::SDL //!<
                                         );
 };
 

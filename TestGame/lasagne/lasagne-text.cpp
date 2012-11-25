@@ -51,6 +51,23 @@ const bool CLasagneText::Create(
     return m_surface != NULL;
 }
 
+void CLasagneText::SetText(
+        const std::string text      //!< The string this text object represents
+    )
+{
+    SDL_Color foregroundColor = { 255, 255, 255 };
+    SDL_Color backgroundColor = { 0, 0, 0 };
+
+    SDL_FreeSurface(m_surface);
+
+    m_surface = TTF_RenderText_Shaded(
+        CLasagneText::font,
+        text.c_str(),
+        foregroundColor,
+        backgroundColor
+    );
+}
+
 void CLasagneText::Render(
         SDL_Surface *surface,        //!< The surface to blit our text surface too
         const int &x,
