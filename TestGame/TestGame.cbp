@@ -34,6 +34,7 @@
 					<Add option="-liberty" />
 					<Add option="-lpsapi" />
 					<Add option="-limagehlp" />
+					<Add library="BASS\bass.lib" />
 					<Add directory="$(#gph)\DGE\lib\host" />
 					<Add directory="$(#gph.lib)\host" />
 					<Add directory="..\SDL_ttf-2.0.11\lib\x86" />
@@ -43,7 +44,7 @@
 				<Option output=".target\TestGame.gpe" prefix_auto="0" extension_auto="0" />
 				<Option object_output=".target" />
 				<Option type="0" />
-				<Option compiler="caanoo_gnu_arm_gcc_compiler" />
+				<Option compiler="devkitgp2x" />
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="-fPIC -fno-common -march=armv5te -mtune=arm9tdmi -mapcs" />
@@ -55,8 +56,8 @@
 				<Linker>
 					<Add option="-g" />
 					<Add option="-lDGE" />
-					<Add option="-lopengles_lite" />
 					<Add option="-lglport" />
+					<Add option="-lopengles_lite" />
 					<Add option="-lSDLmain" />
 					<Add option="-lSDL" />
 					<Add option="-lSDL_image" />
@@ -67,6 +68,7 @@
 					<Add option="-lts" />
 					<Add option="-lsmpeg" />
 					<Add option="-lfreetype" />
+					<Add library="..\GPH_SDK\lib\target\libfreetype.so.6" />
 					<Add directory="$(#gph)\DGE\lib\target" />
 					<Add directory="$(#gph.lib)\target" />
 				</Linker>
@@ -83,6 +85,10 @@
 		<Unit filename="SOGI\stack\stack.h" />
 		<Unit filename="lasagne\lasagne-3dentity.cpp" />
 		<Unit filename="lasagne\lasagne-3dentity.h" />
+		<Unit filename="lasagne\lasagne-audio.cpp" />
+		<Unit filename="lasagne\lasagne-audio.h" />
+		<Unit filename="lasagne\lasagne-music.cpp" />
+		<Unit filename="lasagne\lasagne-music.h" />
 		<Unit filename="lasagne\lasagne-surface.cpp" />
 		<Unit filename="lasagne\lasagne-surface.h" />
 		<Unit filename="lasagne\lasagne-text.cpp" />

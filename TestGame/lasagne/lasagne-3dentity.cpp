@@ -43,8 +43,8 @@ void CLasagne3DEntity::Render(
         SDL_Surface *screen
     )
 {
-    const int sx = ((EYEDISTANCE * (m_position.x() - m_screenPosition.x()))) / (EYEDISTANCE + m_position.z()) + m_screenPosition.x();
-    const int sy = ((EYEDISTANCE * (m_position.y() - m_screenPosition.y()))) / (EYEDISTANCE + m_position.z()) + m_screenPosition.y();
+    const int sx = (int)(((EYEDISTANCE * (m_position.x() - m_screenPosition.x()))) / (EYEDISTANCE + m_position.z()) + m_screenPosition.x());
+    const int sy = (int)(((EYEDISTANCE * (m_position.y() - m_screenPosition.y()))) / (EYEDISTANCE + m_position.z()) + m_screenPosition.y());
 
     m_position.SetZ(m_position.z() - 0.1f);
     if (m_position.z() < 0)
