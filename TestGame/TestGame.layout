@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="host" />
+	<ActiveTarget name="target" />
 	<File name="SOGI\SOGI.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1561" topLine="37" />
+		<Cursor position="1519" topLine="82" />
 	</File>
-	<File name="SOGI\SOGI.h" open="0" top="0" tabpos="5">
-		<Cursor position="1524" topLine="0" />
+	<File name="SOGI\SOGI.h" open="1" top="0" tabpos="8">
+		<Cursor position="4053" topLine="92" />
 	</File>
 	<File name="SOGI\SOGITypes.h" open="0" top="0" tabpos="6">
 		<Cursor position="4329" topLine="75" />
@@ -23,16 +23,16 @@
 		<Cursor position="486" topLine="5" />
 	</File>
 	<File name="lasagne\lasagne-audio.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="639" topLine="0" />
+		<Cursor position="834" topLine="0" />
 	</File>
 	<File name="lasagne\lasagne-audio.h" open="1" top="0" tabpos="4">
-		<Cursor position="1152" topLine="4" />
+		<Cursor position="425" topLine="4" />
 	</File>
 	<File name="lasagne\lasagne-music.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="689" topLine="0" />
+		<Cursor position="726" topLine="3" />
 	</File>
 	<File name="lasagne\lasagne-music.h" open="1" top="0" tabpos="7">
-		<Cursor position="112" topLine="0" />
+		<Cursor position="1489" topLine="14" />
 	</File>
 	<File name="lasagne\lasagne-surface.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="611" topLine="0" />
@@ -47,12 +47,12 @@
 		<Cursor position="884" topLine="0" />
 	</File>
 	<File name="lasagne\lasagne.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="4609" topLine="164" />
+		<Cursor position="209" topLine="1" />
 	</File>
 	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="2">
-		<Cursor position="2351" topLine="37" />
+		<Cursor position="2351" topLine="36" />
 	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="460" topLine="0" />
+		<Cursor position="1005" topLine="9" />
 	</File>
 </CodeBlocks_layout_file>

@@ -3,7 +3,10 @@
 
 #include "SDL.h"
 #include "SDL_mixer.h"
-#include "../BASS/bass.h"
+
+#ifndef GP2X
+    #include "../BASS/bass.h"
+#endif
 
 struct AudioEngine {
     enum Enum {
@@ -16,7 +19,9 @@ class CLasagneAudioFile {
 
 private:
     Mix_Chunk           *m_sdlAudio;            //!<
+    #ifndef GP2X
     HSTREAM             m_bassAudio;            //!<
+    #endif
     AudioEngine::Enum   m_engine;               //!<
 
 public:
@@ -39,9 +44,11 @@ public:
                             if (m_engine == AudioEngine::SDL) {
                                 Mix_PlayChannel(-1, m_sdlAudio, 0);
                             }
+                            #ifndef GP2X
                             else if (m_engine == AudioEngine::BASS) {
                                 BASS_ChannelPlay(m_bassAudio, FALSE);
                             }
+                            #endif
                         }
 };
 

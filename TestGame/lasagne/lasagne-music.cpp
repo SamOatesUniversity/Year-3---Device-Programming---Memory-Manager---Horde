@@ -27,10 +27,12 @@ const bool CLasagneMusicFile::Create(
         m_sdlMusic = Mix_LoadMUS(musicFile);
         return m_sdlMusic != NULL;
     }
+    #ifndef GP2X
     else if (m_engine == MusicEngine::BASS) {
         m_bassMusic = BASS_StreamCreateFile(FALSE, musicFile, 0, 0, 0);
         return true;
     }
+    #endif
 
     return NULL;
 }
