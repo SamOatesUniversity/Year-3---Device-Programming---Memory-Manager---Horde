@@ -79,7 +79,9 @@ const bool CLasagne::Create()
         return false;
     }
 
+#ifndef GP2X
     BASS_Init(-1, 44100, 0, NULL, 0);
+#endif
 
 #if defined(_DEBUG)
     CSOGI::GetInstance().CreateConsoleWindow();

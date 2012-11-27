@@ -760,7 +760,7 @@
 1351529709 source:c:\users\j9060283\desktop\device\testgame\lasagne\lasagne-surface.cpp
 	"lasagne-surface.h"
 
-1352131198 source:c:\users\j9060283\desktop\testgame\sogi\stack\stack.cpp
+1354032440 source:c:\users\j9060283\desktop\testgame\sogi\stack\stack.cpp
 	<cassert>
 	<cstring>
 	<cstdlib>
@@ -775,20 +775,20 @@
 	<psapi.h>
 	<cxxabi.h>
 
-1352131198 c:\users\j9060283\desktop\testgame\sogi\stack\stack.h
+1354032440 c:\users\j9060283\desktop\testgame\sogi\stack\stack.h
 	<string>
 	<list>
 	<iosfwd>
 
-1352134090 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-3dentity.cpp
+1354032444 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-3dentity.cpp
 	"lasagne-3dentity.h"
 
-1352131199 c:\users\j9060283\desktop\testgame\lasagne\lasagne-3dentity.h
+1354032444 c:\users\j9060283\desktop\testgame\lasagne\lasagne-3dentity.h
 	"../SOGI/SOGI.h"
 	"lasagne-surface.h"
 	<SDL.h>
 
-1352131198 c:\users\j9060283\desktop\testgame\sogi\sogi.h
+1354033440 c:\users\j9060283\desktop\testgame\sogi\sogi.h
 	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
@@ -804,42 +804,44 @@
 	<errno.h>
 	<sys\stat.h>
 
-1352131198 c:\users\j9060283\desktop\testgame\sogi\sogitypes.h
+1354032441 c:\users\j9060283\desktop\testgame\sogi\sogitypes.h
 	"SOGI.h"
 	<string.h>
 
-1352131526 c:\users\j9060283\desktop\testgame\lasagne\lasagne-surface.h
+1354032444 c:\users\j9060283\desktop\testgame\lasagne\lasagne-surface.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 
-1352134262 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-surface.cpp
+1354032444 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-surface.cpp
 	"lasagne-surface.h"
 
-1352131199 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-text.cpp
+1354032444 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-text.cpp
 	"lasagne-text.h"
 
-1352131199 c:\users\j9060283\desktop\testgame\lasagne\lasagne-text.h
+1354032444 c:\users\j9060283\desktop\testgame\lasagne\lasagne-text.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 	<SDL_ttf.h>
 	<string>
 	<sstream>
 
-1352131199 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne.cpp
+1354032971 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1352131545 c:\users\j9060283\desktop\testgame\lasagne\lasagne.h
+1354032444 c:\users\j9060283\desktop\testgame\lasagne\lasagne.h
 	"../SOGI/SOGI.h"
 	"lasagne-text.h"
 	"lasagne-3dentity.h"
+	"lasagne-music.h"
+	"lasagne-audio.h"
 	<SDL.h>
 	<SDL_ttf.h>
 	<vector>
 
-1352132903 source:c:\users\j9060283\desktop\testgame\main.cpp
+1354033280 source:c:\users\j9060283\desktop\testgame\main.cpp
 	"lasagne/lasagne.h"
 
-1352131198 source:c:\users\j9060283\desktop\testgame\sogi\sogi.cpp
+1354032440 source:c:\users\j9060283\desktop\testgame\sogi\sogi.cpp
 	"SOGI.h"
 
 1352113807 e:\university work\uni year three\gdp\testgame\lasagne\lasagne-surface.h
@@ -1112,4 +1114,36 @@
 1335962859 e:\university work\uni year three\gdp\testgame\bass\bass.h
 	<wtypes.h>
 	<stdint.h>
+
+1354032890 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-audio.cpp
+	"lasagne-audio.h"
+
+1354032948 c:\users\j9060283\desktop\testgame\lasagne\lasagne-audio.h
+	"SDL.h"
+	"SDL_mixer.h"
+	"../BASS/bass.h"
+
+1260435348 c:\gph_sdk\dge\include\sdl\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 c:\gph_sdk\dge\include\sdl\sdl_types.h
+	"SDL_stdinc.h"
+
+1354032444 c:\users\j9060283\desktop\testgame\bass\bass.h
+	<wtypes.h>
+	<stdint.h>
+
+1354032903 source:c:\users\j9060283\desktop\testgame\lasagne\lasagne-music.cpp
+	"lasagne-music.h"
+
+1354032934 c:\users\j9060283\desktop\testgame\lasagne\lasagne-music.h
+	"SDL.h"
+	"SDL_mixer.h"
+	"../BASS/bass.h"
 

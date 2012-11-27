@@ -28,9 +28,11 @@ const bool CLasagneAudioFile::Create(
         m_sdlAudio = Mix_LoadWAV(audioFile);
         return m_sdlAudio != NULL;
     }
+    #ifndef GP2X
     else if (m_engine == AudioEngine::BASS) {
         m_bassAudio = BASS_StreamCreateFile(FALSE, audioFile, 0, 0, 0);
         return true;
     }
+    #endif
     return NULL;
 }

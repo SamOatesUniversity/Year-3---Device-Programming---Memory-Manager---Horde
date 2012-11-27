@@ -39,9 +39,11 @@ public:
                             if (m_engine == MusicEngine::SDL) {
                                 Mix_PlayMusic(m_sdlMusic, 0);
                             }
+                            #ifndef GP2X
                             else if (m_engine == MusicEngine::BASS) {
                                 BASS_ChannelPlay(m_bassMusic, FALSE);
                             }
+                            #endif
                         }
 
 };

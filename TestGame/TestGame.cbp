@@ -44,11 +44,12 @@
 				<Option output=".target\TestGame.gpe" prefix_auto="0" extension_auto="0" />
 				<Option object_output=".target" />
 				<Option type="0" />
-				<Option compiler="devkitgp2x" />
+				<Option compiler="caanoo_gnu_arm_gcc_compiler" />
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="-fPIC -fno-common -march=armv5te -mtune=arm9tdmi -mapcs" />
 					<Add option="-DGP2X" />
+					<Add option="-D_DEBUG" />
 					<Add directory="$(#gph.include)" />
 					<Add directory="$(#gph)\DGE\include" />
 					<Add directory="$(#gph)\DGE\include\SDL" />
@@ -68,7 +69,6 @@
 					<Add option="-lts" />
 					<Add option="-lsmpeg" />
 					<Add option="-lfreetype" />
-					<Add library="..\GPH_SDK\lib\target\libfreetype.so.6" />
 					<Add directory="$(#gph)\DGE\lib\target" />
 					<Add directory="$(#gph.lib)\target" />
 				</Linker>

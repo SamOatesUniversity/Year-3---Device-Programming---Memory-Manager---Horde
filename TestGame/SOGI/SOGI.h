@@ -127,7 +127,9 @@ public:
                 } \
             } \
         } while (false)
-    #endif
+    #else
+        #define ASSERT(condition, message) do { } while (false)
+	#endif
 #else
 	#define ASSERT(condition, message) do { } while (false)
 #endif
