@@ -70,6 +70,15 @@ const bool CLasagne::Create()
     Uint16 audio_format = AUDIO_S16; /* 16-bit stereo */
     int audio_channels = 2;
     int audio_buffers = 4096;
+
+    #ifdef GP2X
+        audio_rate = MIX_DEFAULT_FREQUENCY;
+        audio_format = AUDIO_S16;
+        audio_channels = MIX_DEFAULT_CHANNELS;
+        audio_buffers = 256;
+    #endif
+
+
     if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers)) {
         // failed to open the audio from SDL mixer
         std::stringstream errorMessage;
