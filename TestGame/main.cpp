@@ -44,7 +44,7 @@ int main (int argc, char *argv[])
 	do
 	{
 
-        if (rand() % 2000 == 0 && noofSamples) {
+        if (rand() % noofSamples == 0 && noofSamples) {
             if (shaunIndex >= noofSamples) shaunIndex = 0;
             shaun[shaunIndex]->Play();
         }
