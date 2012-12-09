@@ -1,0 +1,363 @@
+# depslib dependency file v1.0
+1350925800 source:e:\university work\uni year three\gdp\horde\sogi\sogi.cpp
+	"SOGI.h"
+
+1354219147 e:\university work\uni year three\gdp\horde\sogi\sogi.h
+	"SOGITypes.h"
+	"stack/stack.h"
+	<windows.h>
+	<io.h>
+	<share.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+
+1350932800 e:\university work\uni year three\gdp\horde\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+
+1350925800 e:\university work\uni year three\gdp\horde\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1350925800 source:e:\university work\uni year three\gdp\horde\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+
+1353669710 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-3dentity.cpp
+	"lasagne-3dentity.h"
+
+1352113807 e:\university work\uni year three\gdp\horde\lasagne\lasagne-3dentity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+
+1352113807 e:\university work\uni year three\gdp\horde\lasagne\lasagne-surface.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	"SDL_config_amiga.h"
+	"SDL_config_dreamcast.h"
+	"SDL_config_macos.h"
+	"SDL_config_macosx.h"
+	"SDL_config_win32.h"
+	"SDL_config_os2.h"
+	"SDL_config_minimal.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_platform.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_amiga.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_dreamcast.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_macos.h
+	"SDL_platform.h"
+	<MacTypes.h>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_macosx.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_win32.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_os2.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_minimal.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\begin_code.h
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\close_code.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1261116408 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_keysym.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"pollux_fb_ioctl.h"
+	"close_code.h"
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\pollux_fb_ioctl.h
+	"pollux_fb_cfg.h"
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\pollux_fb_cfg.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1354219320 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-audio.cpp
+	"lasagne-audio.h"
+
+1354219314 e:\university work\uni year three\gdp\horde\lasagne\lasagne-audio.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_types.h
+	"SDL_stdinc.h"
+
+1354219324 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-music.cpp
+	"lasagne-music.h"
+
+1354219358 e:\university work\uni year three\gdp\horde\lasagne\lasagne-music.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1353669741 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-surface.cpp
+	"lasagne-surface.h"
+
+1354219482 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-text.cpp
+	"lasagne-text.h"
+
+1353672455 e:\university work\uni year three\gdp\horde\lasagne\lasagne-text.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+	<sstream>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1354462558 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1354461991 e:\university work\uni year three\gdp\horde\lasagne\lasagne.h
+	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	"lasagne-entity.h"
+	"lasagne-music.h"
+	"lasagne-audio.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<vector>
+
+1354474128 source:e:\university work\uni year three\gdp\horde\main.cpp
+	"lasagne/lasagne.h"
+	"Horde/scenebase.h"
+	"Horde/player.h"
+
+1354230852 source:e:\university work\uni year three\gdp\horde\horde\scenebase.cpp
+	"scenebase.h"
+
+1354229078 e:\university work\uni year three\gdp\horde\horde\scenebase.h
+	"../lasagne/lasagne.h"
+	<string>
+
+1355089403 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-entity.cpp
+	"lasagne-entity.h"
+
+1355089585 e:\university work\uni year three\gdp\horde\lasagne\lasagne-entity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+	<SDL_image.h>
+	<map>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1354474097 source:e:\university work\uni year three\gdp\horde\horde\player.cpp
+	"player.h"
+
+1354458671 e:\university work\uni year three\gdp\horde\horde\player.h
+	"../lasagne/lasagne.h"
+	<map>
+
