@@ -73,10 +73,10 @@ void CLasagneEntity::Render(
 
         int xOffset = m_currentFrame;
         int yOffset = 0;
-        while (xOffset > 7)
+        while (xOffset > m_noofFramesX - 1)
         {
             yOffset++;
-            xOffset -= 8;
+            xOffset -= m_noofFramesX;
         }
 
         if (SDL_GetTicks() - m_lastFrameTime > 100)

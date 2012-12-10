@@ -10,46 +10,32 @@ const bool isDownPressed();
 int main (int argc, char *argv[])
 {
     // if we failed to create (setup sdl ect...) then exit
-    if (!CLasagne::GetInstance()->Create())
+    CLasagne *const engine = CLasagne::GetInstance();
+
+    if (!engine->Create())
     {
-        CLasagne::GetInstance()->Release();
+        engine->Release();
         return 0;
     }
 
     CScene *currentScene = new CScene();
-    currentScene->Load("media\\graphics\\level-1\\");
+    currentScene->Load("media/graphics/level-1/");
 
     CPlayer *player = new CPlayer();
-    player->Load("media\\graphics\\characters\\player.png");
-
-    static const float MOVE_SPEED = 0.1f;
+    player->Load("media/graphics/characters/player.png");
 
     // whilst the engine is running loop
 	do
 	{
-	    if (isLeftPressed())
-	    {
-            currentScene->Move(-MOVE_SPEED, 0.0f);
-	    }
-	    if (isRightPressed())
-	    {
-	        currentScene->Move(MOVE_SPEED, 0.0f);
-	    }
-	    if (isUpPressed())
-	    {
-	        currentScene->Move(0.0f, -MOVE_SPEED);
-	    }
-	    if (isDownPressed())
-	    {
-	        currentScene->Move(0.0f, MOVE_SPEED);
-	    }
 
-	} while (CLasagne::GetInstance()->Render());
+        currentScene->Move((engine->GetMousePosition()->x() - 160.0f), (engine->GetMousePosition()->y() - 120.0f));
+
+	} while (engine->Render());
 
     // free up resoures and allocated memory
-    CLasagne::GetInstance()->Release();
     delete currentScene;
     delete player;
+    engine->Release();
 
 	return 0;
 }

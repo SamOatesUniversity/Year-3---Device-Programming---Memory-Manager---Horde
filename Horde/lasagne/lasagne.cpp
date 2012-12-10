@@ -38,7 +38,7 @@ const bool CLasagne::Create()
 
     // try and create a screen surface
     m_screenSize.Set(320, 240);
-    m_screen = SDL_SetVideoMode(m_screenSize.x(), m_screenSize.y(), 16, SDL_HWSURFACE);
+    m_screen = SDL_SetVideoMode(m_screenSize.x(), m_screenSize.y(), 16, SDL_SWSURFACE);
     if (m_screen == NULL)
     {
         // failed to create the screen
@@ -117,6 +117,41 @@ const bool CLasagne::Render()
                 return false;
             }
             break;
+
+#ifdef WIN32
+            case SDL_KEYDOWN:
+            {
+                /*
+                std::stringstream buf;
+                buf << "Key :" << event.key.keysym.sym;
+                DisplayError(buf.str().c_str());
+                */
+
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    return false;
+                }
+            }
+            break;
+#else
+            case SDL_JOYBUTTONUP:
+            {
+                if (event.jbutton.button == 6)
+                {
+                    return false;
+                }
+            }
+            break;
+#endif
+            case SDL_MOUSEMOTION:
+            {
+                std::stringstream buf;
+                buf << "Mouse :" << event.motion.x << ", " << event.motion.y;
+                DisplayError(buf.str().c_str());
+
+                m_mousePosition.Set(event.motion.x, event.motion.y);
+            }
+            break;
         }
     }
 
@@ -146,7 +181,7 @@ const bool CLasagne::Render()
         m_fps.text->SetText(buf.str());
     }
 
-    m_fps.text->Render(m_screen, 2, m_screenSize.y() - 16);
+    m_fps.text->Render(m_screen, 4, 200);
 #endif
 
     SDL_Flip(m_screen);

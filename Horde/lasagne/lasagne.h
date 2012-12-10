@@ -21,6 +21,7 @@ private:
     SDL_Joystick                        *m_joystick;            //!< A pointer to the sdl joystick
 
     TVector<int, 2>                     m_screenSize;           //!<
+    TVector<int, 2>                     m_mousePosition;        //!<
 
     std::vector<CLasagneText*>          m_errorText;            //!<
 
@@ -92,6 +93,12 @@ public:
                                              const char* imageFile,                       //!<
                                              const TVector<int, 2> noofFrames             //!<
                                         );
+
+                                        //! Get the stored mouse position
+    const TVector<int, 2>               *GetMousePosition() const
+                                        {
+                                            return &m_mousePosition;
+                                        }
 };
 
 /*!
