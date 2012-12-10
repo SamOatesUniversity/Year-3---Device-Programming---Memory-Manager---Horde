@@ -33,8 +33,23 @@ int main (int argc, char *argv[])
         // update logic at 20 fps
         if (SDL_GetTicks() - updateTimer > 50)
         {
+            const int xDiff = engine->GetMousePosition()->x() - 160;
+            const int yDiff = engine->GetMousePosition()->y() - 120;
+
             const int moveX = static_cast<int>(engine->GetMousePosition()->x() - 160) * 0.05f;
             const int moveY = static_cast<int>(engine->GetMousePosition()->y() - 120) * 0.05f;
+
+            if (yDiff != 0)
+            {
+                int rotation = atan(xDiff/yDiff) * 57;
+
+                if (yDiff < 0)
+                {
+                    rotation += 180;
+                }
+
+                player->GetEntity()->SetRotation(rotation);
+            }
 
             player->GetEntity()->SetCurrentAnimation("walk");
             if (!currentScene->Move(moveX, moveY))

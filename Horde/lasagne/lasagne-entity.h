@@ -5,6 +5,7 @@
 #include "lasagne-surface.h"
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_rotozoom.h>
 
 #include <map>
 
@@ -14,12 +15,13 @@ private:
     SDL_Surface                             *m_image;                       //!<
 
     TVector<float, 2>                       m_screenPosition;               //!<
+    int                                     m_rotation;                     //!<
 
     int                                     m_noofFramesX;
     int                                     m_noofFramesY;
     int                                     m_currentFrame;
     Uint32                                  m_lastFrameTime;
-    char*                                   m_currentAnimation;
+    std::string                             m_currentAnimation;
 
     typedef TVector<int, 2>                 IVec2;
     std::map<std::string, IVec2>            m_animation;
@@ -61,6 +63,13 @@ public:
                                 m_screenPosition.Set(x, y);
                             }
 
+    void                    SetRotation(
+                                const int alpha
+                            )
+                            {
+                                m_rotation = alpha;
+                            }
+
                             //!
     bool                    AddAnimation(
                                 const char *name,               //!<
@@ -71,16 +80,8 @@ public:
                             //!
     void                    SetCurrentAnimation(
                                 char *animation
-                            )
-                            {
-                                if (m_currentAnimation != NULL && strcmp(animation, m_currentAnimation) != 0)
-                                {
-                                    IVec2 frames = m_animation[animation];
-                                    m_currentFrame = frames.x();
-                                }
+                            );
 
-                                m_currentAnimation = animation;
-                            }
 };
 
 #endif // LASAGNE_ENTITY_H_INCLUDED
