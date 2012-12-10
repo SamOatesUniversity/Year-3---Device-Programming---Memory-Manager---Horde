@@ -7,8 +7,8 @@ CLasagneEntity::CLasagneEntity(
     m_image(NULL),
     m_noofFramesX(0),
     m_noofFramesY(0),
-    m_currentFrame(0)
-
+    m_currentFrame(0),
+    m_currentAnimation(NULL)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -79,12 +79,24 @@ void CLasagneEntity::Render(
             xOffset -= m_noofFramesX;
         }
 
-        if (SDL_GetTicks() - m_lastFrameTime > 100)
+        // update aniamtion at 20fps
+        if (SDL_GetTicks() - m_lastFrameTime > 50)
         {
             m_lastFrameTime = SDL_GetTicks();
+
             m_currentFrame++;
-            if (m_currentFrame >= (m_noofFramesX * m_noofFramesY))
-                m_currentFrame = 0;
+
+            if (m_currentAnimation == NULL)
+            {
+                if (m_currentFrame >= (m_noofFramesX * m_noofFramesY))
+                    m_currentFrame = 0;
+            }
+            else
+            {
+                IVec2 frames = m_animation[m_currentAnimation];
+                if (m_currentFrame >= frames.y())
+                    m_currentFrame = frames.x();
+            }
         }
 
         srcRect.x = xOffset * m_frameSize.x();
@@ -92,4 +104,20 @@ void CLasagneEntity::Render(
 
         SDL_BlitSurface(m_image, &srcRect, screen, &rcRect);
     }
+}
+
+bool CLasagneEntity::AddAnimation(
+        const char *name,               //!<
+        const int frameStart,           //!<
+        const int frameEnd              //!<
+    )
+{
+    //if (m_animation::find(name) == m_animation::end)
+    //    return false;
+
+    IVec2 frames;
+    frames.Set(frameStart, frameEnd);
+    m_animation[name] = frames;
+
+    return true;
 }

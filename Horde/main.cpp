@@ -24,11 +24,22 @@ int main (int argc, char *argv[])
     CPlayer *player = new CPlayer();
     player->Load("media/graphics/characters/player.png");
 
+    Uint32 updateTimer = SDL_GetTicks();
+
     // whilst the engine is running loop
 	do
 	{
 
-        currentScene->Move((engine->GetMousePosition()->x() - 160.0f), (engine->GetMousePosition()->y() - 120.0f));
+        // update logic at 20 fps
+        if (SDL_GetTicks() - updateTimer > 50)
+        {
+            const int moveX = static_cast<int>(engine->GetMousePosition()->x() - 160) * 0.05f;
+            const int moveY = static_cast<int>(engine->GetMousePosition()->y() - 120) * 0.05f;
+            currentScene->Move(moveX, moveY);
+
+            updateTimer = SDL_GetTicks();
+        }
+
 
 	} while (engine->Render());
 

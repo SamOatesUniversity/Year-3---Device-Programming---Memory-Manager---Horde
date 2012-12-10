@@ -19,6 +19,7 @@ private:
     int                                     m_noofFramesY;
     int                                     m_currentFrame;
     Uint32                                  m_lastFrameTime;
+    char*                                   m_currentAnimation;
 
     typedef TVector<int, 2>                 IVec2;
     std::map<const char*, IVec2>            m_animation;
@@ -58,6 +59,20 @@ public:
                             )
                             {
                                 m_screenPosition.Set(x, y);
+                            }
+
+                            //!
+    bool                    AddAnimation(
+                                const char *name,               //!<
+                                const int frameStart,           //!<
+                                const int frameEnd              //!<
+                            );
+
+    void                    SetCurrentAnimation(
+                                char *animation
+                            )
+                            {
+                                m_currentAnimation = animation;
                             }
 };
 

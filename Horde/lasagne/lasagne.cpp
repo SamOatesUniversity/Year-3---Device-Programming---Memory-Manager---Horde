@@ -145,9 +145,9 @@ const bool CLasagne::Render()
 #endif
             case SDL_MOUSEMOTION:
             {
-                std::stringstream buf;
-                buf << "Mouse :" << event.motion.x << ", " << event.motion.y;
-                DisplayError(buf.str().c_str());
+                //std::stringstream buf;
+                //buf << "Mouse :" << event.motion.x << ", " << event.motion.y;
+                //DisplayError(buf.str().c_str());
 
                 m_mousePosition.Set(event.motion.x, event.motion.y);
             }
