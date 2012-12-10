@@ -8,7 +8,7 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesX(0),
     m_noofFramesY(0),
     m_currentFrame(0),
-    m_currentAnimation(NULL)
+    m_rotation(0)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -63,10 +63,6 @@ void CLasagneEntity::Render(
     }
     else
     {
-        SDL_Rect rcRect;
-        rcRect.x = m_screenPosition.x();
-        rcRect.y = m_screenPosition.y();
-
         SDL_Rect srcRect;
         srcRect.w = m_frameSize.x();
         srcRect.h = m_frameSize.y();
@@ -86,7 +82,7 @@ void CLasagneEntity::Render(
 
             m_currentFrame++;
 
-            if (m_currentAnimation == NULL)
+            if (m_currentAnimation.length() == 0)
             {
                 if (m_currentFrame >= (m_noofFramesX * m_noofFramesY))
                     m_currentFrame = 0;
@@ -102,7 +98,24 @@ void CLasagneEntity::Render(
         srcRect.x = xOffset * m_frameSize.x();
         srcRect.y = yOffset * m_frameSize.y();
 
-        SDL_BlitSurface(m_image, &srcRect, screen, &rcRect);
+        SDL_Surface *frameSurface = SDL_CreateRGBSurface(0, m_frameSize.x(), m_frameSize.y(), 32, 0, 0, 0, 0);//SDL_CreateRGBSurface(m_image->flags, m_frameSize.x(), m_frameSize.y(), m_image->format->BitsPerPixel, m_image->format->Rmask, m_image->format->Gmask, m_image->format->Bmask, m_image->format->Amask);
+
+        SDL_Rect rcRect;
+        rcRect.x = 0;
+        rcRect.y = 0;
+        rcRect.w = m_frameSize.x();
+        rcRect.h = m_frameSize.y();
+        SDL_BlitSurface(m_image, &srcRect, frameSurface, &rcRect);
+        SDL_Flip(frameSurface);
+
+        SDL_Surface *rotateFrame = rotozoomSurface(frameSurface, m_rotation, 1, 0);
+
+        rcRect.x = m_screenPosition.x();
+        rcRect.y = m_screenPosition.y();
+        SDL_BlitSurface(rotateFrame, NULL, screen, &rcRect);
+
+        SDL_FreeSurface(frameSurface);
+        SDL_FreeSurface(rotateFrame);
     }
 }
 
@@ -117,4 +130,17 @@ bool CLasagneEntity::AddAnimation(
     m_animation[name] = frames;
 
     return true;
+}
+
+void CLasagneEntity::SetCurrentAnimation(
+        char *animation
+    )
+{
+    if (strcmp(animation, m_currentAnimation.c_str()) != 0)
+    {
+        IVec2 frames = m_animation[animation];
+        m_currentFrame = frames.x();
+    }
+
+    m_currentAnimation = animation;
 }

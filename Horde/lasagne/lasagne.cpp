@@ -88,7 +88,7 @@ const bool CLasagne::Create()
     }
 
 #if defined(_DEBUG)
-    CSOGI::GetInstance().CreateConsoleWindow();
+    //CSOGI::GetInstance().CreateConsoleWindow();
 
     m_fps.text = new CLasagneText();
     m_fps.text->Create("FPS: 0");
