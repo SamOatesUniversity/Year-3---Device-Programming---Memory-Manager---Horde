@@ -30,7 +30,7 @@ const bool CScene::Load(
     return true;
 }
 
-void CScene::Move(
+bool CScene::Move(
         const float xmove,
         const float ymove
     )
@@ -42,10 +42,10 @@ void CScene::Move(
             TVector<float, 2> pos = m_background[((x+1) * 3) + (y+1)]->GetPosition();
             float newX = pos.x() - xmove;
             float newY = pos.y() - ymove;
-            if (x == -1 && newX > 0.0f) return;
-            if (x == 1 && newX < 0.0f) return;
-            if (y == -1 && newY > 0.0f) return;
-            if (y == 1 && newY < 0.0f) return;
+            if (x == -1 && newX > 0.0f) return false;
+            if (x == 1 && newX < 0.0f) return false;
+            if (y == -1 && newY > 0.0f) return false;
+            if (y == 1 && newY < 0.0f) return false;
         }
     }
 
@@ -57,4 +57,6 @@ void CScene::Move(
             m_background[((x+1) * 3) + (y+1)]->SetPosition(pos.x() - xmove, pos.y() - ymove);
         }
     }
+
+    return true;
 }

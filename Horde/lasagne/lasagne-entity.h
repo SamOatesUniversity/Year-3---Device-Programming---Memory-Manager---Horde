@@ -22,7 +22,7 @@ private:
     char*                                   m_currentAnimation;
 
     typedef TVector<int, 2>                 IVec2;
-    std::map<const char*, IVec2>            m_animation;
+    std::map<std::string, IVec2>            m_animation;
 
     IVec2                                   m_frameSize;
 
@@ -68,10 +68,17 @@ public:
                                 const int frameEnd              //!<
                             );
 
+                            //!
     void                    SetCurrentAnimation(
                                 char *animation
                             )
                             {
+                                if (m_currentAnimation != NULL && strcmp(animation, m_currentAnimation) != 0)
+                                {
+                                    IVec2 frames = m_animation[animation];
+                                    m_currentFrame = frames.x();
+                                }
+
                                 m_currentAnimation = animation;
                             }
 };

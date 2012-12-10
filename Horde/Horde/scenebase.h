@@ -26,7 +26,7 @@ public:
     void                Render();
 
                         //! Move the player around the scene (technically move the scene keep player centered)
-    void                Move(
+    bool                Move(
                             const float x,
                             const float y
                         );

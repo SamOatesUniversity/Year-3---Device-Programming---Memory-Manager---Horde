@@ -112,9 +112,6 @@ bool CLasagneEntity::AddAnimation(
         const int frameEnd              //!<
     )
 {
-    //if (m_animation::find(name) == m_animation::end)
-    //    return false;
-
     IVec2 frames;
     frames.Set(frameStart, frameEnd);
     m_animation[name] = frames;

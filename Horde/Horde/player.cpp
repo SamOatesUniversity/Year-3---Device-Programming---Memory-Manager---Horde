@@ -25,8 +25,7 @@ const bool CPlayer::Load(
 
     m_entity->AddAnimation("idle", 0, 9);
     m_entity->AddAnimation("walk", 10, 16);
-
-    m_entity->SetCurrentAnimation("idle");
+    m_entity->SetCurrentAnimation("walk");
 
     return true;
 }

@@ -12,16 +12,22 @@ private:
 
 public:
 
-                        //! Class constructor
-                        CPlayer();
+                            //! Class constructor
+                            CPlayer();
 
-                        //! Class destructor
-                        ~CPlayer();
+                            //! Class destructor
+                            ~CPlayer();
 
-                        //! Load the player graphics
-    const bool          Load(
-                            const char* spriteSheet
-                        );
+                            //! Load the player graphics
+    const bool              Load(
+                                const char* spriteSheet
+                            );
+
+
+    CLasagneEntity          *GetEntity()
+                            {
+                                return m_entity;
+                            }
 
 };
 
