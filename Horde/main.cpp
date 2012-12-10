@@ -35,7 +35,12 @@ int main (int argc, char *argv[])
         {
             const int moveX = static_cast<int>(engine->GetMousePosition()->x() - 160) * 0.05f;
             const int moveY = static_cast<int>(engine->GetMousePosition()->y() - 120) * 0.05f;
-            currentScene->Move(moveX, moveY);
+
+            player->GetEntity()->SetCurrentAnimation("walk");
+            if (!currentScene->Move(moveX, moveY))
+            {
+                player->GetEntity()->SetCurrentAnimation("idle");
+            }
 
             updateTimer = SDL_GetTicks();
         }
