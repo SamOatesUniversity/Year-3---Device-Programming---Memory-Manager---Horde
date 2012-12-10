@@ -98,7 +98,7 @@ void CLasagneEntity::Render(
         srcRect.x = xOffset * m_frameSize.x();
         srcRect.y = yOffset * m_frameSize.y();
 
-        SDL_Surface *frameSurface = SDL_CreateRGBSurface(0, m_frameSize.x(), m_frameSize.y(), 32, 0, 0, 0, 0);//SDL_CreateRGBSurface(m_image->flags, m_frameSize.x(), m_frameSize.y(), m_image->format->BitsPerPixel, m_image->format->Rmask, m_image->format->Gmask, m_image->format->Bmask, m_image->format->Amask);
+        SDL_Surface *frameSurface = SDL_CreateRGBSurface(0, m_frameSize.x(), m_frameSize.y(), 32, 0, 0, 0, 0);
 
         SDL_Rect rcRect;
         rcRect.x = 0;
@@ -109,6 +109,7 @@ void CLasagneEntity::Render(
         SDL_Flip(frameSurface);
 
         SDL_Surface *rotateFrame = rotozoomSurface(frameSurface, m_rotation, 1, 0);
+        SDL_SetColorKey(rotateFrame, SDL_SRCCOLORKEY, SDL_MapRGB(rotateFrame->format, 0, 0, 0));
 
         rcRect.x = m_screenPosition.x();
         rcRect.y = m_screenPosition.y();
