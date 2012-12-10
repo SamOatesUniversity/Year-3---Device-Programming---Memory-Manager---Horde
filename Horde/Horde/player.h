@@ -24,7 +24,7 @@ public:
                             );
 
 
-    CLasagneEntity          *GetEntity()
+    CLasagneEntity           *GetEntity()
                             {
                                 return m_entity;
                             }
