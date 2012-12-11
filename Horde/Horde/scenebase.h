@@ -8,7 +8,7 @@ class CScene
 {
 private:
 
-    CLasagneEntity      *m_background[4];
+    CLasagneEntity      *m_background[9];
 
 public:
                         //! Class constructor
