@@ -87,9 +87,7 @@ const bool CLasagne::Create()
         return false;
     }
 
-#if defined(_DEBUG)
-    //CSOGI::GetInstance().CreateConsoleWindow();
-
+#if defined(SHOW_FPS)
     m_fps.text = new CLasagneText();
     m_fps.text->Create("FPS: 0");
     m_fps.fps = 0;
@@ -160,7 +158,7 @@ const bool CLasagne::Render()
         m_entity[entityIndex]->Render(m_screen);
     }
 
-#if defined(_DEBUG)
+#if defined(SHOW_FPS)
     // show error messages
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
@@ -194,8 +192,13 @@ const bool CLasagne::Render()
 */
 void CLasagne::Release()
 {
-    TTF_Quit();
+	for (unsigned int entityIndex = 0; entityIndex < m_entity.size(); ++entityIndex)
+	{
+		SafeDelete(m_entity[entityIndex]);
+	}
+	m_entity.clear();
 
+    TTF_Quit();
     SafeFreeSurface(m_screen);
     SDL_Quit();
 

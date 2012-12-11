@@ -27,7 +27,7 @@ private:
 
     std::vector<CLasagneEntity*>        m_entity;               //!<
 
-#if defined(_DEBUG)
+#if defined(SHOW_FPS)
     struct {
         CLasagneText                    *text;                  //!<
         int                             fps;                    //!<
