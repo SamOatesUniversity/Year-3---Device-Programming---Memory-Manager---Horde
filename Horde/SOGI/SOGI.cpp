@@ -28,7 +28,7 @@ CSOGI::CSOGI()
 */
 const char **CSOGI::GetCallStack()
 {
-#ifdef WIN32
+#ifdef ENABLE_STACK
     dbg::stack s(MAXSTACKTRACE);
 
     const char **stackTrace = new const char*[MAXSTACKTRACE];
@@ -46,7 +46,7 @@ const char **CSOGI::GetCallStack()
 
         const unsigned int size = str.length();
         char *line = new char[size];
-        str.copy(line, size);
+        //str.copy(line, size);
         line[size] = 0;
 
         stackTrace[stackIndex] = line;

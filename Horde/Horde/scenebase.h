@@ -27,8 +27,8 @@ public:
 
                         //! Move the player around the scene (technically move the scene keep player centered)
     bool                Move(
-                            const float x,
-                            const float y
+                            const int x,
+                            const int y
                         );
 };
 

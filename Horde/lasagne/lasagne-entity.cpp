@@ -57,8 +57,8 @@ void CLasagneEntity::Render(
     {
          // draw the entity in its 3d position
         SDL_Rect rcRect;
-        rcRect.x = m_screenPosition.x();
-        rcRect.y = m_screenPosition.y();
+        rcRect.x = static_cast<Sint16>(m_screenPosition.x());
+        rcRect.y = static_cast<Sint16>(m_screenPosition.y());
         SDL_BlitSurface(m_image, NULL, screen, &rcRect);
     }
     else
@@ -111,8 +111,8 @@ void CLasagneEntity::Render(
         SDL_Surface *rotateFrame = rotozoomSurface(frameSurface, m_rotation, 1, 0);
         SDL_SetColorKey(rotateFrame, SDL_SRCCOLORKEY, SDL_MapRGB(rotateFrame->format, 0, 0, 0));
 
-        rcRect.x = m_screenPosition.x();
-        rcRect.y = m_screenPosition.y();
+        rcRect.x = static_cast<Sint16>(m_screenPosition.x());
+        rcRect.y = static_cast<Sint16>(m_screenPosition.y());
         SDL_BlitSurface(rotateFrame, NULL, screen, &rcRect);
 
         SDL_FreeSurface(frameSurface);

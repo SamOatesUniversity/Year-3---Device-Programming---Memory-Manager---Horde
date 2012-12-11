@@ -31,8 +31,8 @@ const bool CScene::Load(
 }
 
 bool CScene::Move(
-        const float xmove,
-        const float ymove
+        const int xmove,
+        const int ymove
     )
 {
     for (int x = -1; x <= 1; ++x)

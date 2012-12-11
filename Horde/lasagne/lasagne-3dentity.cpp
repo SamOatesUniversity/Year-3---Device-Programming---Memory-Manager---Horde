@@ -16,9 +16,9 @@ CLasagne3DEntity::CLasagne3DEntity(
     );
 
     m_position.Set(
-        rand() % screenSize.x(),
-        rand() % screenSize.y(),
-        rand() % (MAXDEPTH * 2)
+        static_cast<float>(rand() % screenSize.x()),
+        static_cast<float>(rand() % screenSize.y()),
+        static_cast<float>(rand() % (MAXDEPTH * 2))
     );
 
     m_image = new CLasagneSurface(SDL_LoadBMP("star.bmp"));
@@ -48,7 +48,7 @@ void CLasagne3DEntity::Render(
 
     m_position.SetZ(m_position.z() - 0.1f);
     if (m_position.z() < 0)
-        m_position.SetZ(MAXDEPTH + (rand() % MAXDEPTH));
+        m_position.SetZ(static_cast<float>(MAXDEPTH + (rand() % MAXDEPTH)));
 
     m_image->Render(screen, sx, sy, 1.0f, 1.0f);
 }
