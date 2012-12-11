@@ -101,20 +101,31 @@ public:
 /**
 	Error Logging Macros
 */
-#define LOGERROR(errorMessage) \
-    CSOGI::GetInstance().LogError(errorMessage, _FILE_NAME_, __LINE__);
+#if defined(_DEBUG1)
+	#define LOGERROR(errorMessage) \
+		CSOGI::GetInstance().LogError(errorMessage, _FILE_NAME_, __LINE__);
 
-#define SHOWERROR(errorMessage) \
-    CSOGI::GetInstance().ShowError(errorMessage, _FILE_NAME_, __LINE__);
+	#define SHOWERROR(errorMessage) \
+		CSOGI::GetInstance().ShowError(errorMessage, _FILE_NAME_, __LINE__);
 
-#define SHOWLOGERROR(errorMessage) \
-    CSOGI::GetInstance().ShowAndLogError(errorMessage, _FILE_NAME_, __LINE__);
+	#define SHOWLOGERROR(errorMessage) \
+		CSOGI::GetInstance().ShowAndLogError(errorMessage, _FILE_NAME_, __LINE__);
+#else
+	#define LOGERROR(errorMessage) \
+		do { } while (false);
+
+	#define SHOWERROR(errorMessage) \
+		do { } while (false);
+
+	#define SHOWLOGERROR(errorMessage) \
+		do { } while (false);
+#endif
 
 /**
 	Custom Assert
 */
 
-#if defined(_DEBUG)
+#if defined(_DEBUG1)
     #if defined(WIN32)
         #define ASSERT(condition, message) \
         do { \
@@ -128,10 +139,10 @@ public:
             } \
         } while (false)
     #else
-        #define ASSERT(condition, message) do { } while (false)
+        #define ASSERT(condition, message) do { } while (false);
 	#endif
 #else
-	#define ASSERT(condition, message) do { } while (false)
+	#define ASSERT(condition, message) do { } while (false);
 #endif
 
 /**

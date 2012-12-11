@@ -29,6 +29,7 @@
 					<Add option="-lSDL_image.dll" />
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_ttf" />
+					<Add option="-lSDL_gfx" />
 					<Add option="-liconv" />
 					<Add option="-lbfd" />
 					<Add option="-liberty" />
@@ -77,6 +78,10 @@
 			<Add option="-g" />
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Horde\guns\gunbase.cpp" />
+		<Unit filename="Horde\guns\gunbase.h" />
+		<Unit filename="Horde\guns\gunpistol.cpp" />
+		<Unit filename="Horde\guns\gunpistol.h" />
 		<Unit filename="Horde\player.cpp" />
 		<Unit filename="Horde\player.h" />
 		<Unit filename="Horde\scenebase.cpp" />

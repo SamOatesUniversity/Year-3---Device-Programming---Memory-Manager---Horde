@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6FF59CB8-F52B-4814-98ED-B24D03576C1B}</ProjectGuid>
+    <RootNamespace>Horde</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>E:\University Work\UNI Year Three\GDP\GPH_SDK\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\lib\;E:\University Work\UNI Year Three\GDP\GPH_SDK\lib\host;$(LibraryPath)</LibraryPath>
+    <IntDir>$(Configuration)\interm\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>E:\University Work\UNI Year Three\GDP\GPH_SDK\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+      <AdditionalDependencies>SDL.lib;SDL_image.lib;SDL_mixer.lib;SDL_ttf.lib;SDL_gfx.lib;SDLmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lasagne\lasagne-3dentity.cpp" />
+    <ClCompile Include="..\lasagne\lasagne-audio.cpp" />
+    <ClCompile Include="..\lasagne\lasagne-entity.cpp" />
+    <ClCompile Include="..\lasagne\lasagne-music.cpp" />
+    <ClCompile Include="..\lasagne\lasagne-surface.cpp" />
+    <ClCompile Include="..\lasagne\lasagne-text.cpp" />
+    <ClCompile Include="..\lasagne\lasagne.cpp" />
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\SOGI\SOGI.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\SOGI\SOGITypes.cpp" />
+    <ClCompile Include="..\SOGI\stack\stack.cpp" />
+    <ClCompile Include="guns\gunbase.cpp" />
+    <ClCompile Include="guns\gunpistol.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="scenebase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lasagne\lasagne-3dentity.h" />
+    <ClInclude Include="..\lasagne\lasagne-audio.h" />
+    <ClInclude Include="..\lasagne\lasagne-entity.h" />
+    <ClInclude Include="..\lasagne\lasagne-music.h" />
+    <ClInclude Include="..\lasagne\lasagne-surface.h" />
+    <ClInclude Include="..\lasagne\lasagne-text.h" />
+    <ClInclude Include="..\lasagne\lasagne.h" />
+    <ClInclude Include="..\SOGI\SOGI.h" />
+    <ClInclude Include="..\SOGI\SOGITypes.h" />
+    <ClInclude Include="..\SOGI\stack\stack.h" />
+    <ClInclude Include="guns\gunbase.h" />
+    <ClInclude Include="guns\gunpistol.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="scenebase.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

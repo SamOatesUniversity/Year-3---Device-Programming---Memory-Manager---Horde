@@ -19,10 +19,10 @@ int main (int argc, char *argv[])
     }
 
     CScene *currentScene = new CScene();
-    currentScene->Load("media/graphics/level-1/");
+    currentScene->Load("./media/graphics/level-1/");
 
     CPlayer *player = new CPlayer();
-    player->Load("media/graphics/characters/player.png");
+    player->Load("./media/graphics/characters/player.png");
 
     Uint32 updateTimer = SDL_GetTicks();
 
@@ -36,12 +36,12 @@ int main (int argc, char *argv[])
             const int xDiff = engine->GetMousePosition()->x() - 160;
             const int yDiff = engine->GetMousePosition()->y() - 120;
 
-            const int moveX = static_cast<int>(engine->GetMousePosition()->x() - 160) * 0.05f;
-            const int moveY = static_cast<int>(engine->GetMousePosition()->y() - 120) * 0.05f;
+            const int moveX = static_cast<int>((engine->GetMousePosition()->x() - 160) * 0.05f);
+            const int moveY = static_cast<int>((engine->GetMousePosition()->y() - 120) * 0.05f);
 
             if (yDiff != 0)
             {
-                int rotation = atan(xDiff/yDiff) * 57;
+                int rotation = static_cast<int>(atan(static_cast<float>(xDiff/yDiff)) * 57);
 
                 if (yDiff < 0)
                 {
