@@ -7,7 +7,6 @@ CScene::CScene()
 
 CScene::~CScene()
 {
-
 }
 
 const bool CScene::Load(
