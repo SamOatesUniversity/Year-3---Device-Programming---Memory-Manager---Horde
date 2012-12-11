@@ -39,9 +39,11 @@ int main (int argc, char *argv[])
             const int moveX = static_cast<int>((engine->GetMousePosition()->x() - 160) * 0.05f);
             const int moveY = static_cast<int>((engine->GetMousePosition()->y() - 120) * 0.05f);
 
-            if (yDiff != 0)
+            if (yDiff != 0) // stop divide by 0
             {
-                int rotation = static_cast<int>(atan(static_cast<float>(xDiff/yDiff)) * 57);
+				const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
+				const float radAngle = atan(alpha);
+                int rotation = static_cast<int>(radAngle * 57.0f);
 
                 if (yDiff < 0)
                 {
@@ -63,10 +65,10 @@ int main (int argc, char *argv[])
 
 	} while (engine->Render());
 
-    // free up resoures and allocated memory
-    delete currentScene;
-    delete player;
-    engine->Release();
+    // free up resources and allocated memory
+	delete currentScene;
+	delete player;
+	engine->Release();
 
 	return 0;
 }
