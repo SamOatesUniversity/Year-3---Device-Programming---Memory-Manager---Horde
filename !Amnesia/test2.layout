@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="target" />
-	<File name="DefaultMemoryManager.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="235" topLine="108" />
-	</File>
-	<File name="DefaultMemoryManager.h" open="1" top="0" tabpos="5">
-		<Cursor position="248" topLine="23" />
-	</File>
+	<ActiveTarget name="host" />
 	<File name="IMemoryManager.h" open="1" top="0" tabpos="2">
-		<Cursor position="865" topLine="0" />
+		<Cursor position="158" topLine="0" />
 	</File>
-	<File name="Tests.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="792" topLine="3" />
+	<File name="NotAmnesia.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1517" topLine="41" />
 	</File>
-	<File name="Tests.h" open="1" top="0" tabpos="7">
+	<File name="NotAmnesia.h" open="1" top="0" tabpos="4">
+		<Cursor position="1041" topLine="21" />
+	</File>
+	<File name="Tests.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="5327" topLine="219" />
+	</File>
+	<File name="Tests.h" open="0" top="0" tabpos="7">
 		<Cursor position="410" topLine="9" />
 	</File>
-	<File name="TextOutput.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="54" topLine="5" />
+	<File name="TextOutput.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="54" topLine="0" />
 	</File>
-	<File name="TextOutput.h" open="1" top="0" tabpos="4">
+	<File name="TextOutput.h" open="0" top="0" tabpos="4">
 		<Cursor position="322" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2136" topLine="69" />
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="3522" topLine="113" />
 	</File>
 </CodeBlocks_layout_file>
