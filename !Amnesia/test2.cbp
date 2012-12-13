@@ -70,9 +70,9 @@
 			<Add option="-g" />
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="DefaultMemoryManager.cpp" />
-		<Unit filename="DefaultMemoryManager.h" />
 		<Unit filename="IMemoryManager.h" />
+		<Unit filename="NotAmnesia.cpp" />
+		<Unit filename="NotAmnesia.h" />
 		<Unit filename="Tests.cpp" />
 		<Unit filename="Tests.h" />
 		<Unit filename="TextOutput.cpp" />
