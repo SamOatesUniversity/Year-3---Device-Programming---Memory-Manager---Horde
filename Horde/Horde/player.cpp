@@ -1,7 +1,8 @@
 #include "player.h"
 
 CPlayer::CPlayer() :
-    m_entity(NULL)
+    m_entity(NULL),
+	m_gun(NULL)
 {
 
 }

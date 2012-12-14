@@ -2,6 +2,7 @@
 #define PLAYER_H_INCLUDED
 
 #include "../lasagne/lasagne.h"
+#include "guns/gunbase.h"
 #include <map>
 
 class CPlayer {
@@ -9,6 +10,8 @@ class CPlayer {
 private:
 
     CLasagneEntity                          *m_entity;
+
+	CGunBase								*m_gun;
 
 public:
 
