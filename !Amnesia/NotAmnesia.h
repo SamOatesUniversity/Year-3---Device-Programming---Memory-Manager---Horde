@@ -11,6 +11,8 @@
     #define nullptr 0
 #endif
 
+//#define OPTIMIZED
+
 class CNotAmnesia : public IMemoryManager
 {
     private:
@@ -18,10 +20,12 @@ class CNotAmnesia : public IMemoryManager
     struct MemoryNugget
     {
         size_t                                      totalSize;
-        void                                        *ptr;
+        unsigned char								*ptr;
 
+#ifndef OPTIMIZED
         std::string                                 file;
         int                                         line;
+#endif
 
         MemoryNugget                                *nextNugget;
         MemoryNugget                                *prevNugget;
@@ -33,6 +37,7 @@ class CNotAmnesia : public IMemoryManager
         unsigned char                               *m_nextFreePtr;                             //!
 
         MemoryNugget                                *m_lastNugget;                              //!
+		MemoryNugget                                *m_freeNugget;                              //!
 
         size_t                                      m_totalSize;                                //! The size of the allocated memory
         size_t                                      m_amountAllocated;                          //! The size of the allocated memory
