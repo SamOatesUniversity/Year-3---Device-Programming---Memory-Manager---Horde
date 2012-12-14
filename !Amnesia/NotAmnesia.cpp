@@ -12,6 +12,10 @@ CNotAmnesia::CNotAmnesia() :
     m_totalSize(0),
     m_amountAllocated(0)
 {
+#ifndef OPTIMIZED
+	m_noofNuggets = 0;
+	m_noofFreeNuggets = 0;
+#endif
 }
 
 CNotAmnesia::~CNotAmnesia()
@@ -66,6 +70,9 @@ void *CNotAmnesia::Allocate(
 				#ifndef OPTIMIZED
 					if (nextFreeNugget->totalSize > 10)
 						strncpy_s((char*)(nextFreeNugget->ptr), nextFreeNugget->totalSize, "NotAmnesia", nextFreeNugget->totalSize);
+
+					m_noofFreeNuggets--;
+					m_noofNuggets++;
 				#endif
 
 				return nextFreeNugget->ptr;
@@ -98,7 +105,7 @@ void *CNotAmnesia::Allocate(
 					if (prev != nullptr) prev->nextNugget = next;
 
 					nextNugget = prev;
-					delete currentNugget;
+					free(currentNugget);
 				}
 
 				MemoryNugget *next = firstFreeNugget->nextNugget;
@@ -119,8 +126,11 @@ void *CNotAmnesia::Allocate(
 				#ifndef OPTIMIZED
 					if (firstFreeNugget->totalSize > 10)
 						strncpy_s((char*)(firstFreeNugget->ptr), firstFreeNugget->totalSize, "NotAmnesia", firstFreeNugget->totalSize);
+				
+					m_noofFreeNuggets--;
+					m_noofNuggets++;
 				#endif
-
+					
 				return firstFreeNugget->ptr;
 			}
 
@@ -130,7 +140,7 @@ void *CNotAmnesia::Allocate(
         return nullptr;
     }
 
-    MemoryNugget *newNugget = new MemoryNugget();
+    MemoryNugget *newNugget = static_cast<MemoryNugget*>(malloc(sizeof(MemoryNugget)));
     newNugget->prevNugget = newNugget->nextNugget = nullptr;
     newNugget->ptr = m_nextFreePtr;
     newNugget->totalSize = numBytes;
@@ -159,6 +169,8 @@ void *CNotAmnesia::Allocate(
 	#ifndef OPTIMIZED
 		if (newNugget->totalSize > 10)
 			strncpy_s((char*)(newNugget->ptr), newNugget->totalSize, "NotAmnesia", newNugget->totalSize);
+
+		m_noofNuggets++;
 	#endif
 
     return newNugget->ptr;
@@ -209,7 +221,7 @@ void CNotAmnesia::Release(
 		if (m_lastNugget == nullptr)
 		{
 			m_nextFreePtr = m_startPtr;
-			m_totalSize += m_amountAllocated;
+			m_amountAllocated = 0;
 		}
     }
 	else
@@ -218,7 +230,9 @@ void CNotAmnesia::Release(
 		{
 			#ifndef OPTIMIZED
 				if (nugget->totalSize > 10)
-					strncpy_s((char*)(nugget->ptr), nugget->totalSize, "Amnesia", nugget->totalSize);
+					strncpy_s((char*)(nugget->ptr), nugget->totalSize, "RELEASED", nugget->totalSize);
+
+				m_noofFreeNuggets++;
 			#endif
 
 			m_freeNugget = nugget;
@@ -229,7 +243,9 @@ void CNotAmnesia::Release(
 		{
 			#ifndef OPTIMIZED
 				if (nugget->totalSize > 10)
-					strncpy_s((char*)(nugget->ptr), nugget->totalSize, "Amnesia", nugget->totalSize);
+					strncpy_s((char*)(nugget->ptr), nugget->totalSize, "RELEASED", nugget->totalSize);
+
+				m_noofFreeNuggets++;
 			#endif
 
 			m_freeNugget->nextNugget = nugget;
@@ -242,8 +258,12 @@ void CNotAmnesia::Release(
 	// if it's the last nugget, just delete it
 	if (next == nullptr)
 	{
-		delete nugget;
+		free(nugget);
 	}
+
+	#ifndef OPTIMIZED
+		m_noofNuggets--;
+	#endif
 }
 
 void CNotAmnesia::Shutdown()
@@ -252,21 +272,30 @@ void CNotAmnesia::Shutdown()
 	while (freeNugget != nullptr)
 	{
 		MemoryNugget *prevNugget = freeNugget->prevNugget;
-		delete freeNugget;
+		free(freeNugget);
 		freeNugget = prevNugget;
 	}
+	m_freeNugget = nullptr;
 
 	MemoryNugget *nugget = m_lastNugget;
 	while (nugget != nullptr)
 	{
 		MemoryNugget *prevNugget = nugget->prevNugget;
-		delete nugget;
+		free(nugget);
 		nugget = prevNugget;
 	}
+	m_lastNugget = nullptr;
 
 	free(m_startPtr);
 	m_startPtr = nullptr;
+
 	m_totalSize = 0;
+	m_amountAllocated = 0;
+
+	#ifndef OPTIMIZED
+		m_noofNuggets = 0;
+		m_noofFreeNuggets = 0;
+	#endif
 }
 
 const char* const CNotAmnesia::GetTextLine()

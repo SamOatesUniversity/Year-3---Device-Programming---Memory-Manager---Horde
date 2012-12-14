@@ -11,7 +11,7 @@
     #define nullptr 0
 #endif
 
-//#define OPTIMIZED
+#define OPTIMIZED
 
 class CNotAmnesia : public IMemoryManager
 {
@@ -38,6 +38,11 @@ class CNotAmnesia : public IMemoryManager
 
         MemoryNugget                                *m_lastNugget;                              //!
 		MemoryNugget                                *m_freeNugget;                              //!
+
+#ifndef OPTIMIZED
+		int											m_noofNuggets;
+		int											m_noofFreeNuggets;
+#endif
 
         size_t                                      m_totalSize;                                //! The size of the allocated memory
         size_t                                      m_amountAllocated;                          //! The size of the allocated memory
