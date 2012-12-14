@@ -113,6 +113,7 @@
     <ClInclude Include="..\SOGI\SOGI.h" />
     <ClInclude Include="..\SOGI\SOGITypes.h" />
     <ClInclude Include="..\SOGI\stack\stack.h" />
+    <ClInclude Include="guns\bulletbase.h" />
     <ClInclude Include="guns\gunbase.h" />
     <ClInclude Include="guns\gunpistol.h" />
     <ClInclude Include="player.h" />
