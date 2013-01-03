@@ -7,7 +7,8 @@ TTF_Font *CLasagneText::font = NULL;
 */
 CLasagneText::CLasagneText()
 {
-
+	m_font = NULL;
+	m_surface = NULL;
 }
 
 /*
@@ -22,7 +23,7 @@ CLasagneText::~CLasagneText()
 *   \brief Create the text object
 */
 const bool CLasagneText::Create(
-        const std::string text
+        const std::string &text
     )
 {
     SDL_Color foregroundColor = { 255, 255, 255 };
@@ -52,7 +53,7 @@ const bool CLasagneText::Create(
 }
 
 void CLasagneText::SetText(
-        const std::string text      //!< The string this text object represents
+        const std::string &text      //!< The string this text object represents
     )
 {
     SDL_Color foregroundColor = { 255, 255, 255 };

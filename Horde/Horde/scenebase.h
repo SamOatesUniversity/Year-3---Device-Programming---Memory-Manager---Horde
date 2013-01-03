@@ -8,7 +8,8 @@ class CScene
 {
 private:
 
-    CLasagneEntity      *m_background[9];
+	#define				NOOF_BACKGROUNDS	9
+    CLasagneEntity      *m_background[NOOF_BACKGROUNDS];
 
 public:
                         //! Class constructor

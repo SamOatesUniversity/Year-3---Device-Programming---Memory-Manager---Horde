@@ -13,6 +13,9 @@ protected:
 
 	CLasagneEntity                  *m_entity;					//!<
 
+	unsigned int					m_fireRate;					//!< How many bullets can be shot per second
+	Uint32							m_lastShot;					//!<
+
 public:
 									//!
 									CGunBase();

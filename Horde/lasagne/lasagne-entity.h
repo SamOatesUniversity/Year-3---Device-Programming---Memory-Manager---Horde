@@ -29,6 +29,8 @@ private:
 
     IVec2                                   m_frameSize;
 
+	bool									m_visible;
+
 public:
                             //!
                             CLasagneEntity(
@@ -54,6 +56,16 @@ public:
     TVector<float, 2>       GetPosition() const
                             {
                                 return m_screenPosition;
+                            }
+
+    TVector<float, 2>       GetDirection() const
+                            {
+								TVector<float, 2> direction;
+								direction.Set(
+									sin(static_cast<float>(m_rotation * 0.017f)),
+									cos(static_cast<float>(m_rotation * 0.017f))
+								);
+                                return direction;
                             }
 
     void                    SetPosition(
@@ -89,6 +101,15 @@ public:
 								return m_image;
 							}
 
+
+	void					SetVisible( 
+								bool visible 
+							);
+
+	int						GetRotation() const
+							{
+								return m_rotation;
+							}
 };
 
 #endif // LASAGNE_ENTITY_H_INCLUDED

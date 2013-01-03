@@ -59,6 +59,7 @@ int main (int argc, char *argv[])
                 player->SetCurrentAnimation("idle");
             }
 
+			player->Update();
             updateTimer = SDL_GetTicks();
         }
 

@@ -2,13 +2,14 @@
 
 CLasagneEntity::CLasagneEntity(
         const char* imagePath,
-        const TVector<int, 2> screenSize
+        const TVector<int, 2> &screenSize
     ) :
     m_image(NULL),
     m_noofFramesX(0),
     m_noofFramesY(0),
     m_currentFrame(0),
-    m_rotation(0)
+    m_rotation(0),
+	m_frame(NULL)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -21,13 +22,15 @@ CLasagneEntity::CLasagneEntity(
 
 CLasagneEntity::CLasagneEntity(
         const char* imagePath,
-        const TVector<int, 2> screenSize,
-        const TVector<int, 2> noofFrames
+        const TVector<int, 2> &screenSize,
+        const TVector<int, 2> &noofFrames
     ) :
     m_image(NULL),
     m_noofFramesX(noofFrames.x()),
     m_noofFramesY(noofFrames.y()),
-    m_currentFrame(0)
+    m_currentFrame(0),
+	m_rotation(0),
+	m_frame(NULL)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -53,12 +56,16 @@ void CLasagneEntity::Render(
         SDL_Surface *screen
     )
 {
+	if (!m_visible)
+		return;
+
     if (m_noofFramesX + m_noofFramesY == 0)
     {
          // draw the entity in its 3d position
         SDL_Rect rcRect;
         rcRect.x = static_cast<Sint16>(m_screenPosition.x());
         rcRect.y = static_cast<Sint16>(m_screenPosition.y());
+
         SDL_BlitSurface(m_image, NULL, screen, &rcRect);
     }
     else
@@ -144,4 +151,11 @@ void CLasagneEntity::SetCurrentAnimation(
     }
 
     m_currentAnimation = animation;
+}
+
+void CLasagneEntity::SetVisible(
+		bool visible
+	)
+{
+	m_visible = visible;
 }
