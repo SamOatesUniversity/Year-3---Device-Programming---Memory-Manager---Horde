@@ -3,7 +3,7 @@
 
 CBulletPistol::CBulletPistol()
 {
-	m_speed = 10;
+	m_speed = 50;
 }
 
 CBulletPistol::~CBulletPistol()
