@@ -34,34 +34,48 @@ public:
                         TVector()
                         {
                             m_size = size;
+							for (int valueIndex = 0; valueIndex < size; ++valueIndex)
+								m_values[valueIndex] = NULL;
                         }
 
                         //! Get the x element of the vector
     T                   x() const
                         {
                             //ASSERT(this->m_size >= (EX+1), "Trying to access vector element greater than the size of the vector");
-                            return m_values[EX];
+							if (this->m_size >= (EX+1))
+								return m_values[EX];
+							else
+								return NULL;
                         }
 
                         //! Get the y element of the vector
     T                   y() const
                         {
                             //ASSERT(this->m_size >= (EY+1), "Trying to access vector element greater than the size of the vector");
-                            return m_values[EY];
+							if (this->m_size >= (EY+1))
+								return m_values[EY];
+							else
+								return NULL;
                         }
 
                         //! Get the z element of the vector
     T                   z() const
                         {
                             //ASSERT(this->m_size >= (EZ+1), "Trying to access vector element greater than the size of the vector");
-                            return m_values[EZ];
+							if (this->m_size >= (EZ+1))
+								return m_values[EZ];
+							else
+								return NULL;
                         }
 
                         //! Get the w element of the vector
     T                   w() const
                         {
                             //ASSERT(this->m_size >= (EW+1), "Trying to access vector element greater than the size of the vector");
-                            return m_values[EW];
+							if (this->m_size >= (EW+1))
+								return m_values[EW];
+							else
+								return NULL;
                         }
 
                         //! Equals operator

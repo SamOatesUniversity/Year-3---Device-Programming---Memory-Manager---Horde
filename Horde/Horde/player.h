@@ -2,7 +2,10 @@
 #define PLAYER_H_INCLUDED
 
 #include "../lasagne/lasagne.h"
+
 #include "guns/gunbase.h"
+#include "guns/gunpistol.h"
+
 #include <map>
 
 class CPlayer {
@@ -10,7 +13,6 @@ class CPlayer {
 private:
 
     CLasagneEntity                          *m_entity;
-
 	CGunBase								*m_gun;
 
 public:
@@ -31,6 +33,14 @@ public:
                             {
                                 return m_entity;
                             }
+
+	void					SetRotation(
+								const int alpha
+							);
+
+	void					SetCurrentAnimation(
+								char *animation
+							);
 
 };
 

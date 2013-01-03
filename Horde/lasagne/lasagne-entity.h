@@ -33,14 +33,14 @@ public:
                             //!
                             CLasagneEntity(
                                 const char* imagePath,
-                                const TVector<int, 2> screenSize
+                                const TVector<int, 2> &screenSize
                             );
 
                             //!
                             CLasagneEntity(
                                 const char* imagePath,
-                                const TVector<int, 2> screenSize,
-                                const TVector<int, 2> noofFrames
+                                const TVector<int, 2> &screenSize,
+                                const TVector<int, 2> &noofFrames
                             );
 
                             //!
@@ -82,6 +82,12 @@ public:
     void                    SetCurrentAnimation(
                                 char *animation
                             );
+
+							//! 
+	SDL_Surface				*GetImage() const
+							{
+								return m_image;
+							}
 
 };
 

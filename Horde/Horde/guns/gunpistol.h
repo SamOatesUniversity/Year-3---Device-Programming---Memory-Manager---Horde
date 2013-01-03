@@ -2,10 +2,22 @@
 #define GUNPISTOL_H_INCLUDED
 
 #include "gunbase.h"
+#include "bulletpistol.h"
 
 class CGunPistol : public CGunBase
 {
+public:
+									//!
+									CGunPistol();
 
+									//!
+									~CGunPistol();
+
+									//! 
+	virtual void					Create();
+
+									//!
+    virtual void					Shoot();
 };
 
 #endif // GUNPISTOL_H_INCLUDED

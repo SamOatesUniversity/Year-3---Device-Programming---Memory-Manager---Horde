@@ -110,7 +110,7 @@ void CSOGI::ShowAndLogError(
 
     for (int stackIndex = 2; stackIndex < MAXSTACKTRACE; ++stackIndex)
     {
-        LogError(callStack[stackIndex]);
+		if (callStack[stackIndex] != NULL) LogError(callStack[stackIndex]);
     }
 
     SafeArrayDelete(callStack);
