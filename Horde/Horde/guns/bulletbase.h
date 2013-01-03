@@ -9,6 +9,11 @@ protected:
 
 	CLasagneEntity			*m_enity;				//!< 
 
+	TVector<float, 2>		m_position;				//!< 
+	TVector<float, 2>		m_direction;			//!< 
+
+	int						m_speed;				//!< 
+
 public:
 							//! 
 							CBulletBase();
@@ -25,7 +30,11 @@ public:
 							);
 
 							//!
-	virtual void			Fire();
+	virtual void			Fire(
+								CLasagneEntity *gun
+							);
+
+	virtual void			Update();
 
 };
 

@@ -55,3 +55,8 @@ void CPlayer::SetCurrentAnimation(
 	m_entity->SetCurrentAnimation(animation);
 	m_gun->GetEntity()->SetCurrentAnimation(animation);
 }
+
+void CPlayer::Update()
+{
+	m_gun->Shoot();
+}

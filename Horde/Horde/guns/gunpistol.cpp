@@ -2,7 +2,7 @@
 
 CGunPistol::CGunPistol()
 {
-
+	m_fireRate = 1;
 }
 
 CGunPistol::~CGunPistol()
@@ -18,7 +18,7 @@ void CGunPistol::Create()
 	if (!m_entity)
 		return;
 
-	static const int NoofBullets = 16;
+	static const int NoofBullets = 2;
 	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)
 	{
 		CBulletBase *bulletBase = new CBulletPistol();
@@ -30,5 +30,5 @@ void CGunPistol::Create()
 
 void CGunPistol::Shoot()
 {
-
+	CGunBase::Shoot();
 }

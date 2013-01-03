@@ -21,7 +21,9 @@ public:
 							);
 
 							//!
-	virtual void			Fire();
+	virtual void			Fire(
+								CLasagneEntity *gun
+							);
 };
 
 #endif

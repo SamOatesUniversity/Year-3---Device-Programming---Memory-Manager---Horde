@@ -42,6 +42,8 @@ public:
 								char *animation
 							);
 
+	void					Update();
+
 };
 
 #endif // PLAYER_H_INCLUDED

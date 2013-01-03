@@ -91,7 +91,7 @@ public:
                                         //! Load an animated image
     CLasagneEntity                      *LoadAnimatedImage(
                                              const char* imageFile,                       //!<
-                                             const TVector<int, 2> noofFrames             //!<
+                                             const TVector<int, 2> &noofFrames             //!<
                                         );
 
                                         //! Get the stored mouse position

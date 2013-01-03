@@ -27,12 +27,12 @@ public:
 
                     //! Create the text object
     const bool      Create(
-                        const std::string text      //!< The string this text object represents
+                        const std::string &text      //!< The string this text object represents
                     );
 
                     //! Set the text the object should display
     void            SetText(
-                        const std::string text      //!< The string this text object represents
+                        const std::string &text      //!< The string this text object represents
                     );
 
                     //! Create the text object
