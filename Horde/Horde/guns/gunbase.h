@@ -3,24 +3,33 @@
 
 #include <vector>
 #include "bulletbase.h"
+#include "../../lasagne/lasagne.h"
 
 class CGunBase {
 protected:
 
-	std::vector<CBulletBase>		m_bullet;
+	std::vector<CBulletBase*>		m_bullet;					//!< 
+	unsigned int					m_nextBullet;				//!< 
+
+	CLasagneEntity                  *m_entity;					//!<
 
 public:
 									//!
-									CGunBase() {};
+									CGunBase();
 
 									//!
-									~CGunBase() {};
+									~CGunBase();
+
+	CLasagneEntity					*GetEntity() const 
+									{
+										return m_entity;
+									}
+
+									//! 
+	virtual void					Create() = 0;
 
 									//!
     virtual void					Shoot();
-
-									//!
-    virtual void					Render();
 
 };
 

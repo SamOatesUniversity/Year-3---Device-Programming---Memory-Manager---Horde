@@ -258,6 +258,12 @@ CLasagneEntity *CLasagne::LoadImage(
     )
 {
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize);
+	if (entity->GetImage() == NULL)
+	{
+		SafeDelete(entity);
+		return NULL;
+	}
+
     m_entity.push_back(entity);
     return entity;
 }
@@ -265,7 +271,7 @@ CLasagneEntity *CLasagne::LoadImage(
 //! Load an animated image
 CLasagneEntity *CLasagne::LoadAnimatedImage(
         const char* imageFile,                       //!<
-        const TVector<int, 2> noofFrames             //!<
+        const TVector<int, 2> &noofFrames             //!<
     )
 {
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize, noofFrames);

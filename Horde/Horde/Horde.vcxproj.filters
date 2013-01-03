@@ -87,6 +87,12 @@
     <ClCompile Include="..\lasagne\lasagne-text.cpp">
       <Filter>Source Files\Lasagne</Filter>
     </ClCompile>
+    <ClCompile Include="guns\bulletbase.cpp">
+      <Filter>Source Files\Horde\guns</Filter>
+    </ClCompile>
+    <ClCompile Include="guns\bulletpistol.cpp">
+      <Filter>Source Files\Horde\guns</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lasagne\lasagne.h">
@@ -132,6 +138,9 @@
       <Filter>Header Files\SOGI\stack</Filter>
     </ClInclude>
     <ClInclude Include="guns\bulletbase.h">
+      <Filter>Header Files\Horde\guns</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\bulletpistol.h">
       <Filter>Header Files\Horde\guns</Filter>
     </ClInclude>
   </ItemGroup>

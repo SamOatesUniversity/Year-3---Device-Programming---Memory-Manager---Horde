@@ -50,13 +50,13 @@ int main (int argc, char *argv[])
                     rotation += 180;
                 }
 
-                player->GetEntity()->SetRotation(rotation);
+                player->SetRotation(rotation);
             }
 
-            player->GetEntity()->SetCurrentAnimation("walk");
+            player->SetCurrentAnimation("walk");
             if (!currentScene->Move(moveX, moveY))
             {
-                player->GetEntity()->SetCurrentAnimation("idle");
+                player->SetCurrentAnimation("idle");
             }
 
             updateTimer = SDL_GetTicks();

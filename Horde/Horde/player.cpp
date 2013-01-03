@@ -9,7 +9,7 @@ CPlayer::CPlayer() :
 
 CPlayer::~CPlayer()
 {
-
+	SafeDelete(m_gun);
 }
 
 const bool CPlayer::Load(
@@ -28,5 +28,30 @@ const bool CPlayer::Load(
     m_entity->AddAnimation("walk", 10, 16);
     m_entity->SetCurrentAnimation("walk");
 
+	m_gun = new CGunPistol();
+	m_gun->Create();
+
+	CLasagneEntity *const gun = m_gun->GetEntity();
+	gun->SetPosition(132, 96);
+	gun->AddAnimation("idle", 0, 9);
+	gun->AddAnimation("walk", 10, 16);
+	gun->SetCurrentAnimation("walk");
+
     return true;
+}
+
+void CPlayer::SetRotation( 
+		const int alpha 
+	)
+{
+	m_entity->SetRotation(alpha);
+	m_gun->GetEntity()->SetRotation(alpha);
+}
+
+void CPlayer::SetCurrentAnimation( 
+		char *animation 
+	)
+{
+	m_entity->SetCurrentAnimation(animation);
+	m_gun->GetEntity()->SetCurrentAnimation(animation);
 }
