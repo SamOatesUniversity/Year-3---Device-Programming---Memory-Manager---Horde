@@ -1,6 +1,7 @@
 #include "lasagne/lasagne.h"
 #include "Horde/scenebase.h"
 #include "Horde/player.h"
+#include "Horde/enemy/enemyzombie.h"
 
 const bool isLeftPressed();
 const bool isRightPressed();
@@ -23,6 +24,14 @@ int main (int argc, char *argv[])
 
     CPlayer *player = new CPlayer();
     player->Load("./media/graphics/characters/player.png");
+
+	std::vector<CEnemyBase*> enemy;
+	for (int zombieIndex = 0; zombieIndex < 6; ++zombieIndex)
+	{
+		CEnemyZombie *zombieTest = new CEnemyZombie();
+		zombieTest->Create(zombieIndex * 64, -100);
+		enemy.push_back(zombieTest);
+	}
 
     Uint32 updateTimer = SDL_GetTicks();
 
@@ -60,6 +69,11 @@ int main (int argc, char *argv[])
             }
 
 			player->Update();
+			for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
+			{
+				enemy[zombieIndex]->Update(moveX, moveY);
+			}
+
             updateTimer = SDL_GetTicks();
         }
 
