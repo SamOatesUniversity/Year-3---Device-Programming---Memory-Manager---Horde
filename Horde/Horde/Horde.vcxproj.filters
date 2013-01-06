@@ -40,6 +40,12 @@
     <Filter Include="Header Files\SOGI\stack">
       <UniqueIdentifier>{6da0d0ef-05ba-4f67-8266-8ac7866ff605}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Horde\enemy">
+      <UniqueIdentifier>{85303951-25e9-4bdc-bd11-4411f554ddc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Horde\enemy">
+      <UniqueIdentifier>{65242b90-4705-48a5-a34d-4febb4c8d60c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp">
@@ -93,6 +99,12 @@
     <ClCompile Include="guns\bulletpistol.cpp">
       <Filter>Source Files\Horde\guns</Filter>
     </ClCompile>
+    <ClCompile Include="enemy\enemybase.cpp">
+      <Filter>Source Files\Horde\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy\enemyzombie.cpp">
+      <Filter>Source Files\Horde\enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lasagne\lasagne.h">
@@ -142,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="guns\bulletpistol.h">
       <Filter>Header Files\Horde\guns</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy\enemybase.h">
+      <Filter>Header Files\Horde\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy\enemyzombie.h">
+      <Filter>Header Files\Horde\enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
