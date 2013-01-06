@@ -1,10 +1,16 @@
 #include "NotAmnesia.h"
 
+/*
+*	\brief	
+*/
 IMemoryManager *CreateMemoryManagerInstance()
 {
     return new CNotAmnesia();
 }
 
+/*
+*	\brief	Class constructor
+*/
 CNotAmnesia::CNotAmnesia() :
     m_startPtr(nullptr),
     m_lastNugget(nullptr),
@@ -18,10 +24,16 @@ CNotAmnesia::CNotAmnesia() :
 #endif
 }
 
+/*
+*	\brief	Class Destructor
+*/
 CNotAmnesia::~CNotAmnesia()
 {
 }
 
+/*
+*	\brief	Initializes the memory manger, allocating a given number of bytes
+*/
 bool CNotAmnesia::Initialise(
         size_t numBytes,
         void *preallocatedBuffer
@@ -38,6 +50,9 @@ bool CNotAmnesia::Initialise(
     return m_startPtr != nullptr;
 }
 
+/*
+*	\brief	Allocate memory from our buffer, storing it in a memory nugget
+*/
 void *CNotAmnesia::Allocate(
         size_t numBytes,
         const char* file,
@@ -46,112 +61,43 @@ void *CNotAmnesia::Allocate(
 {
     if (m_totalSize - m_amountAllocated < numBytes)
     {
-		// see if we can merge any free nuggets to re-use
-		if (m_freeNugget == nullptr)
+		// merge nuggets
+		MemoryNugget *const mergedNugget = MergeMemoryNuggets(numBytes);
+		if (mergedNugget == nullptr)
 			return nullptr;
 
-		// see if any of our released nuggets happen to be bug enough to re-use
-		MemoryNugget *nextFreeNugget = m_freeNugget;
-		while (nextFreeNugget->prevNugget != nullptr)
-		{
-			if (nextFreeNugget->totalSize >= numBytes)
-			{
-				// fixup the free nuggets list
-				MemoryNugget *next = nextFreeNugget->nextNugget;
-				MemoryNugget *prev = nextFreeNugget->prevNugget;
-				if (next != nullptr) next->prevNugget = prev;
-				if (prev != nullptr) prev->nextNugget = next;
-
-				// move the free nugget onto the allocated nuggets
-				m_lastNugget->nextNugget = nextFreeNugget;
-				nextFreeNugget->prevNugget = m_lastNugget;
-				m_lastNugget = nextFreeNugget;
-
-				#ifndef OPTIMIZED
-					if (nextFreeNugget->totalSize > 10)
-						strncpy_s((char*)(nextFreeNugget->ptr), nextFreeNugget->totalSize, "NotAmnesia", nextFreeNugget->totalSize);
-
-					m_noofFreeNuggets--;
-					m_noofNuggets++;
-				#endif
-
-				return nextFreeNugget->ptr;
-			}
-			nextFreeNugget = nextFreeNugget->prevNugget;
-		}
-
-		MemoryNugget *firstFreeNugget = m_freeNugget;
-		while (firstFreeNugget->prevNugget != nullptr)
-			firstFreeNugget = firstFreeNugget->prevNugget;
-
-		// we have already checked for a free correct sized nugget, so this will fail
-		if (firstFreeNugget->nextNugget == nullptr)
-			return nullptr;
-
-		// try find a few nuggets next to each other that we can merge
-		MemoryNugget *nextNugget = firstFreeNugget->nextNugget;
-		while (firstFreeNugget->ptr + firstFreeNugget->totalSize == nextNugget->ptr)
-		{
-			if (static_cast<size_t>((nextNugget->ptr + nextNugget->totalSize) - firstFreeNugget->ptr) > numBytes)
-			{
-				// okay, we have 2 or more nuggets next to each other that combined have the same or more space available.
-				while (nextNugget != firstFreeNugget)
-				{
-					MemoryNugget *currentNugget = nextNugget;
-
-					MemoryNugget *next = currentNugget->nextNugget;
-					MemoryNugget *prev = currentNugget->prevNugget;
-					if (next != nullptr) next->prevNugget = prev;
-					if (prev != nullptr) prev->nextNugget = next;
-
-					nextNugget = prev;
-					free(currentNugget);
-				}
-
-				MemoryNugget *next = firstFreeNugget->nextNugget;
-				MemoryNugget *prev = firstFreeNugget->prevNugget;
-				if (next != nullptr) next->prevNugget = prev;
-				if (prev != nullptr) prev->nextNugget = next;
-
-				if (next == nullptr && prev == nullptr)
-					m_freeNugget = nullptr;
-
-				firstFreeNugget->prevNugget = m_lastNugget;
-				m_lastNugget->nextNugget = firstFreeNugget;
-				firstFreeNugget->nextNugget = nullptr;
-				m_lastNugget = firstFreeNugget;
-
-				firstFreeNugget->totalSize = numBytes;
-
-				#ifndef OPTIMIZED
-					if (firstFreeNugget->totalSize > 10)
-						strncpy_s((char*)(firstFreeNugget->ptr), firstFreeNugget->totalSize, "NotAmnesia", firstFreeNugget->totalSize);
-				
-					m_noofFreeNuggets--;
-					m_noofNuggets++;
-				#endif
-					
-				return firstFreeNugget->ptr;
-			}
-
-			nextNugget = nextNugget->nextNugget;
-		}
-
-        return nullptr;
+		return mergedNugget->ptr;
     }
 
-    MemoryNugget *newNugget = static_cast<MemoryNugget*>(malloc(sizeof(MemoryNugget)));
-    newNugget->prevNugget = newNugget->nextNugget = nullptr;
-    newNugget->ptr = m_nextFreePtr;
-    newNugget->totalSize = numBytes;
+	MemoryNugget *newNugget = nullptr;
+
+	// see if we can re-use a free nugget
+	if (m_freeNugget != nullptr)
+	{
+		newNugget = MergeMemoryNuggets(numBytes);
+		if (newNugget != nullptr)
+			return newNugget->ptr;
+	}
+
+	if (newNugget == nullptr)
+	{
+		// no free nuggets available, so create a new one
+		newNugget = NEW(MemoryNugget);
+		if (newNugget == nullptr)
+			return nullptr;
+
+		newNugget->ptr = m_nextFreePtr;
+		newNugget->totalSize = numBytes;
+		m_nextFreePtr += newNugget->totalSize;
+		m_amountAllocated += newNugget->totalSize;
+	}
+
+	newNugget->prevNugget = newNugget->nextNugget = nullptr;
 
 #ifndef OPTIMIZED
 	newNugget->file = file;
 	newNugget->line = line;
 #endif
-
-    m_nextFreePtr += newNugget->totalSize;
-	m_amountAllocated += newNugget->totalSize;
 
     if (m_lastNugget == nullptr)
     {
@@ -176,6 +122,9 @@ void *CNotAmnesia::Allocate(
     return newNugget->ptr;
 }
 
+/*
+*	\brief	NOT IMPLEMENTED
+*/
 void *CNotAmnesia::AllocateAligned(
         size_t numBytes,
         size_t alignment,
@@ -186,6 +135,9 @@ void *CNotAmnesia::AllocateAligned(
     return nullptr;
 }
 
+/*
+*	\brief	Release a given memory address, moving the memory nugget to the list of free memory nuggets for reuse
+*/
 void CNotAmnesia::Release(
         void* address
     )
@@ -255,24 +207,21 @@ void CNotAmnesia::Release(
 		}
 	}
 
-	// if it's the last nugget, just delete it
-	if (next == nullptr)
-	{
-		free(nugget);
-	}
-
 	#ifndef OPTIMIZED
 		m_noofNuggets--;
 	#endif
 }
 
+/*
+*	\brief	Release all memory and destroy all memory nuggets
+*/
 void CNotAmnesia::Shutdown()
 {
 	MemoryNugget *freeNugget = m_freeNugget;
 	while (freeNugget != nullptr)
 	{
-		MemoryNugget *prevNugget = freeNugget->prevNugget;
-		free(freeNugget);
+		MemoryNugget *const prevNugget = freeNugget->prevNugget;
+		DELETE(freeNugget);
 		freeNugget = prevNugget;
 	}
 	m_freeNugget = nullptr;
@@ -280,13 +229,13 @@ void CNotAmnesia::Shutdown()
 	MemoryNugget *nugget = m_lastNugget;
 	while (nugget != nullptr)
 	{
-		MemoryNugget *prevNugget = nugget->prevNugget;
-		free(nugget);
+		MemoryNugget *const prevNugget = nugget->prevNugget;
+		DELETE(nugget);
 		nugget = prevNugget;
 	}
 	m_lastNugget = nullptr;
 
-	free(m_startPtr);
+	DELETE(m_startPtr);
 	m_startPtr = nullptr;
 
 	m_totalSize = 0;
@@ -298,13 +247,19 @@ void CNotAmnesia::Shutdown()
 	#endif
 }
 
+/*
+*	\brief	NOT IMPLEMENTED
+*/
 const char* const CNotAmnesia::GetTextLine()
 {
     return nullptr;
 }
 
+/*
+*	\brief	Find a memory nugget based upon a given memory address
+*/
 CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemeoryNugget(
-        void *address
+        void *address												//!< The memory address of the nugget we are looking for
     )
 {
     MemoryNugget *currentNugget = m_lastNugget;
@@ -317,4 +272,133 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemeoryNugget(
     }
 
     return nullptr;
+}
+
+/*
+*	\brief	Try to merge memory nuggets together to create a larger memory nugget
+*/
+CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets( 
+		size_t requiredSize											//!< The size we want the merged nugget to be 
+	)
+{
+	// see if we can merge any free nuggets to re-use
+	if (m_freeNugget == nullptr)
+		return nullptr;
+
+	// see if any of our released nuggets happen to be bug enough to re-use
+	MemoryNugget *nextFreeNugget = m_freeNugget;
+	do
+	{
+		if (nextFreeNugget->totalSize >= requiredSize)
+		{
+			// fixup the free nuggets list
+			MemoryNugget *next = nextFreeNugget->nextNugget;
+			MemoryNugget *prev = nextFreeNugget->prevNugget;
+			if (next != nullptr) next->prevNugget = prev;
+			if (prev != nullptr) prev->nextNugget = next;
+
+			if (nextFreeNugget == m_freeNugget) 
+				m_freeNugget = m_freeNugget->prevNugget;
+
+			// move the free nugget onto the allocated nuggets
+			if (m_lastNugget == nullptr)
+			{
+				m_lastNugget = nextFreeNugget;
+				m_lastNugget->nextNugget = m_lastNugget->prevNugget = nullptr;
+			}
+			else
+			{
+				m_lastNugget->nextNugget = nextFreeNugget;
+				nextFreeNugget->prevNugget = m_lastNugget;
+				m_lastNugget = nextFreeNugget;
+			}
+
+			#ifndef OPTIMIZED
+			if (nextFreeNugget->totalSize > 10)
+				strncpy_s((char*)(nextFreeNugget->ptr), nextFreeNugget->totalSize, "NotAmnesia", nextFreeNugget->totalSize);
+
+			m_noofFreeNuggets--;
+			m_noofNuggets++;
+			#endif
+
+			return nextFreeNugget;
+		}
+		nextFreeNugget = nextFreeNugget->prevNugget;
+	}
+	while (nextFreeNugget != nullptr && nextFreeNugget->prevNugget != nullptr);
+
+	MemoryNugget *firstFreeNugget = m_freeNugget;
+	while (firstFreeNugget->prevNugget != nullptr)
+		firstFreeNugget = firstFreeNugget->prevNugget;
+
+	// we have already checked for a free correct sized nugget, so this will fail
+	if (firstFreeNugget->nextNugget == nullptr)
+		return nullptr;
+
+	// try find a few nuggets next to each other that we can merge
+	while (firstFreeNugget != m_freeNugget)
+	{
+		MemoryNugget *nextNugget = firstFreeNugget->nextNugget;
+		while (nextNugget != nullptr && nextNugget != m_freeNugget)
+		{
+			while (firstFreeNugget->ptr + firstFreeNugget->totalSize == nextNugget->ptr)
+			{
+				size_t mergedNuggetSize = static_cast<size_t>((nextNugget->ptr + nextNugget->totalSize) - firstFreeNugget->ptr);
+				//
+				{
+					// okay, we have 2 or more nuggets next to each other that combined have the same or more space available.
+					while (nextNugget != firstFreeNugget)
+					{
+						MemoryNugget *const currentNugget = nextNugget;
+						if (currentNugget == nullptr)
+							continue;
+
+						MemoryNugget *next = currentNugget->nextNugget;
+						MemoryNugget *prev = currentNugget->prevNugget;
+						if (next != nullptr) next->prevNugget = prev;
+						if (prev != nullptr) prev->nextNugget = next;
+
+						nextNugget = prev;
+						DELETE(currentNugget);
+					}
+
+					firstFreeNugget->totalSize = mergedNuggetSize;
+
+					if (mergedNuggetSize > requiredSize)
+					{
+						MemoryNugget *next = firstFreeNugget->nextNugget;
+						MemoryNugget *prev = firstFreeNugget->prevNugget;
+						if (next != nullptr) next->prevNugget = prev;
+						if (prev != nullptr) prev->nextNugget = next;
+
+						if (next == nullptr && prev == nullptr)
+							m_freeNugget = nullptr;
+
+						firstFreeNugget->prevNugget = m_lastNugget;
+						m_lastNugget->nextNugget = firstFreeNugget;
+						firstFreeNugget->nextNugget = nullptr;
+						m_lastNugget = firstFreeNugget;
+
+						#ifndef OPTIMIZED
+						if (firstFreeNugget->totalSize > 10)
+							strncpy_s((char*)(firstFreeNugget->ptr), firstFreeNugget->totalSize, "NotAmnesia", firstFreeNugget->totalSize);
+
+						m_noofFreeNuggets--;
+						m_noofNuggets++;
+						#endif
+
+						return firstFreeNugget;
+					}
+				}
+
+				nextNugget = nextNugget->nextNugget;
+			}
+
+			nextNugget = nextNugget->nextNugget;
+		}
+
+		firstFreeNugget = firstFreeNugget->nextNugget;
+	}
+
+	return nullptr;	
 }
