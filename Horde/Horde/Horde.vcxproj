@@ -97,6 +97,8 @@
     </ClCompile>
     <ClCompile Include="..\SOGI\SOGITypes.cpp" />
     <ClCompile Include="..\SOGI\stack\stack.cpp" />
+    <ClCompile Include="enemy\enemybase.cpp" />
+    <ClCompile Include="enemy\enemyzombie.cpp" />
     <ClCompile Include="guns\bulletbase.cpp" />
     <ClCompile Include="guns\bulletpistol.cpp" />
     <ClCompile Include="guns\gunbase.cpp" />
@@ -115,6 +117,8 @@
     <ClInclude Include="..\SOGI\SOGI.h" />
     <ClInclude Include="..\SOGI\SOGITypes.h" />
     <ClInclude Include="..\SOGI\stack\stack.h" />
+    <ClInclude Include="enemy\enemybase.h" />
+    <ClInclude Include="enemy\enemyzombie.h" />
     <ClInclude Include="guns\bulletbase.h" />
     <ClInclude Include="guns\bulletpistol.h" />
     <ClInclude Include="guns\gunbase.h" />
