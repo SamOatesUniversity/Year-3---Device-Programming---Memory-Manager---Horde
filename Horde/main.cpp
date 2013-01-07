@@ -45,28 +45,25 @@ int main (int argc, char *argv[])
             const int xDiff = engine->GetMousePosition()->x() - 160;
             const int yDiff = engine->GetMousePosition()->y() - 120;
 
-			int moveX = 0;
-			int moveY = 0;
+			int moveX = static_cast<int>(xDiff * 0.05f);
+			int moveY = static_cast<int>(yDiff * 0.05f);
+
+			if (yDiff != 0) // stop divide by 0
+			{
+				const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
+				const float radAngle = atan(alpha);
+				int rotation = static_cast<int>(radAngle * 57.0f);
+
+				if (yDiff < 0)
+				{
+					rotation += 180;
+				}
+
+				player->SetRotation(rotation);
+			}
 
 			if (!CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 25.0f))
 			{
-				moveX = static_cast<int>(xDiff * 0.05f);
-				moveY = static_cast<int>(yDiff * 0.05f);
-
-				if (yDiff != 0) // stop divide by 0
-				{
-					const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
-					const float radAngle = atan(alpha);
-					int rotation = static_cast<int>(radAngle * 57.0f);
-
-					if (yDiff < 0)
-					{
-						rotation += 180;
-					}
-
-					player->SetRotation(rotation);
-				}
-
 				player->SetCurrentAnimation("walk");
 				if (!currentScene->Move(moveX, moveY))
 				{
