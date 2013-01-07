@@ -26,7 +26,7 @@ int main (int argc, char *argv[])
     player->Load("./media/graphics/characters/player.png");
 
 	std::vector<CEnemyBase*> enemy;
-	for (int zombieIndex = 0; zombieIndex < 6; ++zombieIndex)
+	for (int zombieIndex = 0; zombieIndex < 100; ++zombieIndex)
 	{
 		CEnemyZombie *zombieTest = new CEnemyZombie();
 		zombieTest->Create(zombieIndex * 64, -100);
@@ -45,30 +45,41 @@ int main (int argc, char *argv[])
             const int xDiff = engine->GetMousePosition()->x() - 160;
             const int yDiff = engine->GetMousePosition()->y() - 120;
 
-            int moveX = static_cast<int>((engine->GetMousePosition()->x() - 160) * 0.05f);
-            int moveY = static_cast<int>((engine->GetMousePosition()->y() - 120) * 0.05f);
+			int moveX = 0;
+			int moveY = 0;
 
-            if (yDiff != 0) // stop divide by 0
-            {
-				const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
-				const float radAngle = atan(alpha);
-                int rotation = static_cast<int>(radAngle * 57.0f);
+			if (!CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 25.0f))
+			{
+				moveX = static_cast<int>(xDiff * 0.05f);
+				moveY = static_cast<int>(yDiff * 0.05f);
 
-                if (yDiff < 0)
-                {
-                    rotation += 180;
-                }
+				if (yDiff != 0) // stop divide by 0
+				{
+					const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
+					const float radAngle = atan(alpha);
+					int rotation = static_cast<int>(radAngle * 57.0f);
 
-                player->SetRotation(rotation);
-            }
+					if (yDiff < 0)
+					{
+						rotation += 180;
+					}
 
-            player->SetCurrentAnimation("walk");
-            if (!currentScene->Move(moveX, moveY))
-            {
-                player->SetCurrentAnimation("idle");
-				moveX = 0;
-				moveY = 0;
-            }
+					player->SetRotation(rotation);
+				}
+
+				player->SetCurrentAnimation("walk");
+				if (!currentScene->Move(moveX, moveY))
+				{
+					player->SetCurrentAnimation("idle");
+					moveX = 0;
+					moveY = 0;
+				}
+			}
+			else
+			{
+				// user pressing near the middle of the screen, so stand still
+				player->SetCurrentAnimation("idle");
+			}
 
 			for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
 			{
