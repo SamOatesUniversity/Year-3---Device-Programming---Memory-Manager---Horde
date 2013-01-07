@@ -226,12 +226,19 @@ void CNotAmnesia::Shutdown()
 	}
 	m_freeNugget = nullptr;
 
+#ifndef OPTIMIZED
+	int noofLeakedNuggets = 0;
+#endif
+
 	MemoryNugget *nugget = m_lastNugget;
 	while (nugget != nullptr)
 	{
 		MemoryNugget *const prevNugget = nugget->prevNugget;
 		DELETE(nugget);
 		nugget = prevNugget;
+#ifndef OPTIMIZED
+		noofLeakedNuggets++;
+#endif
 	}
 	m_lastNugget = nullptr;
 
