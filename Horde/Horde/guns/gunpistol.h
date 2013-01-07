@@ -17,7 +17,9 @@ public:
 	virtual void					Create();
 
 									//!
-    virtual void					Shoot();
+    virtual void					Shoot(
+										std::vector<CEnemyBase*> &enemy
+									);
 };
 
 #endif // GUNPISTOL_H_INCLUDED

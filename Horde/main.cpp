@@ -70,11 +70,12 @@ int main (int argc, char *argv[])
 				moveY = 0;
             }
 
-			player->Update();
 			for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
 			{
 				enemy[zombieIndex]->Update(moveX, moveY);
 			}
+
+			player->Update(enemy);
 
             updateTimer = SDL_GetTicks();
         }
