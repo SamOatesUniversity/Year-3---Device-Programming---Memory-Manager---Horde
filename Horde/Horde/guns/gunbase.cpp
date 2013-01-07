@@ -44,10 +44,14 @@ void CGunBase::Shoot(
 		for (unsigned int enemyIndex = 0; enemyIndex < enemy.size(); ++enemyIndex)
 		{
 			CEnemyBase *const currentEnemy = enemy[enemyIndex];
+			if (!currentEnemy->GetEntity()->IsVisible())
+				continue;
+
 			if (m_bullet[bulletIndex]->CheckCollision(currentEnemy->GetEntity()))
 			{
-				currentEnemy->GetEntity()->SetVisible(false);
+				currentEnemy->GetEntity()->SetVisible(false); // just one hit kill enemies for now
 				//currentEnemy->Damage(10); // should pass in bullet strength
+				m_bullet[bulletIndex]->Destroy();
 			}
 		}		
 	}
