@@ -159,3 +159,25 @@ void CLasagneEntity::SetVisible(
 {
 	m_visible = visible;
 }
+
+const bool CLasagneEntity::Intersects( 
+		CLasagneEntity *other 
+	)
+{
+	TVector<float, 2> otherPosition = other->GetPosition();
+	TVector<int, 2> otherSize = other->GetFrameSize();
+
+	if (m_screenPosition.x() > otherPosition.x() + otherSize.x())
+		return false;
+
+	if (m_screenPosition.x() + m_frameSize.x() < otherPosition.x())
+		return false;
+
+	if (m_screenPosition.y() > otherPosition.y() + otherSize.y())
+		return false;
+
+	if (m_screenPosition.y() + m_frameSize.y() < otherPosition.y())
+		return false;
+
+	return true;
+}

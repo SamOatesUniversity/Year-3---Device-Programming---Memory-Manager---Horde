@@ -3,6 +3,8 @@
 
 #include "../../lasagne/lasagne.h"
 
+#include "../enemy/enemybase.h"
+
 class CBulletBase {
 
 protected:

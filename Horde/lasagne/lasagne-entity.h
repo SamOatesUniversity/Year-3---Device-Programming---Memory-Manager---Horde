@@ -53,11 +53,19 @@ public:
                                 SDL_Surface *screen
                             );
 
+							//! 
     TVector<float, 2>       GetPosition() const
                             {
                                 return m_screenPosition;
                             }
 
+							//! 
+	TVector<int, 2>			GetFrameSize() const
+							{
+								return m_frameSize;
+							}
+
+							//! 
     TVector<float, 2>       GetDirection() const
                             {
 								TVector<float, 2> direction;
@@ -68,6 +76,7 @@ public:
                                 return direction;
                             }
 
+							//! 
     void                    SetPosition(
                                 const float x,
                                 const float y
@@ -76,6 +85,7 @@ public:
                                 m_screenPosition.Set(x, y);
                             }
 
+							//! 
     void                    SetRotation(
                                 const int alpha
                             )
@@ -101,15 +111,27 @@ public:
 								return m_image;
 							}
 
-
+							//!
 	void					SetVisible( 
 								bool visible 
 							);
+		
+							//! 
+	const bool				IsVisible() const
+							{
+								return m_visible;
+							}
 
+							//!
 	int						GetRotation() const
 							{
 								return m_rotation;
 							}
+
+							//! 
+	const bool				Intersects(
+								CLasagneEntity *other
+							);
 };
 
 #endif // LASAGNE_ENTITY_H_INCLUDED

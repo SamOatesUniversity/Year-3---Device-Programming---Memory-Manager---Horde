@@ -3,6 +3,8 @@
 
 #include "../lasagne/lasagne.h"
 
+#include "enemy/enemybase.h"
+
 #include "guns/gunbase.h"
 #include "guns/gunpistol.h"
 
@@ -17,32 +19,34 @@ private:
 
 public:
 
-                            //! Class constructor
-                            CPlayer();
+											//! Class constructor
+											CPlayer();
 
-                            //! Class destructor
-                            ~CPlayer();
+											//! Class destructor
+											~CPlayer();
 
-                            //! Load the player graphics
-    const bool              Load(
-                                const char* spriteSheet
-                            );
+											//! Load the player graphics
+    const bool								Load(
+											    const char* spriteSheet
+											);
 
+											//! Get the render-able entity of the player
+    CLasagneEntity							*GetEntity() const
+											{
+												return m_entity;
+											}
 
-    CLasagneEntity           *GetEntity()
-                            {
-                                return m_entity;
-                            }
+	void									SetRotation(
+												const int alpha
+											);
 
-	void					SetRotation(
-								const int alpha
-							);
+	void									SetCurrentAnimation(
+												char *animation
+											);
 
-	void					SetCurrentAnimation(
-								char *animation
-							);
-
-	void					Update();
+	void									Update(
+												std::vector<CEnemyBase*> &enemy
+											);
 
 };
 

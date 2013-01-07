@@ -56,7 +56,9 @@ void CPlayer::SetCurrentAnimation(
 	m_gun->GetEntity()->SetCurrentAnimation(animation);
 }
 
-void CPlayer::Update()
+void CPlayer::Update(
+		std::vector<CEnemyBase*> &enemy
+	)
 {
-	m_gun->Shoot();
+	m_gun->Shoot(enemy);
 }

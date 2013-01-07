@@ -32,7 +32,9 @@ public:
 	virtual void					Create() = 0;
 
 									//!
-    virtual void					Shoot();
+    virtual void					Shoot(
+										std::vector<CEnemyBase*> &enemy
+									);
 
 };
 

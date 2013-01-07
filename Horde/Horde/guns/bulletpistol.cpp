@@ -22,6 +22,13 @@ bool CBulletPistol::CheckCollision(
 		CLasagneEntity *other 
 	)
 {
+	// if the bullet isnt visible, dont check for collisions
+	if (m_enity->IsVisible() == false)
+		return false;
+
+	if (m_enity->Intersects(other))
+		return true;
+
 	return false;
 }
 

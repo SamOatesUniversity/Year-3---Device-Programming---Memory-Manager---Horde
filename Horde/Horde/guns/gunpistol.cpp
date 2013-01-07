@@ -28,7 +28,9 @@ void CGunPistol::Create()
 
 }
 
-void CGunPistol::Shoot()
+void CGunPistol::Shoot(
+		std::vector<CEnemyBase*> &enemy
+	)
 {
-	CGunBase::Shoot();
+	CGunBase::Shoot(enemy);
 }
