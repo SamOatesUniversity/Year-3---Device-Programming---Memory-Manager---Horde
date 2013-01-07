@@ -153,3 +153,19 @@ void CSOGI::CreateConsoleWindow()
     setvbuf( stderr, NULL, _IONBF, 0 );
 #endif
 }
+
+//! Returns if a given number is almost another value
+const bool CSOGI::IsAlmost(
+		float x,
+		float value,
+		float varience
+	)
+{
+	if (value + varience < x)
+		return false;
+
+	if (value - varience > x)
+		return false;
+
+	return true;
+}

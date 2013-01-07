@@ -96,6 +96,14 @@ public:
                                 const char *file = "",                    //!< The file where the method was called
                                 int line = 0                              //!< The line number where the method was called
                             );
+
+							//! Returns if a given number is almost another value
+	const bool				IsAlmost(
+								float x,
+								float value,
+								float varience = 1.0f
+							);
+							
 };
 
 /**

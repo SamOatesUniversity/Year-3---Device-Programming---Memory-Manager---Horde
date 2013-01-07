@@ -132,9 +132,18 @@ public:
                         }
 
 						//! 
+	T					Len() const
+						{
+							T val = 0;
+							for (unsigned int valueIndex = 0; valueIndex < m_size; ++valueIndex)
+								val += (m_values[valueIndex] * m_values[valueIndex]);
+							return static_cast<T>(sqrt(static_cast<float>(val)));
+						}
+
+						//! 
 	void				Normalize2D()
 						{
-							const float len = sqrt(static_cast<float>((m_values[EX] * m_values[EX]) + (m_values[EY] * m_values[EY])));
+							T len = Len();
 							m_values[EX] = static_cast<T>(m_values[EX] / len);
 							m_values[EY] = static_cast<T>(m_values[EY] / len);
 						}
