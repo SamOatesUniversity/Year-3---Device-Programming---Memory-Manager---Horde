@@ -36,7 +36,11 @@ public:
 								CLasagneEntity *gun
 							);
 
+							//!
 	virtual void			Update();
+
+							//! 
+	virtual void			Destroy();
 
 };
 

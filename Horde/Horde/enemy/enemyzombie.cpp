@@ -36,6 +36,9 @@ void CEnemyZombie::Update(
 		int backGroundY
 	)
 {
+	if (!m_entity->IsVisible())
+		return;
+
 	TVector<float, 2> moveDirection;
 	moveDirection.Set(132 - m_entity->GetPosition().x(), 96 - m_entity->GetPosition().y());
 	moveDirection.Normalize2D();

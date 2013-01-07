@@ -37,11 +37,16 @@ void CBulletBase::Fire(
 
 void CBulletBase::Update()
 {
-	if (m_enity == NULL)
+	if (!m_enity->IsVisible())
 		return;
 
 	m_position.SetX(m_position.x() + (m_direction.x() * m_speed));
 	m_position.SetY(m_position.y() + (m_direction.y() * m_speed));
 
 	m_enity->SetPosition(m_position.x(), m_position.y());
+}
+
+void CBulletBase::Destroy()
+{
+	m_enity->SetVisible(false);
 }
