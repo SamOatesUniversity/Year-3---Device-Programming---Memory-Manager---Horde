@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="host" />
+	<ActiveTarget name="target" />
 	<File name="IMemoryManager.h" open="1" top="0" tabpos="2">
 		<Cursor position="158" topLine="0" />
 	</File>
 	<File name="NotAmnesia.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="1517" topLine="41" />
 	</File>
-	<File name="NotAmnesia.h" open="1" top="0" tabpos="4">
-		<Cursor position="1041" topLine="21" />
+	<File name="NotAmnesia.h" open="1" top="1" tabpos="4">
+		<Cursor position="1252" topLine="9" />
 	</File>
-	<File name="Tests.cpp" open="1" top="1" tabpos="5">
-		<Cursor position="5327" topLine="219" />
+	<File name="Tests.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="5889" topLine="219" />
 	</File>
 	<File name="Tests.h" open="0" top="0" tabpos="7">
 		<Cursor position="410" topLine="9" />

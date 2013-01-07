@@ -576,3 +576,43 @@
 	<stdlib.h>
 	"IMemoryManager.h"
 
+1357571068 source:c:\users\j9060283\desktop\!amnesia\tests.cpp
+	"Tests.h"
+	"TextOutput.h"
+	"IMemoryManager.h"
+	<assert.h>
+	<sstream>
+
+1357571072 c:\users\j9060283\desktop\!amnesia\tests.h
+	<string>
+
+1357571072 c:\users\j9060283\desktop\!amnesia\textoutput.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1357571068 c:\users\j9060283\desktop\!amnesia\imemorymanager.h
+
+1357571068 source:c:\users\j9060283\desktop\!amnesia\textoutput.cpp
+	"TextOutput.h"
+
+1357571068 source:c:\users\j9060283\desktop\!amnesia\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<SDL.h>
+	<sstream>
+	<iostream>
+	<fstream>
+	"TextOutput.h"
+	"Tests.h"
+
+1357571444 source:c:\users\j9060283\desktop\!amnesia\notamnesia.cpp
+	"NotAmnesia.h"
+
+1357572161 c:\users\j9060283\desktop\!amnesia\notamnesia.h
+	<list>
+	<string>
+	<stdlib.h>
+	"IMemoryManager.h"
+
