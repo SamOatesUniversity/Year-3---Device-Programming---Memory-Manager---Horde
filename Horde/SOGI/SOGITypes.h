@@ -130,6 +130,23 @@ public:
                         {
                             m_values[EW] = w;
                         }
+
+						//! 
+	void				Normalize2D()
+						{
+							const float len = sqrt(static_cast<float>((m_values[EX] * m_values[EX]) + (m_values[EY] * m_values[EY])));
+							m_values[EX] = static_cast<T>(m_values[EX] / len);
+							m_values[EY] = static_cast<T>(m_values[EY] / len);
+						}
+
+						//! 
+	void				Scale(
+								const T scale
+							)
+						{
+							for (unsigned int valueIndex = 0; valueIndex < m_size; ++valueIndex)
+								m_values[valueIndex] *= scale;
+						}
 };
 
 #endif

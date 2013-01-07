@@ -45,8 +45,8 @@ int main (int argc, char *argv[])
             const int xDiff = engine->GetMousePosition()->x() - 160;
             const int yDiff = engine->GetMousePosition()->y() - 120;
 
-            const int moveX = static_cast<int>((engine->GetMousePosition()->x() - 160) * 0.05f);
-            const int moveY = static_cast<int>((engine->GetMousePosition()->y() - 120) * 0.05f);
+            int moveX = static_cast<int>((engine->GetMousePosition()->x() - 160) * 0.05f);
+            int moveY = static_cast<int>((engine->GetMousePosition()->y() - 120) * 0.05f);
 
             if (yDiff != 0) // stop divide by 0
             {
@@ -66,6 +66,8 @@ int main (int argc, char *argv[])
             if (!currentScene->Move(moveX, moveY))
             {
                 player->SetCurrentAnimation("idle");
+				moveX = 0;
+				moveY = 0;
             }
 
 			player->Update();

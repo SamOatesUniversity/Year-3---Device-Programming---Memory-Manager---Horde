@@ -3,7 +3,7 @@
 
 CEnemyZombie::CEnemyZombie()
 {
-
+	m_speed = 2.0f;
 }
 
 CEnemyZombie::~CEnemyZombie()
@@ -28,8 +28,6 @@ bool CEnemyZombie::Create(
 
 	m_entity->SetPosition(static_cast<float>(startX), static_cast<float>(startY));
 
-	m_moveDirection.Set(static_cast<int>((132 - m_entity->GetPosition().x()) * 0.01f), static_cast<int>((96 - m_entity->GetPosition().y()) * 0.01f));
-
 	return true;
 }
 
@@ -38,6 +36,10 @@ void CEnemyZombie::Update(
 		int backGroundY
 	)
 {
+	TVector<float, 2> moveDirection;
+	moveDirection.Set(132 - m_entity->GetPosition().x(), 96 - m_entity->GetPosition().y());
+	moveDirection.Normalize2D();
+	moveDirection.Scale(m_speed); // speed
 
 	const float alpha = static_cast<float>(132 - m_entity->GetPosition().x()) / static_cast<float>(96 - m_entity->GetPosition().y());
 	const float radAngle = atan(alpha);
@@ -49,8 +51,8 @@ void CEnemyZombie::Update(
 	m_entity->SetRotation(rotation);
 
 	m_entity->SetPosition(
-		(m_entity->GetPosition().x() + m_moveDirection.x()) - backGroundX, 
-		(m_entity->GetPosition().y() + m_moveDirection.y()) - backGroundY
+		(m_entity->GetPosition().x() + moveDirection.x()) - backGroundX, 
+		(m_entity->GetPosition().y() + moveDirection.y()) - backGroundY
 	);
 
 }

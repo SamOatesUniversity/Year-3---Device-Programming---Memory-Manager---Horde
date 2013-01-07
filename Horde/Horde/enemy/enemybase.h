@@ -7,8 +7,7 @@ class CEnemyBase {
 protected:
 
 	CLasagneEntity                  *m_entity;					//!<
-
-	TVector<int, 2>					m_moveDirection;			//!< 
+	float							m_speed;					//!< The speed of the enity
 
 public:
 									//!
