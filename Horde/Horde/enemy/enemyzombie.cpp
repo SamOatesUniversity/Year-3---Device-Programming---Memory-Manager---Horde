@@ -23,6 +23,8 @@ bool CEnemyZombie::Create(
 	if (!m_entity)
 		return false;
 
+	m_entity->SetDepth(9);
+
 	m_entity->AddAnimation("walk", 0, 9);
 	m_entity->AddAnimation("dead", 10, 16, false);
 	m_entity->SetCurrentAnimation("walk");
@@ -69,5 +71,6 @@ void CEnemyZombie::Update(
 
 void CEnemyZombie::OnDeath()
 {
+	m_entity->SetDepth(1);
 	m_entity->SetCurrentAnimation("dead");
 }

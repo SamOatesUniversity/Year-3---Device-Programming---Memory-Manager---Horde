@@ -153,10 +153,15 @@ const bool CLasagne::Render()
         }
     }
 
-    for (unsigned int entityIndex = 0; entityIndex < m_entity.size(); ++entityIndex)
-    {
-        m_entity[entityIndex]->Render(m_screen);
-    }
+	for (int depth = 0; depth < 10; ++depth)
+	{
+		for (unsigned int entityIndex = 0; entityIndex < m_entity.size(); ++entityIndex)
+		{
+			CLasagneEntity *const entity = m_entity[entityIndex];
+			if (entity->GetDepth() == depth)
+				entity->Render(m_screen);
+		}
+	}
 
 #if defined(SHOW_FPS)
     // show error messages

@@ -1,6 +1,6 @@
 #include "bulletbase.h"
 
-CBulletBase::CBulletBase() : m_enity(NULL), m_speed(1)
+CBulletBase::CBulletBase() : m_entity(NULL), m_speed(1)
 {
 
 }
@@ -31,22 +31,22 @@ void CBulletBase::Fire(
 	m_position.Set(startPosition.x(), startPosition.y());
 	m_direction.Set(direction.x(), direction.y());
 
-	m_enity->SetRotation(rotation);
-	m_enity->SetVisible(true);
+	m_entity->SetRotation(rotation);
+	m_entity->SetVisible(true);
 }
 
 void CBulletBase::Update()
 {
-	if (!m_enity->IsVisible())
+	if (!m_entity->IsVisible())
 		return;
 
 	m_position.SetX(m_position.x() + (m_direction.x() * m_speed));
 	m_position.SetY(m_position.y() + (m_direction.y() * m_speed));
 
-	m_enity->SetPosition(m_position.x(), m_position.y());
+	m_entity->SetPosition(m_position.x(), m_position.y());
 }
 
 void CBulletBase::Destroy()
 {
-	m_enity->SetVisible(false);
+	m_entity->SetVisible(false);
 }

@@ -9,7 +9,7 @@ class CBulletBase {
 
 protected:
 
-	CLasagneEntity			*m_enity;				//!< 
+	CLasagneEntity			*m_entity;				//!< 
 
 	TVector<float, 2>		m_position;				//!< 
 	TVector<float, 2>		m_direction;			//!< 
