@@ -54,6 +54,8 @@ class CNotAmnesia : public IMemoryManager
         unsigned char                               *m_nextFreePtr;                             //! A pointer of the next cached free memory address
 
         MemoryNugget                                *m_lastNugget;                              //! A pointer to the last allocated memory nugget
+		MemoryNugget                                *m_firstNugget;                             //! A pointer to the first allocated memory nugget
+
 		MemoryNugget                                *m_freeNugget;                              //! A pointer to the last free memory nugget
 
 #ifndef OPTIMIZED
@@ -69,7 +71,7 @@ class CNotAmnesia : public IMemoryManager
 													//! Find a memory nugget based upon a given memory address
 													//! \return THe memory nugget that represents the given address, or nullptr if no memory nugget was found
         MemoryNugget                                *FindMemeoryNugget(
-                                                        void *address							//!< The address to find
+                                                        unsigned char* address							//!< The address to find
                                                     );
 
 													//! Try to merge memory nuggets together to create a larger memory nugget
