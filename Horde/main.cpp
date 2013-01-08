@@ -22,16 +22,16 @@ int main (int argc, char *argv[])
     CScene *currentScene = new CScene();
     currentScene->Load("./media/graphics/level-1/");
 
-    CPlayer *player = new CPlayer();
-    player->Load("./media/graphics/characters/player.png");
-
 	std::vector<CEnemyBase*> enemy;
-	for (int zombieIndex = 0; zombieIndex < 100; ++zombieIndex)
+	for (int zombieIndex = 0; zombieIndex < 10; ++zombieIndex)
 	{
 		CEnemyZombie *zombieTest = new CEnemyZombie();
 		zombieTest->Create(zombieIndex * 64, -100);
 		enemy.push_back(zombieTest);
 	}
+
+	CPlayer *player = new CPlayer();
+	player->Load("./media/graphics/characters/player.png");
 
     Uint32 updateTimer = SDL_GetTicks();
 

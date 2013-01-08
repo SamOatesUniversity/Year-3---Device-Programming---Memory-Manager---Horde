@@ -40,18 +40,25 @@ void CGunBase::Shoot(
 	static const int NoofBullets = m_bullet.size();
 	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)
 	{
-		m_bullet[bulletIndex]->Update();
+		CBulletBase *const bullet = m_bullet[bulletIndex];
+		bullet->Update();
 		for (unsigned int enemyIndex = 0; enemyIndex < enemy.size(); ++enemyIndex)
 		{
 			CEnemyBase *const currentEnemy = enemy[enemyIndex];
+
+			// don't check against invisible enemies
 			if (!currentEnemy->GetEntity()->IsVisible())
 				continue;
 
-			if (m_bullet[bulletIndex]->CheckCollision(currentEnemy->GetEntity()))
+			// don't check against dead enemies
+			if (currentEnemy->GetHealth() <= 0)
+				continue;
+
+			if (bullet->CheckCollision(currentEnemy->GetEntity()))
 			{
-				currentEnemy->GetEntity()->SetVisible(false); // just one hit kill enemies for now
-				//currentEnemy->Damage(10); // should pass in bullet strength
-				m_bullet[bulletIndex]->Destroy();
+				//currentEnemy->GetEntity()->SetVisible(false); // just one hit kill enemies for now
+				currentEnemy->Damage(bullet->GetPower()); // should pass in bullet strength
+				bullet->Destroy();
 			}
 		}		
 	}

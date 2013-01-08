@@ -25,6 +25,9 @@ public:
 										int backGroundY
 									);
 
+									//! Called when an enemy dies
+	virtual void					OnDeath();
+
 };
 
 #endif

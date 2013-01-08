@@ -24,6 +24,12 @@ public:
 	virtual void			Fire(
 								CLasagneEntity *gun
 							);
+
+							//! The power of the bullet (represents the damage done to an enemy on contact)
+	virtual int				GetPower() const
+							{
+								return 350;
+							}
 };
 
 #endif

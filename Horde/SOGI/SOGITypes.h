@@ -158,4 +158,6 @@ public:
 						}
 };
 
+typedef TVector<int, 2> IVec2;
+
 #endif

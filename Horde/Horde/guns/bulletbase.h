@@ -42,6 +42,9 @@ public:
 							//! 
 	virtual void			Destroy();
 
+							//! The power of the bullet (represents the damage done to an enemy on contact)
+	virtual int				GetPower() const = 0;
+
 };
 
 #endif
