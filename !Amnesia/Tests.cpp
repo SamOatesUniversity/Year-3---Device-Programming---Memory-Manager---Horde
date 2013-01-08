@@ -197,13 +197,15 @@ void CTests::CreateNewMM()
 
 void CTests::ShutdownMM()
 {
-    assert(m_memoryMan);
-    m_memoryMan->Shutdown();
-    FlushMMOutput();
-    delete m_memoryMan;
-    m_memoryMan=0;
-    m_mmTextOutput->SetStatusText("Destroyed");
-    FlushMMOutput();
+    if (m_memoryMan != nullptr)
+	{
+		m_memoryMan->Shutdown();
+		FlushMMOutput();
+		delete m_memoryMan;
+		m_memoryMan=0;
+		m_mmTextOutput->SetStatusText("Destroyed");
+		FlushMMOutput();
+	}
 }
 
 /*

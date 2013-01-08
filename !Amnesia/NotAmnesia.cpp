@@ -14,6 +14,7 @@ IMemoryManager *CreateMemoryManagerInstance()
 CNotAmnesia::CNotAmnesia() :
     m_startPtr(nullptr),
     m_lastNugget(nullptr),
+	m_firstNugget(nullptr),
 	m_freeNugget(nullptr),
     m_totalSize(0),
     m_amountAllocated(0)
@@ -102,7 +103,7 @@ void *CNotAmnesia::Allocate(
     if (m_lastNugget == nullptr)
     {
         // first nugget created
-        m_lastNugget = newNugget;
+		m_firstNugget = m_lastNugget = newNugget;
     }
     else
     {
@@ -154,7 +155,11 @@ void CNotAmnesia::Release(
     if (address > (m_startPtr + m_totalSize))
         return;
 
-    MemoryNugget *const nugget = FindMemeoryNugget(address);
+	// we have no nuggets so we wont be able to find it
+	if (m_lastNugget == nullptr)
+		return;
+
+    MemoryNugget *const nugget = FindMemeoryNugget(static_cast<unsigned char*>(address));
 
     // didn't find a nugget for the address specified
     if (nugget == nullptr)
@@ -174,10 +179,16 @@ void CNotAmnesia::Release(
 		{
 			m_nextFreePtr = m_startPtr;
 			m_amountAllocated = 0;
+			m_firstNugget = nullptr;
 		}
     }
 	else
 	{
+		if (m_firstNugget == nugget)
+		{
+			m_firstNugget = next;
+		}
+
 		if (m_freeNugget == nullptr)
 		{
 			#ifndef OPTIMIZED
@@ -266,17 +277,31 @@ const char* const CNotAmnesia::GetTextLine()
 *	\brief	Find a memory nugget based upon a given memory address
 */
 CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemeoryNugget(
-        void *address												//!< The memory address of the nugget we are looking for
+        unsigned char* address												//!< The memory address of the nugget we are looking for
     )
 {
-    MemoryNugget *currentNugget = m_lastNugget;
-    while (currentNugget != nullptr)
-    {
-        if (currentNugget->ptr == address)
-            return currentNugget;
+	if ((m_lastNugget->ptr - address) < (address - m_firstNugget->ptr))
+	{
+		MemoryNugget *currentNugget = m_lastNugget;
+		while (currentNugget != nullptr)
+		{
+			if (currentNugget->ptr == address)
+				return currentNugget;
 
-        currentNugget = currentNugget->prevNugget;
-    }
+			currentNugget = currentNugget->prevNugget;
+		}
+	}
+	else
+	{
+		MemoryNugget *currentNugget = m_firstNugget;
+		while (currentNugget != nullptr)
+		{
+			if (currentNugget->ptr == address)
+				return currentNugget;
+
+			currentNugget = currentNugget->nextNugget;
+		}
+	}
 
     return nullptr;
 }
@@ -318,6 +343,11 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 				m_lastNugget->nextNugget = nextFreeNugget;
 				nextFreeNugget->prevNugget = m_lastNugget;
 				m_lastNugget = nextFreeNugget;
+			}
+
+			if (m_firstNugget == nullptr)
+			{
+				m_firstNugget = nextFreeNugget;
 			}
 
 			#ifndef OPTIMIZED
