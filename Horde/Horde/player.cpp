@@ -2,7 +2,8 @@
 
 CPlayer::CPlayer() :
     m_entity(NULL),
-	m_gun(NULL)
+	m_gun(NULL),
+	m_score(0)
 {
 
 }
@@ -62,5 +63,6 @@ void CPlayer::Update(
 		std::vector<CEnemyBase*> &enemy
 	)
 {
-	m_gun->Shoot(enemy);
+	int noofKills = m_gun->Shoot(enemy);
+	m_score += (noofKills * 10);
 }

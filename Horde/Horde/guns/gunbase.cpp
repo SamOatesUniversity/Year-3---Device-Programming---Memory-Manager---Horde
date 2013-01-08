@@ -14,12 +14,12 @@ CGunBase::~CGunBase()
 
 }
 
-void CGunBase::Shoot(
+int CGunBase::Shoot(
 		std::vector<CEnemyBase*> &enemy
 	)
 {
 	if (m_bullet.empty())
-		return;
+		return 0;
 
 	if (m_nextBullet >= m_bullet.size())
 		m_nextBullet = 0;
@@ -36,6 +36,8 @@ void CGunBase::Shoot(
 		m_lastShot = timer;
 		m_nextBullet++;
 	}
+
+	int noofKills = 0;
 
 	static const int NoofBullets = m_bullet.size();
 	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)
@@ -56,10 +58,12 @@ void CGunBase::Shoot(
 
 			if (bullet->CheckCollision(currentEnemy->GetEntity()))
 			{
-				//currentEnemy->GetEntity()->SetVisible(false); // just one hit kill enemies for now
 				currentEnemy->Damage(bullet->GetPower()); // should pass in bullet strength
 				bullet->Destroy();
+				noofKills++;
 			}
 		}		
 	}
+
+	return noofKills;
 }

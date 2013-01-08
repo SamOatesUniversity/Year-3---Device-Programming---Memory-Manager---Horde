@@ -42,7 +42,10 @@ int main (int argc, char *argv[])
 	CPlayer *player = new CPlayer();
 	player->Load("./media/graphics/characters/player.png");
 
+	CLasagneText *const scoreText = engine->CreateText("Score: 0", 4, 4);
+	
     Uint32 updateTimer = SDL_GetTicks();
+	Uint32 scoreTimer = updateTimer;
 
     // whilst the engine is running loop
 	do
@@ -93,10 +96,19 @@ int main (int argc, char *argv[])
 			}
 
 			player->Update(enemy);
+			
+			std::stringstream buf;
+			buf << "Score: " << player->GetScore();
+			scoreText->SetText(buf.str().c_str());
 
             updateTimer = SDL_GetTicks();
         }
 
+		if (SDL_GetTicks() - scoreTimer > 500)
+		{
+			player->IncreaseScore(1);
+			scoreTimer = SDL_GetTicks();
+		}
 
 	} while (engine->Render());
 
