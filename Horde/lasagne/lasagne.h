@@ -26,6 +26,7 @@ private:
     std::vector<CLasagneText*>          m_errorText;            //!<
 
     std::vector<CLasagneEntity*>        m_entity;               //!<
+	std::vector<CLasagneText*>			m_textEntity;           //!<
 
 #if defined(SHOW_FPS)
     struct {
@@ -93,6 +94,13 @@ public:
                                              const char* imageFile,                       //!<
                                              const TVector<int, 2> &noofFrames             //!<
                                         );
+
+										//! 
+	CLasagneText*						CreateText(
+											char *text,
+											int x,
+											int y
+										);
 
                                         //! Get the stored mouse position
     const TVector<int, 2>               *GetMousePosition() const

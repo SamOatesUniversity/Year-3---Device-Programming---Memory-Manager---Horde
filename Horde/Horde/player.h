@@ -16,6 +16,7 @@ private:
 
     CLasagneEntity                          *m_entity;
 	CGunBase								*m_gun;
+	int										m_score;
 
 public:
 
@@ -34,6 +35,18 @@ public:
     CLasagneEntity							*GetEntity() const
 											{
 												return m_entity;
+											}
+
+	const int								GetScore() const
+											{
+												return m_score;
+											}
+
+	void									IncreaseScore(
+												const int score
+											)
+											{
+												m_score += score;
 											}
 
 	void									SetRotation(

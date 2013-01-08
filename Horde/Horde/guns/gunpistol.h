@@ -17,7 +17,7 @@ public:
 	virtual void					Create();
 
 									//!
-    virtual void					Shoot(
+    virtual int 					Shoot(
 										std::vector<CEnemyBase*> &enemy
 									);
 };

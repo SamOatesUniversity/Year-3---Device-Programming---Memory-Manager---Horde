@@ -18,6 +18,8 @@ private:
 
     SDL_Rect        m_drawRect;                     //!< The bounds of the draw region
 
+	IVec2			m_position;						//!< 
+
 public:
                     //! Class constructor
                     CLasagneText();
@@ -35,11 +37,15 @@ public:
                         const std::string &text      //!< The string this text object represents
                     );
 
+					//!
+	void			SetPosition(
+						int x,						//!< 
+						int y						//!< 
+					);
+
                     //! Create the text object
     void            Render(
-                        SDL_Surface *surface,       //!< The surface to blit our text surface too
-                        const int &x,
-                        const int &y
+                        SDL_Surface *surface        //!< The surface to blit our text surface too
                     );
 
 public:

@@ -93,6 +93,7 @@ const bool CLasagne::Create()
     m_fps.fps = 0;
     m_fps.count = 0;
     m_fps.time = SDL_GetTicks();
+	m_fps.text->SetPosition(4, 222);
 #endif
 
     return true;
@@ -163,11 +164,18 @@ const bool CLasagne::Render()
 		}
 	}
 
+	for (unsigned int textIndex = 0; textIndex < m_textEntity.size(); ++textIndex)
+	{
+		CLasagneText *const text = m_textEntity[textIndex];
+		text->Render(m_screen);
+	}
+
 #if defined(SHOW_FPS)
     // show error messages
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
-        m_errorText[textIndex]->Render(m_screen, 2, 2 + (textIndex * 14));
+		m_errorText[textIndex]->SetPosition(2, 2 + (textIndex * 14));
+        m_errorText[textIndex]->Render(m_screen);
     }
 
     m_fps.count++;
@@ -184,7 +192,7 @@ const bool CLasagne::Render()
         m_fps.text->SetText(buf.str());
     }
 
-    m_fps.text->Render(m_screen, 4, 200);
+    m_fps.text->Render(m_screen);
 #endif
 
     SDL_Flip(m_screen);
@@ -282,4 +290,17 @@ CLasagneEntity *CLasagne::LoadAnimatedImage(
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize, noofFrames);
     m_entity.push_back(entity);
     return entity;
+}
+
+CLasagneText* CLasagne::CreateText( 
+		char *text, 
+		int x, 
+		int y 
+	)
+{
+	CLasagneText *const newText = new CLasagneText();
+	newText->Create(text);
+	newText->SetPosition(x, y);
+	m_textEntity.push_back(newText);
+	return newText;
 }

@@ -70,12 +70,18 @@ void CLasagneText::SetText(
 }
 
 void CLasagneText::Render(
-        SDL_Surface *surface,        //!< The surface to blit our text surface too
-        const int &x,
-        const int &y
+        SDL_Surface *surface         //!< The surface to blit our text surface too
     )
 {
-    m_drawRect.x = x;
-    m_drawRect.y = y;
+    m_drawRect.x = m_position.x();
+    m_drawRect.y = m_position.y();
     SDL_BlitSurface(m_surface, NULL, surface, &m_drawRect);
+}
+
+void CLasagneText::SetPosition( 
+		int x,						//!< 
+		int y						//!< 
+	)
+{
+	m_position.Set(x, y);
 }
