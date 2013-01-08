@@ -17,6 +17,7 @@ private:
     CLasagneEntity                          *m_entity;
 	CGunBase								*m_gun;
 	int										m_score;
+	int										m_health;
 
 public:
 
@@ -40,6 +41,11 @@ public:
 	const int								GetScore() const
 											{
 												return m_score;
+											}
+
+	const int								GetHealth() const
+											{
+												return m_health;
 											}
 
 	void									IncreaseScore(

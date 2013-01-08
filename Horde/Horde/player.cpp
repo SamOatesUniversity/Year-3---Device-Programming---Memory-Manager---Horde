@@ -3,7 +3,8 @@
 CPlayer::CPlayer() :
     m_entity(NULL),
 	m_gun(NULL),
-	m_score(0)
+	m_score(0),
+	m_health(100)
 {
 
 }
@@ -63,6 +64,23 @@ void CPlayer::Update(
 		std::vector<CEnemyBase*> &enemy
 	)
 {
+	if (m_health == 0)
+		return;
+
 	int noofKills = m_gun->Shoot(enemy);
 	m_score += (noofKills * 10);
+
+	for (unsigned int enemyIndex = 0; enemyIndex < enemy.size(); ++enemyIndex)
+	{
+		CEnemyBase *const currentEnemy = enemy[enemyIndex];
+		const float xDiff = currentEnemy->GetEntity()->GetPosition().x() - m_entity->GetPosition().x();
+		const float yDiff = currentEnemy->GetEntity()->GetPosition().y() - m_entity->GetPosition().y();
+
+		if (CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 12.0f))
+		{
+			m_health--;
+			if (m_health < 0)
+				m_health = 0;
+		}
+	}
 }

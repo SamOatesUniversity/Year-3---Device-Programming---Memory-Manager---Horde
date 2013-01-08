@@ -42,7 +42,13 @@ int main (int argc, char *argv[])
 	CPlayer *player = new CPlayer();
 	player->Load("./media/graphics/characters/player.png");
 
-	CLasagneText *const scoreText = engine->CreateText("Score: 0", 4, 4);
+	CLasagneText *const scoreText = engine->CreateText("Score: 0", 4, 20);
+	CLasagneText *const healthText = engine->CreateText("Health: 100", 4, 4);
+
+	CLasagneEntity *const playerDead = engine->LoadImage("./media/graphics/player-dead.png");
+	playerDead->SetDepth(9);
+	playerDead->SetPosition(96, 56);
+	playerDead->SetVisible(false);
 	
     Uint32 updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
@@ -60,19 +66,27 @@ int main (int argc, char *argv[])
 			int moveX = static_cast<int>(xDiff * 0.05f);
 			int moveY = static_cast<int>(yDiff * 0.05f);
 
-			if (yDiff != 0) // stop divide by 0
+			if (player->GetHealth() == 0)
 			{
-				const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
-				const float radAngle = atan(alpha);
-				int rotation = static_cast<int>(radAngle * 57.0f);
-
-				if (yDiff < 0)
-				{
-					rotation += 180;
-				}
-
-				player->SetRotation(rotation);
+				moveX = 0;
+				moveY = 0;
 			}
+			else
+			{
+				if (yDiff != 0) // stop divide by 0
+				{
+					const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
+					const float radAngle = atan(alpha);
+					int rotation = static_cast<int>(radAngle * 57.0f);
+
+					if (yDiff < 0)
+					{
+						rotation += 180;
+					}
+
+					player->SetRotation(rotation);
+				}
+			}			
 
 			if (!CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 25.0f))
 			{
@@ -97,14 +111,24 @@ int main (int argc, char *argv[])
 
 			player->Update(enemy);
 			
-			std::stringstream buf;
-			buf << "Score: " << player->GetScore();
-			scoreText->SetText(buf.str().c_str());
+			std::stringstream scoreBuffer;
+			scoreBuffer << "Score: " << player->GetScore();
+			scoreText->SetText(scoreBuffer.str().c_str());
+
+			std::stringstream healthBuffer;
+			healthBuffer << "Health: " << player->GetHealth();
+			healthText->SetText(healthBuffer.str().c_str());
+
+			if (player->GetHealth() == 0)
+			{
+				if (!playerDead->IsVisible())
+					playerDead->SetVisible(true);
+			}
 
             updateTimer = SDL_GetTicks();
         }
 
-		if (SDL_GetTicks() - scoreTimer > 500)
+		if (player->GetHealth() != 0 && SDL_GetTicks() - scoreTimer > 500)
 		{
 			player->IncreaseScore(1);
 			scoreTimer = SDL_GetTicks();

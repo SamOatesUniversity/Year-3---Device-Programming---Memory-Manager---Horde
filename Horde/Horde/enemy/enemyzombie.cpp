@@ -23,7 +23,7 @@ bool CEnemyZombie::Create(
 	if (!m_entity)
 		return false;
 
-	m_entity->SetDepth(9);
+	m_entity->SetDepth(7);
 
 	m_entity->AddAnimation("walk", 0, 9);
 	m_entity->AddAnimation("dead", 10, 16, false);
