@@ -22,11 +22,20 @@ int main (int argc, char *argv[])
     CScene *currentScene = new CScene();
     currentScene->Load("./media/graphics/level-1/");
 
+	IVec2 spawnPoint;
+	static const int swarmSize = 2;
+
 	std::vector<CEnemyBase*> enemy;
-	for (int zombieIndex = 0; zombieIndex < 10; ++zombieIndex)
+	for (int zombieIndex = 0; zombieIndex < 40; ++zombieIndex)
 	{
+		if (zombieIndex % swarmSize == 0)
+			spawnPoint.Set(
+				132 + ((rand() % 2048) - 1024), 
+				96 + ((rand() % 2048) - 1024)
+			);
+
 		CEnemyZombie *zombieTest = new CEnemyZombie();
-		zombieTest->Create(zombieIndex * 64, -100);
+		zombieTest->Create(spawnPoint.x() + ((zombieIndex % swarmSize) * 64), spawnPoint.y());
 		enemy.push_back(zombieTest);
 	}
 

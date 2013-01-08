@@ -32,6 +32,7 @@ private:
 
     TVector<int, 2>                         m_frameSize;
 	bool									m_visible;
+	int										m_rendeDepth;
 
 public:
                             //!
@@ -135,6 +136,20 @@ public:
 	const bool				Intersects(
 								CLasagneEntity *other
 							);
+
+							//! 
+	const int				GetDepth() const
+							{
+								return m_rendeDepth;
+							}
+
+							//! 
+	void					SetDepth(
+								const int depth
+							)
+							{
+								m_rendeDepth = depth;
+							}
 };
 
 #endif // LASAGNE_ENTITY_H_INCLUDED

@@ -22,6 +22,8 @@ const bool CPlayer::Load(
     if (!m_entity)
         return false;
 
+	m_entity->SetDepth(5);
+
     m_entity->SetPosition(132, 96);
 
     m_entity->AddAnimation("idle", 0, 9);

@@ -18,6 +18,8 @@ void CGunPistol::Create()
 	if (!m_entity)
 		return;
 
+	m_entity->SetDepth(5);
+
 	static const int NoofBullets = 2;
 	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)
 	{

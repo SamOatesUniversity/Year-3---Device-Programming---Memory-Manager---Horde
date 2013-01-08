@@ -17,7 +17,10 @@ const bool CScene::Load(
     const std::string backgroundLocation = folderLocation + "background.jpg";
 
     for (int backgroundIndex = 0; backgroundIndex < NOOF_BACKGROUNDS; ++backgroundIndex)
+	{
         m_background[backgroundIndex] = CLasagne::GetInstance()->LoadImage(backgroundLocation.c_str());
+		m_background[backgroundIndex]->SetDepth(0);
+	}
 
     for (int x = -1; x <= 1; ++x)
     {

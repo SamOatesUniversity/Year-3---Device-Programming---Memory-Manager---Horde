@@ -13,9 +13,10 @@ CBulletPistol::~CBulletPistol()
 
 void CBulletPistol::Create()
 {
-	m_enity = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/guns/pistol/bullet.png");
-	m_enity->SetPosition(132, 96);
-	m_enity->SetVisible(false);
+	m_entity = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/guns/pistol/bullet.png");
+	m_entity->SetPosition(132, 96);
+	m_entity->SetVisible(false);
+	m_entity->SetDepth(5);
 }
 
 bool CBulletPistol::CheckCollision( 
@@ -23,10 +24,10 @@ bool CBulletPistol::CheckCollision(
 	)
 {
 	// if the bullet isnt visible, dont check for collisions
-	if (m_enity->IsVisible() == false)
+	if (m_entity->IsVisible() == false)
 		return false;
 
-	if (m_enity->Intersects(other))
+	if (m_entity->Intersects(other))
 		return true;
 
 	return false;
