@@ -24,11 +24,13 @@ private:
     Uint32                                  m_lastFrameTime;
     std::string                             m_currentAnimation;
 
-    typedef TVector<int, 2>                 IVec2;
-    std::map<std::string, IVec2>            m_animation;
+	struct AnimationData {
+		TVector<int, 2> frames;
+		bool loop;
+	};
+    std::map<std::string, AnimationData>    m_animation;
 
-    IVec2                                   m_frameSize;
-
+    TVector<int, 2>                         m_frameSize;
 	bool									m_visible;
 
 public:
@@ -97,7 +99,8 @@ public:
     bool                    AddAnimation(
                                 const char *name,               //!<
                                 const int frameStart,           //!<
-                                const int frameEnd              //!<
+                                const int frameEnd,             //!<
+								const bool loop = true			//!< 
                             );
 
                             //!

@@ -92,13 +92,19 @@ void CLasagneEntity::Render(
             if (m_currentAnimation.length() == 0)
             {
                 if (m_currentFrame >= (m_noofFramesX * m_noofFramesY))
-                    m_currentFrame = 0;
+					m_currentFrame = 0;
             }
             else
             {
-                IVec2 frames = m_animation[m_currentAnimation];
+				const AnimationData &animData = m_animation[m_currentAnimation];
+                IVec2 frames = animData.frames;
                 if (m_currentFrame >= frames.y())
-                    m_currentFrame = frames.x();
+				{
+					if (animData.loop)
+						m_currentFrame = frames.x();
+					else
+						m_currentFrame = frames.y() - 1;
+				}
             }
         }
 
@@ -130,12 +136,15 @@ void CLasagneEntity::Render(
 bool CLasagneEntity::AddAnimation(
         const char *name,               //!<
         const int frameStart,           //!<
-        const int frameEnd              //!<
+        const int frameEnd,             //!<
+		const bool loop
     )
 {
-    IVec2 frames;
-    frames.Set(frameStart, frameEnd);
-    m_animation[name] = frames;
+	AnimationData data;
+	data.frames.Set(frameStart, frameEnd);
+	data.loop = loop;
+
+    m_animation[name] = data;
 
     return true;
 }
@@ -146,7 +155,7 @@ void CLasagneEntity::SetCurrentAnimation(
 {
     if (strcmp(animation, m_currentAnimation.c_str()) != 0)
     {
-        IVec2 frames = m_animation[animation];
+        IVec2 frames = m_animation[animation].frames;
         m_currentFrame = frames.x();
     }
 
