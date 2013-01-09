@@ -31,7 +31,7 @@ bool CEnemyZombie::Create(
 
 	m_entity->SetPosition(static_cast<float>(startX), static_cast<float>(startY));
 
-	m_pickup = new CPickupHealth(player);
+	if (rand() % 5 == 0) m_pickup = new CPickupHealth(player);
 
 	return true;
 }
@@ -41,7 +41,8 @@ void CEnemyZombie::Update(
 		int backGroundY
 	)
 {
-	m_pickup->Update(backGroundX, backGroundY);
+	if (m_pickup != NULL)
+		m_pickup->Update(backGroundX, backGroundY);
 
 	if (!m_entity->IsVisible())
 		return;
