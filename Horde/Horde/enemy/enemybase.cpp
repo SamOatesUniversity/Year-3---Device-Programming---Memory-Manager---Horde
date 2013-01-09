@@ -3,7 +3,8 @@
 CEnemyBase::CEnemyBase() :
 	m_entity(NULL),
 	m_speed(1.0f),
-	m_health(100)
+	m_health(100),
+	m_pickup(NULL)
 {
 }
 

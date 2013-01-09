@@ -2,13 +2,11 @@
 #define PLAYER_H_INCLUDED
 
 #include "../lasagne/lasagne.h"
-
-#include "enemy/enemybase.h"
-
-#include "guns/gunbase.h"
-#include "guns/gunpistol.h"
-
 #include <map>
+
+class CEnemyBase;
+class CGunBase;
+class CGunPistol;
 
 class CPlayer {
 
@@ -53,6 +51,15 @@ public:
 											)
 											{
 												m_score += score;
+											}
+
+	void									IncreaseHealth(
+												const int health
+											)
+											{
+												m_health += health;
+												if (m_health > 100)
+													m_health = 100;
 											}
 
 	void									SetRotation(

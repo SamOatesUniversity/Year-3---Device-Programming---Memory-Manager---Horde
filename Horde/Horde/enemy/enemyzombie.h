@@ -2,6 +2,7 @@
 #define ENEMYZOMBIE_H_INCLUDED
 
 #include "enemybase.h"
+#include "../pickups/pickuphealth.h"
 
 class CEnemyZombie : public CEnemyBase {
 protected:
@@ -16,7 +17,8 @@ public:
 									//!
 	virtual bool					Create(
 										int startX,
-										int startY
+										int startY,
+										CPlayer *player
 									);
 
 									//!

@@ -106,6 +106,8 @@
     <ClCompile Include="guns\bulletpistol.cpp" />
     <ClCompile Include="guns\gunbase.cpp" />
     <ClCompile Include="guns\gunpistol.cpp" />
+    <ClCompile Include="pickups\pickupbase.cpp" />
+    <ClCompile Include="pickups\pickuphealth.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="scenebase.cpp" />
   </ItemGroup>
@@ -126,6 +128,8 @@
     <ClInclude Include="guns\bulletpistol.h" />
     <ClInclude Include="guns\gunbase.h" />
     <ClInclude Include="guns\gunpistol.h" />
+    <ClInclude Include="pickups\pickupbase.h" />
+    <ClInclude Include="pickups\pickuphealth.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="scenebase.h" />
   </ItemGroup>

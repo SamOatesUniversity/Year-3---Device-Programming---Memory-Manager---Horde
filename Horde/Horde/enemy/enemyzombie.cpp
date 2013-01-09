@@ -13,10 +13,10 @@ CEnemyZombie::~CEnemyZombie()
 
 bool CEnemyZombie::Create(
 		int startX,
-		int startY
+		int startY,
+		CPlayer *player
 	)
 {
-
 	TVector<int, 2> frameLayout;
 	frameLayout.Set(8, 2);
 	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./media/graphics/characters/zombie.png", frameLayout);
@@ -31,6 +31,8 @@ bool CEnemyZombie::Create(
 
 	m_entity->SetPosition(static_cast<float>(startX), static_cast<float>(startY));
 
+	m_pickup = new CPickupHealth(player);
+
 	return true;
 }
 
@@ -39,6 +41,8 @@ void CEnemyZombie::Update(
 		int backGroundY
 	)
 {
+	m_pickup->Update(backGroundX, backGroundY);
+
 	if (!m_entity->IsVisible())
 		return;
 
@@ -66,11 +70,15 @@ void CEnemyZombie::Update(
 		(m_entity->GetPosition().x() + moveDirection.x()) - backGroundX, 
 		(m_entity->GetPosition().y() + moveDirection.y()) - backGroundY
 	);
-
 }
 
 void CEnemyZombie::OnDeath()
 {
 	m_entity->SetDepth(1);
 	m_entity->SetCurrentAnimation("dead");
+
+	if (m_pickup != NULL)
+	{
+		m_pickup->Drop(m_entity->GetPosition().x() + 16, m_entity->GetPosition().y() + 16);
+	}
 }
