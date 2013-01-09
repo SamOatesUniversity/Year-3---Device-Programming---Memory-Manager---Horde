@@ -1,4 +1,5 @@
 #include "player.h"
+#include "guns/gunpistol.h"
 
 CPlayer::CPlayer() :
     m_entity(NULL),
@@ -73,6 +74,9 @@ void CPlayer::Update(
 	for (unsigned int enemyIndex = 0; enemyIndex < enemy.size(); ++enemyIndex)
 	{
 		CEnemyBase *const currentEnemy = enemy[enemyIndex];
+		if (currentEnemy->GetHealth() == 0)
+			continue;
+
 		const float xDiff = currentEnemy->GetEntity()->GetPosition().x() - m_entity->GetPosition().x();
 		const float yDiff = currentEnemy->GetEntity()->GetPosition().y() - m_entity->GetPosition().y();
 

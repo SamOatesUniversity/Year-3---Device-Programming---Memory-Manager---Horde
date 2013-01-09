@@ -22,6 +22,9 @@ int main (int argc, char *argv[])
     CScene *currentScene = new CScene();
     currentScene->Load("./media/graphics/level-1/");
 
+	CPlayer *player = new CPlayer();
+	player->Load("./media/graphics/characters/player.png");
+
 	IVec2 spawnPoint;
 	static const int swarmSize = 2;
 
@@ -35,12 +38,9 @@ int main (int argc, char *argv[])
 			);
 
 		CEnemyZombie *zombieTest = new CEnemyZombie();
-		zombieTest->Create(spawnPoint.x() + ((zombieIndex % swarmSize) * 64), spawnPoint.y());
+		zombieTest->Create(spawnPoint.x() + ((zombieIndex % swarmSize) * 64), spawnPoint.y(), player);
 		enemy.push_back(zombieTest);
 	}
-
-	CPlayer *player = new CPlayer();
-	player->Load("./media/graphics/characters/player.png");
 
 	CLasagneText *const scoreText = engine->CreateText("Score: 0", 4, 20);
 	CLasagneText *const healthText = engine->CreateText("Health: 100", 4, 4);

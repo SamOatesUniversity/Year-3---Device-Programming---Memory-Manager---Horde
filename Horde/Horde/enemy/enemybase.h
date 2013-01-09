@@ -2,13 +2,20 @@
 #define ENEMYBASE_H_INCLUDED
 
 #include "../../lasagne/lasagne.h"
+#include "../pickups/pickupbase.h"
+#include "../player.h"
 
 class CEnemyBase {
+
+	friend class CPlayer;
+
 protected:
 
 	CLasagneEntity                  *m_entity;					//!<
 	float							m_speed;					//!< The speed of the enity
 	int								m_health;					//!< Howmuch health the enemy has
+
+	CPickupBase						*m_pickup;					//!< 
 
 public:
 									//!
@@ -20,7 +27,8 @@ public:
 									//!
 	virtual bool					Create(
 										int startX,
-										int startY
+										int startY,
+										CPlayer *player
 									) = 0;
 
 									//!
