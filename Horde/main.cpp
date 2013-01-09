@@ -1,3 +1,4 @@
+#include "main.h"
 #include "lasagne/lasagne.h"
 #include "Horde/scenebase.h"
 #include "Horde/player.h"
@@ -28,13 +29,15 @@ int main (int argc, char *argv[])
 	IVec2 spawnPoint;
 	static const int swarmSize = 2;
 
+	int noofEnemies = 3;
+
 	std::vector<CEnemyBase*> enemy;
-	for (int zombieIndex = 0; zombieIndex < 40; ++zombieIndex)
+	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
 	{
 		if (zombieIndex % swarmSize == 0)
 			spawnPoint.Set(
-				132 + ((rand() % 2048) - 1024), 
-				96 + ((rand() % 2048) - 1024)
+				132 + ((rand() % 256) - 128), 
+				96 + ((rand() % 256) - 128)
 			);
 
 		CEnemyZombie *zombieTest = new CEnemyZombie();
@@ -49,6 +52,11 @@ int main (int argc, char *argv[])
 	playerDead->SetDepth(9);
 	playerDead->SetPosition(96, 56);
 	playerDead->SetVisible(false);
+
+	CLasagneEntity *const levelComplete = engine->LoadImage("./media/graphics/level-complete.png");
+	levelComplete->SetDepth(9);
+	levelComplete->SetPosition(96, 56);
+	levelComplete->SetVisible(false);
 	
     Uint32 updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
@@ -56,6 +64,11 @@ int main (int argc, char *argv[])
     // whilst the engine is running loop
 	do
 	{
+		if (gameState == GameState::LoadingLevel)
+		{
+
+			continue;
+		}
 
         // update logic at 20 fps
         if (SDL_GetTicks() - updateTimer > 50)
@@ -104,9 +117,20 @@ int main (int argc, char *argv[])
 				player->SetCurrentAnimation("idle");
 			}
 
+			int noofDead = 0;
 			for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
 			{
-				enemy[zombieIndex]->Update(moveX, moveY);
+				CEnemyBase *const currentEnemy = enemy[zombieIndex];
+				currentEnemy->Update(moveX, moveY);
+				if (currentEnemy->GetHealth() <= 0)
+					noofDead++;
+			}
+
+			if (noofEnemies - noofDead == 0 && gameState == GameState::InLevel)
+			{
+				levelComplete->SetVisible(true);
+				gameState = GameState::LevelComplete;
+				levelEndTimer = SDL_GetTicks();
 			}
 
 			player->Update(enemy);
@@ -125,10 +149,16 @@ int main (int argc, char *argv[])
 					playerDead->SetVisible(true);
 			}
 
+			if (gameState == GameState::LevelComplete && SDL_GetTicks() - levelEndTimer > 5000)
+			{
+				gameState = GameState::LoadingLevel;
+				levelEndTimer = 0;
+			}
+
             updateTimer = SDL_GetTicks();
         }
 
-		if (player->GetHealth() != 0 && SDL_GetTicks() - scoreTimer > 500)
+		if (player->GetHealth() != 0 && gameState == GameState::InLevel && SDL_GetTicks() - scoreTimer > 500)
 		{
 			player->IncreaseScore(1);
 			scoreTimer = SDL_GetTicks();

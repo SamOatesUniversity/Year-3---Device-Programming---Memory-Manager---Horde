@@ -119,6 +119,7 @@
     <ClInclude Include="..\lasagne\lasagne-surface.h" />
     <ClInclude Include="..\lasagne\lasagne-text.h" />
     <ClInclude Include="..\lasagne\lasagne.h" />
+    <ClInclude Include="..\main.h" />
     <ClInclude Include="..\SOGI\SOGI.h" />
     <ClInclude Include="..\SOGI\SOGITypes.h" />
     <ClInclude Include="..\SOGI\stack\stack.h" />
