@@ -13,7 +13,6 @@ class CLasagneEntity {
 private:
 
     SDL_Surface                             *m_image;                       //!<
-    SDL_Surface                             *m_frame;
 
     TVector<float, 2>                       m_screenPosition;               //!<
     int                                     m_rotation;                     //!<
