@@ -9,8 +9,8 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesY(0),
     m_currentFrame(0),
     m_rotation(0),
-	m_frame(NULL),
-	m_rendeDepth(0)
+	m_rendeDepth(0),
+	m_visible(true)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -31,8 +31,8 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesY(noofFrames.y()),
     m_currentFrame(0),
 	m_rotation(0),
-	m_frame(NULL),
-	m_rendeDepth(0)
+	m_rendeDepth(0),
+	m_visible(true)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
