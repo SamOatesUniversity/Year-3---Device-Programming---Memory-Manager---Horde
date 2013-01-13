@@ -29,7 +29,7 @@ private:
 	};
     std::map<std::string, AnimationData>    m_animation;
 
-    TVector<int, 2>                         m_frameSize;
+    SDL_Rect								m_frameSize;
 	bool									m_visible;
 	int										m_rendeDepth;
 
@@ -64,7 +64,9 @@ public:
 							//! 
 	TVector<int, 2>			GetFrameSize() const
 							{
-								return m_frameSize;
+								TVector<int, 2> coord;
+								coord.Set(m_frameSize.w, m_frameSize.h);
+								return coord;
 							}
 
 							//! 
