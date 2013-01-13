@@ -29,7 +29,7 @@ int main (int argc, char *argv[])
 	IVec2 spawnPoint;
 	static const int swarmSize = 2;
 
-	int noofEnemies = 3;
+	int noofEnemies = 30;
 
 	std::vector<CEnemyBase*> enemy;
 	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
@@ -153,6 +153,7 @@ int main (int argc, char *argv[])
 			{
 				gameState = GameState::LoadingLevel;
 				levelEndTimer = 0;
+				player->SetCurrentAnimation("idle");
 			}
 
             updateTimer = SDL_GetTicks();
