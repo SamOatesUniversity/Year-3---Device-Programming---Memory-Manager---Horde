@@ -41,7 +41,10 @@ CLasagneEntity::CLasagneEntity(
     }
     else
     {
-        m_frameSize.Set(m_image->w / m_noofFramesX, m_image->h / m_noofFramesY);
+        m_frameSize.x = 0;
+		m_frameSize.y = 0;
+		m_frameSize.w = m_image->w / m_noofFramesX;
+		m_frameSize.h = m_image->h / m_noofFramesY;
     }
 
     m_screenPosition.Set(0.0f, 0.0f);
@@ -51,7 +54,6 @@ CLasagneEntity::CLasagneEntity(
 
 CLasagneEntity::~CLasagneEntity()
 {
-
 }
 
 void CLasagneEntity::Render(
@@ -72,9 +74,6 @@ void CLasagneEntity::Render(
     }
     else
     {
-        SDL_Rect srcRect;
-        srcRect.w = m_frameSize.x();
-        srcRect.h = m_frameSize.y();
 
         int xOffset = m_currentFrame;
         int yOffset = 0;
@@ -110,27 +109,23 @@ void CLasagneEntity::Render(
             }
         }
 
-        srcRect.x = xOffset * m_frameSize.x();
-        srcRect.y = yOffset * m_frameSize.y();
+		const int pixelOffset = ((m_image->w * m_frameSize.h) * yOffset) + (m_frameSize.w * xOffset);
 
-        SDL_Surface *frameSurface = SDL_CreateRGBSurface(0, m_frameSize.x(), m_frameSize.y(), 32, 0, 0, 0, 0);
+		SDL_PixelFormat *const fmt = m_image->format;
+		SDL_Surface *const frame = SDL_CreateRGBSurfaceFrom(
+			(void*)((unsigned int*)m_image->pixels + pixelOffset),
+			m_frameSize.w, m_frameSize.h, fmt->BitsPerPixel, m_image->pitch,
+			fmt->Rmask, fmt->Gmask, fmt->Bmask, fmt->Amask
+		);
 
-        SDL_Rect rcRect;
-        rcRect.x = 0;
-        rcRect.y = 0;
-        rcRect.w = m_frameSize.x();
-        rcRect.h = m_frameSize.y();
-        SDL_BlitSurface(m_image, &srcRect, frameSurface, &rcRect);
-        SDL_Flip(frameSurface);
+        SDL_Surface *rotateFrame = rotozoomSurface(frame, m_rotation, 1, 0);
 
-        SDL_Surface *rotateFrame = rotozoomSurface(frameSurface, m_rotation, 1, 0);
-        SDL_SetColorKey(rotateFrame, SDL_SRCCOLORKEY, SDL_MapRGB(rotateFrame->format, 0, 0, 0));
-
+		SDL_Rect rcRect;
         rcRect.x = static_cast<Sint16>(m_screenPosition.x());
         rcRect.y = static_cast<Sint16>(m_screenPosition.y());
         SDL_BlitSurface(rotateFrame, NULL, screen, &rcRect);
 
-        SDL_FreeSurface(frameSurface);
+		SDL_FreeSurface(frame);
         SDL_FreeSurface(rotateFrame);
     }
 }
@@ -181,13 +176,13 @@ const bool CLasagneEntity::Intersects(
 	if (m_screenPosition.x() > otherPosition.x() + otherSize.x())
 		return false;
 
-	if (m_screenPosition.x() + m_frameSize.x() < otherPosition.x())
+	if (m_screenPosition.x() + m_frameSize.w < otherPosition.x())
 		return false;
 
 	if (m_screenPosition.y() > otherPosition.y() + otherSize.y())
 		return false;
 
-	if (m_screenPosition.y() + m_frameSize.y() < otherPosition.y())
+	if (m_screenPosition.y() + m_frameSize.h < otherPosition.y())
 		return false;
 
 	return true;
