@@ -104,7 +104,7 @@ void *CNotAmnesia::Allocate(
 }
 
 /*
-*	\brief	NOT IMPLEMENTED
+*	\brief	Allocate memory from our buffer, aligned to a given alignment, storing it in a memory nugget
 */
 void *CNotAmnesia::AllocateAligned(
         size_t numBytes,
@@ -129,7 +129,38 @@ void *CNotAmnesia::AllocateAligned(
 		m_nextFreePtr += paddingNugget->totalSize;
 		m_amountAllocated += paddingNugget->totalSize;
 
-		PushNuggetToAllocatedList(paddingNugget);
+		#ifndef OPTIMIZED
+			paddingNugget->file = file;
+			paddingNugget->line = line;
+		#endif
+
+		if (m_freeNugget == nullptr)
+		{
+			#ifndef OPTIMIZED
+				if (paddingNugget->totalSize > 10)
+					strncpy_s((char*)(paddingNugget->ptr), paddingNugget->totalSize, "RELEASED", paddingNugget->totalSize);
+
+				m_noofFreeNuggets++;
+			#endif
+
+			m_freeNugget = paddingNugget;
+			m_freeNugget->nextNugget = nullptr;
+			m_freeNugget->prevNugget = nullptr;
+		}
+		else
+		{
+			#ifndef OPTIMIZED
+				if (paddingNugget->totalSize > 10)
+					strncpy_s((char*)(paddingNugget->ptr), paddingNugget->totalSize, "RELEASED", paddingNugget->totalSize);
+
+				m_noofFreeNuggets++;
+			#endif
+
+			m_freeNugget->nextNugget = paddingNugget;
+			paddingNugget->prevNugget = m_freeNugget;
+			paddingNugget->nextNugget = nullptr;
+			m_freeNugget = paddingNugget;
+		}
 	}
 
 	// The memory address should now be aligned to the given alignment
@@ -141,6 +172,11 @@ void *CNotAmnesia::AllocateAligned(
 	newNugget->totalSize = numBytes;
 	m_nextFreePtr += newNugget->totalSize;
 	m_amountAllocated += newNugget->totalSize;
+
+	#ifndef OPTIMIZED
+		newNugget->file = file;
+		newNugget->line = line;
+	#endif
 
 	PushNuggetToAllocatedList(newNugget);
 
@@ -170,7 +206,7 @@ void CNotAmnesia::Release(
 	if (m_lastNugget == nullptr)
 		return;
 
-    MemoryNugget *const nugget = FindMemeoryNugget(static_cast<unsigned char*>(address));
+    MemoryNugget *const nugget = FindMemoryNugget(static_cast<unsigned char*>(address));
 
     // didn't find a nugget for the address specified
     if (nugget == nullptr)
@@ -265,14 +301,25 @@ void CNotAmnesia::Shutdown()
 	MemoryNugget *nugget = m_lastNugget;
 	while (nugget != nullptr)
 	{
+#ifndef OPTIMIZED
+		noofLeakedNuggets++;
+		std::stringstream buf;
+		buf << "Memory leak detected in " << FILE_NAME(nugget->file.c_str()) << " (" << nugget->line << ")";
+		m_statusTextList.push_back(buf.str().c_str());
+#endif
+
 		MemoryNugget *const prevNugget = nugget->prevNugget;
 		DELETE(nugget);
 		nugget = prevNugget;
-#ifndef OPTIMIZED
-		noofLeakedNuggets++;
-#endif
 	}
 	m_lastNugget = nullptr;
+
+#ifndef OPTIMIZED
+	if (noofLeakedNuggets != 0)
+	{
+		m_statusTextList.push_front("Memory Leaks Detected");
+	}
+#endif
 
 	DELETE(m_startPtr);
 	m_startPtr = nullptr;
@@ -291,13 +338,24 @@ void CNotAmnesia::Shutdown()
 */
 const char* const CNotAmnesia::GetTextLine()
 {
+#ifndef OPTIMIZED
+    if (!m_statusTextList.empty())
+    {
+		static const int bufferSize = 1024;
+		static char textBuffer[bufferSize];
+        strncpy_s(textBuffer, m_statusTextList.front().c_str(), bufferSize);
+        m_statusTextList.pop_front();
+        return textBuffer;
+    }
+#endif
+
     return nullptr;
 }
 
 /*
 *	\brief	Find a memory nugget based upon a given memory address
 */
-CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemeoryNugget(
+CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemoryNugget(
         unsigned char* address												//!< The memory address of the nugget we are looking for
     )
 {
@@ -487,11 +545,4 @@ void CNotAmnesia::PushNuggetToAllocatedList(
 
 	m_noofNuggets++;
 #endif
-}
-
-void CNotAmnesia::RemoveNuggetFromAllocatedList( 
-		MemoryNugget *nugget 
-	)
-{
-
 }

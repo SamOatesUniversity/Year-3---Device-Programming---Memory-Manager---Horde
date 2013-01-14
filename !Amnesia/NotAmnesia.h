@@ -3,19 +3,21 @@
 
 #include <list>
 #include <string>
+#include <sstream>
 #include <stdlib.h>
 
 #include "IMemoryManager.h"
-
-// REF-WORKS
 
 #ifndef nullptr
     #define nullptr 0
 #endif
 
+// we only really care about the file name, and not its full path, so strip it down.
+#define FILE_NAME(FILE) (strrchr(FILE, '\\') ? strrchr(FILE, '\\') + 1 : FILE)
+
 // We can remove most debug information and change how memory is allocated, by using this flag
 // vastly improving performance.
-//#define OPTIMIZED
+#define OPTIMIZED
 
 // We have to allocated memory for our memory nuggets using a NEW and DELETE define.
 // The reason for this, is that malloc will not instanciate an instance of std::string
@@ -61,6 +63,7 @@ class CNotAmnesia : public IMemoryManager
 #ifndef OPTIMIZED
 		int											m_noofNuggets;								//! The number of allocated memory nuggets
 		int											m_noofFreeNuggets;							//! The number of nuggets that have been moved to the free list of memory nuggets
+		std::list<std::string>						m_statusTextList;							//! A list of text output to be displayed
 #endif
 
         size_t                                      m_totalSize;                                //! The total size of the allocated memory
@@ -70,7 +73,7 @@ class CNotAmnesia : public IMemoryManager
 
 													//! Find a memory nugget based upon a given memory address
 													//! \return THe memory nugget that represents the given address, or nullptr if no memory nugget was found
-        MemoryNugget                                *FindMemeoryNugget(
+        MemoryNugget                                *FindMemoryNugget(
                                                         unsigned char* address							//!< The address to find
                                                     );
 
@@ -82,11 +85,6 @@ class CNotAmnesia : public IMemoryManager
 
 													//! Pushes a memory nugget to the end of the allocated nugget list
 		void										PushNuggetToAllocatedList(
-														MemoryNugget *nugget
-													);
-
-													//! Removes a memory nugget from the allocated nugget list
-		void										RemoveNuggetFromAllocatedList(
 														MemoryNugget *nugget
 													);
 
@@ -112,7 +110,8 @@ class CNotAmnesia : public IMemoryManager
 														int line								//!< The line of the file where the allocation was called
 													);
 
-                                                    //! NOT IMPLEMENTED
+                                                    //! Allocate memory from our buffer, aligned to a given alignment, storing it in a memory nugget
+													//! \return The address of the allocated memory
         virtual void                                *AllocateAligned(
 														size_t numBytes,
 														size_t alignment,
