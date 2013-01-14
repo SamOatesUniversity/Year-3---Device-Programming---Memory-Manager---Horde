@@ -1,5 +1,8 @@
 /*
 
+    Changes in Test harness Version 0.6
+    - Fixed a problem with the Error Test (a missing else)
+    - Added a virtual destructor to the interface
     Changes in Test harness Version 0.5
     - Changed the basic test so second half uses a provided buffer
     - Changed the Stress Test so it leaves two pointers unfreed
@@ -225,8 +228,9 @@ void CTests::CreateNewMM()
 
 void CTests::ShutdownMM()
 {
-    if (m_memoryMan)
+	if (m_memoryMan)
 	{
+		assert(m_memoryMan);
 		m_memoryMan->Shutdown();
 		FlushMMOutput();
 		delete m_memoryMan;
@@ -339,6 +343,7 @@ void CTests::ErrorTest(int percentage)
         else
             m_passes++;
     }
+    else
     if ((percentage>=2) && (percentage<=7)) // 0.5 - aligned memory tests 4,8,16,32,64,128
     {
 
@@ -377,7 +382,7 @@ void CTests::ErrorTest(int percentage)
             m_memoryMan->ReleaseAligned(pnter);
         }
     }
-    else if (percentage!=0)
+    else
     {
 
         size_t size=3;
