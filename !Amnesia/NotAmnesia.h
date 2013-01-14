@@ -15,7 +15,7 @@
 
 // We can remove most debug information and change how memory is allocated, by using this flag
 // vastly improving performance.
-#define OPTIMIZED
+//#define OPTIMIZED
 
 // We have to allocated memory for our memory nuggets using a NEW and DELETE define.
 // The reason for this, is that malloc will not instanciate an instance of std::string
@@ -80,6 +80,16 @@ class CNotAmnesia : public IMemoryManager
 														size_t requiredSize						//!< The size we are looking to create a memory nugget
 													);
 
+													//! Pushes a memory nugget to the end of the allocated nugget list
+		void										PushNuggetToAllocatedList(
+														MemoryNugget *nugget
+													);
+
+													//! Removes a memory nugget from the allocated nugget list
+		void										RemoveNuggetFromAllocatedList(
+														MemoryNugget *nugget
+													);
+
     public:
                                                     //! Class constructor
                                                     CNotAmnesia();
@@ -113,6 +123,11 @@ class CNotAmnesia : public IMemoryManager
                                                     //! Release a given memory address, moving the memory nugget to the list of free memory nuggets for reuse
         virtual void                                Release(
 														void* address							//!< The memory address to release
+													);
+
+													//! Release the memory pointed to by address originally allocated via AllocateAligned
+		virtual void								ReleaseAligned(
+														void* address
 													);
 
                                                     //! Release all memory and destroy all memory nuggets

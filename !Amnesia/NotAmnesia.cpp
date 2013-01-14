@@ -93,32 +93,12 @@ void *CNotAmnesia::Allocate(
 		m_amountAllocated += newNugget->totalSize;
 	}
 
-	newNugget->prevNugget = newNugget->nextNugget = nullptr;
-
 #ifndef OPTIMIZED
 	newNugget->file = file;
 	newNugget->line = line;
 #endif
 
-    if (m_lastNugget == nullptr)
-    {
-        // first nugget created
-		m_firstNugget = m_lastNugget = newNugget;
-    }
-    else
-    {
-        // add a nugget to our bi-directional list
-        newNugget->prevNugget = m_lastNugget;
-        m_lastNugget->nextNugget = newNugget;
-        m_lastNugget = newNugget;
-    }
-
-	#ifndef OPTIMIZED
-		if (newNugget->totalSize > 10)
-			strncpy_s((char*)(newNugget->ptr), newNugget->totalSize, "NotAmnesia", newNugget->totalSize);
-
-		m_noofNuggets++;
-	#endif
+	PushNuggetToAllocatedList(newNugget);
 
     return newNugget->ptr;
 }
@@ -133,7 +113,38 @@ void *CNotAmnesia::AllocateAligned(
         int line
     )
 {
-    return nullptr;
+	size_t alignOffset = alignment - (reinterpret_cast<size_t>(m_nextFreePtr) % alignment);
+
+	// if the pointer isn't already aligned, make a padded nugget,
+	// to push the address to an aligned value. Put the padded nugget
+	// on to the list of free nuggets
+	if (alignOffset != alignment)
+	{
+		MemoryNugget *const paddingNugget = NEW(MemoryNugget);
+		if (paddingNugget == nullptr)
+			return nullptr;
+
+		paddingNugget->ptr = m_nextFreePtr;
+		paddingNugget->totalSize = alignOffset;
+		m_nextFreePtr += paddingNugget->totalSize;
+		m_amountAllocated += paddingNugget->totalSize;
+
+		PushNuggetToAllocatedList(paddingNugget);
+	}
+
+	// The memory address should now be aligned to the given alignment
+	MemoryNugget *const newNugget = NEW(MemoryNugget);
+	if (newNugget == nullptr)
+		return nullptr;
+
+	newNugget->ptr = m_nextFreePtr;
+	newNugget->totalSize = numBytes;
+	m_nextFreePtr += newNugget->totalSize;
+	m_amountAllocated += newNugget->totalSize;
+
+	PushNuggetToAllocatedList(newNugget);
+
+    return newNugget->ptr;
 }
 
 /*
@@ -221,6 +232,16 @@ void CNotAmnesia::Release(
 	#ifndef OPTIMIZED
 		m_noofNuggets--;
 	#endif
+}
+
+/*
+*	\brief	Called when releasing an aligned memory address. JUst call the normal release.
+*/
+void CNotAmnesia::ReleaseAligned( 
+		void* address 
+	)
+{
+	Release(address);
 }
 
 /*
@@ -340,6 +361,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 			}
 			else
 			{
+				nextFreeNugget->nextNugget = nullptr;
 				m_lastNugget->nextNugget = nextFreeNugget;
 				nextFreeNugget->prevNugget = m_lastNugget;
 				m_lastNugget = nextFreeNugget;
@@ -438,4 +460,38 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 	}
 
 	return nullptr;	
+}
+
+void CNotAmnesia::PushNuggetToAllocatedList( 
+		MemoryNugget *nugget 
+	)
+{
+	nugget->prevNugget = nugget->nextNugget = nullptr;
+
+	if (m_lastNugget == nullptr)
+	{
+		// first nugget created
+		m_firstNugget = m_lastNugget = nugget;
+	}
+	else
+	{
+		// add a nugget to our bi-directional list
+		nugget->prevNugget = m_lastNugget;
+		m_lastNugget->nextNugget = nugget;
+		m_lastNugget = nugget;
+	}
+
+#ifndef OPTIMIZED
+	if (nugget->totalSize > 10)
+		strncpy_s((char*)(nugget->ptr), nugget->totalSize, "NotAmnesia", nugget->totalSize);
+
+	m_noofNuggets++;
+#endif
+}
+
+void CNotAmnesia::RemoveNuggetFromAllocatedList( 
+		MemoryNugget *nugget 
+	)
+{
+
 }

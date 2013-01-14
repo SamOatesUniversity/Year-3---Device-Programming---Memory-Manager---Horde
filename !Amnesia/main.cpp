@@ -1,3 +1,5 @@
+// See top of Tests.cpp for version changes
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -67,7 +69,7 @@ int main (int argc, char *argv[])
 
     // Text output for harness and MM
     CTextOutput *textOutputHarness=new CTextOutput();
-    if (!textOutputHarness->Initialise(11,0,"Memory Manager Test Harness V0.1"))
+    if (!textOutputHarness->Initialise(11,0,"Memory Manager Test Harness V0.5"))
         exit(1);
 
     CTextOutput *textOutputMM=new CTextOutput();
@@ -96,7 +98,7 @@ int main (int argc, char *argv[])
 
 #ifdef GP2X
 	/* Only use GP2X code here */
-	textOutputHarness->SetStatusText("Ready. Press Help Button to begin. Select to close.");
+	textOutputHarness->SetStatusText("Ready. Press Start Button to begin. Select to close.");
 #endif
 
 #ifdef WIN32
