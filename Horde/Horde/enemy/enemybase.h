@@ -15,7 +15,7 @@ protected:
 	float							m_speed;					//!< The speed of the enity
 	int								m_health;					//!< Howmuch health the enemy has
 
-	CPickupBase						*m_pickup;					//!< 
+	CPickupBase						*m_pickup;					//!<
 
 public:
 									//!
@@ -40,7 +40,7 @@ public:
 									//! Called when an enemy dies
 	virtual void					OnDeath() = 0;
 
-									//! 
+									//!
 	CLasagneEntity					*GetEntity() const
 									{
 										return m_entity;

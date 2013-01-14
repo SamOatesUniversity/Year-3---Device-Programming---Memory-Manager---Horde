@@ -29,15 +29,15 @@ int main (int argc, char *argv[])
 	IVec2 spawnPoint;
 	static const int swarmSize = 2;
 
-	int noofEnemies = 3;
+	int noofEnemies = 30;
 
 	std::vector<CEnemyBase*> enemy;
 	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
 	{
 		if (zombieIndex % swarmSize == 0)
 			spawnPoint.Set(
-				132 + ((rand() % 256) - 128), 
-				96 + ((rand() % 256) - 128)
+				132 + ((rand() % 1024) - 512), 
+				96 + ((rand() % 1024) - 512)
 			);
 
 		CEnemyZombie *zombieTest = new CEnemyZombie();

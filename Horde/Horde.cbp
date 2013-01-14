@@ -64,6 +64,7 @@
 					<Add option="-lSDL_image" />
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_ttf" />
+					<Add option="-lSDL_gfx" />
 					<Add option="-lpng" />
 					<Add option="-lz" />
 					<Add option="-lts" />
@@ -78,10 +79,22 @@
 			<Add option="-g" />
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Horde\enemy\enemybase.cpp" />
+		<Unit filename="Horde\enemy\enemybase.h" />
+		<Unit filename="Horde\enemy\enemyzombie.cpp" />
+		<Unit filename="Horde\enemy\enemyzombie.h" />
+		<Unit filename="Horde\guns\bulletbase.cpp" />
+		<Unit filename="Horde\guns\bulletbase.h" />
+		<Unit filename="Horde\guns\bulletpistol.cpp" />
+		<Unit filename="Horde\guns\bulletpistol.h" />
 		<Unit filename="Horde\guns\gunbase.cpp" />
 		<Unit filename="Horde\guns\gunbase.h" />
 		<Unit filename="Horde\guns\gunpistol.cpp" />
 		<Unit filename="Horde\guns\gunpistol.h" />
+		<Unit filename="Horde\pickups\pickupbase.cpp" />
+		<Unit filename="Horde\pickups\pickupbase.h" />
+		<Unit filename="Horde\pickups\pickuphealth.cpp" />
+		<Unit filename="Horde\pickups\pickuphealth.h" />
 		<Unit filename="Horde\player.cpp" />
 		<Unit filename="Horde\player.h" />
 		<Unit filename="Horde\scenebase.cpp" />
