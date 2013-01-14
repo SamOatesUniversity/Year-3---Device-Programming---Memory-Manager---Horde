@@ -47,6 +47,7 @@ class CTests
         int m_testPercentage;
         int m_fails,m_passes;
         int m_testsFailed;
+        bool m_paused;
         void BasicTest(int percentage);
         void ErrorTest(int percentage);
         void MergeFreeBlockTest(int percentage);
