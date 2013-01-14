@@ -58,8 +58,6 @@ void Terminate(void)
 
 int main (int argc, char *argv[])
 {
-
-
 	/* Initialize SDL */
 	if (SDL_Init (SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0) {
 		fprintf (stderr, "Couldn't initialize SDL: %s\n", SDL_GetError ());
@@ -69,7 +67,7 @@ int main (int argc, char *argv[])
 
     // Text output for harness and MM
     CTextOutput *textOutputHarness=new CTextOutput();
-    if (!textOutputHarness->Initialise(11,0,"Memory Manager Test Harness V0.5"))
+    if (!textOutputHarness->Initialise(11,0,"Memory Manager Test Harness V0.6"))
         exit(1);
 
     CTextOutput *textOutputMM=new CTextOutput();

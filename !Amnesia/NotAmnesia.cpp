@@ -359,6 +359,9 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemoryNugget(
         unsigned char* address												//!< The memory address of the nugget we are looking for
     )
 {
+	if (m_lastNugget->ptr == address) return m_firstNugget;
+	if (m_firstNugget->ptr == address) return m_firstNugget;
+
 	if ((m_lastNugget->ptr - address) < (address - m_firstNugget->ptr))
 	{
 		MemoryNugget *currentNugget = m_lastNugget;
