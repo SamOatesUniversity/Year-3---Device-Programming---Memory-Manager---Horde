@@ -8,24 +8,24 @@ class CBulletBase {
 
 protected:
 
-	CLasagneEntity			*m_entity;				//!< 
+	CLasagneEntity			*m_entity;				//!<
 
-	TVector<float, 2>		m_position;				//!< 
-	TVector<float, 2>		m_direction;			//!< 
+	TVector<float, 2>		m_position;				//!<
+	TVector<float, 2>		m_direction;			//!<
 
-	int						m_speed;				//!< 
+	int						m_speed;				//!<
 
 public:
-							//! 
+							//!
 							CBulletBase();
 
-							//! 
+							//!
 							~CBulletBase();
 
-							//! 
+							//!
 	virtual void			Create() = 0;
 
-							//! 
+							//!
 	virtual bool			CheckCollision(
 								CLasagneEntity *other
 							);
@@ -38,7 +38,7 @@ public:
 							//!
 	virtual void			Update();
 
-							//! 
+							//!
 	virtual void			Destroy();
 
 							//! The power of the bullet (represents the damage done to an enemy on contact)

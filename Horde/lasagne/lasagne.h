@@ -13,6 +13,8 @@
 
 #include <vector>
 
+#define SHOW_FPS
+
 class CLasagne {
 private:
 
@@ -95,7 +97,7 @@ public:
                                              const TVector<int, 2> &noofFrames             //!<
                                         );
 
-										//! 
+										//!
 	CLasagneText*						CreateText(
 											char *text,
 											int x,

@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SOGI.h"
 #include <string.h>
+#include <math.h>
 
 #define EX 0
 #define EY 1
@@ -131,7 +132,7 @@ public:
                             m_values[EW] = w;
                         }
 
-						//! 
+						//!
 	T					Len() const
 						{
 							T val = 0;
@@ -140,7 +141,7 @@ public:
 							return static_cast<T>(sqrt(static_cast<float>(val)));
 						}
 
-						//! 
+						//!
 	void				Normalize2D()
 						{
 							T len = Len();
@@ -148,7 +149,7 @@ public:
 							m_values[EY] = static_cast<T>(m_values[EY] / len);
 						}
 
-						//! 
+						//!
 	void				Scale(
 								const T scale
 							)
