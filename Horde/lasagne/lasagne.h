@@ -13,7 +13,9 @@
 
 #include <vector>
 
-#define SHOW_FPS
+#ifndef SHOW_FPS
+	#define SHOW_FPS
+#endif
 
 class CLasagne {
 private:
