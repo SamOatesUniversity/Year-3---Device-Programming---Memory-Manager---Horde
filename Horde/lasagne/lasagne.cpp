@@ -154,13 +154,16 @@ const bool CLasagne::Render()
         }
     }
 
+	
+	const std::vector<CLasagneEntity*>::iterator end = m_entity.end();
 	for (int depth = 0; depth < 10; ++depth)
 	{
-		for (unsigned int entityIndex = 0; entityIndex < m_entity.size(); ++entityIndex)
+		std::vector<CLasagneEntity*>::iterator entity = m_entity.begin();
+		for (entity; entity != end; ++entity)
 		{
-			CLasagneEntity *const entity = m_entity[entityIndex];
-			if (entity->GetDepth() == depth)
-				entity->Render(m_screen);
+			CLasagneEntity *const thisEntity = (*entity);
+			if (thisEntity->GetDepth() == depth)
+				thisEntity->Render(m_screen);
 		}
 	}
 

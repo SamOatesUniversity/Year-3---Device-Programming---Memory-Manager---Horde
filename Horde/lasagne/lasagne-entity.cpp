@@ -75,6 +75,12 @@ void CLasagneEntity::Render(
     else
     {
 
+		if (m_screenPosition.x() > screen->w) return;
+		if (m_screenPosition.y() > screen->h) return;
+
+		if (m_screenPosition.x() + m_frameSize.w < 0) return;
+		if (m_screenPosition.y() + m_frameSize.h < 0) return;
+
         int xOffset = m_currentFrame;
         int yOffset = 0;
         while (xOffset > m_noofFramesX - 1)

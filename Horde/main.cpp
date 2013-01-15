@@ -153,6 +153,7 @@ int main (int argc, char *argv[])
 			{
 				gameState = GameState::LoadingLevel;
 				levelEndTimer = 0;
+				player->SetCurrentAnimation("idle");
 			}
 
             updateTimer = SDL_GetTicks();

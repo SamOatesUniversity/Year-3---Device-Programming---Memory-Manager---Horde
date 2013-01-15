@@ -2,13 +2,13 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="target" />
 	<File name="Horde\guns\gunbase.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1622" topLine="41" />
+		<Cursor position="1622" topLine="23" />
 	</File>
 	<File name="Horde\guns\gunbase.h" open="0" top="0" tabpos="11">
 		<Cursor position="329" topLine="0" />
 	</File>
 	<File name="Horde\guns\gunpistol.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="603" topLine="10" />
+		<Cursor position="603" topLine="0" />
 	</File>
 	<File name="Horde\guns\gunpistol.h" open="0" top="0" tabpos="10">
 		<Cursor position="76" topLine="0" />
@@ -55,8 +55,8 @@
 	<File name="lasagne\lasagne-entity.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2924" topLine="95" />
 	</File>
-	<File name="lasagne\lasagne-entity.h" open="1" top="0" tabpos="3">
-		<Cursor position="2282" topLine="60" />
+	<File name="lasagne\lasagne-entity.h" open="1" top="1" tabpos="3">
+		<Cursor position="2101" topLine="43" />
 	</File>
 	<File name="lasagne\lasagne-music.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="549" topLine="0" />
@@ -77,9 +77,9 @@
 		<Cursor position="884" topLine="0" />
 	</File>
 	<File name="lasagne\lasagne.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="4867" topLine="108" />
+		<Cursor position="4867" topLine="125" />
 	</File>
-	<File name="lasagne\lasagne.h" open="1" top="1" tabpos="5">
+	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="5">
 		<Cursor position="293" topLine="0" />
 	</File>
 	<File name="main.cpp" open="0" top="0" tabpos="1">
