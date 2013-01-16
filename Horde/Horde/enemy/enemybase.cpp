@@ -11,6 +11,7 @@ CEnemyBase::CEnemyBase() :
 CEnemyBase::~CEnemyBase()
 {
 	SafeDelete(m_pickup);
+	CLasagne::GetInstance()->Destroy(&m_entity);
 }
 
 void CEnemyBase::Damage( 

@@ -7,7 +7,7 @@ CBulletBase::CBulletBase() : m_entity(NULL), m_speed(1)
 
 CBulletBase::~CBulletBase()
 {
-
+	CLasagne::GetInstance()->Destroy(&m_entity);
 }
 
 bool CBulletBase::CheckCollision( 

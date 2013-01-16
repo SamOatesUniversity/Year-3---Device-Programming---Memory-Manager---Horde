@@ -18,8 +18,9 @@ CGunBase::~CGunBase()
 	{
 		SafeDelete(*iter);
 	}
+	m_bullet.clear();
 
-	m_bullet.empty();
+	CLasagne::GetInstance()->Destroy(&m_entity);
 }
 
 int CGunBase::Shoot(

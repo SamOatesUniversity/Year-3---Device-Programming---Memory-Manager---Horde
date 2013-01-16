@@ -26,7 +26,6 @@ int main (int argc, char *argv[])
 	{
 		if (gameState == GameState::LoadingLevel)
 		{
-
 			continue;
 		}
 
@@ -115,6 +114,8 @@ int main (int argc, char *argv[])
 				levelEndTimer = 0;
 				ReleaseLevel();
 				LoadLevel(2);
+				gameState = GameState::InLevel;
+				continue;
 			}
 
             updateTimer = SDL_GetTicks();
@@ -220,7 +221,7 @@ bool ReleaseLevel()
 	{
 		SafeDelete(enemy[zombieIndex]);
 	}
-	enemy.empty();
+	enemy.clear();
 
 	return true;
 }
