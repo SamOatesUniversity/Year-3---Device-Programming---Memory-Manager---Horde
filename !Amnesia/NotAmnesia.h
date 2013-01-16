@@ -17,7 +17,7 @@
 
 // We can remove most debug information and change how memory is allocated, by using this flag
 // vastly improving performance.
-#define OPTIMIZED
+//#define OPTIMIZED
 
 // We have to allocated memory for our memory nuggets using a NEW and DELETE define.
 // The reason for this, is that malloc will not instanciate an instance of std::string

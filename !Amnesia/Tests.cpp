@@ -18,6 +18,7 @@
 #include <assert.h>
 #include <sstream>
 #include <math.h>
+#include <time.h>
 
 // Enable this line to pause between tests (added 0.5)
 //#define PAUSE_BETWEEN_TESTS
@@ -107,6 +108,7 @@ bool CTests::Update()
     if (m_testPercentage>=100)
     {
         ShutdownMM();
+		srand(time(NULL));
 
         m_testResults[m_currentTest].report=("Test: "+ToString((int)m_currentTest+1)+GetTestDescription(m_currentTest)+" : "+ToString(m_passes)+
                                            " passed and "+ToString(m_fails)+" failed");
