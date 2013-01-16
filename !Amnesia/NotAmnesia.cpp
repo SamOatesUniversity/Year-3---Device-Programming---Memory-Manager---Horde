@@ -321,19 +321,26 @@ void CNotAmnesia::Shutdown()
 		buf << "Memory leak detected in " << FILE_NAME(nugget->file.c_str()) << " (" << nugget->line << ")";
 		m_statusTextList.push_back(buf.str().c_str());
 #endif
-
-		MemoryNugget *const prevNugget = nugget->prevNugget;
-		A_DELETE(nugget);
-		nugget = prevNugget;
+		nugget = nugget->prevNugget;
 	}
-	m_lastNugget = nullptr;
 
 #ifndef OPTIMIZED
 	if (noofLeakedNuggets != 0)
 	{
 		m_statusTextList.push_front("Memory Leaks Detected");
+		if (noofLeakedNuggets != 2)
+			m_statusTextList.push_front("More than 2 leaks, this should not happed");
 	}
 #endif
+
+	nugget = m_lastNugget;
+	while (nugget != nullptr)
+	{
+		MemoryNugget *const prevNugget = nugget->prevNugget;
+		A_DELETE(nugget);
+		nugget = prevNugget;
+	}
+	m_lastNugget = nullptr;
 
 	A_DELETE(m_startPtr);
 	m_startPtr = nullptr;
@@ -508,10 +515,18 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 						if (next == nullptr && prev == nullptr)
 							m_freeNugget = nullptr;
 
-						firstFreeNugget->prevNugget = m_lastNugget;
-						m_lastNugget->nextNugget = firstFreeNugget;
-						firstFreeNugget->nextNugget = nullptr;
-						m_lastNugget = firstFreeNugget;
+						if (m_lastNugget == nullptr)
+						{
+							m_lastNugget = firstFreeNugget;
+							m_lastNugget->nextNugget = m_lastNugget->prevNugget = nullptr;
+						}
+						else
+						{
+							firstFreeNugget->prevNugget = m_lastNugget;
+							m_lastNugget->nextNugget = firstFreeNugget;
+							firstFreeNugget->nextNugget = nullptr;
+							m_lastNugget = firstFreeNugget;
+						}
 
 						#ifndef OPTIMIZED
 						if (firstFreeNugget->totalSize > 10)
