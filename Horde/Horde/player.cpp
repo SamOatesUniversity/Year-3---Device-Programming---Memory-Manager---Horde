@@ -12,6 +12,7 @@ CPlayer::CPlayer() :
 
 CPlayer::~CPlayer()
 {
+	CLasagne::GetInstance()->Destroy(&m_entity);
 	SafeDelete(m_gun);
 }
 

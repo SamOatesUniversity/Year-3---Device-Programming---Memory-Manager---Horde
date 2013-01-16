@@ -11,7 +11,7 @@ CPickupBase::CPickupBase(
 
 CPickupBase::~CPickupBase()
 {
-
+	CLasagne::GetInstance()->Destroy(&m_entity);
 }
 
 void CPickupBase::Update(

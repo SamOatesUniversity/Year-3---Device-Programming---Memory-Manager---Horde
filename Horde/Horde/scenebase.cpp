@@ -8,6 +8,8 @@ CScene::CScene()
 
 CScene::~CScene()
 {
+	for (int backgroundIndex = 0; backgroundIndex < NOOF_BACKGROUNDS; ++backgroundIndex)
+		CLasagne::GetInstance()->Destroy(&m_background[backgroundIndex]);
 }
 
 const bool CScene::Load(
