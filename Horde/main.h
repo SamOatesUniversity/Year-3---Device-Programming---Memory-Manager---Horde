@@ -32,4 +32,7 @@ CLasagneEntity *levelComplete;
 bool LoadLevel(int id);
 bool ReleaseLevel();
 
+unsigned int currentLevel = 1;
+unsigned int lastLevel = 3;
+
 #endif
