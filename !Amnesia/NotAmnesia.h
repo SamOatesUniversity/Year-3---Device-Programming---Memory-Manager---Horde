@@ -23,11 +23,11 @@
 // The reason for this, is that malloc will not instanciate an instance of std::string
 // resulting in a crash.
 #ifndef OPTIMIZED
-	#define NEW(TYPE)	new TYPE; 
-	#define DELETE(OBJECT)	delete OBJECT;
+	#define A_NEW(TYPE)	new TYPE; 
+	#define A_DELETE(OBJECT)	delete OBJECT;
 #else
-	#define NEW(TYPE)	static_cast<TYPE*>(malloc(sizeof(TYPE)))
-	#define DELETE(OBJECT)	free(OBJECT);
+	#define A_NEW(TYPE)	static_cast<TYPE*>(malloc(sizeof(TYPE)))
+	#define A_DELETE(OBJECT)	free(OBJECT);
 #endif
 
 class CNotAmnesia : public IMemoryManager
