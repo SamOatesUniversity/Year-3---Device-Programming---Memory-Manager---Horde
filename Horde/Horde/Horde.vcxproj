@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>E:\University Work\UNI Year Three\GDP\GPH_SDK\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\include;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\DGE\include;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\DGE\include\SDL;C:\GPH_SDK\include;C:\GPH_SDK\DGE\include;C:\GPH_SDK\DGE\include\SDL;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\lib\;E:\University Work\UNI Year Three\GDP\GPH_SDK\lib\host;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\DGE\lib;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\lib\host;C:\GPH_SDK\DGE\lib\;C:\GPH_SDK\lib\host;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Visual Leak Detector\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\include;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\DGE\include;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\DGE\include\SDL;C:\GPH_SDK\include;C:\GPH_SDK\DGE\include;C:\GPH_SDK\DGE\include\SDL;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Visual Leak Detector\lib\Win32;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\lib\;E:\University Work\UNI Year Three\GDP\GPH_SDK\lib\host;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\DGE\lib;C:\Code\University\Year Three\Games Device Programming\GPH_SDK\lib\host;C:\GPH_SDK\DGE\lib\;C:\GPH_SDK\lib\host;$(LibraryPath)</LibraryPath>
     <IntDir>$(Configuration)\interm\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

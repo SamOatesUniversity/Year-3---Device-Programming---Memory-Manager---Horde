@@ -106,6 +106,16 @@ public:
 											int y
 										);
 
+										//! 
+	void								Destroy(
+											CLasagneEntity **entity
+										);
+
+										//! 
+	void								Destroy(
+											CLasagneText **text
+										);
+
                                         //! Get the stored mouse position
     const TVector<int, 2>               *GetMousePosition() const
                                         {

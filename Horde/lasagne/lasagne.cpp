@@ -214,6 +214,10 @@ void CLasagne::Release()
 	}
 	m_entity.clear();
 
+#if defined(SHOW_FPS)
+	SafeDelete(m_fps.text);
+#endif
+
     TTF_Quit();
     SafeFreeSurface(m_screen);
     SDL_Quit();
@@ -306,4 +310,38 @@ CLasagneText* CLasagne::CreateText(
 	newText->SetPosition(x, y);
 	m_textEntity.push_back(newText);
 	return newText;
+}
+
+void CLasagne::Destroy( CLasagneEntity **entity )
+{
+	std::vector<CLasagneEntity*>::iterator iter = m_entity.begin();
+	std::vector<CLasagneEntity*>::iterator endIter = m_entity.end();
+
+	for (iter; iter != endIter; iter++)
+	{
+		if ((*iter) == (*entity))
+		{
+			m_entity.erase(iter);
+			break;
+		}
+	}
+
+	SafeDelete(*entity);
+}
+
+void CLasagne::Destroy( CLasagneText **text )
+{
+	std::vector<CLasagneText*>::iterator iter = m_textEntity.begin();
+	std::vector<CLasagneText*>::iterator endIter = m_textEntity.end();
+
+	for (iter; iter != endIter; iter++)
+	{
+		if ((*iter) == (*text))
+		{
+			m_textEntity.erase(iter);
+			break;
+		}
+	}
+
+	SafeDelete(*text);
 }

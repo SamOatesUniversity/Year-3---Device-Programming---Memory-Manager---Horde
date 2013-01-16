@@ -10,7 +10,7 @@ CEnemyBase::CEnemyBase() :
 
 CEnemyBase::~CEnemyBase()
 {
-
+	SafeDelete(m_pickup);
 }
 
 void CEnemyBase::Damage( 
