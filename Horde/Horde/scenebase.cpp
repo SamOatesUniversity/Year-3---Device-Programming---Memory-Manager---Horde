@@ -4,12 +4,16 @@ CScene::CScene()
 {
 	for (int backgroundIndex = 0; backgroundIndex < NOOF_BACKGROUNDS; ++backgroundIndex)
 		m_background[backgroundIndex] = NULL;
+
+	m_cloud = NULL;
 }
 
 CScene::~CScene()
 {
 	for (int backgroundIndex = 0; backgroundIndex < NOOF_BACKGROUNDS; ++backgroundIndex)
 		CLasagne::GetInstance()->Destroy(&m_background[backgroundIndex]);
+
+	CLasagne::GetInstance()->Destroy(&m_cloud);
 }
 
 const bool CScene::Load(
@@ -31,6 +35,10 @@ const bool CScene::Load(
             m_background[((x+1) * 3) + (y+1)]->SetPosition(x * 320.0f, y * 240.0f);
         }
     }
+
+	m_cloud = CLasagne::GetInstance()->LoadImage("./media/graphics/cloud.png");
+	m_cloud->SetDepth(9);
+	m_cloud->SetPosition(-320, 0);
 
     return true;
 }
@@ -63,5 +71,16 @@ bool CScene::Move(
         }
     }
 
+	UpdateClouds(xmove, ymove);
+
     return true;
+}
+
+void CScene::UpdateClouds(int xmove, int ymove)
+{
+	TVector<float, 2> pos = m_cloud->GetPosition();
+	if (pos.x() > 960)
+		m_cloud->SetPosition(-320, 0);
+	else
+		m_cloud->SetPosition((pos.x() + 4) - xmove, pos.y() - ymove);
 }
