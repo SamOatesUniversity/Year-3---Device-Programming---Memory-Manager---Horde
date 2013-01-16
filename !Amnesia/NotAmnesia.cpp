@@ -83,7 +83,7 @@ void *CNotAmnesia::Allocate(
 	if (newNugget == nullptr)
 	{
 		// no free nuggets available, so create a new one
-		newNugget = NEW(MemoryNugget);
+		newNugget = A_NEW(MemoryNugget);
 		if (newNugget == nullptr)
 			return nullptr;
 
@@ -120,7 +120,7 @@ void *CNotAmnesia::AllocateAligned(
 	// on to the list of free nuggets
 	if (alignOffset != alignment)
 	{
-		MemoryNugget *const paddingNugget = NEW(MemoryNugget);
+		MemoryNugget *const paddingNugget = A_NEW(MemoryNugget);
 		if (paddingNugget == nullptr)
 			return nullptr;
 
@@ -164,7 +164,7 @@ void *CNotAmnesia::AllocateAligned(
 	}
 
 	// The memory address should now be aligned to the given alignment
-	MemoryNugget *const newNugget = NEW(MemoryNugget);
+	MemoryNugget *const newNugget = A_NEW(MemoryNugget);
 	if (newNugget == nullptr)
 		return nullptr;
 
@@ -227,6 +227,20 @@ void CNotAmnesia::Release(
 			m_nextFreePtr = m_startPtr;
 			m_amountAllocated = 0;
 			m_firstNugget = nullptr;
+			
+			if (m_freeNugget == nullptr)
+			{
+				m_freeNugget = nugget;
+				m_freeNugget->nextNugget = nullptr;
+				m_freeNugget->prevNugget = nullptr;
+			}
+			else
+			{
+				m_freeNugget->nextNugget = nugget;
+				nugget->prevNugget = m_freeNugget;
+				nugget->nextNugget = nullptr;
+				m_freeNugget = nugget;
+			}
 		}
     }
 	else
@@ -289,7 +303,7 @@ void CNotAmnesia::Shutdown()
 	while (freeNugget != nullptr)
 	{
 		MemoryNugget *const prevNugget = freeNugget->prevNugget;
-		DELETE(freeNugget);
+		A_DELETE(freeNugget);
 		freeNugget = prevNugget;
 	}
 	m_freeNugget = nullptr;
@@ -309,7 +323,7 @@ void CNotAmnesia::Shutdown()
 #endif
 
 		MemoryNugget *const prevNugget = nugget->prevNugget;
-		DELETE(nugget);
+		A_DELETE(nugget);
 		nugget = prevNugget;
 	}
 	m_lastNugget = nullptr;
@@ -321,7 +335,7 @@ void CNotAmnesia::Shutdown()
 	}
 #endif
 
-	DELETE(m_startPtr);
+	A_DELETE(m_startPtr);
 	m_startPtr = nullptr;
 
 	m_totalSize = 0;
@@ -479,7 +493,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 						if (prev != nullptr) prev->nextNugget = next;
 
 						nextNugget = prev;
-						DELETE(currentNugget);
+						A_DELETE(currentNugget);
 					}
 
 					firstFreeNugget->totalSize = mergedNuggetSize;
