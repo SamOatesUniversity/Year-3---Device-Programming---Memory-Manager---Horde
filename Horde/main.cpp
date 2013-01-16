@@ -1,8 +1,4 @@
 #include "main.h"
-#include "lasagne/lasagne.h"
-#include "Horde/scenebase.h"
-#include "Horde/player.h"
-#include "Horde/enemy/enemyzombie.h"
 
 const bool isLeftPressed();
 const bool isRightPressed();
@@ -20,43 +16,7 @@ int main (int argc, char *argv[])
         return 0;
     }
 
-    CScene *currentScene = new CScene();
-    currentScene->Load("./media/graphics/level-1/");
-
-	CPlayer *player = new CPlayer();
-	player->Load("./media/graphics/characters/player.png");
-
-	IVec2 spawnPoint;
-	static const int swarmSize = 2;
-
-	int noofEnemies = 30;
-
-	std::vector<CEnemyBase*> enemy;
-	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
-	{
-		if (zombieIndex % swarmSize == 0)
-			spawnPoint.Set(
-				132 + ((rand() % 1024) - 512), 
-				96 + ((rand() % 1024) - 512)
-			);
-
-		CEnemyZombie *zombieTest = new CEnemyZombie();
-		zombieTest->Create(spawnPoint.x() + ((zombieIndex % swarmSize) * 64), spawnPoint.y(), player);
-		enemy.push_back(zombieTest);
-	}
-
-	CLasagneText *const scoreText = engine->CreateText("Score: 0", 4, 20);
-	CLasagneText *const healthText = engine->CreateText("Health: 100", 4, 4);
-
-	CLasagneEntity *const playerDead = engine->LoadImage("./media/graphics/player-dead.png");
-	playerDead->SetDepth(9);
-	playerDead->SetPosition(96, 56);
-	playerDead->SetVisible(false);
-
-	CLasagneEntity *const levelComplete = engine->LoadImage("./media/graphics/level-complete.png");
-	levelComplete->SetDepth(9);
-	levelComplete->SetPosition(96, 56);
-	levelComplete->SetVisible(false);
+	LoadLevel(1);
 	
     Uint32 updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
@@ -126,7 +86,7 @@ int main (int argc, char *argv[])
 					noofDead++;
 			}
 
-			if (noofEnemies - noofDead == 0 && gameState == GameState::InLevel)
+			if (enemy.size() - noofDead == 0 && gameState == GameState::InLevel)
 			{
 				levelComplete->SetVisible(true);
 				gameState = GameState::LevelComplete;
@@ -153,7 +113,8 @@ int main (int argc, char *argv[])
 			{
 				gameState = GameState::LoadingLevel;
 				levelEndTimer = 0;
-				player->SetCurrentAnimation("idle");
+				ReleaseLevel();
+				LoadLevel(2);
 			}
 
             updateTimer = SDL_GetTicks();
@@ -168,8 +129,7 @@ int main (int argc, char *argv[])
 	} while (engine->Render());
 
     // free up resources and allocated memory
-	delete currentScene;
-	delete player;
+	ReleaseLevel();
 	engine->Release();
 
 	return 0;
@@ -197,4 +157,70 @@ const bool isDownPressed()
 {
     Uint8 *keystate = SDL_GetKeyState(NULL);
     return keystate[SDLK_s] || keystate[SDLK_DOWN];
+}
+
+bool LoadLevel(
+		int id
+	)
+{
+	CLasagne *const engine = CLasagne::GetInstance();
+
+	currentScene = new CScene();
+	currentScene->Load("./media/graphics/level-1/");
+
+	player = new CPlayer();
+	player->Load("./media/graphics/characters/player.png");
+
+	IVec2 spawnPoint;
+	static const int swarmSize = 2;
+
+	int noofEnemies = 3;
+
+	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
+	{
+		if (zombieIndex % swarmSize == 0)
+			spawnPoint.Set(
+				132 + ((rand() % 256) - 128), 
+				96 + ((rand() % 256) - 128)
+			);
+
+		CEnemyZombie *zombieTest = new CEnemyZombie();
+		zombieTest->Create(spawnPoint.x() + ((zombieIndex % swarmSize) * 64), spawnPoint.y(), player);
+		enemy.push_back(zombieTest);
+	}
+
+	scoreText = engine->CreateText("Score: 0", 4, 20);
+	healthText = engine->CreateText("Health: 100", 4, 4);
+
+	playerDead = engine->LoadImage("./media/graphics/player-dead.png");
+	playerDead->SetDepth(9);
+	playerDead->SetPosition(96, 56);
+	playerDead->SetVisible(false);
+
+	levelComplete = engine->LoadImage("./media/graphics/level-complete.png");
+	levelComplete->SetDepth(9);
+	levelComplete->SetPosition(96, 56);
+	levelComplete->SetVisible(false);
+
+	return true;
+}
+
+bool ReleaseLevel()
+{
+	CLasagne *const engine = CLasagne::GetInstance();
+	engine->Destroy(&scoreText);
+	engine->Destroy(&healthText);
+	engine->Destroy(&playerDead);
+	engine->Destroy(&levelComplete);
+
+	SafeDelete(player);
+	SafeDelete(currentScene);
+
+	for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
+	{
+		SafeDelete(enemy[zombieIndex]);
+	}
+	enemy.empty();
+
+	return true;
 }

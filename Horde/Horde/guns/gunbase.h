@@ -21,7 +21,7 @@ public:
 									CGunBase();
 
 									//!
-									~CGunBase();
+	virtual							~CGunBase();
 
 	CLasagneEntity					*GetEntity() const 
 									{
