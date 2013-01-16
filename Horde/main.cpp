@@ -65,6 +65,7 @@ int main (int argc, char *argv[])
 				player->SetCurrentAnimation("walk");
 				if (!currentScene->Move(moveX, moveY))
 				{
+					currentScene->UpdateClouds(0, 0);
 					player->SetCurrentAnimation("idle");
 					moveX = 0;
 					moveY = 0;
@@ -74,6 +75,7 @@ int main (int argc, char *argv[])
 			{
 				// user pressing near the middle of the screen, so stand still
 				player->SetCurrentAnimation("idle");
+				currentScene->UpdateClouds(0, 0);
 			}
 
 			int noofDead = 0;

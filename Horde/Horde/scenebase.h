@@ -11,6 +11,8 @@ private:
 	#define				NOOF_BACKGROUNDS	9
     CLasagneEntity      *m_background[NOOF_BACKGROUNDS];
 
+	CLasagneEntity		*m_cloud;
+
 public:
                         //! Class constructor
                         CScene();
@@ -31,6 +33,11 @@ public:
                             const int x,
                             const int y
                         );
+
+	void				UpdateClouds(
+							int xmove,
+							int ymove
+						);
 };
 
 #endif // SCENE_H_INCLUDED
