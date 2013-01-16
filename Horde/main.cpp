@@ -16,7 +16,7 @@ int main (int argc, char *argv[])
         return 0;
     }
 
-	LoadLevel(1);
+	LoadLevel(currentLevel);
 	
     Uint32 updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
@@ -113,7 +113,13 @@ int main (int argc, char *argv[])
 				gameState = GameState::LoadingLevel;
 				levelEndTimer = 0;
 				ReleaseLevel();
-				LoadLevel(2);
+				currentLevel++;
+				LoadLevel(currentLevel);
+
+				// loop the levels
+				if (currentLevel == lastLevel)
+					currentLevel = 0;
+
 				gameState = GameState::InLevel;
 				continue;
 			}
@@ -166,23 +172,26 @@ bool LoadLevel(
 {
 	CLasagne *const engine = CLasagne::GetInstance();
 
+	std::stringstream buf;
+	buf << "./media/graphics/level-" << id << "/";
+
 	currentScene = new CScene();
-	currentScene->Load("./media/graphics/level-1/");
+	currentScene->Load(buf.str().c_str());
 
 	player = new CPlayer();
 	player->Load("./media/graphics/characters/player.png");
 
 	IVec2 spawnPoint;
-	static const int swarmSize = 2;
+	static const int swarmSize = 5;
 
-	int noofEnemies = 3;
+	int noofEnemies = 10 + (id * 10);
 
 	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
 	{
 		if (zombieIndex % swarmSize == 0)
 			spawnPoint.Set(
-				132 + ((rand() % 256) - 128), 
-				96 + ((rand() % 256) - 128)
+				132 + ((rand() % 2048) - 1024), 
+				96 + ((rand() % 2048) - 1024)
 			);
 
 		CEnemyZombie *zombieTest = new CEnemyZombie();
