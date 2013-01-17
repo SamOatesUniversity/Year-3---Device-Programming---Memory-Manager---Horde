@@ -53,6 +53,10 @@ int CGunBase::Shoot(
 	{
 		CBulletBase *const bullet = m_bullet[bulletIndex];
 		bullet->Update();
+
+		if (!bullet->GetEntity()->IsVisible())
+			continue;
+
 		for (unsigned int enemyIndex = 0; enemyIndex < enemy.size(); ++enemyIndex)
 		{
 			CEnemyBase *const currentEnemy = enemy[enemyIndex];
@@ -67,7 +71,7 @@ int CGunBase::Shoot(
 
 			if (bullet->CheckCollision(currentEnemy->GetEntity()))
 			{
-				currentEnemy->Damage(bullet->GetPower()); // should pass in bullet strength
+				currentEnemy->Damage(bullet->GetPower());
 				bullet->Destroy();
 				noofKills++;
 			}

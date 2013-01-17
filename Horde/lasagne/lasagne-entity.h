@@ -151,6 +151,9 @@ public:
 							{
 								m_rendeDepth = depth;
 							}
+
+							//! Is the entity within the bounds of the screen
+	bool					IsOnScreen() const;
 };
 
 #endif // LASAGNE_ENTITY_H_INCLUDED

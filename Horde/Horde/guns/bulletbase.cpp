@@ -26,7 +26,6 @@ void CBulletBase::Fire(
 	const int rotation = gun->GetRotation();
 
 	startPosition.Set(startPosition.x() + 24, startPosition.y() + 24);	// position at center of player
-	//startPosition.Set(startPosition.x() - (16 * cos(rotation * 0.017f)), startPosition.y() - (16 * sin(rotation * 0.017f)));	// need to offset onto gun somehow
 
 	m_position.Set(startPosition.x(), startPosition.y());
 	m_direction.Set(direction.x(), direction.y());
@@ -44,6 +43,9 @@ void CBulletBase::Update()
 	m_position.SetY(m_position.y() + (m_direction.y() * m_speed));
 
 	m_entity->SetPosition(m_position.x(), m_position.y());
+
+	if (!m_entity->IsOnScreen())
+		Destroy();
 }
 
 void CBulletBase::Destroy()
