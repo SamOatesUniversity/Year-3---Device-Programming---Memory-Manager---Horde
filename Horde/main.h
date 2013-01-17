@@ -12,7 +12,8 @@ struct GameState {
 	enum Enum {
 		LoadingLevel,
 		InLevel,
-		LevelComplete
+		LevelComplete,
+		Dead
 	};
 };
 

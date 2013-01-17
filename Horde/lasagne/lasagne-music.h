@@ -35,7 +35,7 @@ public:
     void                Play()
                         {
                             if (m_engine == MusicEngine::SDL) {
-                                Mix_PlayMusic(m_sdlMusic, 0);
+                                Mix_PlayMusic(m_sdlMusic, -1);
                             }
                         }
 

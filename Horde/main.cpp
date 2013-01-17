@@ -90,7 +90,7 @@ int main (int argc, char *argv[])
 					noofDead++;
 			}
 
-			if (enemy.size() - noofDead == 0 && gameState == GameState::InLevel)
+			if (enemy.size() - noofDead == 0 && gameState == GameState::InLevel && player->GetHealth() != 0)
 			{
 				levelComplete->SetVisible(true);
 				gameState = GameState::LevelComplete;
@@ -107,17 +107,34 @@ int main (int argc, char *argv[])
 			healthBuffer << "Health: " << player->GetHealth();
 			healthText->SetText(healthBuffer.str().c_str());
 
-			if (player->GetHealth() == 0)
+			if (player->GetHealth() == 0 && gameState == GameState::InLevel)
 			{
 				if (!playerDead->IsVisible())
 					playerDead->SetVisible(true);
+
+				gameState = GameState::Dead;
+				levelEndTimer = SDL_GetTicks();
+			}
+
+			if (gameState == GameState::Dead && SDL_GetTicks() - levelEndTimer > 5000)
+			{
+				gameState = GameState::LoadingLevel;
+				levelEndTimer = 0;
+				totalScore = 0;
+				ReleaseLevel();
+				currentLevel = 1;
+				wave = 0;
+				LoadLevel(currentLevel);
+
+				gameState = GameState::InLevel;
+				continue;
 			}
 
 			if (gameState == GameState::LevelComplete && SDL_GetTicks() - levelEndTimer > 5000)
 			{
 				gameState = GameState::LoadingLevel;
 				levelEndTimer = 0;
-				totalScore += player->GetScore();
+				totalScore += (player->GetScore() + 250);
 				ReleaseLevel();
 				currentLevel++;
 				wave++;
