@@ -1,29 +1,36 @@
-#include "gunbase.h"
+#include "gunshotgun.h"
 
-CGunBase::CGunBase() :
-	m_nextBullet(0),
-	m_entity(0),
-	m_lastShot(0),
-	m_fireRate(1)
+CGunShotgun::CGunShotgun()
+{
+	m_fireRate = 1;
+}
+
+CGunShotgun::~CGunShotgun()
 {
 
 }
 
-CGunBase::~CGunBase()
+void CGunShotgun::Create()
 {
-	std::vector<CBulletBase*>::iterator iter = m_bullet.begin();
-	std::vector<CBulletBase*>::iterator endIter = m_bullet.end();
+	TVector<int, 2> frameLayout;
+	frameLayout.Set(8, 2);
+	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./media/graphics/characters/guns/shotgun/gun.png", frameLayout);
+	if (!m_entity)
+		return;
 
-	for (iter; iter != endIter; iter++)
+	m_entity->SetDepth(5);
+
+	static const int NoofBullets = 9;
+	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)
 	{
-		SafeDelete(*iter);
+		CBulletBase *bulletBase = new CBulletShotgun();
+		bulletBase->Create();
+		m_bullet.push_back(bulletBase);
 	}
-	m_bullet.clear();
 
-	CLasagne::GetInstance()->Destroy(&m_entity);
 }
 
-int CGunBase::Shoot(
+int CGunShotgun::Shoot(
 		std::vector<CEnemyBase*> &enemy
 	)
 {
@@ -33,14 +40,16 @@ int CGunBase::Shoot(
 	if (m_nextBullet >= m_bullet.size())
 		m_nextBullet = 0;
 
-	#pragma message(__FILE__" - SOates: Requires Optimization")
-
 	Uint32 timer = SDL_GetTicks();						
 	if (timer - m_lastShot > (1000 / m_fireRate))		
 	{
-		m_bullet[m_nextBullet]->Fire(m_entity);
+		for (int dir = 0; dir < ShotgunBulletDirection::Noof; ++dir)
+		{
+			static_cast<CBulletShotgun*>(m_bullet[m_nextBullet])->Fire(m_entity, static_cast<ShotgunBulletDirection::Enum>(dir));
+			m_nextBullet++;
+		}
+
 		m_lastShot = timer;
-		m_nextBullet++;
 	}
 
 	int noofKills = 0;

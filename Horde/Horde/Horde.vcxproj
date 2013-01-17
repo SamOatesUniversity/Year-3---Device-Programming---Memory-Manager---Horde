@@ -104,8 +104,10 @@
     <ClCompile Include="enemy\enemyzombie.cpp" />
     <ClCompile Include="guns\bulletbase.cpp" />
     <ClCompile Include="guns\bulletpistol.cpp" />
+    <ClCompile Include="guns\bulletshotgun.cpp" />
     <ClCompile Include="guns\gunbase.cpp" />
     <ClCompile Include="guns\gunpistol.cpp" />
+    <ClCompile Include="guns\gunshotgun.cpp" />
     <ClCompile Include="pickups\pickupbase.cpp" />
     <ClCompile Include="pickups\pickuphealth.cpp" />
     <ClCompile Include="pickups\pickupshotgun.cpp" />
@@ -128,8 +130,10 @@
     <ClInclude Include="enemy\enemyzombie.h" />
     <ClInclude Include="guns\bulletbase.h" />
     <ClInclude Include="guns\bulletpistol.h" />
+    <ClInclude Include="guns\bulletshotgun.h" />
     <ClInclude Include="guns\gunbase.h" />
     <ClInclude Include="guns\gunpistol.h" />
+    <ClInclude Include="guns\gunshotgun.h" />
     <ClInclude Include="pickups\pickupbase.h" />
     <ClInclude Include="pickups\pickuphealth.h" />
     <ClInclude Include="pickups\pickupshotgun.h" />
