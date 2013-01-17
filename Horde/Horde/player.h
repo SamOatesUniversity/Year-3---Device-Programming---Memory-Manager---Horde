@@ -8,12 +8,24 @@ class CEnemyBase;
 class CGunBase;
 class CGunPistol;
 
+struct GunType {
+	enum Enum {
+		Pistol,
+		Shotgun,
+		Machinegun,
+		Noof
+	};
+};
+
 class CPlayer {
 
 private:
 
     CLasagneEntity                          *m_entity;
-	CGunBase								*m_gun;
+
+	GunType::Enum							m_currentGun;
+	CGunBase								*m_gun[GunType::Noof];
+
 	int										m_score;
 	int										m_health;
 
@@ -72,6 +84,10 @@ public:
 
 	void									Update(
 												std::vector<CEnemyBase*> &enemy
+											);
+
+	void									SetGun(
+												GunType::Enum gunType
 											);
 
 };

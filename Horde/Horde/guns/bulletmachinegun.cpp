@@ -1,25 +1,24 @@
-#include "bulletpistol.h"
+#include "bulletmachinegun.h"
 
-
-CBulletPistol::CBulletPistol()
+CBulletMachinegun::CBulletMachinegun()
 {
-	m_speed = 50;
+	m_speed = 30;
 }
 
-CBulletPistol::~CBulletPistol()
+CBulletMachinegun::~CBulletMachinegun()
 {
 
 }
 
-void CBulletPistol::Create()
+void CBulletMachinegun::Create()
 {
-	m_entity = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/guns/pistol/bullet.png");
+	m_entity = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/guns/machinegun/bullet.png");
 	m_entity->SetPosition(132, 96);
 	m_entity->SetVisible(false);
 	m_entity->SetDepth(5);
 }
 
-bool CBulletPistol::CheckCollision( 
+bool CBulletMachinegun::CheckCollision( 
 		CLasagneEntity *other 
 	)
 {

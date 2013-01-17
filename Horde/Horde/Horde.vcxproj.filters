@@ -52,6 +52,12 @@
     <Filter Include="Source Files\Horde\pickups">
       <UniqueIdentifier>{4cf04ff0-8e10-4a85-8a69-c22f685dca68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Horde\guns\bullets">
+      <UniqueIdentifier>{cdc13a7a-509e-4ead-8ff2-5826d4931d92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Horde\guns\bullets">
+      <UniqueIdentifier>{f168a4ed-5992-4aa9-ad8e-bb6c392037bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp">
@@ -99,12 +105,6 @@
     <ClCompile Include="..\lasagne\lasagne-text.cpp">
       <Filter>Source Files\Lasagne</Filter>
     </ClCompile>
-    <ClCompile Include="guns\bulletbase.cpp">
-      <Filter>Source Files\Horde\guns</Filter>
-    </ClCompile>
-    <ClCompile Include="guns\bulletpistol.cpp">
-      <Filter>Source Files\Horde\guns</Filter>
-    </ClCompile>
     <ClCompile Include="enemy\enemybase.cpp">
       <Filter>Source Files\Horde\enemy</Filter>
     </ClCompile>
@@ -123,8 +123,23 @@
     <ClCompile Include="guns\gunshotgun.cpp">
       <Filter>Source Files\Horde\guns</Filter>
     </ClCompile>
-    <ClCompile Include="guns\bulletshotgun.cpp">
+    <ClCompile Include="pickups\pickupmachinegun.cpp">
+      <Filter>Source Files\Horde\pickups</Filter>
+    </ClCompile>
+    <ClCompile Include="guns\gunmachinegun.cpp">
       <Filter>Source Files\Horde\guns</Filter>
+    </ClCompile>
+    <ClCompile Include="guns\bulletbase.cpp">
+      <Filter>Source Files\Horde\guns\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="guns\bulletmachinegun.cpp">
+      <Filter>Source Files\Horde\guns\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="guns\bulletpistol.cpp">
+      <Filter>Source Files\Horde\guns\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="guns\bulletshotgun.cpp">
+      <Filter>Source Files\Horde\guns\bullets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,12 +185,6 @@
     <ClInclude Include="..\SOGI\stack\stack.h">
       <Filter>Header Files\SOGI\stack</Filter>
     </ClInclude>
-    <ClInclude Include="guns\bulletbase.h">
-      <Filter>Header Files\Horde\guns</Filter>
-    </ClInclude>
-    <ClInclude Include="guns\bulletpistol.h">
-      <Filter>Header Files\Horde\guns</Filter>
-    </ClInclude>
     <ClInclude Include="enemy\enemybase.h">
       <Filter>Header Files\Horde\enemy</Filter>
     </ClInclude>
@@ -197,8 +206,23 @@
     <ClInclude Include="guns\gunshotgun.h">
       <Filter>Header Files\Horde\guns</Filter>
     </ClInclude>
-    <ClInclude Include="guns\bulletshotgun.h">
+    <ClInclude Include="pickups\pickupmachinegun.h">
+      <Filter>Header Files\Horde\pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\gunmachinegun.h">
       <Filter>Header Files\Horde\guns</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\bulletshotgun.h">
+      <Filter>Header Files\Horde\guns\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\bulletbase.h">
+      <Filter>Header Files\Horde\guns\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\bulletmachinegun.h">
+      <Filter>Header Files\Horde\guns\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\bulletpistol.h">
+      <Filter>Header Files\Horde\guns\bullets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

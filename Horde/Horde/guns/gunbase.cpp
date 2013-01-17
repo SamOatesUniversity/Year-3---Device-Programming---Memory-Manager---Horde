@@ -4,7 +4,8 @@ CGunBase::CGunBase() :
 	m_nextBullet(0),
 	m_entity(0),
 	m_lastShot(0),
-	m_fireRate(1)
+	m_fireRate(1),
+	m_noofBullets(1)
 {
 
 }
@@ -23,12 +24,10 @@ CGunBase::~CGunBase()
 	CLasagne::GetInstance()->Destroy(&m_entity);
 }
 
-int CGunBase::Shoot(
-		std::vector<CEnemyBase*> &enemy
-	)
+void CGunBase::Shoot()
 {
 	if (m_bullet.empty())
-		return 0;
+		return;
 
 	if (m_nextBullet >= m_bullet.size())
 		m_nextBullet = 0;
@@ -41,11 +40,22 @@ int CGunBase::Shoot(
 		m_bullet[m_nextBullet]->Fire(m_entity);
 		m_lastShot = timer;
 		m_nextBullet++;
+
+		if (m_noofBullets != 0)
+			m_noofBullets--;
 	}
+}
+
+int CGunBase::Update(
+		std::vector<CEnemyBase*> &enemy
+	)
+{
+	if (m_bullet.empty())
+		return 0;
 
 	int noofKills = 0;
 
-	static const int NoofBullets = m_bullet.size();
+	const int NoofBullets = m_bullet.size();
 	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)
 	{
 		CBulletBase *const bullet = m_bullet[bulletIndex];

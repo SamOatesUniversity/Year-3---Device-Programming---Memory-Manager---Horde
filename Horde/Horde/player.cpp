@@ -1,20 +1,23 @@
 #include "player.h"
 #include "guns/gunpistol.h"
 #include "guns/gunshotgun.h"
+#include "guns/gunmachinegun.h"
 
 CPlayer::CPlayer() :
     m_entity(NULL),
-	m_gun(NULL),
 	m_score(0),
 	m_health(100)
 {
-
+	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
+		m_gun[gunType] = NULL;
 }
 
 CPlayer::~CPlayer()
 {
 	CLasagne::GetInstance()->Destroy(&m_entity);
-	SafeDelete(m_gun);
+
+	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
+		SafeDelete(m_gun[gunType]);
 }
 
 const bool CPlayer::Load(
@@ -35,14 +38,27 @@ const bool CPlayer::Load(
     m_entity->AddAnimation("walk", 10, 16);
     m_entity->SetCurrentAnimation("walk");
 
-	m_gun = new CGunShotgun(); //CGunPistol();
-	m_gun->Create();
+	m_gun[GunType::Pistol] = new CGunPistol();
+	m_gun[GunType::Pistol]->Create();
 
-	CLasagneEntity *const gun = m_gun->GetEntity();
-	gun->SetPosition(132, 96);
-	gun->AddAnimation("idle", 0, 9);
-	gun->AddAnimation("walk", 10, 16);
-	gun->SetCurrentAnimation("walk");
+	m_gun[GunType::Shotgun] = new CGunShotgun();
+	m_gun[GunType::Shotgun]->Create();
+
+	m_gun[GunType::Machinegun] = new CGunMachinegun();
+	m_gun[GunType::Machinegun]->Create();
+
+	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
+	{
+		CLasagneEntity *const gun = m_gun[gunType]->GetEntity();
+		gun->SetPosition(132, 96);
+		gun->AddAnimation("idle", 0, 9);
+		gun->AddAnimation("walk", 10, 16);
+		gun->SetCurrentAnimation("walk");
+		gun->SetVisible(false);
+	}
+
+	m_currentGun = GunType::Pistol;
+	SetGun(m_currentGun);
 
     return true;
 }
@@ -52,7 +68,7 @@ void CPlayer::SetRotation(
 	)
 {
 	m_entity->SetRotation(alpha);
-	m_gun->GetEntity()->SetRotation(alpha);
+	m_gun[m_currentGun]->GetEntity()->SetRotation(alpha);
 }
 
 void CPlayer::SetCurrentAnimation( 
@@ -60,7 +76,7 @@ void CPlayer::SetCurrentAnimation(
 	)
 {
 	m_entity->SetCurrentAnimation(animation);
-	m_gun->GetEntity()->SetCurrentAnimation(animation);
+	m_gun[m_currentGun]->GetEntity()->SetCurrentAnimation(animation);
 }
 
 void CPlayer::Update(
@@ -70,8 +86,16 @@ void CPlayer::Update(
 	if (m_health == 0)
 		return;
 
-	int noofKills = m_gun->Shoot(enemy);
+	m_gun[m_currentGun]->Shoot();
+
+	int noofKills = 0;
+	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
+		noofKills += m_gun[gunType]->Update(enemy);
+
 	m_score += (noofKills * 10);
+
+	if (m_gun[m_currentGun]->GetNoofBullets() <= 0)
+		SetGun(GunType::Pistol);
 
 	for (unsigned int enemyIndex = 0; enemyIndex < enemy.size(); ++enemyIndex)
 	{
@@ -89,4 +113,19 @@ void CPlayer::Update(
 				m_health = 0;
 		}
 	}
+}
+
+void CPlayer::SetGun(
+		GunType::Enum gunType
+	)
+{
+	m_gun[m_currentGun]->GetEntity()->SetVisible(false);
+	m_currentGun = gunType;
+
+	m_gun[m_currentGun]->GetEntity()->SetVisible(true);
+
+	if (m_currentGun == GunType::Shotgun)
+		m_gun[m_currentGun]->SetNoofBullets(6);
+	else if (m_currentGun == GunType::Machinegun)
+		m_gun[m_currentGun]->SetNoofBullets(30);
 }

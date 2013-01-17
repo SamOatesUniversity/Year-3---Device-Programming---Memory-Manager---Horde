@@ -23,7 +23,7 @@ void CPickupShotgun::OnPickup()
 	if (!m_entity->IsVisible())
 		return;
 
-	// m_player->SetGun(Gun::Shotgun);
+	m_player->SetGun(GunType::Shotgun);
 
 	m_entity->SetVisible(false);
 }
