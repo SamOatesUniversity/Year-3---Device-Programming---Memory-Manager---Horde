@@ -23,6 +23,8 @@ private:
     Uint32                                  m_lastFrameTime;
     std::string                             m_currentAnimation;
 
+	unsigned int							m_fps;
+
 	struct AnimationData {
 		TVector<int, 2> frames;
 		bool loop;
@@ -154,6 +156,14 @@ public:
 
 							//! Is the entity within the bounds of the screen
 	bool					IsOnScreen() const;
+
+							//! Set the animations frames perseconds
+	void					SetFPS(
+								unsigned int fps
+							)
+							{
+								m_fps = 1000 / fps;
+							}
 };
 
 #endif // LASAGNE_ENTITY_H_INCLUDED

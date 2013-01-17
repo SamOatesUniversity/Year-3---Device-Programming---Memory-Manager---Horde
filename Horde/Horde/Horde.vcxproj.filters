@@ -117,6 +117,9 @@
     <ClCompile Include="pickups\pickuphealth.cpp">
       <Filter>Source Files\Horde\pickups</Filter>
     </ClCompile>
+    <ClCompile Include="pickups\pickupshotgun.cpp">
+      <Filter>Source Files\Horde\pickups</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lasagne\lasagne.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="..\main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pickups\pickupshotgun.h">
+      <Filter>Header Files\Horde\pickups</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 
 #include "enemybase.h"
 #include "../pickups/pickuphealth.h"
+#include "../pickups/pickupshotgun.h"
 
 class CEnemyZombie : public CEnemyBase {
 protected:

@@ -31,7 +31,10 @@ bool CEnemyZombie::Create(
 
 	m_entity->SetPosition(static_cast<float>(startX), static_cast<float>(startY));
 
-	if (rand() % 5 == 0) m_pickup = new CPickupHealth(player);
+	if (rand() % 5 == 0) 
+		m_pickup = new CPickupHealth(player);
+	else if (rand() % 5 == 0)
+		m_pickup = new CPickupShotgun(player);
 
 	return true;
 }
