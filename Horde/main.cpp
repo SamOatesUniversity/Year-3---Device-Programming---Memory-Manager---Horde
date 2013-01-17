@@ -21,6 +21,9 @@ int main (int argc, char *argv[])
     Uint32 updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
 
+	CLasagneMusicFile *ambiantMusic = engine->LoadMusicFile("./media/sound/ambiant.ogg");
+	ambiantMusic->Play();
+
     // whilst the engine is running loop
 	do
 	{

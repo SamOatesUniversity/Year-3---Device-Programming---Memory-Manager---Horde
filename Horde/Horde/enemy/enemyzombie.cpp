@@ -23,6 +23,9 @@ bool CEnemyZombie::Create(
 	if (!m_entity)
 		return false;
 
+	m_audio[EnemyAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/enemy/hurt.wav");
+	m_audio[EnemyAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/enemy/die.wav");
+
 	m_entity->SetDepth(7);
 
 	m_entity->AddAnimation("walk", 0, 9);

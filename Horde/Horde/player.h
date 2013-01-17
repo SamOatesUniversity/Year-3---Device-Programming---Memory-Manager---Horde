@@ -17,11 +17,22 @@ struct GunType {
 	};
 };
 
+struct PlayerAudio {
+	enum Enum {
+		Hurt,
+		Die,
+		Noof
+	};
+};
+
 class CPlayer {
 
 private:
 
     CLasagneEntity                          *m_entity;
+	CLasagneEntity                          *m_hurtHUD;
+
+	CLasagneAudioFile						*m_audio[PlayerAudio::Noof];				//!<
 
 	GunType::Enum							m_currentGun;
 	CGunBase								*m_gun[GunType::Noof];

@@ -13,6 +13,7 @@ protected:
 	unsigned int					m_noofBullets;				//!< 
 
 	CLasagneEntity                  *m_entity;					//!<
+	CLasagneAudioFile				*m_audio;
 
 	unsigned int					m_fireRate;					//!< How many bullets can be shot per second
 	Uint32							m_lastShot;					//!<

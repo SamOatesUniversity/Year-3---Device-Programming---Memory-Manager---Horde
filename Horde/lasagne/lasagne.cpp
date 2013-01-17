@@ -214,6 +214,18 @@ void CLasagne::Release()
 	}
 	m_entity.clear();
 
+	for (unsigned int musicIndex = 0; musicIndex < m_music.size(); ++musicIndex)
+	{
+		SafeDelete(m_music[musicIndex]);
+	}
+	m_music.clear();
+
+	for (unsigned int audioIndex = 0; audioIndex < m_audio.size(); ++audioIndex)
+	{
+		SafeDelete(m_audio[audioIndex]);
+	}
+	m_audio.clear();
+		
 #if defined(SHOW_FPS)
 	SafeDelete(m_fps.text);
 #endif
@@ -253,8 +265,11 @@ CLasagneMusicFile *CLasagne::LoadMusicFile(
 {
     CLasagneMusicFile *music = new CLasagneMusicFile(engine);
     if (!music->Create(musicFile)) {
+		SafeDelete(music);
         return NULL;
     }
+
+	m_music.push_back(music);
 
     return music;
 }
@@ -266,8 +281,11 @@ CLasagneAudioFile *CLasagne::LoadAudioFile(
 {
     CLasagneAudioFile *audio = new CLasagneAudioFile(engine);
     if (!audio->Create(audioFile)) {
+		SafeDelete(audio);
         return NULL;
     }
+
+	m_audio.push_back(audio);
 
     return audio;
 }

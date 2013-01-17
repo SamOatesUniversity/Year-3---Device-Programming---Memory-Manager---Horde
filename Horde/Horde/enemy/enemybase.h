@@ -5,6 +5,14 @@
 #include "../pickups/pickupbase.h"
 #include "../player.h"
 
+struct EnemyAudio {
+	enum Enum {
+		Hurt,
+		Die,
+		Noof
+	};
+};
+
 class CEnemyBase {
 
 	friend class CPlayer;
@@ -16,6 +24,8 @@ protected:
 	int								m_health;					//!< Howmuch health the enemy has
 
 	CPickupBase						*m_pickup;					//!<
+
+	CLasagneAudioFile				*m_audio[EnemyAudio::Noof];	//!<
 
 public:
 									//!
