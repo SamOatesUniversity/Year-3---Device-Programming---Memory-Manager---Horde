@@ -18,6 +18,11 @@ CLasagneEntity::CLasagneEntity(
         SHOWLOGERROR("Failed to load image");
     }
 
+	m_frameSize.x = 0;
+	m_frameSize.y = 0;
+	m_frameSize.w = m_image->w;
+	m_frameSize.h = m_image->h;
+
     m_screenPosition.Set(0.0f, 0.0f);
 }
 
