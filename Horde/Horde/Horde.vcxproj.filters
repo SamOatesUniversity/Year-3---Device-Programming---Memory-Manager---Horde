@@ -120,6 +120,12 @@
     <ClCompile Include="pickups\pickupshotgun.cpp">
       <Filter>Source Files\Horde\pickups</Filter>
     </ClCompile>
+    <ClCompile Include="guns\gunshotgun.cpp">
+      <Filter>Source Files\Horde\guns</Filter>
+    </ClCompile>
+    <ClCompile Include="guns\bulletshotgun.cpp">
+      <Filter>Source Files\Horde\guns</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lasagne\lasagne.h">
@@ -187,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="pickups\pickupshotgun.h">
       <Filter>Header Files\Horde\pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\gunshotgun.h">
+      <Filter>Header Files\Horde\guns</Filter>
+    </ClInclude>
+    <ClInclude Include="guns\bulletshotgun.h">
+      <Filter>Header Files\Horde\guns</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

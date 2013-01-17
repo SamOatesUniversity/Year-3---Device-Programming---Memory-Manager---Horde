@@ -1,16 +1,25 @@
-#ifndef BULLETPISTOL_H_INCLUDED
-#define BULLETPISTOL_H_INCLUDED
+#ifndef BULLETSHOTGUN_H_INCLUDED
+#define BULLETSHOTGUN_H_INCLUDED
 
 #include "bulletbase.h"
 
-class CBulletPistol : public CBulletBase 
+struct ShotgunBulletDirection {
+	enum Enum {
+		Left,
+		Center,
+		Right,
+		Noof
+	};
+};
+
+class CBulletShotgun : public CBulletBase 
 {
 public:
 							//! 
-							CBulletPistol();
+							CBulletShotgun();
 
 							//! 
-							~CBulletPistol();
+							~CBulletShotgun();
 
 							//! 
 	virtual void			Create();
@@ -22,13 +31,14 @@ public:
 
 							//!
 	virtual void			Fire(
-								CLasagneEntity *gun
+								CLasagneEntity *gun,
+								ShotgunBulletDirection::Enum direction
 							);
 
 							//! The power of the bullet (represents the damage done to an enemy on contact)
 	virtual int				GetPower() const
 							{
-								return 35;
+								return 100;
 							}
 };
 

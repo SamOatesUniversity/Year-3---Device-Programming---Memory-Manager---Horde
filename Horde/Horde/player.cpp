@@ -1,5 +1,6 @@
 #include "player.h"
 #include "guns/gunpistol.h"
+#include "guns/gunshotgun.h"
 
 CPlayer::CPlayer() :
     m_entity(NULL),
@@ -34,7 +35,7 @@ const bool CPlayer::Load(
     m_entity->AddAnimation("walk", 10, 16);
     m_entity->SetCurrentAnimation("walk");
 
-	m_gun = new CGunPistol();
+	m_gun = new CGunShotgun(); //CGunPistol();
 	m_gun->Create();
 
 	CLasagneEntity *const gun = m_gun->GetEntity();
