@@ -69,6 +69,10 @@ int CGunBase::Shoot(
 			if (currentEnemy->GetHealth() <= 0)
 				continue;
 
+			// don't check enemies not on the screen
+			if (!currentEnemy->GetEntity()->IsOnScreen())
+				continue;
+
 			if (bullet->CheckCollision(currentEnemy->GetEntity()))
 			{
 				currentEnemy->Damage(bullet->GetPower());
