@@ -3,7 +3,7 @@
 
 CEnemyZombie::CEnemyZombie()
 {
-	m_speed = 2.0f;
+	m_speed = 1.0f + (((rand() % 1000) + 1) / 250);
 }
 
 CEnemyZombie::~CEnemyZombie()
@@ -35,6 +35,8 @@ bool CEnemyZombie::Create(
 		m_pickup = new CPickupHealth(player);
 	else if (rand() % 5 == 0)
 		m_pickup = new CPickupShotgun(player);
+	else if (rand() % 5 == 0)
+		m_pickup = new CPickupMachineGun(player);
 
 	return true;
 }

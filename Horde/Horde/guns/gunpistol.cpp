@@ -29,10 +29,3 @@ void CGunPistol::Create()
 	}
 
 }
-
-int CGunPistol::Shoot(
-		std::vector<CEnemyBase*> &enemy
-	)
-{
-	return CGunBase::Shoot(enemy);
-}

@@ -16,10 +16,11 @@ public:
 									//! 
 	virtual void					Create();
 
-									//!
-    virtual int 					Shoot(
-										std::vector<CEnemyBase*> &enemy
-									);
+									//! 
+	virtual unsigned int			GetNoofBullets() const
+									{
+										return 1;	// infinite ammo
+									}
 };
 
 #endif // GUNPISTOL_H_INCLUDED

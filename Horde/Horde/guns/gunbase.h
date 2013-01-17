@@ -10,6 +10,7 @@ protected:
 
 	std::vector<CBulletBase*>		m_bullet;					//!< 
 	unsigned int					m_nextBullet;				//!< 
+	unsigned int					m_noofBullets;				//!< 
 
 	CLasagneEntity                  *m_entity;					//!<
 
@@ -32,9 +33,25 @@ public:
 	virtual void					Create() = 0;
 
 									//!
-    virtual int						Shoot(
+    virtual void					Shoot();
+
+									//!
+    virtual int						Update(
 										std::vector<CEnemyBase*> &enemy
 									);
+
+									//! 
+	virtual unsigned int			GetNoofBullets() const
+									{
+										return m_noofBullets;
+									}
+
+	virtual void					SetNoofBullets(
+										unsigned int noofBullets
+									)
+									{
+										m_noofBullets = noofBullets;
+									}
 
 };
 
