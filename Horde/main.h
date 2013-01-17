@@ -1,7 +1,6 @@
 #ifndef GAMEMAIN_HEADER
 #define GAMEMAIN_HEADER
 
-#include <vld.h>
 
 #include "lasagne/lasagne.h"
 #include "Horde/scenebase.h"
