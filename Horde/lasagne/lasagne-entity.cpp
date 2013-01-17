@@ -63,6 +63,9 @@ void CLasagneEntity::Render(
 	if (!m_visible)
 		return;
 
+	if (!IsOnScreen())
+		return;
+
     if (m_noofFramesX + m_noofFramesY == 0)
     {
          // draw the entity in its 3d position
@@ -74,13 +77,6 @@ void CLasagneEntity::Render(
     }
     else
     {
-
-		if (m_screenPosition.x() > screen->w) return;
-		if (m_screenPosition.y() > screen->h) return;
-
-		if (m_screenPosition.x() + m_frameSize.w < 0) return;
-		if (m_screenPosition.y() + m_frameSize.h < 0) return;
-
         int xOffset = m_currentFrame;
         int yOffset = 0;
         while (xOffset > m_noofFramesX - 1)
@@ -189,6 +185,24 @@ const bool CLasagneEntity::Intersects(
 		return false;
 
 	if (m_screenPosition.y() + m_frameSize.h < otherPosition.y())
+		return false;
+
+	return true;
+}
+
+
+bool CLasagneEntity::IsOnScreen() const
+{
+	if (m_screenPosition.x() > 320)
+		return false;
+
+	if (m_screenPosition.x() + m_frameSize.w < 0)
+		return false;
+
+	if (m_screenPosition.y() > 240)
+		return false;
+
+	if (m_screenPosition.y() + m_frameSize.h < 0)
 		return false;
 
 	return true;

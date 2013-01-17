@@ -34,4 +34,8 @@ bool ReleaseLevel();
 unsigned int currentLevel = 1;
 unsigned int lastLevel = 3;
 
+unsigned int wave = 1;
+
+unsigned int totalScore = 0;
+
 #endif

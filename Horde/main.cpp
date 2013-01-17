@@ -97,7 +97,7 @@ int main (int argc, char *argv[])
 			player->Update(enemy);
 			
 			std::stringstream scoreBuffer;
-			scoreBuffer << "Score: " << player->GetScore();
+			scoreBuffer << "Score: " << (player->GetScore() + totalScore);
 			scoreText->SetText(scoreBuffer.str().c_str());
 
 			std::stringstream healthBuffer;
@@ -114,8 +114,10 @@ int main (int argc, char *argv[])
 			{
 				gameState = GameState::LoadingLevel;
 				levelEndTimer = 0;
+				totalScore += player->GetScore();
 				ReleaseLevel();
 				currentLevel++;
+				wave++;
 				LoadLevel(currentLevel);
 
 				// loop the levels
@@ -186,14 +188,14 @@ bool LoadLevel(
 	IVec2 spawnPoint;
 	static const int swarmSize = 5;
 
-	int noofEnemies = 10 + (id * 10);
+	int noofEnemies = 10 + (wave * 10);
 
 	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
 	{
 		if (zombieIndex % swarmSize == 0)
 			spawnPoint.Set(
-				132 + ((rand() % 2048) - 1024), 
-				96 + ((rand() % 2048) - 1024)
+				132 + ((rand() % 1024) - 512), 
+				96 + ((rand() % 1024) - 512)
 			);
 
 		CEnemyZombie *zombieTest = new CEnemyZombie();
