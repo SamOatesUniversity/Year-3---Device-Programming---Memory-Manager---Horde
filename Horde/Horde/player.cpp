@@ -24,6 +24,9 @@ CPlayer::~CPlayer()
 
 	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
 		SafeDelete(m_gun[gunType]);
+
+	for (int audioIndex = 0; audioIndex < PlayerAudio::Noof; ++audioIndex)
+		CLasagne::GetInstance()->Destroy(&m_audio[audioIndex]);
 }
 
 const bool CPlayer::Load(

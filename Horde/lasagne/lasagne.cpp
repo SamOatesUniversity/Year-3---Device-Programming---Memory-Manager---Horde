@@ -363,3 +363,22 @@ void CLasagne::Destroy( CLasagneText **text )
 
 	SafeDelete(*text);
 }
+
+void CLasagne::Destroy(
+		CLasagneAudioFile **audio
+	)
+{
+	std::vector<CLasagneAudioFile*>::iterator iter = m_audio.begin();
+	std::vector<CLasagneAudioFile*>::iterator endIter = m_audio.end();
+
+	for (iter; iter != endIter; iter++)
+	{
+		if ((*iter) == (*audio))
+		{
+			m_audio.erase(iter);
+			break;
+		}
+	}
+
+	SafeDelete(*audio);
+}

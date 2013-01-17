@@ -14,6 +14,9 @@ CEnemyBase::~CEnemyBase()
 {
 	SafeDelete(m_pickup);
 	CLasagne::GetInstance()->Destroy(&m_entity);
+
+	for (int audioIndex = 0; audioIndex < EnemyAudio::Noof; ++audioIndex)
+		CLasagne::GetInstance()->Destroy(&m_audio[audioIndex]);
 }
 
 void CEnemyBase::Damage( 
