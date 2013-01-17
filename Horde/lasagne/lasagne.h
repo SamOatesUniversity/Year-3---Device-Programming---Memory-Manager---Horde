@@ -31,6 +31,9 @@ private:
 
     std::vector<CLasagneEntity*>        m_entity;               //!<
 	std::vector<CLasagneText*>			m_textEntity;           //!<
+	std::vector<CLasagneMusicFile*>		m_music;		        //!<
+	std::vector<CLasagneAudioFile*>		m_audio;		        //!<
+	
 
 #if defined(SHOW_FPS)
     struct {

@@ -6,10 +6,15 @@
 CPlayer::CPlayer() :
     m_entity(NULL),
 	m_score(0),
-	m_health(100)
+	m_health(100),
+	m_hurtHUD(NULL)
 {
 	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
 		m_gun[gunType] = NULL;
+
+	for (int audioIndex = 0; audioIndex < PlayerAudio::Noof; ++audioIndex)
+		m_audio[audioIndex] = NULL;
+	
 }
 
 CPlayer::~CPlayer()
@@ -31,8 +36,14 @@ const bool CPlayer::Load(
         return false;
 
 	m_entity->SetDepth(5);
-
     m_entity->SetPosition(132, 96);
+
+	m_hurtHUD = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/hurt.png");
+	m_hurtHUD->SetVisible(false);
+	m_hurtHUD->SetDepth(9);
+
+	m_audio[PlayerAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/hurt.wav");
+	m_audio[PlayerAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/die.wav");
 
     m_entity->AddAnimation("idle", 0, 9);
     m_entity->AddAnimation("walk", 10, 16);
@@ -109,10 +120,20 @@ void CPlayer::Update(
 		if (CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 12.0f))
 		{
 			m_health--;
-			if (m_health < 0)
+			if (m_health <= 0)
+			{
 				m_health = 0;
+				m_audio[PlayerAudio::Die]->Play();
+				return;
+			}
+
+			m_hurtHUD->SetVisible(true);
+			m_audio[PlayerAudio::Hurt]->Play();
+			return;
 		}
 	}
+
+	m_hurtHUD->SetVisible(false);
 }
 
 void CPlayer::SetGun(

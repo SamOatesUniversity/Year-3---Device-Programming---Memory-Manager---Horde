@@ -108,12 +108,15 @@ void CSOGI::ShowAndLogError(
     // Output a call stack
     const char **callStack = GetCallStack();
 
-    for (int stackIndex = 2; stackIndex < MAXSTACKTRACE; ++stackIndex)
-    {
-		if (callStack[stackIndex] != NULL) LogError(callStack[stackIndex]);
-    }
+	if (callStack != NULL)
+	{
+		for (int stackIndex = 2; stackIndex < MAXSTACKTRACE; ++stackIndex)
+		{
+			if (callStack[stackIndex] != NULL) LogError(callStack[stackIndex]);
+		}
 
-    SafeArrayDelete(callStack);
+		SafeArrayDelete(callStack);
+	}
 
     // log the error to file
     LogError(errorMessage, file, line);

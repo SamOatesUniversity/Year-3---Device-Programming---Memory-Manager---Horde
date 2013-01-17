@@ -7,3 +7,13 @@
 [ (0)] 0x407666: global constructors keyed to SDL_main in main.cpp (25)
 [ (0)] 0x4010b6: [unknown function] in SOGI.cpp
 [lasagne-entity.cpp (12)] Failed to load image
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading smpeg.dll: The specified module could not be found.
+

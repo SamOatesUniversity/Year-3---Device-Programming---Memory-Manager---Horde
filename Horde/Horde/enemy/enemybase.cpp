@@ -6,6 +6,8 @@ CEnemyBase::CEnemyBase() :
 	m_health(100),
 	m_pickup(NULL)
 {
+	for (int audioIndex = 0; audioIndex < EnemyAudio::Noof; ++audioIndex)
+		m_audio[audioIndex] = NULL;
 }
 
 CEnemyBase::~CEnemyBase()
@@ -22,5 +24,12 @@ void CEnemyBase::Damage(
 	if (m_health <= 0)
 	{
 		OnDeath();
+		if (m_audio[EnemyAudio::Die] != NULL)
+			m_audio[EnemyAudio::Die]->Play();
+	}
+	else
+	{
+		if (m_audio[EnemyAudio::Hurt] != NULL)
+			m_audio[EnemyAudio::Hurt]->Play();
 	}
 }

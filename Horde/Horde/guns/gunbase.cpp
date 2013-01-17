@@ -2,7 +2,8 @@
 
 CGunBase::CGunBase() :
 	m_nextBullet(0),
-	m_entity(0),
+	m_entity(NULL),
+	m_audio(NULL),
 	m_lastShot(0),
 	m_fireRate(1),
 	m_noofBullets(1)
@@ -37,6 +38,9 @@ void CGunBase::Shoot()
 	Uint32 timer = SDL_GetTicks();						
 	if (timer - m_lastShot > (1000 / m_fireRate))		
 	{
+		if (m_audio != NULL)
+			m_audio->Play();
+
 		m_bullet[m_nextBullet]->Fire(m_entity);
 		m_lastShot = timer;
 		m_nextBullet++;

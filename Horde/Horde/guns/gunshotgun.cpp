@@ -18,6 +18,8 @@ void CGunShotgun::Create()
 	if (!m_entity)
 		return;
 
+	m_audio = CLasagne::GetInstance()->LoadAudioFile("./media/sound/guns/shotgun.wav");
+
 	m_entity->SetDepth(5);
 
 	static const int NoofBullets = 9;
@@ -41,6 +43,9 @@ void CGunShotgun::Shoot()
 	Uint32 timer = SDL_GetTicks();						
 	if (timer - m_lastShot > (1000 / m_fireRate))		
 	{
+		if (m_audio != NULL)
+			m_audio->Play();
+		
 		for (int dir = 0; dir < ShotgunBulletDirection::Noof; ++dir)
 		{
 			static_cast<CBulletShotgun*>(m_bullet[m_nextBullet])->Fire(m_entity, static_cast<ShotgunBulletDirection::Enum>(dir));
@@ -49,6 +54,7 @@ void CGunShotgun::Shoot()
 
 		if (m_noofBullets != 0)
 			m_noofBullets--;
+		
 		m_lastShot = timer;
 	}
 }

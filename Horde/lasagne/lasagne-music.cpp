@@ -11,7 +11,8 @@ CLasagneMusicFile::CLasagneMusicFile(
 
 CLasagneMusicFile::~CLasagneMusicFile()
 {
-
+	Mix_FreeMusic(m_sdlMusic);
+    m_sdlMusic = NULL;
 }
 
 const bool CLasagneMusicFile::Create(
