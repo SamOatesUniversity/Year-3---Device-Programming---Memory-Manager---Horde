@@ -10,7 +10,8 @@ CLasagneEntity::CLasagneEntity(
     m_currentFrame(0),
     m_rotation(0),
 	m_rendeDepth(0),
-	m_visible(true)
+	m_visible(true),
+	m_fps(50)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -37,7 +38,8 @@ CLasagneEntity::CLasagneEntity(
     m_currentFrame(0),
 	m_rotation(0),
 	m_rendeDepth(0),
-	m_visible(true)
+	m_visible(true),
+	m_fps(50)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -90,8 +92,8 @@ void CLasagneEntity::Render(
             xOffset -= m_noofFramesX;
         }
 
-        // update aniamtion at 20fps
-        if (SDL_GetTicks() - m_lastFrameTime > 50)
+        // update aniamtion
+        if (SDL_GetTicks() - m_lastFrameTime > m_fps)
         {
             m_lastFrameTime = SDL_GetTicks();
 
