@@ -20,6 +20,7 @@ CPlayer::CPlayer() :
 CPlayer::~CPlayer()
 {
 	CLasagne::GetInstance()->Destroy(&m_entity);
+	CLasagne::GetInstance()->Destroy(&m_hurtHUD);
 
 	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
 		SafeDelete(m_gun[gunType]);
