@@ -119,6 +119,11 @@ public:
 											CLasagneText **text
 										);
 
+										//! 
+	void								Destroy(
+											CLasagneAudioFile **audio
+										);
+
                                         //! Get the stored mouse position
     const TVector<int, 2>               *GetMousePosition() const
                                         {

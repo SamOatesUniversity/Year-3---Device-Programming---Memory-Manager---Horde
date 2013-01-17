@@ -23,6 +23,7 @@ CGunBase::~CGunBase()
 	m_bullet.clear();
 
 	CLasagne::GetInstance()->Destroy(&m_entity);
+	CLasagne::GetInstance()->Destroy(&m_audio);
 }
 
 void CGunBase::Shoot()
