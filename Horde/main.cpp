@@ -1,37 +1,34 @@
 #include "main.h"
 
-const bool isLeftPressed();
-const bool isRightPressed();
-const bool isUpPressed();
-const bool isDownPressed();
-
+/*
+*	\brief The main entry point of the application
+*/
 int main (int argc, char *argv[])
 {
-    // if we failed to create (setup sdl ect...) then exit
+    // grab access to the engine
     CLasagne *const engine = CLasagne::GetInstance();
 
+	// if we failed to create (setup sdl ect...) then exit
     if (!engine->Create())
     {
         engine->Release();
         return 0;
     }
 
+	// Load the first level into memory
 	LoadLevel(currentLevel);
 
+	// store the game start time
     Uint32 updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
 
+	// load the ambient music and play it
 	CLasagneMusicFile *ambiantMusic = engine->LoadMusicFile("./media/sound/ambiant.ogg");
 	ambiantMusic->Play();
 
     // whilst the engine is running loop
 	do
 	{
-		if (gameState == GameState::LoadingLevel)
-		{
-			continue;
-		}
-
         // update logic at 20 fps
         if (SDL_GetTicks() - updateTimer > 50)
         {
@@ -166,32 +163,11 @@ int main (int argc, char *argv[])
 	return 0;
 }
 
-const bool isLeftPressed()
-{
-    Uint8 *keystate = SDL_GetKeyState(NULL);
-    return keystate[SDLK_a] || keystate[SDLK_LEFT];
-}
-
-const bool isRightPressed()
-{
-    Uint8 *keystate = SDL_GetKeyState(NULL);
-    return keystate[SDLK_d] || keystate[SDLK_RIGHT];
-}
-
-const bool isUpPressed()
-{
-    Uint8 *keystate = SDL_GetKeyState(NULL);
-    return keystate[SDLK_w] || keystate[SDLK_UP];
-}
-
-const bool isDownPressed()
-{
-    Uint8 *keystate = SDL_GetKeyState(NULL);
-    return keystate[SDLK_s] || keystate[SDLK_DOWN];
-}
-
-bool LoadLevel(
-		int id
+/*
+*	\brief Load a level by a given id
+*/
+const bool LoadLevel(
+		const unsigned int id					//!< The id of the level to load
 	)
 {
 	CLasagne *const engine = CLasagne::GetInstance();
@@ -241,7 +217,10 @@ bool LoadLevel(
 	return true;
 }
 
-bool ReleaseLevel()
+/*
+*	\brief Release the current load level and all its assets
+*/
+const bool ReleaseLevel()
 {
 	CLasagne *const engine = CLasagne::GetInstance();
 	engine->Destroy(&scoreText);
