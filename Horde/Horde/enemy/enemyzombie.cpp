@@ -18,7 +18,7 @@ bool CEnemyZombie::Create(
 	)
 {
 	TVector<int, 2> frameLayout;
-	frameLayout.Set(8, 2);
+	frameLayout.Set(8, 3);
 	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./media/graphics/characters/zombie.png", frameLayout);
 	if (!m_entity)
 		return false;
@@ -30,6 +30,7 @@ bool CEnemyZombie::Create(
 
 	m_entity->AddAnimation(const_cast<char*>("walk"), 0, 9);
 	m_entity->AddAnimation(const_cast<char*>("dead"), 10, 16, false);
+	m_entity->AddAnimation(const_cast<char*>("fade"), 17, 24, false);
 	m_entity->SetCurrentAnimation(const_cast<char*>("walk"));
 
 	m_entity->SetPosition(static_cast<float>(startX), static_cast<float>(startY));
@@ -62,7 +63,13 @@ void CEnemyZombie::Update(
 		static const Uint32 fadeAfterDeath = 3000; 
 		if (SDL_GetTicks() - m_dieTimer > fadeAfterDeath)
 		{
-			m_entity->SetVisible(false);
+			if (SDL_GetTicks() - m_dieTimer > (fadeAfterDeath + 2000))
+			{
+				m_entity->SetVisible(false);
+				return;
+			}
+			m_entity->SetCurrentAnimation(const_cast<char*>("fade"));
+			m_entity->SetFPS(10);
 		}
 	}
 
