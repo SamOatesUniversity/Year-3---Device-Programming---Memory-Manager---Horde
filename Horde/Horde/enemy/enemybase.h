@@ -27,6 +27,8 @@ protected:
 
 	CLasagneAudioFile				*m_audio[EnemyAudio::Noof];	//!<
 
+	Uint32                          m_dieTimer;                 //!<
+
 public:
 									//!
 									CEnemyBase();
