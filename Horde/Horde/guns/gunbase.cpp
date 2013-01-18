@@ -2,11 +2,11 @@
 
 CGunBase::CGunBase() :
 	m_nextBullet(0),
+	m_noofBullets(1),
 	m_entity(NULL),
 	m_audio(NULL),
-	m_lastShot(0),
 	m_fireRate(1),
-	m_noofBullets(1)
+	m_lastShot(0)
 {
 
 }
@@ -15,8 +15,7 @@ CGunBase::~CGunBase()
 {
 	std::vector<CBulletBase*>::iterator iter = m_bullet.begin();
 	std::vector<CBulletBase*>::iterator endIter = m_bullet.end();
-
-	for (iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; iter++)
 	{
 		SafeDelete(*iter);
 	}
@@ -34,10 +33,8 @@ void CGunBase::Shoot()
 	if (m_nextBullet >= m_bullet.size())
 		m_nextBullet = 0;
 
-	#pragma message(__FILE__" - SOates: Requires Optimization")
-
-	Uint32 timer = SDL_GetTicks();						
-	if (timer - m_lastShot > (1000 / m_fireRate))		
+	Uint32 timer = SDL_GetTicks();
+	if (timer - m_lastShot > (1000 / m_fireRate))
 	{
 		if (m_audio != NULL)
 			m_audio->Play();

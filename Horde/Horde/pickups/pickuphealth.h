@@ -3,14 +3,14 @@
 
 #include "pickupbase.h"
 
-class CPickupHealth : public CPickupBase 
+class CPickupHealth : public CPickupBase
 {
 private:
 
 public:
 											//! Class constructor
 											CPickupHealth(
-												CPlayer *player	
+												CPlayer *player
 											);
 
 											//! Class destructor

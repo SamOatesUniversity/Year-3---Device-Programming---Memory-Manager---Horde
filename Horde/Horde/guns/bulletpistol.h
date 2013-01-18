@@ -3,19 +3,19 @@
 
 #include "bulletbase.h"
 
-class CBulletPistol : public CBulletBase 
+class CBulletPistol : public CBulletBase
 {
 public:
-							//! 
+							//!
 							CBulletPistol();
 
-							//! 
+							//!
 							~CBulletPistol();
 
-							//! 
+							//!
 	virtual void			Create();
 
-							//! 
+							//!
 	virtual bool			CheckCollision(
 								CLasagneEntity *other
 							);
