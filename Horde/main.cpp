@@ -210,6 +210,8 @@ bool LoadLevel(
 
 	int noofEnemies = 10 + (wave * 10);
 
+	if (noofEnemies > 50) noofEnemies = 50;
+
 	for (int zombieIndex = 0; zombieIndex < noofEnemies; ++zombieIndex)
 	{
 		if (zombieIndex % swarmSize == 0)
