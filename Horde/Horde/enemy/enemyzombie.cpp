@@ -56,7 +56,15 @@ void CEnemyZombie::Update(
 		return;
 
 	if (m_health <= 0)
+	{
 		m_speed = 0.0f;
+
+		static const Uint32 fadeAfterDeath = 3000; 
+		if (SDL_GetTicks() - m_dieTimer > fadeAfterDeath)
+		{
+			m_entity->SetVisible(false);
+		}
+	}
 
 	TVector<float, 2> moveDirection;
 	moveDirection.Set(132 - m_entity->GetPosition().x(), 96 - m_entity->GetPosition().y());
