@@ -5,16 +5,16 @@
 
 CPlayer::CPlayer() :
     m_entity(NULL),
+    m_hurtHUD(NULL),
 	m_score(0),
-	m_health(100),
-	m_hurtHUD(NULL)
+	m_health(100)
 {
 	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
 		m_gun[gunType] = NULL;
 
 	for (int audioIndex = 0; audioIndex < PlayerAudio::Noof; ++audioIndex)
 		m_audio[audioIndex] = NULL;
-	
+
 }
 
 CPlayer::~CPlayer()
@@ -49,9 +49,9 @@ const bool CPlayer::Load(
 	m_audio[PlayerAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/hurt.wav");
 	m_audio[PlayerAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/die.wav");
 
-    m_entity->AddAnimation("idle", 0, 9);
-    m_entity->AddAnimation("walk", 10, 16);
-    m_entity->SetCurrentAnimation("walk");
+    m_entity->AddAnimation(const_cast<char*>("idle"), 0, 9);
+    m_entity->AddAnimation(const_cast<char*>("walk"), 10, 16);
+    m_entity->SetCurrentAnimation(const_cast<char*>("walk"));
 
 	m_gun[GunType::Pistol] = new CGunPistol();
 	m_gun[GunType::Pistol]->Create();
@@ -66,9 +66,9 @@ const bool CPlayer::Load(
 	{
 		CLasagneEntity *const gun = m_gun[gunType]->GetEntity();
 		gun->SetPosition(132, 96);
-		gun->AddAnimation("idle", 0, 9);
-		gun->AddAnimation("walk", 10, 16);
-		gun->SetCurrentAnimation("walk");
+		gun->AddAnimation(const_cast<char*>("idle"), 0, 9);
+		gun->AddAnimation(const_cast<char*>("walk"), 10, 16);
+		gun->SetCurrentAnimation(const_cast<char*>("walk"));
 		gun->SetVisible(false);
 	}
 
@@ -78,16 +78,16 @@ const bool CPlayer::Load(
     return true;
 }
 
-void CPlayer::SetRotation( 
-		const int alpha 
+void CPlayer::SetRotation(
+		const int alpha
 	)
 {
 	m_entity->SetRotation(alpha);
 	m_gun[m_currentGun]->GetEntity()->SetRotation(alpha);
 }
 
-void CPlayer::SetCurrentAnimation( 
-		char *animation 
+void CPlayer::SetCurrentAnimation(
+		char *animation
 	)
 {
 	m_entity->SetCurrentAnimation(animation);

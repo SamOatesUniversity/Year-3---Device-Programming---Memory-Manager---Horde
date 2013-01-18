@@ -362,15 +362,17 @@
 	"../lasagne/lasagne.h"
 	<map>
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\player.cpp
+1358511703 source:c:\users\j9060283\desktop\horde\horde\player.cpp
 	"player.h"
 	"guns/gunpistol.h"
+	"guns/gunshotgun.h"
+	"guns/gunmachinegun.h"
 
-1358181755 c:\users\j9060283\desktop\horde\horde\player.h
+1358510844 c:\users\j9060283\desktop\horde\horde\player.h
 	"../lasagne/lasagne.h"
 	<map>
 
-1358183257 c:\users\j9060283\desktop\horde\lasagne\lasagne.h
+1358510846 c:\users\j9060283\desktop\horde\lasagne\lasagne.h
 	"../SOGI/SOGI.h"
 	"lasagne-text.h"
 	"lasagne-entity.h"
@@ -380,7 +382,7 @@
 	<SDL_ttf.h>
 	<vector>
 
-1358181756 c:\users\j9060283\desktop\horde\sogi\sogi.h
+1358510846 c:\users\j9060283\desktop\horde\sogi\sogi.h
 	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
@@ -396,17 +398,17 @@
 	<errno.h>
 	<sys\stat.h>
 
-1358182151 c:\users\j9060283\desktop\horde\sogi\sogitypes.h
+1358511166 c:\users\j9060283\desktop\horde\sogi\sogitypes.h
 	"SOGI.h"
 	<string.h>
 	<math.h>
 
-1358181756 c:\users\j9060283\desktop\horde\sogi\stack\stack.h
+1358510846 c:\users\j9060283\desktop\horde\sogi\stack\stack.h
 	<string>
 	<list>
 	<iosfwd>
 
-1358181758 c:\users\j9060283\desktop\horde\lasagne\lasagne-text.h
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-text.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 	<SDL_ttf.h>
@@ -633,7 +635,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1358181758 c:\users\j9060283\desktop\horde\lasagne\lasagne-entity.h
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-entity.h
 	"../SOGI/SOGI.h"
 	"lasagne-surface.h"
 	<SDL.h>
@@ -641,7 +643,7 @@
 	<SDL_rotozoom.h>
 	<map>
 
-1358181758 c:\users\j9060283\desktop\horde\lasagne\lasagne-surface.h
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-surface.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 
@@ -651,7 +653,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1358181758 c:\users\j9060283\desktop\horde\lasagne\lasagne-music.h
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-music.h
 	"SDL.h"
 	"SDL_mixer.h"
 
@@ -667,21 +669,21 @@
 1260435348 c:\gph_sdk\dge\include\sdl\sdl_types.h
 	"SDL_stdinc.h"
 
-1358181758 c:\users\j9060283\desktop\horde\lasagne\lasagne-audio.h
+1358510846 c:\users\j9060283\desktop\horde\lasagne\lasagne-audio.h
 	"SDL.h"
 	"SDL_mixer.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\scenebase.cpp
+1358510845 source:c:\users\j9060283\desktop\horde\horde\scenebase.cpp
 	"scenebase.h"
 
-1358181756 c:\users\j9060283\desktop\horde\horde\scenebase.h
+1358510846 c:\users\j9060283\desktop\horde\horde\scenebase.h
 	"../lasagne/lasagne.h"
 	<string>
 
-1358181756 source:c:\users\j9060283\desktop\horde\sogi\sogi.cpp
+1358511825 source:c:\users\j9060283\desktop\horde\sogi\sogi.cpp
 	"SOGI.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\sogi\stack\stack.cpp
+1358510846 source:c:\users\j9060283\desktop\horde\sogi\stack\stack.cpp
 	<cassert>
 	<cstring>
 	<cstdlib>
@@ -696,38 +698,34 @@
 	<psapi.h>
 	<cxxabi.h>
 
-1358181758 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-3dentity.cpp
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-3dentity.cpp
 	"lasagne-3dentity.h"
 
-1358181758 c:\users\j9060283\desktop\horde\lasagne\lasagne-3dentity.h
+1358510846 c:\users\j9060283\desktop\horde\lasagne\lasagne-3dentity.h
 	"../SOGI/SOGI.h"
 	"lasagne-surface.h"
 	<SDL.h>
 
-1358181758 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-audio.cpp
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-audio.cpp
 	"lasagne-audio.h"
 
-1358181758 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-entity.cpp
+1358512001 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-entity.cpp
 	"lasagne-entity.h"
 
-1358181758 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-music.cpp
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-music.cpp
 	"lasagne-music.h"
 
-1358181758 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-surface.cpp
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-surface.cpp
 	"lasagne-surface.h"
 
-1358181758 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-text.cpp
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-text.cpp
 	"lasagne-text.h"
 
-1358181758 source:c:\users\j9060283\desktop\horde\lasagne\lasagne.cpp
+1358512033 source:c:\users\j9060283\desktop\horde\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1358182031 source:c:\users\j9060283\desktop\horde\main.cpp
+1358511523 source:c:\users\j9060283\desktop\horde\main.cpp
 	"main.h"
-	"lasagne/lasagne.h"
-	"Horde/scenebase.h"
-	"Horde/player.h"
-	"Horde/enemy/enemyzombie.h"
 
 1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_gfxprimitives.h
 	<math.h>
@@ -743,61 +741,105 @@
 	<math.h>
 	"SDL.h"
 
-1358181756 c:\users\j9060283\desktop\horde\horde\guns\gunpistol.h
+1358510845 c:\users\j9060283\desktop\horde\horde\guns\gunpistol.h
 	"gunbase.h"
 	"bulletpistol.h"
 
-1358181756 c:\users\j9060283\desktop\horde\horde\guns\gunbase.h
+1358510845 c:\users\j9060283\desktop\horde\horde\guns\gunbase.h
 	<vector>
 	"bulletbase.h"
 	"../../lasagne/lasagne.h"
 
-1358182419 c:\users\j9060283\desktop\horde\horde\guns\bulletbase.h
+1358510845 c:\users\j9060283\desktop\horde\horde\guns\bulletbase.h
 	"../../lasagne/lasagne.h"
 	"../enemy/enemybase.h"
 
-1358182419 c:\users\j9060283\desktop\horde\horde\enemy\enemybase.h
+1358510845 c:\users\j9060283\desktop\horde\horde\enemy\enemybase.h
 	"../../lasagne/lasagne.h"
 	"../pickups/pickupbase.h"
 	"../player.h"
 
-1358182419 c:\users\j9060283\desktop\horde\horde\pickups\pickupbase.h
+1358510846 c:\users\j9060283\desktop\horde\horde\pickups\pickupbase.h
 	"../../lasagne/lasagne.h"
 	"../player.h"
 
-1358181756 c:\users\j9060283\desktop\horde\horde\guns\bulletpistol.h
+1358511267 c:\users\j9060283\desktop\horde\horde\guns\bulletpistol.h
 	"bulletbase.h"
 
-1358181758 c:\users\j9060283\desktop\horde\main.h
+1358511366 c:\users\j9060283\desktop\horde\main.h
+	"lasagne/lasagne.h"
+	"Horde/scenebase.h"
+	"Horde/player.h"
+	"Horde/enemy/enemyzombie.h"
 
-1358181756 c:\users\j9060283\desktop\horde\horde\enemy\enemyzombie.h
+1358511253 c:\users\j9060283\desktop\horde\horde\enemy\enemyzombie.h
 	"enemybase.h"
 	"../pickups/pickuphealth.h"
+	"../pickups/pickupshotgun.h"
+	"../pickups/pickupmachinegun.h"
 
-1358181756 c:\users\j9060283\desktop\horde\horde\pickups\pickuphealth.h
+1358511250 c:\users\j9060283\desktop\horde\horde\pickups\pickuphealth.h
 	"pickupbase.h"
 
-1358182572 source:c:\users\j9060283\desktop\horde\horde\guns\gunbase.cpp
+1358511306 source:c:\users\j9060283\desktop\horde\horde\guns\gunbase.cpp
 	"gunbase.h"
 
-1358182567 source:c:\users\j9060283\desktop\horde\horde\guns\gunpistol.cpp
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\gunpistol.cpp
 	"gunpistol.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\enemy\enemybase.cpp
+1358510845 source:c:\users\j9060283\desktop\horde\horde\enemy\enemybase.cpp
 	"enemybase.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\enemy\enemyzombie.cpp
+1358511595 source:c:\users\j9060283\desktop\horde\horde\enemy\enemyzombie.cpp
 	"enemyzombie.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupbase.cpp
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupbase.cpp
 	"pickupbase.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\pickups\pickuphealth.cpp
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickuphealth.cpp
 	"pickuphealth.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\guns\bulletbase.cpp
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletbase.cpp
 	"bulletbase.h"
 
-1358181756 source:c:\users\j9060283\desktop\horde\horde\guns\bulletpistol.cpp
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletpistol.cpp
 	"bulletpistol.h"
+
+1358511208 c:\users\j9060283\desktop\horde\horde\pickups\pickupshotgun.h
+	"pickupbase.h"
+
+1358511200 c:\users\j9060283\desktop\horde\horde\pickups\pickupmachinegun.h
+	"pickupbase.h"
+
+1358511193 c:\users\j9060283\desktop\horde\horde\guns\gunshotgun.h
+	"gunbase.h"
+	"bulletshotgun.h"
+
+1358511171 c:\users\j9060283\desktop\horde\horde\guns\bulletshotgun.h
+	"bulletbase.h"
+
+1358511181 c:\users\j9060283\desktop\horde\horde\guns\gunmachinegun.h
+	"gunbase.h"
+	"bulletmachinegun.h"
+
+1358511150 c:\users\j9060283\desktop\horde\horde\guns\bulletmachinegun.h
+	"bulletbase.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletmachinegun.cpp
+	"bulletmachinegun.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletshotgun.cpp
+	"bulletshotgun.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\gunmachinegun.cpp
+	"gunmachinegun.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\gunshotgun.cpp
+	"gunshotgun.h"
+
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupmachinegun.cpp
+	"pickupmachinegun.h"
+
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupshotgun.cpp
+	"pickupshotgun.h"
 

@@ -12,19 +12,19 @@ struct ShotgunBulletDirection {
 	};
 };
 
-class CBulletShotgun : public CBulletBase 
+class CBulletShotgun : public CBulletBase
 {
 public:
-							//! 
+							//!
 							CBulletShotgun();
 
-							//! 
+							//!
 							~CBulletShotgun();
 
-							//! 
+							//!
 	virtual void			Create();
 
-							//! 
+							//!
 	virtual bool			CheckCollision(
 								CLasagneEntity *other
 							);

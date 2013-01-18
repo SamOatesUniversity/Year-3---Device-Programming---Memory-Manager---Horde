@@ -13,7 +13,7 @@ public:
 									//!
 									~CGunShotgun();
 
-									//! 
+									//!
 	virtual void					Create();
 
 									//!

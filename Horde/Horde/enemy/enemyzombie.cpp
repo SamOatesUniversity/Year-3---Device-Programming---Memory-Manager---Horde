@@ -28,13 +28,13 @@ bool CEnemyZombie::Create(
 
 	m_entity->SetDepth(7);
 
-	m_entity->AddAnimation("walk", 0, 9);
-	m_entity->AddAnimation("dead", 10, 16, false);
-	m_entity->SetCurrentAnimation("walk");
+	m_entity->AddAnimation(const_cast<char*>("walk"), 0, 9);
+	m_entity->AddAnimation(const_cast<char*>("dead"), 10, 16, false);
+	m_entity->SetCurrentAnimation(const_cast<char*>("walk"));
 
 	m_entity->SetPosition(static_cast<float>(startX), static_cast<float>(startY));
 
-	if (rand() % 5 == 0) 
+	if (rand() % 5 == 0)
 		m_pickup = new CPickupHealth(player);
 	else if (rand() % 5 == 0)
 		m_pickup = new CPickupShotgun(player);
@@ -76,7 +76,7 @@ void CEnemyZombie::Update(
 	}
 
 	m_entity->SetPosition(
-		(m_entity->GetPosition().x() + moveDirection.x()) - backGroundX, 
+		(m_entity->GetPosition().x() + moveDirection.x()) - backGroundX,
 		(m_entity->GetPosition().y() + moveDirection.y()) - backGroundY
 	);
 }
@@ -84,7 +84,7 @@ void CEnemyZombie::Update(
 void CEnemyZombie::OnDeath()
 {
 	m_entity->SetDepth(1);
-	m_entity->SetCurrentAnimation("dead");
+	m_entity->SetCurrentAnimation(const_cast<char*>("dead"));
 
 	if (m_pickup != NULL)
 	{

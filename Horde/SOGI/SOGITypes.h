@@ -35,7 +35,7 @@ public:
                         TVector()
                         {
                             m_size = size;
-							for (int valueIndex = 0; valueIndex < size; ++valueIndex)
+							for (unsigned int valueIndex = 0; valueIndex < size; ++valueIndex)
 								m_values[valueIndex] = NULL;
                         }
 

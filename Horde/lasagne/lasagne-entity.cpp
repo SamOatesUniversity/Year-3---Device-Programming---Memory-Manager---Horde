@@ -5,13 +5,13 @@ CLasagneEntity::CLasagneEntity(
         const TVector<int, 2> &screenSize
     ) :
     m_image(NULL),
+    m_rotation(0),
     m_noofFramesX(0),
     m_noofFramesY(0),
     m_currentFrame(0),
-    m_rotation(0),
-	m_rendeDepth(0),
-	m_visible(true),
-	m_fps(50)
+    m_fps(50),
+    m_visible(true),
+	m_rendeDepth(0)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -33,13 +33,13 @@ CLasagneEntity::CLasagneEntity(
         const TVector<int, 2> &noofFrames
     ) :
     m_image(NULL),
+    m_rotation(0),
     m_noofFramesX(noofFrames.x()),
     m_noofFramesY(noofFrames.y()),
     m_currentFrame(0),
-	m_rotation(0),
-	m_rendeDepth(0),
-	m_visible(true),
-	m_fps(50)
+    m_fps(50),
+    m_visible(true),
+	m_rendeDepth(0)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -175,8 +175,8 @@ void CLasagneEntity::SetVisible(
 	m_visible = visible;
 }
 
-const bool CLasagneEntity::Intersects( 
-		CLasagneEntity *other 
+const bool CLasagneEntity::Intersects(
+		CLasagneEntity *other
 	)
 {
 	TVector<float, 2> otherPosition = other->GetPosition();

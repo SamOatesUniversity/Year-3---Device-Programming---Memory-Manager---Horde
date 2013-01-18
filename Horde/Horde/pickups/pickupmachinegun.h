@@ -3,14 +3,14 @@
 
 #include "pickupbase.h"
 
-class CPickupMachineGun : public CPickupBase 
+class CPickupMachineGun : public CPickupBase
 {
 private:
 
 public:
 											//! Class constructor
 											CPickupMachineGun(
-												CPlayer *player	
+												CPlayer *player
 											);
 
 											//! Class destructor

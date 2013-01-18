@@ -154,12 +154,12 @@ const bool CLasagne::Render()
         }
     }
 
-	
+
 	const std::vector<CLasagneEntity*>::iterator end = m_entity.end();
 	for (int depth = 0; depth < 10; ++depth)
 	{
 		std::vector<CLasagneEntity*>::iterator entity = m_entity.begin();
-		for (entity; entity != end; ++entity)
+		for (entity = entity; entity != end; ++entity)
 		{
 			CLasagneEntity *const thisEntity = (*entity);
 			if (thisEntity->GetDepth() == depth)
@@ -225,7 +225,7 @@ void CLasagne::Release()
 		SafeDelete(m_audio[audioIndex]);
 	}
 	m_audio.clear();
-		
+
 #if defined(SHOW_FPS)
 	SafeDelete(m_fps.text);
 #endif
@@ -317,10 +317,10 @@ CLasagneEntity *CLasagne::LoadAnimatedImage(
     return entity;
 }
 
-CLasagneText* CLasagne::CreateText( 
-		char *text, 
-		int x, 
-		int y 
+CLasagneText* CLasagne::CreateText(
+		char *text,
+		int x,
+		int y
 	)
 {
 	CLasagneText *const newText = new CLasagneText();
@@ -335,7 +335,7 @@ void CLasagne::Destroy( CLasagneEntity **entity )
 	std::vector<CLasagneEntity*>::iterator iter = m_entity.begin();
 	std::vector<CLasagneEntity*>::iterator endIter = m_entity.end();
 
-	for (iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; iter++)
 	{
 		if ((*iter) == (*entity))
 		{
@@ -352,7 +352,7 @@ void CLasagne::Destroy( CLasagneText **text )
 	std::vector<CLasagneText*>::iterator iter = m_textEntity.begin();
 	std::vector<CLasagneText*>::iterator endIter = m_textEntity.end();
 
-	for (iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; iter++)
 	{
 		if ((*iter) == (*text))
 		{
@@ -371,7 +371,7 @@ void CLasagne::Destroy(
 	std::vector<CLasagneAudioFile*>::iterator iter = m_audio.begin();
 	std::vector<CLasagneAudioFile*>::iterator endIter = m_audio.end();
 
-	for (iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; iter++)
 	{
 		if ((*iter) == (*audio))
 		{

@@ -17,7 +17,7 @@ int main (int argc, char *argv[])
     }
 
 	LoadLevel(currentLevel);
-	
+
     Uint32 updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
 
@@ -61,15 +61,15 @@ int main (int argc, char *argv[])
 
 					player->SetRotation(rotation);
 				}
-			}			
+			}
 
 			if (!CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 25.0f))
 			{
-				player->SetCurrentAnimation("walk");
+				player->SetCurrentAnimation(const_cast<char*>("walk"));
 				if (!currentScene->Move(moveX, moveY))
 				{
 					currentScene->UpdateClouds(0, 0);
-					player->SetCurrentAnimation("idle");
+					player->SetCurrentAnimation(const_cast<char*>("idle"));
 					moveX = 0;
 					moveY = 0;
 				}
@@ -77,7 +77,7 @@ int main (int argc, char *argv[])
 			else
 			{
 				// user pressing near the middle of the screen, so stand still
-				player->SetCurrentAnimation("idle");
+				player->SetCurrentAnimation(const_cast<char*>("idle"));
 				currentScene->UpdateClouds(0, 0);
 			}
 
@@ -98,7 +98,7 @@ int main (int argc, char *argv[])
 			}
 
 			player->Update(enemy);
-			
+
 			std::stringstream scoreBuffer;
 			scoreBuffer << "Score: " << (player->GetScore() + totalScore);
 			scoreText->SetText(scoreBuffer.str().c_str());
@@ -214,7 +214,7 @@ bool LoadLevel(
 	{
 		if (zombieIndex % swarmSize == 0)
 			spawnPoint.Set(
-				132 + ((rand() % 1024) - 512), 
+				132 + ((rand() % 1024) - 512),
 				96 + ((rand() % 1024) - 512)
 			);
 
@@ -223,8 +223,8 @@ bool LoadLevel(
 		enemy.push_back(zombieTest);
 	}
 
-	scoreText = engine->CreateText("Score: 0", 4, 20);
-	healthText = engine->CreateText("Health: 100", 4, 4);
+	scoreText = engine->CreateText(const_cast<char*>("Score: 0"), 4, 20);
+	healthText = engine->CreateText(const_cast<char*>("Health: 100"), 4, 4);
 
 	playerDead = engine->LoadImage("./media/graphics/player-dead.png");
 	playerDead->SetDepth(9);
