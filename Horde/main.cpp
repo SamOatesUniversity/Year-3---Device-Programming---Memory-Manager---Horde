@@ -78,6 +78,7 @@ int main (int argc, char *argv[])
 				currentScene->UpdateClouds(0, 0);
 			}
 
+			// Update enemies, counting how many have died on the way
 			int noofDead = 0;
 			for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
 			{
@@ -87,6 +88,7 @@ int main (int argc, char *argv[])
 					noofDead++;
 			}
 
+			// If there are no enemies left, and the player isn't dead, level has been completed
 			if (enemy.size() - noofDead == 0 && gameState == GameState::InLevel && player->GetHealth() != 0)
 			{
 				levelComplete->SetVisible(true);
@@ -94,8 +96,10 @@ int main (int argc, char *argv[])
 				levelEndTimer = SDL_GetTicks();
 			}
 
+			// Update the player
 			player->Update(enemy);
 
+			// Out put text to the screen
 			std::stringstream scoreBuffer;
 			scoreBuffer << "Score: " << (player->GetScore() + totalScore);
 			scoreText->SetText(scoreBuffer.str().c_str());
@@ -104,6 +108,7 @@ int main (int argc, char *argv[])
 			healthBuffer << "Health: " << player->GetHealth();
 			healthText->SetText(healthBuffer.str().c_str());
 
+			// if player health is zero, the player has died
 			if (player->GetHealth() == 0 && gameState == GameState::InLevel)
 			{
 				if (!playerDead->IsVisible())
@@ -113,6 +118,7 @@ int main (int argc, char *argv[])
 				levelEndTimer = SDL_GetTicks();
 			}
 
+			// restart the game after 5 seconds after dying
 			if (gameState == GameState::Dead && SDL_GetTicks() - levelEndTimer > 5000)
 			{
 				gameState = GameState::LoadingLevel;
@@ -127,6 +133,7 @@ int main (int argc, char *argv[])
 				continue;
 			}
 
+			// Load the next level after 5 seconds of level completing
 			if (gameState == GameState::LevelComplete && SDL_GetTicks() - levelEndTimer > 5000)
 			{
 				gameState = GameState::LoadingLevel;
@@ -148,6 +155,7 @@ int main (int argc, char *argv[])
             updateTimer = SDL_GetTicks();
         }
 
+		// Update the players score
 		if (player->GetHealth() != 0 && gameState == GameState::InLevel && SDL_GetTicks() - scoreTimer > 500)
 		{
 			player->IncreaseScore(1);
