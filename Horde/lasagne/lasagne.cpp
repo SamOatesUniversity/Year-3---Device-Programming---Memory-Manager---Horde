@@ -104,8 +104,6 @@ const bool CLasagne::Create()
 */
 const bool CLasagne::Render()
 {
-    SDL_FillRect(m_screen, NULL, 0);
-
     SDL_Event event;
     while (SDL_PollEvent (&event))
     {
@@ -120,12 +118,6 @@ const bool CLasagne::Render()
 #ifdef WIN32
             case SDL_KEYDOWN:
             {
-                /*
-                std::stringstream buf;
-                buf << "Key :" << event.key.keysym.sym;
-                DisplayError(buf.str().c_str());
-                */
-
                 if (event.key.keysym.sym == SDLK_ESCAPE)
                 {
                     return false;
@@ -144,10 +136,6 @@ const bool CLasagne::Render()
 #endif
             case SDL_MOUSEMOTION:
             {
-                //std::stringstream buf;
-                //buf << "Mouse :" << event.motion.x << ", " << event.motion.y;
-                //DisplayError(buf.str().c_str());
-
                 m_mousePosition.Set(event.motion.x, event.motion.y);
             }
             break;
@@ -258,9 +246,12 @@ void CLasagne::DisplayError(
 #endif
 }
 
+/*
+ * \brief Load a music file
+*/
 CLasagneMusicFile *CLasagne::LoadMusicFile(
-         const char* musicFile,
-         MusicEngine::Enum engine
+         const char* musicFile,						//!< The OGG music file to create the object around
+         MusicEngine::Enum engine					//!< Which music engine to use
     )
 {
     CLasagneMusicFile *music = new CLasagneMusicFile(engine);
@@ -274,9 +265,12 @@ CLasagneMusicFile *CLasagne::LoadMusicFile(
     return music;
 }
 
+/*
+ * \brief Load a audio file
+*/
 CLasagneAudioFile *CLasagne::LoadAudioFile(
-         const char* audioFile,
-         AudioEngine::Enum engine
+         const char* audioFile,						//!< The Wav file of the audio sample to load
+         AudioEngine::Enum engine					//!< Which audio engine to use
     )
 {
     CLasagneAudioFile *audio = new CLasagneAudioFile(engine);
@@ -290,9 +284,11 @@ CLasagneAudioFile *CLasagne::LoadAudioFile(
     return audio;
 }
 
-//! Load an image
+/*
+ * \brief Load an image
+*/
 CLasagneEntity *CLasagne::LoadImage(
-        const char* imageFile                         //!<
+        const char* imageFile                         //!< A path to an image to load
     )
 {
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize);
@@ -306,10 +302,12 @@ CLasagneEntity *CLasagne::LoadImage(
     return entity;
 }
 
-//! Load an animated image
+/*
+ * \brief Load an animated image
+*/
 CLasagneEntity *CLasagne::LoadAnimatedImage(
-        const char* imageFile,                       //!<
-        const TVector<int, 2> &noofFrames             //!<
+        const char* imageFile,                        //!< A path to an image to load
+        const TVector<int, 2> &noofFrames             //!< The frame layout of the animated image (e.g. 4x2)
     )
 {
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize, noofFrames);
@@ -317,10 +315,13 @@ CLasagneEntity *CLasagne::LoadAnimatedImage(
     return entity;
 }
 
+/*
+ * \brief Create a text entity to be drawn to the screen
+*/
 CLasagneText* CLasagne::CreateText(
-		char *text,
-		int x,
-		int y
+		char *text,									//!< Default text to display
+		int x,										//!< The x coord of the text
+		int y										//!< The y coord of the text
 	)
 {
 	CLasagneText *const newText = new CLasagneText();
@@ -330,7 +331,12 @@ CLasagneText* CLasagne::CreateText(
 	return newText;
 }
 
-void CLasagne::Destroy( CLasagneEntity **entity )
+/*
+ * \brief Remove an entity form the engine and safely destroy it
+*/
+void CLasagne::Destroy( 
+		CLasagneEntity **entity						//!< A pointer to the entity pointer to be destroyed
+	)
 {
 	std::vector<CLasagneEntity*>::iterator iter = m_entity.begin();
 	std::vector<CLasagneEntity*>::iterator endIter = m_entity.end();
@@ -347,7 +353,12 @@ void CLasagne::Destroy( CLasagneEntity **entity )
 	SafeDelete(*entity);
 }
 
-void CLasagne::Destroy( CLasagneText **text )
+/*
+ * \brief Remove a text entity form the engine and safely destroy it
+*/
+void CLasagne::Destroy( 
+		CLasagneText **text								//!< A pointer to the text entity pointer to be destroyed
+	)
 {
 	std::vector<CLasagneText*>::iterator iter = m_textEntity.begin();
 	std::vector<CLasagneText*>::iterator endIter = m_textEntity.end();
@@ -364,8 +375,11 @@ void CLasagne::Destroy( CLasagneText **text )
 	SafeDelete(*text);
 }
 
+/*
+ * \brief Remove an audio sample form the engine and safely destroy it
+*/
 void CLasagne::Destroy(
-		CLasagneAudioFile **audio
+		CLasagneAudioFile **audio						//!< A pointer to the audio sample pointer to be destroyed
 	)
 {
 	std::vector<CLasagneAudioFile*>::iterator iter = m_audio.begin();
