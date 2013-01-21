@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="target" />
+	<File name="Horde\enemy\enemyzombie.cpp" open="1" top="1" tabpos="6">
+		<Cursor position="1141" topLine="18" />
+	</File>
 	<File name="Horde\guns\gunbase.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="1622" topLine="23" />
 	</File>
@@ -55,7 +58,7 @@
 	<File name="lasagne\lasagne-entity.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2924" topLine="95" />
 	</File>
-	<File name="lasagne\lasagne-entity.h" open="1" top="1" tabpos="3">
+	<File name="lasagne\lasagne-entity.h" open="1" top="0" tabpos="3">
 		<Cursor position="2101" topLine="43" />
 	</File>
 	<File name="lasagne\lasagne-music.cpp" open="0" top="0" tabpos="6">
