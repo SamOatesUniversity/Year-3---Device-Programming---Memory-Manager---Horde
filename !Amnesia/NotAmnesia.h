@@ -6,6 +6,7 @@
 #include <sstream>
 #include <stdlib.h>
 
+
 #include "IMemoryManager.h"
 
 #ifndef nullptr
@@ -17,13 +18,13 @@
 
 // We can remove most debug information and change how memory is allocated, by using this flag
 // vastly improving performance.
-//#define OPTIMIZED
+#define OPTIMIZED
 
 // We have to allocated memory for our memory nuggets using a NEW and DELETE define.
 // The reason for this, is that malloc will not instanciate an instance of std::string
 // resulting in a crash.
 #ifndef OPTIMIZED
-	#define A_NEW(TYPE)	new TYPE; 
+	#define A_NEW(TYPE)	new TYPE;
 	#define A_DELETE(OBJECT)	delete OBJECT;
 #else
 	#define A_NEW(TYPE)	static_cast<TYPE*>(malloc(sizeof(TYPE)))
@@ -115,7 +116,7 @@ class CNotAmnesia : public IMemoryManager
         virtual void                                *AllocateAligned(
 														size_t numBytes,
 														size_t alignment,
-														const char* file, 
+														const char* file,
 														int line
 													);
 

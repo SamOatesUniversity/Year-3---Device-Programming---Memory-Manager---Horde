@@ -1,7 +1,7 @@
 #include "NotAmnesia.h"
 
 /*
-*	\brief	
+*	\brief
 */
 IMemoryManager *CreateMemoryManagerInstance()
 {
@@ -137,9 +137,6 @@ void *CNotAmnesia::AllocateAligned(
 		if (m_freeNugget == nullptr)
 		{
 			#ifndef OPTIMIZED
-				if (paddingNugget->totalSize > 10)
-					strncpy_s((char*)(paddingNugget->ptr), paddingNugget->totalSize, "RELEASED", paddingNugget->totalSize);
-
 				m_noofFreeNuggets++;
 			#endif
 
@@ -150,9 +147,6 @@ void *CNotAmnesia::AllocateAligned(
 		else
 		{
 			#ifndef OPTIMIZED
-				if (paddingNugget->totalSize > 10)
-					strncpy_s((char*)(paddingNugget->ptr), paddingNugget->totalSize, "RELEASED", paddingNugget->totalSize);
-
 				m_noofFreeNuggets++;
 			#endif
 
@@ -215,7 +209,7 @@ void CNotAmnesia::Release(
     // fixup our linked list
     MemoryNugget *next = nugget->nextNugget;
     MemoryNugget *prev = nugget->prevNugget;
-   
+
 	if (prev != nullptr) prev->nextNugget = next;
     if (next != nullptr) next->prevNugget = prev;
 
@@ -227,7 +221,7 @@ void CNotAmnesia::Release(
 			m_nextFreePtr = m_startPtr;
 			m_amountAllocated = 0;
 			m_firstNugget = nullptr;
-			
+
 			if (m_freeNugget == nullptr)
 			{
 				m_freeNugget = nugget;
@@ -253,9 +247,6 @@ void CNotAmnesia::Release(
 		if (m_freeNugget == nullptr)
 		{
 			#ifndef OPTIMIZED
-				if (nugget->totalSize > 10)
-					strncpy_s((char*)(nugget->ptr), nugget->totalSize, "RELEASED", nugget->totalSize);
-
 				m_noofFreeNuggets++;
 			#endif
 
@@ -266,9 +257,6 @@ void CNotAmnesia::Release(
 		else
 		{
 			#ifndef OPTIMIZED
-				if (nugget->totalSize > 10)
-					strncpy_s((char*)(nugget->ptr), nugget->totalSize, "RELEASED", nugget->totalSize);
-
 				m_noofFreeNuggets++;
 			#endif
 
@@ -287,8 +275,8 @@ void CNotAmnesia::Release(
 /*
 *	\brief	Called when releasing an aligned memory address. JUst call the normal release.
 */
-void CNotAmnesia::ReleaseAligned( 
-		void* address 
+void CNotAmnesia::ReleaseAligned(
+		void* address
 	)
 {
 	Release(address);
@@ -364,7 +352,7 @@ const char* const CNotAmnesia::GetTextLine()
     {
 		static const int bufferSize = 1024;
 		static char textBuffer[bufferSize];
-        strncpy_s(textBuffer, m_statusTextList.front().c_str(), bufferSize);
+        strncpy(textBuffer, m_statusTextList.front().c_str(), bufferSize);
         m_statusTextList.pop_front();
         return textBuffer;
     }
@@ -412,8 +400,8 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemoryNugget(
 /*
 *	\brief	Try to merge memory nuggets together to create a larger memory nugget
 */
-CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets( 
-		size_t requiredSize											//!< The size we want the merged nugget to be 
+CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
+		size_t requiredSize											//!< The size we want the merged nugget to be
 	)
 {
 	// see if we can merge any free nuggets to re-use
@@ -432,7 +420,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 			if (next != nullptr) next->prevNugget = prev;
 			if (prev != nullptr) prev->nextNugget = next;
 
-			if (nextFreeNugget == m_freeNugget) 
+			if (nextFreeNugget == m_freeNugget)
 				m_freeNugget = m_freeNugget->prevNugget;
 
 			// move the free nugget onto the allocated nuggets
@@ -455,9 +443,6 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 			}
 
 			#ifndef OPTIMIZED
-			if (nextFreeNugget->totalSize > 10)
-				strncpy_s((char*)(nextFreeNugget->ptr), nextFreeNugget->totalSize, "NotAmnesia", nextFreeNugget->totalSize);
-
 			m_noofFreeNuggets--;
 			m_noofNuggets++;
 			#endif
@@ -529,9 +514,6 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 						}
 
 						#ifndef OPTIMIZED
-						if (firstFreeNugget->totalSize > 10)
-							strncpy_s((char*)(firstFreeNugget->ptr), firstFreeNugget->totalSize, "NotAmnesia", firstFreeNugget->totalSize);
-
 						m_noofFreeNuggets--;
 						m_noofNuggets++;
 						#endif
@@ -549,11 +531,11 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 		firstFreeNugget = firstFreeNugget->nextNugget;
 	}
 
-	return nullptr;	
+	return nullptr;
 }
 
-void CNotAmnesia::PushNuggetToAllocatedList( 
-		MemoryNugget *nugget 
+void CNotAmnesia::PushNuggetToAllocatedList(
+		MemoryNugget *nugget
 	)
 {
 	nugget->prevNugget = nugget->nextNugget = nullptr;
@@ -572,9 +554,6 @@ void CNotAmnesia::PushNuggetToAllocatedList(
 	}
 
 #ifndef OPTIMIZED
-	if (nugget->totalSize > 10)
-		strncpy_s((char*)(nugget->ptr), nugget->totalSize, "NotAmnesia", nugget->totalSize);
-
 	m_noofNuggets++;
 #endif
 }
