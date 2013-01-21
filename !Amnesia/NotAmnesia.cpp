@@ -99,7 +99,7 @@ void *CNotAmnesia::Allocate(
 #endif
 
 	PushNuggetToAllocatedList(newNugget);
-
+	
     return newNugget->ptr;
 }
 
@@ -352,7 +352,11 @@ const char* const CNotAmnesia::GetTextLine()
     {
 		static const int bufferSize = 1024;
 		static char textBuffer[bufferSize];
-        strncpy(textBuffer, m_statusTextList.front().c_str(), bufferSize);
+#ifdef WIN32
+        strncpy_s(textBuffer, m_statusTextList.front().c_str(), bufferSize);
+#else
+		strncpy(textBuffer, m_statusTextList.front().c_str(), bufferSize);
+#endif
         m_statusTextList.pop_front();
         return textBuffer;
     }
@@ -368,7 +372,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemoryNugget(
         unsigned char* address												//!< The memory address of the nugget we are looking for
     )
 {
-	if (m_lastNugget->ptr == address) return m_firstNugget;
+	if (m_lastNugget->ptr == address) return m_lastNugget;
 	if (m_firstNugget->ptr == address) return m_firstNugget;
 
 	if ((m_lastNugget->ptr - address) < (address - m_firstNugget->ptr))
@@ -462,18 +466,18 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 		return nullptr;
 
 	// try find a few nuggets next to each other that we can merge
-	while (firstFreeNugget != m_freeNugget)
+	while (firstFreeNugget != nullptr && firstFreeNugget != m_freeNugget)
 	{
 		MemoryNugget *nextNugget = firstFreeNugget->nextNugget;
 		while (nextNugget != nullptr && nextNugget != m_freeNugget)
 		{
-			while (firstFreeNugget->ptr + firstFreeNugget->totalSize == nextNugget->ptr)
+			while (nextNugget != nullptr && firstFreeNugget->ptr + firstFreeNugget->totalSize == nextNugget->ptr)
 			{
 				size_t mergedNuggetSize = static_cast<size_t>((nextNugget->ptr + nextNugget->totalSize) - firstFreeNugget->ptr);
 				//
 				{
 					// okay, we have 2 or more nuggets next to each other that combined have the same or more space available.
-					while (nextNugget != firstFreeNugget)
+					while (nextNugget != firstFreeNugget && nextNugget != m_freeNugget)
 					{
 						MemoryNugget *const currentNugget = nextNugget;
 						if (currentNugget == nullptr)
@@ -522,10 +526,12 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 					}
 				}
 
-				nextNugget = nextNugget->nextNugget;
+				if (nextNugget != nullptr)
+					nextNugget = nextNugget->nextNugget;
 			}
 
-			nextNugget = nextNugget->nextNugget;
+			if (nextNugget != nullptr)
+				nextNugget = nextNugget->nextNugget;
 		}
 
 		firstFreeNugget = firstFreeNugget->nextNugget;
