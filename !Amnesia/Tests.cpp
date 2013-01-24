@@ -20,8 +20,12 @@
 #include <math.h>
 #include <time.h>
 
+#include <windows.h>
+
 // Enable this line to pause between tests (added 0.5)
 //#define PAUSE_BETWEEN_TESTS
+
+int noofLoops = 0;
 
 template <class T>
 std::string ToString(const T& t)
@@ -39,7 +43,7 @@ CTests::CTests(CTextOutput *harnessTextOutput,CTextOutput *mmTextOutput) : m_har
 
     // Need consistant rands so tests fair to all
     //srand(2707); // v0.1
-    srand(5707); // v0.5 jiggle
+	srand(time(NULL));
 }
 
 CTests::~CTests()
@@ -108,7 +112,6 @@ bool CTests::Update()
     if (m_testPercentage>=100)
     {
         ShutdownMM();
-		srand(time(NULL));
 
         m_testResults[m_currentTest].report=("Test: "+ToString((int)m_currentTest+1)+GetTestDescription(m_currentTest)+" : "+ToString(m_passes)+
                                            " passed and "+ToString(m_fails)+" failed");
@@ -128,8 +131,12 @@ bool CTests::Update()
 
         if (m_currentTest>=eNumTests)
         {
-            m_currentTest=eFinished;
-            FinalReport();
+            //m_currentTest=eFinished;
+            //FinalReport();
+			m_currentTest = eBasicTest;
+			noofLoops++;
+			if (noofLoops % 100 == 0)
+				srand(time(NULL));
         }
         else
         {
