@@ -1,5 +1,5 @@
-#ifndef CDEFAULTMEMORYMANAGER_H
-#define CDEFAULTMEMORYMANAGER_H
+#ifndef CNOTAMNESIA_HEADER_INCLUDE
+#define CNOTAMNESIA_HEADER_INCLUDE
 
 #include <list>
 #include <string>
@@ -8,11 +8,19 @@
 
 #include "IMemoryManager.h"
 
+// 0x00000000 = allocated memory
+// 0xcdcdcdcd = released memory
+// 0xfefefefe = unallocated memory
+
+// We can remove most debug information and change how memory is allocated, by using this flag
+// vastly improving performance.
+#define OPTIMIZED
+
 // we only really care about the file name, and not its full path, so strip it down.
 #define FILE_NAME(FILE) (strrchr(FILE, '\\') ? strrchr(FILE, '\\') + 1 : FILE)
 
 /**
-    Custom Assert
+*    Custom Assert
 */
 
 #if defined(_DEBUG)
@@ -30,37 +38,36 @@
                     DebugBreak(); \
                 } \
             } \
-        } while (false)
+        } while (false);
     #else
-        #define ASSERT(condition, message) do { } while (false);
+        #define ASSERT(condition, message) do { m_statusTextList.push_back("Buffer overflow detected!"); } while (false);
     #endif
 #else
-    #define ASSERT(condition, message) do { } while (false);
+	#ifndef OPTIMIZED
+		#define ASSERT(condition, message) \
+		do { \
+			m_statusTextList.push_back("Buffer overflow detected!"); \
+		} while (false);
+	#else
+		#define ASSERT(condition, message) do { } while (false);
+	#endif
 #endif
 
 /**
-	C++11 standards
+*	C++11 standards
 */
 #ifndef nullptr
     #define nullptr 0
 #endif
 
-// 0x00000000 = allocated memory
-// 0xcdcdcdcd = released memory
-// 0xfefefefe = unallocated memory
-
-// We can remove most debug information and change how memory is allocated, by using this flag
-// vastly improving performance.
-#define OPTIMIZED
-
 // We have to allocated memory for our memory nuggets using a NEW and DELETE define.
 // The reason for this, is that malloc will not instanciate an instance of std::string
 // resulting in a crash.
 #ifndef OPTIMIZED
-	#define A_NEW(TYPE)	new TYPE;
+	#define A_NEW(TYPE)			new TYPE;
 	#define A_DELETE(OBJECT)	delete OBJECT;
 #else
-	#define A_NEW(TYPE)	static_cast<TYPE*>(malloc(sizeof(TYPE)))
+	#define A_NEW(TYPE)			static_cast<TYPE*>(malloc(sizeof(TYPE)))
 	#define A_DELETE(OBJECT)	free(OBJECT);
 #endif
 
@@ -176,4 +183,4 @@ class CNotAmnesia : public IMemoryManager
 
 };
 
-#endif // CDEFAULTMEMORYMANAGER_H
+#endif
