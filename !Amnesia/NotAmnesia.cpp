@@ -1,7 +1,7 @@
 #include "NotAmnesia.h"
 
 /*
-*	\brief
+*	\brief Create a new instance of our memory manager
 */
 IMemoryManager *CreateMemoryManagerInstance()
 {
@@ -65,18 +65,6 @@ void *CNotAmnesia::Allocate(
         int line
     )
 {
-    if (m_totalSize - m_amountAllocated < numBytes)
-    {
-		// merge nuggets
-		MemoryNugget *const mergedNugget = MergeMemoryNuggets(numBytes);
-		if (mergedNugget == nullptr)
-			return nullptr;
-
-		CheckForBufferOverflow(mergedNugget);
-		memset(mergedNugget->ptr, 0x00000000, mergedNugget->totalSize);
-		return mergedNugget->ptr;
-    }
-
 	MemoryNugget *newNugget = nullptr;
 
 	// see if we can re-use a free nugget
@@ -85,10 +73,19 @@ void *CNotAmnesia::Allocate(
 		newNugget = MergeMemoryNuggets(numBytes);
 		if (newNugget != nullptr)
 		{
+			#ifndef OPTIMIZED
 			CheckForBufferOverflow(newNugget);
 			memset(newNugget->ptr, 0x00000000, newNugget->totalSize);
+			#endif
+
 			return newNugget->ptr;
 		}
+	}
+
+	// tried to allocate more than what we have
+	if (m_totalSize - m_amountAllocated < numBytes)
+	{
+		return nullptr;
 	}
 
 	if (newNugget == nullptr)
@@ -111,8 +108,10 @@ void *CNotAmnesia::Allocate(
 
 	PushNuggetToAllocatedList(newNugget);
 
+#ifndef OPTIMIZED
 	CheckForBufferOverflow(newNugget);
 	memset(newNugget->ptr, 0x00000000, newNugget->totalSize);
+#endif
 
     return newNugget->ptr;
 }
@@ -188,8 +187,10 @@ void *CNotAmnesia::AllocateAligned(
 
 	PushNuggetToAllocatedList(newNugget);
 
+#ifndef OPTIMIZED
 	CheckForBufferOverflow(newNugget);
 	memset(newNugget->ptr, 0x00000000, newNugget->totalSize);
+#endif
 
     return newNugget->ptr;
 }
@@ -223,9 +224,11 @@ void CNotAmnesia::Release(
     if (nugget == nullptr)
         return;
 
+#ifndef OPTIMIZED
 	memset(nugget->ptr, 0xCDCDCDCD, nugget->totalSize);
+#endif
 
-    // fixup our linked list
+    // fix up our linked list
     MemoryNugget *next = nugget->nextNugget;
     MemoryNugget *prev = nugget->prevNugget;
 
@@ -237,8 +240,6 @@ void CNotAmnesia::Release(
         m_lastNugget = prev;
 		if (m_lastNugget == nullptr)
 		{
-			m_nextFreePtr = m_startPtr;
-			m_amountAllocated = 0;
 			m_firstNugget = nullptr;
 
 			if (m_freeNugget == nullptr)
@@ -391,9 +392,10 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemoryNugget(
         unsigned char* address												//!< The memory address of the nugget we are looking for
     )
 {
-	if (m_lastNugget->ptr == address) return m_lastNugget;
-	if (m_firstNugget->ptr == address) return m_firstNugget;
+	if (m_lastNugget->ptr == address) return m_lastNugget;		// looking for the last nugget, so just return that
+	if (m_firstNugget->ptr == address) return m_firstNugget;	// looking for the first nugget, so just return that
 
+	// work out if we are close to the last or fist memory nugget, then spin through the list from there
 	if ((m_lastNugget->ptr - address) < (address - m_firstNugget->ptr))
 	{
 		MemoryNugget *currentNugget = m_lastNugget;
@@ -417,6 +419,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::FindMemoryNugget(
 		}
 	}
 
+	// couldn't find the nugget represented by the given pointer
     return nullptr;
 }
 
@@ -437,7 +440,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 	{
 		if (nextFreeNugget->totalSize >= requiredSize)
 		{
-			// fixup the free nuggets list
+			// fix up the free nuggets list
 			MemoryNugget *next = nextFreeNugget->nextNugget;
 			MemoryNugget *prev = nextFreeNugget->prevNugget;
 			if (next != nullptr) next->prevNugget = prev;
@@ -476,13 +479,28 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 	}
 	while (nextFreeNugget != nullptr && nextFreeNugget->prevNugget != nullptr);
 
+	// if there is only one nugget in the list, just resize it
+	if (m_freeNugget->prevNugget == nullptr)
+	{
+		MemoryNugget *const nugget = m_freeNugget;
+
+		const size_t sizeIncrease = requiredSize - nugget->totalSize;
+		nugget->totalSize = requiredSize;
+
+		m_nextFreePtr += sizeIncrease;
+		m_totalSize += sizeIncrease;
+
+		// move the nugget over
+		m_freeNugget = nullptr;
+		PushNuggetToAllocatedList(nugget);
+
+		return nugget;
+	}
+
+	// spin back to find the first nugget in the list
 	MemoryNugget *firstFreeNugget = m_freeNugget;
 	while (firstFreeNugget->prevNugget != nullptr)
 		firstFreeNugget = firstFreeNugget->prevNugget;
-
-	// we have already checked for a free correct sized nugget, so this will fail
-	if (firstFreeNugget->nextNugget == nullptr)
-		return nullptr;
 
 	// try find a few nuggets next to each other that we can merge
 	while (firstFreeNugget != nullptr && firstFreeNugget != m_freeNugget)
@@ -493,9 +511,8 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 			while (nextNugget != nullptr && firstFreeNugget->ptr + firstFreeNugget->totalSize == nextNugget->ptr)
 			{
 				size_t mergedNuggetSize = static_cast<size_t>((nextNugget->ptr + nextNugget->totalSize) - firstFreeNugget->ptr);
-				//
 				{
-					// okay, we have 2 or more nuggets next to each other that combined have the same or more space available.
+					// we have 2 or more nuggets next to each other that combined have the same or more space available.
 					while (nextNugget != firstFreeNugget && nextNugget != m_freeNugget)
 					{
 						MemoryNugget *const currentNugget = nextNugget;
@@ -560,7 +577,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 }
 
 /*
-*	\breif	Pushes a memory nugget to the end of the allocated nugget list
+*	\brief	Pushes a memory nugget to the end of the allocated nugget list
 */
 void CNotAmnesia::PushNuggetToAllocatedList(
 		MemoryNugget *nugget					//!< The nugget to add to the list
@@ -587,7 +604,7 @@ void CNotAmnesia::PushNuggetToAllocatedList(
 }
 
 /*
-*	\breif	Check the ptr of a nugget whilst allocating for buffer overflows
+*	\brief	Check the ptr of a nugget whilst allocating for buffer overflows
 */
 void CNotAmnesia::CheckForBufferOverflow(
 		MemoryNugget *nugget					//!< The nugget to check for buffer overflows
@@ -601,7 +618,7 @@ void CNotAmnesia::CheckForBufferOverflow(
 	if ((*nugget->ptr) == 0xCD)
 		return;
 
-	// pointing at allocated memory, we shouldn't be allocaing this!
+	// pointing at allocated memory, we shouldn't be allocating this!
 	ASSERT((*nugget->ptr) != 0x00, "This pointer is pointing at already allocated memory");
 
 	// pointing at some data, that isn't expected! most likely caused by a buffer overflow
