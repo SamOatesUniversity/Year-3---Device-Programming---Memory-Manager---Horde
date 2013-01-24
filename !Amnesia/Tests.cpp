@@ -1,5 +1,8 @@
 /*
 
+    Changes in Test harness Version 0.7
+    - Changed basic test memory limit to 900 to allow storage of data alongside memory blocks
+    - Removed the pause mode by default as it effects the timing
     Changes in Test harness Version 0.6
     - Fixed a problem with the Error Test (a missing else)
     - Added a virtual destructor to the interface
@@ -21,12 +24,10 @@
 #include <time.h>
 
 #include <windows.h>
-
 // Enable this line to pause between tests (added 0.5)
 //#define PAUSE_BETWEEN_TESTS
 
 int noofLoops = 0;
-
 template <class T>
 std::string ToString(const T& t)
 {
@@ -43,7 +44,7 @@ CTests::CTests(CTextOutput *harnessTextOutput,CTextOutput *mmTextOutput) : m_har
 
     // Need consistant rands so tests fair to all
     //srand(2707); // v0.1
-	srand(time(NULL));
+    srand(5707); // v0.5 jiggle
 }
 
 CTests::~CTests()
@@ -131,12 +132,12 @@ bool CTests::Update()
 
         if (m_currentTest>=eNumTests)
         {
-            //m_currentTest=eFinished;
-            //FinalReport();
-			m_currentTest = eBasicTest;
+            m_currentTest=eFinished;
+            FinalReport();
+			/*m_currentTest = eBasicTest;
 			noofLoops++;
 			if (noofLoops % 100 == 0)
-				srand(time(NULL));
+				srand(time(NULL));*/
         }
         else
         {
@@ -237,16 +238,13 @@ void CTests::CreateNewMM()
 
 void CTests::ShutdownMM()
 {
-	if (m_memoryMan)
-	{
-		assert(m_memoryMan);
-		m_memoryMan->Shutdown();
-		FlushMMOutput();
-		delete m_memoryMan;
-		m_memoryMan=0;
-		m_mmTextOutput->SetStatusText("Destroyed");
-		FlushMMOutput();
-	}
+    assert(m_memoryMan);
+    m_memoryMan->Shutdown();
+    FlushMMOutput();
+    delete m_memoryMan;
+    m_memoryMan=0;
+    m_mmTextOutput->SetStatusText("Destroyed");
+    FlushMMOutput();
 }
 
 /*
@@ -298,7 +296,7 @@ void CTests::BasicTest(int percentage)
         return;
     }
 
-    size_t size=GetRandomValue(4,999);
+    size_t size=GetRandomValue(4,900);
 
     m_harnessTextOutput->AddLine("Attempting to allocate: "+ToString(size));
 
@@ -356,7 +354,7 @@ void CTests::ErrorTest(int percentage)
     if ((percentage>=2) && (percentage<=7)) // 0.5 - aligned memory tests 4,8,16,32,64,128
     {
 
-        size_t alignment = static_cast<size_t>(pow(2,percentage));
+        size_t alignment=pow(2,percentage);
         size_t size=GetRandomValue(7,500);
 
 //        m_harnessTextOutput->AddLine("Alignment: "+ToString(alignment));

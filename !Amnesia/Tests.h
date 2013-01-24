@@ -4,10 +4,6 @@
 /*
     Manages the tests and results
 
-    To do:
-
-    - run with a provided pointer
-    - check on aligned data
 
 */
 

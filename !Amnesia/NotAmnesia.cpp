@@ -48,6 +48,11 @@ bool CNotAmnesia::Initialise(
     m_startPtr = (preallocatedBuffer == nullptr) ? static_cast<unsigned char*>(malloc(numBytes)) : static_cast<unsigned char*>(preallocatedBuffer);
     m_nextFreePtr = m_startPtr;
 
+	if (m_startPtr != nullptr)
+	{
+		memset(m_startPtr, 0xFEFEFEFE, numBytes);
+	}
+
     return m_startPtr != nullptr;
 }
 
@@ -67,6 +72,8 @@ void *CNotAmnesia::Allocate(
 		if (mergedNugget == nullptr)
 			return nullptr;
 
+		CheckForBufferOverflow(mergedNugget);
+		memset(mergedNugget->ptr, 0x00000000, mergedNugget->totalSize);
 		return mergedNugget->ptr;
     }
 
@@ -77,7 +84,11 @@ void *CNotAmnesia::Allocate(
 	{
 		newNugget = MergeMemoryNuggets(numBytes);
 		if (newNugget != nullptr)
+		{
+			CheckForBufferOverflow(newNugget);
+			memset(newNugget->ptr, 0x00000000, newNugget->totalSize);
 			return newNugget->ptr;
+		}
 	}
 
 	if (newNugget == nullptr)
@@ -99,7 +110,10 @@ void *CNotAmnesia::Allocate(
 #endif
 
 	PushNuggetToAllocatedList(newNugget);
-	
+
+	CheckForBufferOverflow(newNugget);
+	memset(newNugget->ptr, 0x00000000, newNugget->totalSize);
+
     return newNugget->ptr;
 }
 
@@ -174,6 +188,9 @@ void *CNotAmnesia::AllocateAligned(
 
 	PushNuggetToAllocatedList(newNugget);
 
+	CheckForBufferOverflow(newNugget);
+	memset(newNugget->ptr, 0x00000000, newNugget->totalSize);
+
     return newNugget->ptr;
 }
 
@@ -205,6 +222,8 @@ void CNotAmnesia::Release(
     // didn't find a nugget for the address specified
     if (nugget == nullptr)
         return;
+
+	memset(nugget->ptr, 0xCDCDCDCD, nugget->totalSize);
 
     // fixup our linked list
     MemoryNugget *next = nugget->nextNugget;
@@ -343,7 +362,7 @@ void CNotAmnesia::Shutdown()
 }
 
 /*
-*	\brief	NOT IMPLEMENTED
+*	\brief	Get a text line from our list of debug text
 */
 const char* const CNotAmnesia::GetTextLine()
 {
@@ -540,8 +559,11 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 	return nullptr;
 }
 
+/*
+*	\breif	Pushes a memory nugget to the end of the allocated nugget list
+*/
 void CNotAmnesia::PushNuggetToAllocatedList(
-		MemoryNugget *nugget
+		MemoryNugget *nugget					//!< The nugget to add to the list
 	)
 {
 	nugget->prevNugget = nugget->nextNugget = nullptr;
@@ -562,4 +584,26 @@ void CNotAmnesia::PushNuggetToAllocatedList(
 #ifndef OPTIMIZED
 	m_noofNuggets++;
 #endif
+}
+
+/*
+*	\breif	Check the ptr of a nugget whilst allocating for buffer overflows
+*/
+void CNotAmnesia::CheckForBufferOverflow(
+		MemoryNugget *nugget					//!< The nugget to check for buffer overflows
+	)
+{
+	// pointing at unallocated memory, this is fine
+	if ((*nugget->ptr) == 0xFE)
+		return;
+
+	// pointing at released memory, this is fine
+	if ((*nugget->ptr) == 0xCD)
+		return;
+
+	// pointing at allocated memory, we shouldn't be allocaing this!
+	ASSERT((*nugget->ptr) != 0x00, "This pointer is pointing at already allocated memory");
+
+	// pointing at some data, that isn't expected! most likely caused by a buffer overflow
+	ASSERT((*nugget->ptr) == 0xFE || (*nugget->ptr) == 0xCD, "Buffer Overflow Detected!");
 }
