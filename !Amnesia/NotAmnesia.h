@@ -6,19 +6,52 @@
 #include <sstream>
 #include <stdlib.h>
 
-
 #include "IMemoryManager.h"
-
-#ifndef nullptr
-    #define nullptr 0
-#endif
 
 // we only really care about the file name, and not its full path, so strip it down.
 #define FILE_NAME(FILE) (strrchr(FILE, '\\') ? strrchr(FILE, '\\') + 1 : FILE)
 
+/**
+    Custom Assert
+*/
+
+#if defined(_DEBUG)
+    #if defined(WIN32)
+		
+		#include <Windows.h>
+
+        #define ASSERT(condition, message) \
+        do { \
+            if (!(condition)) { \
+                std::stringstream msg; \
+                msg << "Assert Failed: \"" #condition "\"\n In " << FILE_NAME(__FILE__) \
+                    << "(" << __LINE__ << ")\n \"" << message << "\"\nBreak into debugger?"; \
+                if (MessageBox(NULL, msg.str().c_str(), "Assert Failed", MB_YESNO | MB_ICONERROR) == IDYES) { \
+                    DebugBreak(); \
+                } \
+            } \
+        } while (false)
+    #else
+        #define ASSERT(condition, message) do { } while (false);
+    #endif
+#else
+    #define ASSERT(condition, message) do { } while (false);
+#endif
+
+/**
+	C++11 standards
+*/
+#ifndef nullptr
+    #define nullptr 0
+#endif
+
+// 0x00000000 = allocated memory
+// 0xcdcdcdcd = released memory
+// 0xfefefefe = unallocated memory
+
 // We can remove most debug information and change how memory is allocated, by using this flag
 // vastly improving performance.
-//#define OPTIMIZED
+#define OPTIMIZED
 
 // We have to allocated memory for our memory nuggets using a NEW and DELETE define.
 // The reason for this, is that malloc will not instanciate an instance of std::string
@@ -75,7 +108,7 @@ class CNotAmnesia : public IMemoryManager
 													//! Find a memory nugget based upon a given memory address
 													//! \return THe memory nugget that represents the given address, or nullptr if no memory nugget was found
         MemoryNugget                                *FindMemoryNugget(
-                                                        unsigned char* address							//!< The address to find
+                                                        unsigned char* address					//!< The address to find
                                                     );
 
 													//! Try to merge memory nuggets together to create a larger memory nugget
@@ -86,7 +119,12 @@ class CNotAmnesia : public IMemoryManager
 
 													//! Pushes a memory nugget to the end of the allocated nugget list
 		void										PushNuggetToAllocatedList(
-														MemoryNugget *nugget
+														MemoryNugget *nugget					//!< The nugget to push to the allocated list
+													);
+
+													//! Check the ptr of a nugget whilst allocating for buffer overflows
+		void										CheckForBufferOverflow(
+														MemoryNugget *nugget					//!< The nugget to check for buffer overflows
 													);
 
     public:
@@ -114,10 +152,10 @@ class CNotAmnesia : public IMemoryManager
                                                     //! Allocate memory from our buffer, aligned to a given alignment, storing it in a memory nugget
 													//! \return The address of the allocated memory
         virtual void                                *AllocateAligned(
-														size_t numBytes,
-														size_t alignment,
-														const char* file,
-														int line
+														size_t numBytes,						//!< The number of bytes to allocate
+														size_t alignment,						//!< The valueto align too
+														const char* file,						//!< The file where the allocation was called
+														int line								//!< The line of the file where the allocation was called
 													);
 
                                                     //! Release a given memory address, moving the memory nugget to the list of free memory nuggets for reuse
@@ -133,7 +171,7 @@ class CNotAmnesia : public IMemoryManager
                                                     //! Release all memory and destroy all memory nuggets
         virtual void                                Shutdown();
 
-                                                    //! NOT IMPLEMENTED
+                                                    //! Get a text line from our list of debug text
         virtual const char* const                   GetTextLine();
 
 };

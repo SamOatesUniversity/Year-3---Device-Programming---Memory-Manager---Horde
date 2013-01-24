@@ -67,7 +67,7 @@ int main (int argc, char *argv[])
 
     // Text output for harness and MM
     CTextOutput *textOutputHarness=new CTextOutput();
-    if (!textOutputHarness->Initialise(11,0,"Memory Manager Test Harness V0.6"))
+    if (!textOutputHarness->Initialise(11,0,"Memory Manager Test Harness V0.7"))
         exit(1);
 
     CTextOutput *textOutputMM=new CTextOutput();
