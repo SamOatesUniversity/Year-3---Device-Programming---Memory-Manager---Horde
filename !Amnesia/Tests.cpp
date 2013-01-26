@@ -23,7 +23,7 @@
 #include <math.h>
 #include <time.h>
 
-#include <windows.h>
+//#include <windows.h>
 // Enable this line to pause between tests (added 0.5)
 //#define PAUSE_BETWEEN_TESTS
 
@@ -134,10 +134,6 @@ bool CTests::Update()
         {
             m_currentTest=eFinished;
             FinalReport();
-			/*m_currentTest = eBasicTest;
-			noofLoops++;
-			if (noofLoops % 100 == 0)
-				srand(time(NULL));*/
         }
         else
         {

@@ -14,7 +14,7 @@
 
 // We can remove most debug information and change how memory is allocated, by using this flag
 // vastly improving performance.
-#define OPTIMIZED
+//#define OPTIMIZED
 
 // we only really care about the file name, and not its full path, so strip it down.
 #define FILE_NAME(FILE) (strrchr(FILE, '\\') ? strrchr(FILE, '\\') + 1 : FILE)
@@ -25,7 +25,7 @@
 
 #if defined(_DEBUG)
     #if defined(WIN32)
-		
+
 		#include <Windows.h>
 
         #define ASSERT(condition, message) \
