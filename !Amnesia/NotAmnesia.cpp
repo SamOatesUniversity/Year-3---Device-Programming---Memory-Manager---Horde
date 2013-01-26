@@ -471,6 +471,7 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 			#ifndef OPTIMIZED
 			m_noofFreeNuggets--;
 			m_noofNuggets++;
+			memset(nextFreeNugget->ptr, 0xcd, nextFreeNugget->totalSize);
 			#endif
 
 			return nextFreeNugget;
@@ -524,6 +525,10 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 						if (next != nullptr) next->prevNugget = prev;
 						if (prev != nullptr) prev->nextNugget = next;
 
+						#ifndef OPTIMIZED
+						memset(nextNugget->ptr, 0xcd, nextNugget->totalSize);
+						#endif
+
 						nextNugget = prev;
 						A_DELETE(currentNugget);
 					}
@@ -556,8 +561,9 @@ CNotAmnesia::MemoryNugget *CNotAmnesia::MergeMemoryNuggets(
 						#ifndef OPTIMIZED
 						m_noofFreeNuggets--;
 						m_noofNuggets++;
+						memset(firstFreeNugget->ptr, 0xcd, firstFreeNugget->totalSize);
 						#endif
-
+						
 						return firstFreeNugget;
 					}
 				}
