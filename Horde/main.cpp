@@ -168,6 +168,11 @@ int main (int argc, char *argv[])
 	ReleaseLevel();
 	engine->Release();
 
+#ifdef GP2X
+	chdir("/usr/gp2x");
+	execl("/usr/gp2x/gp2xmenu", "/usr/gp2x/gp2xmenu", NULL);
+#endif
+
 	return 0;
 }
 
