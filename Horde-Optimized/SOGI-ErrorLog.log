@@ -1,0 +1,19 @@
+[ (0)] 0x404cbb: CLasagneEntity::CLasagneEntity(char const*, TVector<int, 2u>) in lasagne-entity.cpp (15)
+[ (0)] 0x406e7e: CLasagne::LoadImageA(char const*) in lasagne.cpp (222)
+[ (0)] 0x4013b2: CScene::Load(std::string const&) in scenebase.cpp (19)
+[ (0)] 0x407055: SDL_main in main.cpp (14)
+[ (0)] 0x407a50: console_main in SDL_win32_main.c (252)
+[ (0)] 0x407c15: WinMain in SDL_win32_main.c
+[ (0)] 0x407666: global constructors keyed to SDL_main in main.cpp (25)
+[ (0)] 0x4010b6: [unknown function] in SOGI.cpp
+[lasagne-entity.cpp (12)] Failed to load image
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading vorbisfile.dll: The specified module could not be found.
+
+[ (0)] Failed loading smpeg.dll: The specified module could not be found.
+
