@@ -96,6 +96,8 @@ const bool CLasagne::Create()
 	m_fps.text->SetPosition(4, 222);
 #endif
 
+	ProFy::GetInstance().CreateTimer(m_timer[Timer::Render], ProFy::TimerType::CPU, "Render Time");
+
     return true;
 }
 
@@ -142,6 +144,7 @@ const bool CLasagne::Render()
         }
     }
 
+	ProFy::GetInstance().StartTimer(m_timer[Timer::Render]);
 
 	const std::vector<CLasagneEntity*>::iterator end = m_entity.end();
 	for (int depth = 0; depth < 10; ++depth)
@@ -187,6 +190,8 @@ const bool CLasagne::Render()
 #endif
 
     SDL_Flip(m_screen);
+
+	ProFy::GetInstance().EndTimer(m_timer[Timer::Render]);
 
     return true;
 }

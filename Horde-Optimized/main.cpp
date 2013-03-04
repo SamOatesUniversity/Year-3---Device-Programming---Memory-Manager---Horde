@@ -26,9 +26,14 @@ int main (int argc, char *argv[])
 	CLasagneMusicFile *ambiantMusic = engine->LoadMusicFile("./media/sound/ambiant.ogg");
 	ambiantMusic->Play();
 
+	ProFy::TimerID updateTime;
+	ProFy::GetInstance().CreateTimer(updateTime, ProFy::TimerType::CPU, "Update Loop Time");
+
     // whilst the engine is running loop
 	do
 	{
+		ProFy::GetInstance().StartTimer(updateTime);
+
         // update logic at 20 fps
         if (SDL_GetTicks() - updateTimer > 50)
         {
@@ -162,7 +167,11 @@ int main (int argc, char *argv[])
 			scoreTimer = SDL_GetTicks();
 		}
 
+		ProFy::GetInstance().EndTimer(updateTime);
+
 	} while (engine->Render());
+
+	ProFy::GetInstance().OutputTimer(updateTime, true);
 
     // free up resources and allocated memory
 	ReleaseLevel();

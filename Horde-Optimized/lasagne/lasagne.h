@@ -5,6 +5,8 @@
 /* HEADER FILES                                                         */
 /************************************************************************/
 
+#include <ProFy.h>
+
 #include "../SOGI/SOGI.h"
 #include "lasagne-text.h"
 #include "lasagne-entity.h"
@@ -56,6 +58,16 @@ private:
         int                             time;									//!< The time of the last FPS querry
     } m_fps;
 #endif
+
+
+	struct Timer {
+		enum Enum {
+			Render,
+			Noof
+		};
+	};
+
+	ProFy::TimerID						m_timer[Timer::Noof];
 
 private:
                                         //! Class constructor
