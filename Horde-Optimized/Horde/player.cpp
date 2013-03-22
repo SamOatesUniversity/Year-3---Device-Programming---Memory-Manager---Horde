@@ -35,16 +35,14 @@ const bool CPlayer::Load(
 {
     TVector<int, 2> frameLayout;
     frameLayout.Set(8, 2);
-    m_entity = CLasagne::GetInstance()->LoadAnimatedImage(spriteSheet, frameLayout);
+    m_entity = CLasagne::GetInstance()->LoadAnimatedImage(spriteSheet, frameLayout, 5);
     if (!m_entity)
         return false;
 
-	m_entity->SetDepth(5);
     m_entity->SetPosition(132, 96);
 
-	m_hurtHUD = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/hurt.png");
+	m_hurtHUD = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/hurt.png", 9);
 	m_hurtHUD->SetVisible(false);
-	m_hurtHUD->SetDepth(9);
 
 	m_audio[PlayerAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/hurt.wav");
 	m_audio[PlayerAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/die.wav");

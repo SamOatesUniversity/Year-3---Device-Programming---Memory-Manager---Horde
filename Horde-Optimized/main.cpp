@@ -225,13 +225,11 @@ const bool LoadLevel(
 	scoreText = engine->CreateText(const_cast<char*>("Score: 0"), 4, 20);
 	healthText = engine->CreateText(const_cast<char*>("Health: 100"), 4, 4);
 
-	playerDead = engine->LoadImage("./media/graphics/player-dead.png");
-	playerDead->SetDepth(9);
+	playerDead = engine->LoadImage("./media/graphics/player-dead.png", 9);
 	playerDead->SetPosition(96, 56);
 	playerDead->SetVisible(false);
 
-	levelComplete = engine->LoadImage("./media/graphics/level-complete.png");
-	levelComplete->SetDepth(9);
+	levelComplete = engine->LoadImage("./media/graphics/level-complete.png", 9);
 	levelComplete->SetPosition(96, 56);
 	levelComplete->SetVisible(false);
 

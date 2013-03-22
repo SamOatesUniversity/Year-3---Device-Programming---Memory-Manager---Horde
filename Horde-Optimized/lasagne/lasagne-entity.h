@@ -33,7 +33,6 @@ private:
 
     SDL_Rect								m_frameSize;
 	bool									m_visible;
-	int										m_rendeDepth;
 
 public:
                             //!
@@ -139,20 +138,6 @@ public:
 	const bool				Intersects(
 								CLasagneEntity *other
 							);
-
-							//! 
-	const int				GetDepth() const
-							{
-								return m_rendeDepth;
-							}
-
-							//! 
-	void					SetDepth(
-								const int depth
-							)
-							{
-								m_rendeDepth = depth;
-							}
 
 							//! Is the entity within the bounds of the screen
 	bool					IsOnScreen() const;

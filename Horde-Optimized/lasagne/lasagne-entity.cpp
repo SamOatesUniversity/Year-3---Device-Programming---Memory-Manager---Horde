@@ -10,8 +10,7 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesY(0),
     m_currentFrame(0),
     m_fps(50),
-    m_visible(true),
-	m_rendeDepth(0)
+    m_visible(true)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -38,8 +37,7 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesY(noofFrames.y()),
     m_currentFrame(0),
     m_fps(50),
-    m_visible(true),
-	m_rendeDepth(0)
+    m_visible(true)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)

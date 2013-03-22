@@ -146,15 +146,13 @@ const bool CLasagne::Render()
 
 	ProFy::GetInstance().StartTimer(m_timer[Timer::Render]);
 
-	const std::vector<CLasagneEntity*>::iterator end = m_entity.end();
-	for (int depth = 0; depth < 10; ++depth)
+	for (int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
-		std::vector<CLasagneEntity*>::iterator entity = m_entity.begin();
+		std::vector<CLasagneEntity*>::iterator entity = m_entity[depthLevel].begin();
+		const std::vector<CLasagneEntity*>::iterator end = m_entity[depthLevel].end();
 		for (entity = entity; entity != end; ++entity)
 		{
-			CLasagneEntity *const thisEntity = (*entity);
-			if (thisEntity->GetDepth() == depth)
-				thisEntity->Render(m_screen);
+			(*entity)->Render(m_screen);
 		}
 	}
 
@@ -203,11 +201,14 @@ void CLasagne::Release()
 {
 	ProFy::GetInstance().OutputTimer(m_timer[Timer::Render], true);
 
-	for (unsigned int entityIndex = 0; entityIndex < m_entity.size(); ++entityIndex)
+	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
-		SafeDelete(m_entity[entityIndex]);
+		for (unsigned int entityIndex = 0; entityIndex < m_entity[depthLevel].size(); ++entityIndex)
+		{
+			SafeDelete(m_entity[depthLevel][entityIndex]);
+		}
+		m_entity[depthLevel].clear();
 	}
-	m_entity.clear();
 
 	for (unsigned int musicIndex = 0; musicIndex < m_music.size(); ++musicIndex)
 	{
@@ -295,7 +296,8 @@ CLasagneAudioFile *CLasagne::LoadAudioFile(
  * \brief Load an image
 */
 CLasagneEntity *CLasagne::LoadImage(
-        const char* imageFile                         //!< A path to an image to load
+        const char* imageFile,							//!< A path to an image to load
+		unsigned int depth								//!< 
     )
 {
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize);
@@ -305,7 +307,9 @@ CLasagneEntity *CLasagne::LoadImage(
 		return NULL;
 	}
 
-    m_entity.push_back(entity);
+	depth = depth >= DEPTH_LEVELS ? DEPTH_LEVELS - 1 : depth;
+    m_entity[depth].push_back(entity);
+
     return entity;
 }
 
@@ -314,11 +318,15 @@ CLasagneEntity *CLasagne::LoadImage(
 */
 CLasagneEntity *CLasagne::LoadAnimatedImage(
         const char* imageFile,                        //!< A path to an image to load
-        const TVector<int, 2> &noofFrames             //!< The frame layout of the animated image (e.g. 4x2)
+        const TVector<int, 2> &noofFrames,            //!< The frame layout of the animated image (e.g. 4x2)
+		unsigned int depth
     )
 {
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize, noofFrames);
-    m_entity.push_back(entity);
+
+	depth = depth >= DEPTH_LEVELS ? DEPTH_LEVELS - 1 : depth;
+    m_entity[depth].push_back(entity);
+
     return entity;
 }
 
@@ -345,15 +353,18 @@ void CLasagne::Destroy(
 		CLasagneEntity **entity						//!< A pointer to the entity pointer to be destroyed
 	)
 {
-	std::vector<CLasagneEntity*>::iterator iter = m_entity.begin();
-	std::vector<CLasagneEntity*>::iterator endIter = m_entity.end();
-
-	for (iter = iter; iter != endIter; iter++)
+	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
-		if ((*iter) == (*entity))
+		std::vector<CLasagneEntity*>::iterator iter = m_entity[depthLevel].begin();
+		std::vector<CLasagneEntity*>::iterator endIter = m_entity[depthLevel].end();
+
+		for (iter = iter; iter != endIter; iter++)
 		{
-			m_entity.erase(iter);
-			break;
+			if ((*iter) == (*entity))
+			{
+				m_entity[depthLevel].erase(iter);
+				break;
+			}
 		}
 	}
 
@@ -402,4 +413,25 @@ void CLasagne::Destroy(
 	}
 
 	SafeDelete(*audio);
+}
+
+void CLasagne::SetEntityDepth(
+		CLasagneEntity *entity,
+		unsigned int oldDepth,
+		unsigned int newDepth
+	)
+{
+	std::vector<CLasagneEntity*>::iterator iter = m_entity[oldDepth].begin();
+	std::vector<CLasagneEntity*>::iterator endIter = m_entity[oldDepth].end();
+
+	for (iter = iter; iter != endIter; iter++)
+	{
+		if ((*iter) == (entity))
+		{
+			m_entity[oldDepth].erase(iter);
+			break;
+		}
+	}
+
+	m_entity[newDepth].push_back(entity);
 }
