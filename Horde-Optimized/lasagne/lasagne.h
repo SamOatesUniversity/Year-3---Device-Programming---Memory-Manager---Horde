@@ -27,6 +27,8 @@
 	#define SHOW_FPS
 #endif
 
+#define DEPTH_LEVELS	10
+
 /************************************************************************/
 /* CLASS DESCRIPTION													*/
 /************************************************************************/
@@ -44,7 +46,7 @@ private:
 
     std::vector<CLasagneText*>          m_errorText;							//!< A list of on screen error messages (for debugging)
 
-    std::vector<CLasagneEntity*>        m_entity;								//!< The list of entities loaded in the engine
+    std::vector<CLasagneEntity*>        m_entity[DEPTH_LEVELS];					//!< The list of entities loaded in the engine
 	std::vector<CLasagneText*>			m_textEntity;							//!< The list of text entities loaded in the engine
 	std::vector<CLasagneMusicFile*>		m_music;								//!< The list of music loaded in the engine
 	std::vector<CLasagneAudioFile*>		m_audio;								//!< The list of audio samples loaded in the engine
