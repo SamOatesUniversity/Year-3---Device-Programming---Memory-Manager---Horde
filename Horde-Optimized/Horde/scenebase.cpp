@@ -24,8 +24,7 @@ const bool CScene::Load(
 
     for (int backgroundIndex = 0; backgroundIndex < NOOF_BACKGROUNDS; ++backgroundIndex)
 	{
-        m_background[backgroundIndex] = CLasagne::GetInstance()->LoadImage(backgroundLocation.c_str());
-		m_background[backgroundIndex]->SetDepth(0);
+        m_background[backgroundIndex] = CLasagne::GetInstance()->LoadImage(backgroundLocation.c_str(), 0);
 	}
 
     for (int x = -1; x <= 1; ++x)
@@ -36,8 +35,7 @@ const bool CScene::Load(
         }
     }
 
-	m_cloud = CLasagne::GetInstance()->LoadImage("./media/graphics/cloud.png");
-	m_cloud->SetDepth(9);
+	m_cloud = CLasagne::GetInstance()->LoadImage("./media/graphics/cloud.png", 9);
 	m_cloud->SetPosition(-320, 0);
 
     return true;

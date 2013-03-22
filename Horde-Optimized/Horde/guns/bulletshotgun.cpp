@@ -12,10 +12,9 @@ CBulletShotgun::~CBulletShotgun()
 
 void CBulletShotgun::Create()
 {
-	m_entity = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/guns/shotgun/bullet.png");
+	m_entity = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/guns/shotgun/bullet.png", 5);
 	m_entity->SetPosition(132, 96);
 	m_entity->SetVisible(false);
-	m_entity->SetDepth(5);
 }
 
 bool CBulletShotgun::CheckCollision( 

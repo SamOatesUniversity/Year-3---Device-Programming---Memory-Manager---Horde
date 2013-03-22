@@ -120,13 +120,15 @@ public:
 
                                         //! Load an image
     CLasagneEntity                      *LoadImage(
-                                             const char* imageFile							//!< A path to an image to load
+                                             const char* imageFile,							//!< A path to an image to load
+											 unsigned int depth								//!< 
                                         );
 
                                         //! Load an animated image
     CLasagneEntity                      *LoadAnimatedImage(
                                              const char* imageFile,							//!< A path to an image to load
-                                             const TVector<int, 2> &noofFrames				//!< The frame layout of the animated image (e.g. 4x2)
+                                             const TVector<int, 2> &noofFrames,				//!< The frame layout of the animated image (e.g. 4x2)
+											 unsigned int depth
                                         );
 
 										//! Create a text entity to be drawn to the screen
@@ -156,6 +158,12 @@ public:
                                         {
                                             return &m_mousePosition;
                                         }
+
+	void								SetEntityDepth(
+											CLasagneEntity *entity,
+											unsigned int oldDepth,
+											unsigned int newDepth
+										);
 };
 
 /************************************************************************/
