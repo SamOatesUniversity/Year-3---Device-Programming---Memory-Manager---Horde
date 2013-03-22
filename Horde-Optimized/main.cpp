@@ -158,6 +158,7 @@ int main (int argc, char *argv[])
 			}
 
             updateTimer = SDL_GetTicks();
+			ProFy::GetInstance().EndTimer(updateTime);
         }
 
 		// Update the players score
@@ -166,8 +167,6 @@ int main (int argc, char *argv[])
 			player->IncreaseScore(1);
 			scoreTimer = SDL_GetTicks();
 		}
-
-		ProFy::GetInstance().EndTimer(updateTime);
 
 	} while (engine->Render());
 

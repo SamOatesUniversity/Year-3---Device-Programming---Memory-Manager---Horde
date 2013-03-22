@@ -201,6 +201,8 @@ const bool CLasagne::Render()
 */
 void CLasagne::Release()
 {
+	ProFy::GetInstance().OutputTimer(m_timer[Timer::Render], true);
+
 	for (unsigned int entityIndex = 0; entityIndex < m_entity.size(); ++entityIndex)
 	{
 		SafeDelete(m_entity[entityIndex]);
