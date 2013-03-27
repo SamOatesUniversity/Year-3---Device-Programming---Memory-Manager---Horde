@@ -21,7 +21,7 @@ void CLasagneDebugStats::Render(
 		SDL_Surface *surface         //!< The surface to blit our text surface too
 	)
 {
-	static const float timerHeight = 20.0f;
+	static const float timerHeight = 40.0f;
 	int yPos = 40;
 
 	for (unsigned int timerIndex = 0; timerIndex < m_timers.size(); ++timerIndex)
@@ -40,13 +40,19 @@ void CLasagneDebugStats::Render(
 		const float scale = (timerHeight * 0.5f) / static_cast<float>(maxTime);
 
 		int xPos = 4;
-		const int xSpacing = 20;
+		const int xSpacing = 12;
 
-		boxColor(surface, xPos, yPos, xPos + ((results.size() + 1) * xSpacing), static_cast<int>(yPos + timerHeight), 0x9400D377);
-		rectangleColor(surface, xPos, yPos, xPos + ((results.size() + 1) * xSpacing), static_cast<int>(yPos + timerHeight), 0xFFFF00FF);
+		int boxWidth = xPos + ((results.size() + 1) * xSpacing);
+		boxColor(surface, xPos, yPos, boxWidth, static_cast<int>(yPos + timerHeight), 0x9400D377);
+		rectangleColor(surface, xPos, yPos, boxWidth, static_cast<int>(yPos + timerHeight), 0xFFFF00FF);
 
 		const char* const name = ProFy::GetInstance().GetTimerName(m_timers[timerIndex]);
 		stringColor(surface, xPos + 2, yPos + 2, name, 0xFFFFFFFF);
+
+		std::stringstream maxStr, minStr;
+		maxStr << maxTime << "ms"; minStr << minTime << "ms";
+		stringColor(surface, boxWidth + 2, yPos, maxStr.str().c_str(), 0xFFFFFFFF);
+		stringColor(surface, boxWidth + 2, static_cast<int>(yPos + timerHeight) - 6, minStr.str().c_str(), 0xFFFFFFFF);
 
 		xPos += xSpacing;
 		const int bottomOfTimer = yPos + static_cast<unsigned int>(timerHeight);
@@ -56,13 +62,17 @@ void CLasagneDebugStats::Render(
 		{
 			const unsigned int resultTime = results[resultIndex];
 
+			if (resultIndex == 0) {
+				lastTime = resultTime;
+			}
+
 			aalineColor(surface, xPos - xSpacing, static_cast<int>(bottomOfTimer - (lastTime * scale)), xPos, static_cast<int>(bottomOfTimer - (resultTime * scale)), 0xFFFFFFFF);
 
 			xPos += xSpacing;
 			lastTime = resultTime;
 		}
 
-		aalineColor(surface, xPos - xSpacing, static_cast<int>(bottomOfTimer - (lastTime * scale)), xPos, bottomOfTimer, 0xFFFFFFFF);
+		aalineColor(surface, xPos - xSpacing, static_cast<int>(bottomOfTimer - (lastTime * scale)), xPos, static_cast<int>(bottomOfTimer - (lastTime * scale)), 0xFFFFFFFF);
 
 		xPos = 4 + xSpacing;
 		for (unsigned int resultIndex = 0; resultIndex < results.size(); ++resultIndex)

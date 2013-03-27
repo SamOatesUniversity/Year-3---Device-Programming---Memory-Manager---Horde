@@ -170,7 +170,7 @@ int main (int argc, char *argv[])
 
 	} while (engine->Render());
 
-	ProFy::GetInstance().OutputTimer(updateTime, true);
+	//ProFy::GetInstance().OutputTimer(updateTime, true);
 
     // free up resources and allocated memory
 	ReleaseLevel();

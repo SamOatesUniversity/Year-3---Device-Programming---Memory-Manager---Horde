@@ -64,8 +64,6 @@ const bool CLasagne::Create()
         }
     }
 
-    TTF_Init();
-
     int audio_rate = 22050;
     Uint16 audio_format = AUDIO_S16; /* 16-bit stereo */
     int audio_channels = 2;
@@ -98,8 +96,8 @@ const bool CLasagne::Create()
 	ProFy::GetInstance().CreateTimer(m_timer[Timer::Render], ProFy::TimerType::CPU, "Render Time");
 
 	m_debugStats = new CLasagneDebugStats();
-	m_debugStats->AddTimer(m_timer[Timer::Render]);
 	m_debugStats->AddTimer(2);
+	m_debugStats->AddTimer(m_timer[Timer::Render]);
 #endif
 
     return true;
@@ -205,7 +203,7 @@ const bool CLasagne::Render()
 */
 void CLasagne::Release()
 {
-	ProFy::GetInstance().OutputTimer(m_timer[Timer::Render], true);
+	//ProFy::GetInstance().OutputTimer(m_timer[Timer::Render], true);
 
 	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
