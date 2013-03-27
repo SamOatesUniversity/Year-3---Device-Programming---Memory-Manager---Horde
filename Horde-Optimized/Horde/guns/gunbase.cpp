@@ -15,7 +15,7 @@ CGunBase::~CGunBase()
 {
 	std::vector<CBulletBase*>::iterator iter = m_bullet.begin();
 	std::vector<CBulletBase*>::iterator endIter = m_bullet.end();
-	for (iter = iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; ++iter)
 	{
 		SafeDelete(*iter);
 	}

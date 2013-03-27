@@ -68,16 +68,16 @@ const bool CLasagne::Create()
         }
     }
 
-    int audio_rate = 22050;
-    Uint16 audio_format = AUDIO_S16; /* 16-bit stereo */
-    int audio_channels = 2;
-    int audio_buffers = 4096;
-
     #ifdef GP2X
-        audio_rate = MIX_DEFAULT_FREQUENCY;
-        audio_format = AUDIO_S16;
-        audio_channels = MIX_DEFAULT_CHANNELS;
-        audio_buffers = 256;
+        int audio_rate = MIX_DEFAULT_FREQUENCY;
+        Uint16 audio_format = AUDIO_S16;
+        int audio_channels = MIX_DEFAULT_CHANNELS;
+        int audio_buffers = 256;
+	#else
+	    int audio_rate = 22050;
+		Uint16 audio_format = AUDIO_S16; /* 16-bit stereo */
+		int audio_channels = 2;
+		int audio_buffers = 4096;
     #endif
 
     if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers)) {
@@ -402,7 +402,7 @@ void CLasagne::Destroy(
 		std::vector<CLasagneEntity*>::iterator iter = m_entity[depthLevel].begin();
 		std::vector<CLasagneEntity*>::iterator endIter = m_entity[depthLevel].end();
 
-		for (iter = iter; iter != endIter; iter++)
+		for (iter = iter; iter != endIter; ++iter)
 		{
 			if ((*iter) == (*entity))
 			{
@@ -425,7 +425,7 @@ void CLasagne::Destroy(
 	std::vector<CLasagneText*>::iterator iter = m_textEntity.begin();
 	std::vector<CLasagneText*>::iterator endIter = m_textEntity.end();
 
-	for (iter = iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; ++iter)
 	{
 		if ((*iter) == (*text))
 		{
@@ -447,7 +447,7 @@ void CLasagne::Destroy(
 	std::vector<CLasagneAudioFile*>::iterator iter = m_audio.begin();
 	std::vector<CLasagneAudioFile*>::iterator endIter = m_audio.end();
 
-	for (iter = iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; ++iter)
 	{
 		if ((*iter) == (*audio))
 		{
@@ -468,7 +468,7 @@ void CLasagne::SetEntityDepth(
 	std::vector<CLasagneEntity*>::iterator iter = m_entity[oldDepth].begin();
 	std::vector<CLasagneEntity*>::iterator endIter = m_entity[oldDepth].end();
 
-	for (iter = iter; iter != endIter; iter++)
+	for (iter = iter; iter != endIter; ++iter)
 	{
 		if ((*iter) == (entity))
 		{
