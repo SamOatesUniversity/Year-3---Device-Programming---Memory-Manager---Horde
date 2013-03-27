@@ -4,7 +4,7 @@
 #include "../SOGI/SOGI.h"
 
 #include <SDL.h>
-#include <SDL_ttf.h>
+#include <SDL_gfxPrimitives.h>
 
 #include <string>
 #include <sstream>
@@ -12,13 +12,8 @@
 class CLasagneText {
 private:
 
-    TTF_Font        *m_font;                        //!<
-
-    SDL_Surface     *m_surface;                     //!< The text surface to render too
-
-    SDL_Rect        m_drawRect;                     //!< The bounds of the draw region
-
 	IVec2			m_position;						//!< 
+	std::string		m_text;							//!< 
 
 public:
                     //! Class constructor
@@ -48,9 +43,6 @@ public:
                         SDL_Surface *surface        //!< The surface to blit our text surface too
                     );
 
-public:
-
-    static TTF_Font *font;
 };
 
 #endif

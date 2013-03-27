@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClCompile Include="..\lasagne\lasagne-3dentity.cpp" />
     <ClCompile Include="..\lasagne\lasagne-audio.cpp" />
+    <ClCompile Include="..\lasagne\lasagne-debug-stats.cpp" />
     <ClCompile Include="..\lasagne\lasagne-entity.cpp" />
     <ClCompile Include="..\lasagne\lasagne-music.cpp" />
     <ClCompile Include="..\lasagne\lasagne-surface.cpp" />
@@ -120,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="..\lasagne\lasagne-3dentity.h" />
     <ClInclude Include="..\lasagne\lasagne-audio.h" />
+    <ClInclude Include="..\lasagne\lasagne-debug-stats.h" />
     <ClInclude Include="..\lasagne\lasagne-entity.h" />
     <ClInclude Include="..\lasagne\lasagne-music.h" />
     <ClInclude Include="..\lasagne\lasagne-surface.h" />

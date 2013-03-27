@@ -141,6 +141,9 @@
     <ClCompile Include="guns\bulletshotgun.cpp">
       <Filter>Source Files\Horde\guns\bullets</Filter>
     </ClCompile>
+    <ClCompile Include="..\lasagne\lasagne-debug-stats.cpp">
+      <Filter>Source Files\Lasagne</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lasagne\lasagne.h">
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="guns\bulletpistol.h">
       <Filter>Header Files\Horde\guns\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lasagne\lasagne-debug-stats.h">
+      <Filter>Header Files\Lasagne</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
