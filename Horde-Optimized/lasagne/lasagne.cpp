@@ -12,6 +12,7 @@ CLasagne::CLasagne() :
 	m_showTimerGraphs = true;
 #endif
 	m_isPaused = false;
+	m_audioVolume = 64;
 }
 
 /*
@@ -88,6 +89,8 @@ const bool CLasagne::Create()
         return false;
     }
 
+	Mix_Volume(-1, m_audioVolume);
+
 #if defined(SHOW_DEBUG_STATS)
     m_fps.text = new CLasagneText();
     m_fps.text->Create("FPS: 0");
@@ -128,7 +131,36 @@ const bool CLasagne::Render()
                 if (event.key.keysym.sym == SDLK_ESCAPE)
                 {
                     m_isPaused = !m_isPaused;
+					break;
                 }
+
+#if defined(SHOW_DEBUG_STATS)
+				if (event.key.keysym.sym == SDLK_TAB)
+				{
+					m_showTimerGraphs = !m_showTimerGraphs; 
+				}
+#endif
+
+				if (event.key.keysym.sym == SDLK_DOWN)
+				{
+					if (m_audioVolume < 4) 
+						m_audioVolume = 0;
+					else
+						m_audioVolume = m_audioVolume - 4;
+					
+					Mix_Volume(-1, m_audioVolume);
+					Mix_VolumeMusic(m_audioVolume);
+					break;
+				}
+
+				if (event.key.keysym.sym == SDLK_UP)
+				{
+					m_audioVolume = m_audioVolume + 4;
+					if (m_audioVolume > 128) m_audioVolume = 128;
+					Mix_Volume(-1, m_audioVolume);
+					Mix_VolumeMusic(m_audioVolume);
+					break;
+				}
             }
             break;
 #else

@@ -51,6 +51,7 @@ private:
 	std::vector<CLasagneAudioFile*>		m_audio;								//!< The list of audio samples loaded in the engine
 	
 	bool								m_isPaused;								//!< Is the renderer paused
+	unsigned char						m_audioVolume;							//!< The volume of the audio
 
 #if defined(SHOW_DEBUG_STATS)
     struct {
