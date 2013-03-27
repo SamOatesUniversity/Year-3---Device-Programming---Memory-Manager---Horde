@@ -205,7 +205,7 @@ const bool LoadLevel(
 	IVec2 spawnPoint;
 	static const int swarmSize = 5;
 
-	int noofEnemies = 10 + (wave * 10);
+	int noofEnemies = 10 + (wave * 5);
 
 	if (noofEnemies > 50) noofEnemies = 50;
 

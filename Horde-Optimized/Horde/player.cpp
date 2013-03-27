@@ -35,7 +35,7 @@ const bool CPlayer::Load(
 {
     TVector<int, 2> frameLayout;
     frameLayout.Set(8, 2);
-    m_entity = CLasagne::GetInstance()->LoadAnimatedImage(spriteSheet, frameLayout, 5);
+    m_entity = CLasagne::GetInstance()->LoadAnimatedImage(spriteSheet, frameLayout, 6);
     if (!m_entity)
         return false;
 

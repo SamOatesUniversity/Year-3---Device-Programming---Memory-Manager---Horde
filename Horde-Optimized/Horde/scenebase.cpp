@@ -22,9 +22,11 @@ const bool CScene::Load(
 {
     const std::string backgroundLocation = folderLocation + "background.jpg";
 
+	CLasagne *const engine = CLasagne::GetInstance();
+
     for (int backgroundIndex = 0; backgroundIndex < NOOF_BACKGROUNDS; ++backgroundIndex)
 	{
-        m_background[backgroundIndex] = CLasagne::GetInstance()->LoadImage(backgroundLocation.c_str(), 0);
+        m_background[backgroundIndex] = engine->LoadImage(backgroundLocation.c_str(), 0);
 	}
 
     for (int x = -1; x <= 1; ++x)
@@ -64,8 +66,9 @@ bool CScene::Move(
     {
         for (int y = -1; y <= 1; ++y)
         {
-            TVector<float, 2> pos = m_background[((x+1) * 3) + (y+1)]->GetPosition();
-            m_background[((x+1) * 3) + (y+1)]->SetPosition(pos.x() - xmove, pos.y() - ymove);
+			const unsigned int bgrIndex = ((x+1) * 3) + (y+1);
+            TVector<float, 2> pos = m_background[bgrIndex]->GetPosition();
+            m_background[bgrIndex]->SetPosition(pos.x() - xmove, pos.y() - ymove);
         }
     }
 
