@@ -37,7 +37,7 @@ const bool CScene::Load(
         }
     }
 
-	m_cloud = CLasagne::GetInstance()->LoadImage("./media/graphics/cloud.png", 9);
+	m_cloud = CLasagne::GetInstance()->LoadImage("./data/graphics/cloud.png", 9);
 	m_cloud->SetPosition(-320, 0);
 
     return true;

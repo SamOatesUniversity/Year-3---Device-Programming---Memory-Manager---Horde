@@ -41,11 +41,11 @@ const bool CPlayer::Load(
 
     m_entity->SetPosition(132, 96);
 
-	m_hurtHUD = CLasagne::GetInstance()->LoadImage("./media/graphics/characters/hurt.png", 9);
+	m_hurtHUD = CLasagne::GetInstance()->LoadImage("./data/graphics/characters/hurt.png", 9);
 	m_hurtHUD->SetVisible(false);
 
-	m_audio[PlayerAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/hurt.wav");
-	m_audio[PlayerAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/character/die.wav");
+	m_audio[PlayerAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./data/sound/character/hurt.wav");
+	m_audio[PlayerAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./data/sound/character/die.wav");
 
     m_entity->AddAnimation(const_cast<char*>("idle"), 0, 9);
     m_entity->AddAnimation(const_cast<char*>("walk"), 10, 16);

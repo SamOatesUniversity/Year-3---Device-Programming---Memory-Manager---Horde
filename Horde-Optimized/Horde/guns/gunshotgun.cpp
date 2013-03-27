@@ -14,11 +14,11 @@ void CGunShotgun::Create()
 {
 	TVector<int, 2> frameLayout;
 	frameLayout.Set(8, 2);
-	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./media/graphics/characters/guns/shotgun/gun.png", frameLayout, 5);
+	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./data/graphics/characters/guns/shotgun/gun.png", frameLayout, 5);
 	if (!m_entity)
 		return;
 
-	m_audio = CLasagne::GetInstance()->LoadAudioFile("./media/sound/guns/shotgun.wav");
+	m_audio = CLasagne::GetInstance()->LoadAudioFile("./data/sound/guns/shotgun.wav");
 
 	static const int NoofBullets = 9;
 	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)

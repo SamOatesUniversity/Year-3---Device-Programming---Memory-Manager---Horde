@@ -19,12 +19,12 @@ bool CEnemyZombie::Create(
 {
 	TVector<int, 2> frameLayout;
 	frameLayout.Set(8, 3);
-	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./media/graphics/characters/zombie.png", frameLayout, 7);
+	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./data/graphics/characters/zombie.png", frameLayout, 7);
 	if (!m_entity)
 		return false;
 
-	m_audio[EnemyAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/enemy/hurt.wav");
-	m_audio[EnemyAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./media/sound/enemy/die.wav");
+	m_audio[EnemyAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./data/sound/enemy/hurt.wav");
+	m_audio[EnemyAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./data/sound/enemy/die.wav");
 
 	m_entity->AddAnimation(const_cast<char*>("walk"), 0, 9);
 	m_entity->AddAnimation(const_cast<char*>("dead"), 10, 16, false);

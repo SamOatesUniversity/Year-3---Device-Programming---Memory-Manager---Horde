@@ -23,7 +23,7 @@ int main (int argc, char *argv[])
 	Uint32 scoreTimer = updateTimer;
 
 	// load the ambient music and play it
-	CLasagneMusicFile *ambiantMusic = engine->LoadMusicFile("./media/sound/ambiant.ogg");
+	CLasagneMusicFile *ambiantMusic = engine->LoadMusicFile("./data/sound/ambiant.ogg");
 	ambiantMusic->Play();
 
 	ProFy::TimerID updateTime;
@@ -194,13 +194,13 @@ const bool LoadLevel(
 	CLasagne *const engine = CLasagne::GetInstance();
 
 	std::stringstream buf;
-	buf << "./media/graphics/level-" << id << "/";
+	buf << "./data/graphics/level-" << id << "/";
 
 	currentScene = new CScene();
 	currentScene->Load(buf.str().c_str());
 
 	player = new CPlayer();
-	player->Load("./media/graphics/characters/player.png");
+	player->Load("./data/graphics/characters/player.png");
 
 	IVec2 spawnPoint;
 	static const int swarmSize = 5;
@@ -225,11 +225,11 @@ const bool LoadLevel(
 	scoreText = engine->CreateText(const_cast<char*>("Score: 0"), 4, 20);
 	healthText = engine->CreateText(const_cast<char*>("Health: 100"), 4, 4);
 
-	playerDead = engine->LoadImage("./media/graphics/player-dead.png", 9);
+	playerDead = engine->LoadImage("./data/graphics/player-dead.png", 9);
 	playerDead->SetPosition(96, 56);
 	playerDead->SetVisible(false);
 
-	levelComplete = engine->LoadImage("./media/graphics/level-complete.png", 9);
+	levelComplete = engine->LoadImage("./data/graphics/level-complete.png", 9);
 	levelComplete->SetPosition(96, 56);
 	levelComplete->SetVisible(false);
 
