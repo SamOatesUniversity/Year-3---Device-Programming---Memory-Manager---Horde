@@ -15,11 +15,22 @@ int main (int argc, char *argv[])
         return 0;
     }
 
+	engine->ShowTimers(false);
+
+	// show the one time startup splash screen
+	Uint32 updateTimer = SDL_GetTicks();
+	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.jpg", 9);
+
+	while (SDL_GetTicks() - updateTimer < 3000) 
+	{
+		engine->Render();
+	}
+
 	// Load the first level into memory
 	LoadLevel(currentLevel);
 
 	// store the game start time
-    Uint32 updateTimer = SDL_GetTicks();
+    updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
 
 	// load the ambient music and play it
@@ -28,6 +39,9 @@ int main (int argc, char *argv[])
 
 	ProFy::TimerID updateTime;
 	ProFy::GetInstance().CreateTimer(updateTime, ProFy::TimerType::CPU, "Update Loop Time");
+
+	engine->Destroy(&splashScreen);
+	engine->ShowTimers(true);
 
     // whilst the engine is running loop
 	do
