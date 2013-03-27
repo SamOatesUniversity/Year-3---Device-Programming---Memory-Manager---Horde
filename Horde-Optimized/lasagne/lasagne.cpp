@@ -150,8 +150,13 @@ const bool CLasagne::Render()
 
 	for (int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
-		std::vector<CLasagneEntity*>::iterator entity = m_entity[depthLevel].begin();
-		const std::vector<CLasagneEntity*>::iterator end = m_entity[depthLevel].end();
+		std::vector<CLasagneEntity*> entities = m_entity[depthLevel];
+		if (entities.empty()) {
+			continue;
+		}
+
+		std::vector<CLasagneEntity*>::iterator entity = entities.begin();
+		const std::vector<CLasagneEntity*>::iterator end = entities.end();
 		for (entity = entity; entity != end; ++entity)
 		{
 			(*entity)->Render(m_screen);
