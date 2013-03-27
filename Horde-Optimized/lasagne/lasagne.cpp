@@ -8,7 +8,9 @@ CLasagne::CLasagne() :
     m_screen(NULL),
     m_joystick(NULL)
 {
-
+#ifdef SHOW_DEBUG_STATS
+	m_showTimerGraphs = true;
+#endif
 }
 
 /*
@@ -193,7 +195,7 @@ const bool CLasagne::Render()
 
     m_fps.text->Render(m_screen);
 
-	m_debugStats->Render(m_screen);
+	if (m_showTimerGraphs) m_debugStats->Render(m_screen);
 #endif
 
     SDL_Flip(m_screen);

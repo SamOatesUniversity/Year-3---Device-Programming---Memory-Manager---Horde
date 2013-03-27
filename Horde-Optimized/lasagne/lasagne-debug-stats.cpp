@@ -27,6 +27,9 @@ void CLasagneDebugStats::Render(
 	for (unsigned int timerIndex = 0; timerIndex < m_timers.size(); ++timerIndex)
 	{
 		std::vector<unsigned int> results = ProFy::GetInstance().GetTimerResults(m_timers[timerIndex], 10);
+		if (results.empty()) {
+			continue;
+		}
 
 		float maxTime = 0;
 		float minTime = 0xFFFFFFFF;

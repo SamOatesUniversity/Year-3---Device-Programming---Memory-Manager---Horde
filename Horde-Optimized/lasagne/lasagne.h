@@ -59,7 +59,7 @@ private:
         int                             time;									//!< The time of the last FPS querry
     } m_fps;
 
-
+	bool								m_showTimerGraphs;
 	CLasagneDebugStats					*m_debugStats;
 
 #endif
@@ -167,6 +167,17 @@ public:
 											unsigned int oldDepth,
 											unsigned int newDepth
 										);
+
+	#if defined(SHOW_DEBUG_STATS)
+
+	void								ShowTimers(
+											const bool show
+										)
+										{
+											m_showTimerGraphs = show;
+										}
+
+	#endif
 };
 
 /************************************************************************/
