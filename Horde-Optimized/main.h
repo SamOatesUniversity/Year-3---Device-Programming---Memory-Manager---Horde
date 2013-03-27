@@ -17,10 +17,13 @@
 //! Specifies the current game state
 struct GameState {
 	enum Enum {
+		SplashScreen,																		//!< The games splashscreen is currently showing
+		Paused,																				//!< The game is currently paused
 		LoadingLevel,																		//!< The current level is loading
 		InLevel,																			//!< Currently playing a level
 		LevelComplete,																		//!< Level completed, prepare for loading of next level
-		Dead																				//!< Player has died, prepare to restart game
+		Dead,																				//!< Player has died, prepare to restart game
+		Unkown																				//!< The game is in an unknown state
 	};
 };
 
@@ -28,7 +31,7 @@ struct GameState {
 /* VARIABLES                                                            */
 /************************************************************************/
 
-GameState::Enum						gameState = GameState::InLevel;							//!< The current state of the game
+GameState::Enum						gameState = GameState::Unkown;							//!< The current state of the game
 
 CLasagneText						*scoreText;												//!< The text overlay of the players score
 CLasagneText						*healthText;											//!< The text overlay of the players health

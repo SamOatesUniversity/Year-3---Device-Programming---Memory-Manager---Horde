@@ -20,12 +20,14 @@ int main (int argc, char *argv[])
 	// show the one time startup splash screen
 	Uint32 updateTimer = SDL_GetTicks();
 	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.jpg", 9);
+	gameState = GameState::SplashScreen;
 
 	while (SDL_GetTicks() - updateTimer < 3000) 
 	{
 		engine->Render();
 	}
 
+	gameState = GameState::LoadingLevel;
 	// Load the first level into memory
 	LoadLevel(currentLevel);
 
@@ -40,146 +42,171 @@ int main (int argc, char *argv[])
 	ProFy::TimerID updateTime;
 	ProFy::GetInstance().CreateTimer(updateTime, ProFy::TimerType::CPU, "Update Loop Time");
 
+	CLasagneEntity *pausedScreen = engine->LoadImage("./data/graphics/paused-menu.png", 9);
+	pausedScreen->SetVisible(false);
+
 	engine->Destroy(&splashScreen);
 	engine->ShowTimers(true);
+
+	gameState = GameState::InLevel;
 
     // whilst the engine is running loop
 	do
 	{
-		ProFy::GetInstance().StartTimer(updateTime);
-
-        // update logic at 20 fps
-        if (SDL_GetTicks() - updateTimer > 50)
-        {
-            const int xDiff = engine->GetMousePosition()->x() - 160;
-            const int yDiff = engine->GetMousePosition()->y() - 120;
-
-			int moveX = static_cast<int>(xDiff * 0.05f);
-			int moveY = static_cast<int>(yDiff * 0.05f);
-
-			if (player->GetHealth() == 0)
+		if (engine->IsPaused())
+		{
+			// show the paused menu
+			if (gameState != GameState::Paused)
 			{
-				moveX = 0;
-				moveY = 0;
+				gameState = GameState::Paused;
+				pausedScreen->SetVisible(true);
+				engine->ShowTimers(false);
 			}
-			else
+		}
+		else
+		{
+			if (gameState == GameState::Paused) 
 			{
-				if (yDiff != 0) // stop divide by 0
-				{
-					const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
-					const float radAngle = atan(alpha);
-					int rotation = static_cast<int>(radAngle * 57.0f);
-
-					if (yDiff < 0)
-					{
-						rotation += 180;
-					}
-
-					player->SetRotation(rotation);
-				}
+				gameState = GameState::InLevel;
+				pausedScreen->SetVisible(false);
+				engine->ShowTimers(true);
 			}
 
-			if (!CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 25.0f))
+			ProFy::GetInstance().StartTimer(updateTime);
+
+			// update logic at 20 fps
+			if (SDL_GetTicks() - updateTimer > 50)
 			{
-				player->SetCurrentAnimation(const_cast<char*>("walk"));
-				if (!currentScene->Move(moveX, moveY))
+				const int xDiff = engine->GetMousePosition()->x() - 160;
+				const int yDiff = engine->GetMousePosition()->y() - 120;
+
+				int moveX = static_cast<int>(xDiff * 0.05f);
+				int moveY = static_cast<int>(yDiff * 0.05f);
+
+				if (player->GetHealth() == 0)
 				{
-					currentScene->UpdateClouds(0, 0);
-					player->SetCurrentAnimation(const_cast<char*>("idle"));
 					moveX = 0;
 					moveY = 0;
 				}
+				else
+				{
+					if (yDiff != 0) // stop divide by 0
+					{
+						const float alpha = static_cast<float>(xDiff) / static_cast<float>(yDiff);
+						const float radAngle = atan(alpha);
+						int rotation = static_cast<int>(radAngle * 57.0f);
+
+						if (yDiff < 0)
+						{
+							rotation += 180;
+						}
+
+						player->SetRotation(rotation);
+					}
+				}
+
+				if (!CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 25.0f))
+				{
+					player->SetCurrentAnimation(const_cast<char*>("walk"));
+					if (!currentScene->Move(moveX, moveY))
+					{
+						currentScene->UpdateClouds(0, 0);
+						player->SetCurrentAnimation(const_cast<char*>("idle"));
+						moveX = 0;
+						moveY = 0;
+					}
+				}
+				else
+				{
+					// user pressing near the middle of the screen, so stand still
+					player->SetCurrentAnimation(const_cast<char*>("idle"));
+					currentScene->UpdateClouds(0, 0);
+				}
+
+				// Update enemies, counting how many have died on the way
+				int noofDead = 0;
+				for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
+				{
+					CEnemyBase *const currentEnemy = enemy[zombieIndex];
+					currentEnemy->Update(moveX, moveY);
+					if (currentEnemy->GetHealth() <= 0)
+						noofDead++;
+				}
+
+				// If there are no enemies left, and the player isn't dead, level has been completed
+				if (enemy.size() - noofDead == 0 && gameState == GameState::InLevel && player->GetHealth() != 0)
+				{
+					levelComplete->SetVisible(true);
+					gameState = GameState::LevelComplete;
+					levelEndTimer = SDL_GetTicks();
+				}
+
+				// Update the player
+				player->Update(enemy);
+
+				// Out put text to the screen
+				std::stringstream scoreBuffer;
+				scoreBuffer << "Score: " << (player->GetScore() + totalScore);
+				scoreText->SetText(scoreBuffer.str().c_str());
+
+				std::stringstream healthBuffer;
+				healthBuffer << "Health: " << player->GetHealth();
+				healthText->SetText(healthBuffer.str().c_str());
+
+				// if player health is zero, the player has died
+				if (player->GetHealth() == 0 && gameState == GameState::InLevel)
+				{
+					if (!playerDead->IsVisible())
+						playerDead->SetVisible(true);
+
+					gameState = GameState::Dead;
+					levelEndTimer = SDL_GetTicks();
+				}
+
+				// restart the game after 5 seconds after dying
+				if (gameState == GameState::Dead && SDL_GetTicks() - levelEndTimer > 5000)
+				{
+					gameState = GameState::LoadingLevel;
+					levelEndTimer = 0;
+					totalScore = 0;
+					ReleaseLevel();
+					currentLevel = 1;
+					wave = 0;
+					LoadLevel(currentLevel);
+
+					gameState = GameState::InLevel;
+					continue;
+				}
+
+				// Load the next level after 5 seconds of level completing
+				if (gameState == GameState::LevelComplete && SDL_GetTicks() - levelEndTimer > 5000)
+				{
+					gameState = GameState::LoadingLevel;
+					levelEndTimer = 0;
+					totalScore += (player->GetScore() + 250);
+					ReleaseLevel();
+					currentLevel++;
+					wave++;
+					LoadLevel(currentLevel);
+
+					// loop the levels
+					if (currentLevel == lastLevel)
+						currentLevel = 0;
+
+					gameState = GameState::InLevel;
+					continue;
+				}
+
+				updateTimer = SDL_GetTicks();
+				ProFy::GetInstance().EndTimer(updateTime);
 			}
-			else
+
+			// Update the players score
+			if (player->GetHealth() != 0 && gameState == GameState::InLevel && SDL_GetTicks() - scoreTimer > 500)
 			{
-				// user pressing near the middle of the screen, so stand still
-				player->SetCurrentAnimation(const_cast<char*>("idle"));
-				currentScene->UpdateClouds(0, 0);
+				player->IncreaseScore(1);
+				scoreTimer = SDL_GetTicks();
 			}
-
-			// Update enemies, counting how many have died on the way
-			int noofDead = 0;
-			for (unsigned int zombieIndex = 0; zombieIndex < enemy.size(); ++zombieIndex)
-			{
-				CEnemyBase *const currentEnemy = enemy[zombieIndex];
-				currentEnemy->Update(moveX, moveY);
-				if (currentEnemy->GetHealth() <= 0)
-					noofDead++;
-			}
-
-			// If there are no enemies left, and the player isn't dead, level has been completed
-			if (enemy.size() - noofDead == 0 && gameState == GameState::InLevel && player->GetHealth() != 0)
-			{
-				levelComplete->SetVisible(true);
-				gameState = GameState::LevelComplete;
-				levelEndTimer = SDL_GetTicks();
-			}
-
-			// Update the player
-			player->Update(enemy);
-
-			// Out put text to the screen
-			std::stringstream scoreBuffer;
-			scoreBuffer << "Score: " << (player->GetScore() + totalScore);
-			scoreText->SetText(scoreBuffer.str().c_str());
-
-			std::stringstream healthBuffer;
-			healthBuffer << "Health: " << player->GetHealth();
-			healthText->SetText(healthBuffer.str().c_str());
-
-			// if player health is zero, the player has died
-			if (player->GetHealth() == 0 && gameState == GameState::InLevel)
-			{
-				if (!playerDead->IsVisible())
-					playerDead->SetVisible(true);
-
-				gameState = GameState::Dead;
-				levelEndTimer = SDL_GetTicks();
-			}
-
-			// restart the game after 5 seconds after dying
-			if (gameState == GameState::Dead && SDL_GetTicks() - levelEndTimer > 5000)
-			{
-				gameState = GameState::LoadingLevel;
-				levelEndTimer = 0;
-				totalScore = 0;
-				ReleaseLevel();
-				currentLevel = 1;
-				wave = 0;
-				LoadLevel(currentLevel);
-
-				gameState = GameState::InLevel;
-				continue;
-			}
-
-			// Load the next level after 5 seconds of level completing
-			if (gameState == GameState::LevelComplete && SDL_GetTicks() - levelEndTimer > 5000)
-			{
-				gameState = GameState::LoadingLevel;
-				levelEndTimer = 0;
-				totalScore += (player->GetScore() + 250);
-				ReleaseLevel();
-				currentLevel++;
-				wave++;
-				LoadLevel(currentLevel);
-
-				// loop the levels
-				if (currentLevel == lastLevel)
-					currentLevel = 0;
-
-				gameState = GameState::InLevel;
-				continue;
-			}
-
-            updateTimer = SDL_GetTicks();
-			ProFy::GetInstance().EndTimer(updateTime);
-        }
-
-		// Update the players score
-		if (player->GetHealth() != 0 && gameState == GameState::InLevel && SDL_GetTicks() - scoreTimer > 500)
-		{
-			player->IncreaseScore(1);
-			scoreTimer = SDL_GetTicks();
 		}
 
 	} while (engine->Render());

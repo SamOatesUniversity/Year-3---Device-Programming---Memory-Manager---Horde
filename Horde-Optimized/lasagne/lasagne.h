@@ -50,6 +50,7 @@ private:
 	std::vector<CLasagneMusicFile*>		m_music;								//!< The list of music loaded in the engine
 	std::vector<CLasagneAudioFile*>		m_audio;								//!< The list of audio samples loaded in the engine
 	
+	bool								m_isPaused;								//!< Is the renderer paused
 
 #if defined(SHOW_DEBUG_STATS)
     struct {
@@ -178,6 +179,11 @@ public:
 										}
 
 	#endif
+
+	const bool							IsPaused() const
+										{
+											return m_isPaused;
+										}
 };
 
 /************************************************************************/

@@ -11,6 +11,7 @@ CLasagne::CLasagne() :
 #ifdef SHOW_DEBUG_STATS
 	m_showTimerGraphs = true;
 #endif
+	m_isPaused = false;
 }
 
 /*
@@ -126,7 +127,7 @@ const bool CLasagne::Render()
             {
                 if (event.key.keysym.sym == SDLK_ESCAPE)
                 {
-                    return false;
+                    m_isPaused = !m_isPaused;
                 }
             }
             break;
