@@ -12,6 +12,7 @@
 #include "lasagne-entity.h"
 #include "lasagne-music.h"
 #include "lasagne-audio.h"
+#include "lasagne-debug-stats.h"
 
 #include <SDL.h>
 #include <SDL_ttf.h>
@@ -23,9 +24,7 @@
 /************************************************************************/
 
 // Make sure show FPS is on
-#ifndef SHOW_FPS
-	#define SHOW_FPS
-#endif
+#define SHOW_DEBUG_STATS
 
 #define DEPTH_LEVELS	10
 
@@ -52,13 +51,17 @@ private:
 	std::vector<CLasagneAudioFile*>		m_audio;								//!< The list of audio samples loaded in the engine
 	
 
-#if defined(SHOW_FPS)
+#if defined(SHOW_DEBUG_STATS)
     struct {
         CLasagneText                    *text;									//!< The text used to display the fps on screen
         int                             fps;									//!< The current FPS of the application
         int                             count;									//!< The number of frames since the last second
         int                             time;									//!< The time of the last FPS querry
     } m_fps;
+
+
+	CLasagneDebugStats					*m_debugStats;
+
 #endif
 
 

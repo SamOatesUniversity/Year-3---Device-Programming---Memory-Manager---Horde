@@ -87,16 +87,20 @@ const bool CLasagne::Create()
         return false;
     }
 
-#if defined(SHOW_FPS)
+#if defined(SHOW_DEBUG_STATS)
     m_fps.text = new CLasagneText();
     m_fps.text->Create("FPS: 0");
     m_fps.fps = 0;
     m_fps.count = 0;
     m_fps.time = SDL_GetTicks();
 	m_fps.text->SetPosition(4, 222);
-#endif
 
 	ProFy::GetInstance().CreateTimer(m_timer[Timer::Render], ProFy::TimerType::CPU, "Render Time");
+
+	m_debugStats = new CLasagneDebugStats();
+	m_debugStats->AddTimer(m_timer[Timer::Render]);
+	m_debugStats->AddTimer(2);
+#endif
 
     return true;
 }
@@ -162,7 +166,7 @@ const bool CLasagne::Render()
 		text->Render(m_screen);
 	}
 
-#if defined(SHOW_FPS)
+#if defined(SHOW_DEBUG_STATS)
     // show error messages
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
@@ -185,6 +189,8 @@ const bool CLasagne::Render()
     }
 
     m_fps.text->Render(m_screen);
+
+	m_debugStats->Render(m_screen);
 #endif
 
     SDL_Flip(m_screen);
@@ -222,7 +228,7 @@ void CLasagne::Release()
 	}
 	m_audio.clear();
 
-#if defined(SHOW_FPS)
+#if defined(SHOW_DEBUG_STATS)
 	SafeDelete(m_fps.text);
 #endif
 
