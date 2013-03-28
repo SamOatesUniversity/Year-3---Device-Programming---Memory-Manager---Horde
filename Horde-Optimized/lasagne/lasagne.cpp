@@ -12,7 +12,9 @@ CLasagne::CLasagne() :
 	m_showTimerGraphs = true;
 #endif
 	m_isPaused = false;
+	m_isRunning = false;
 	m_audioVolume = 64;
+	m_currentMethod = "CLasagne::CLasagne";
 }
 
 /*
@@ -28,6 +30,8 @@ CLasagne::~CLasagne()
 */
 const bool CLasagne::Create()
 {
+	m_currentMethod = "CLasagne::Create";
+
     // try to initialize sdl video, audio and joystick
     const int result = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK);
     if (result != 0)
@@ -90,6 +94,7 @@ const bool CLasagne::Create()
     }
 
 	Mix_Volume(-1, m_audioVolume);
+	Mix_VolumeMusic(m_audioVolume);
 
 #if defined(SHOW_DEBUG_STATS)
     m_fps.text = new CLasagneText();
@@ -106,6 +111,8 @@ const bool CLasagne::Create()
 	m_debugStats->AddTimer(m_timer[Timer::Render]);
 #endif
 
+	m_isRunning = true;
+
     return true;
 }
 
@@ -114,6 +121,8 @@ const bool CLasagne::Create()
 */
 const bool CLasagne::Render()
 {
+	m_currentMethod = "CLasagne::Render";
+
     SDL_Event event;
     while (SDL_PollEvent (&event))
     {
@@ -121,6 +130,7 @@ const bool CLasagne::Render()
         {
             case SDL_QUIT:
             {
+				m_isRunning = false;
                 return false;
             }
             break;
@@ -143,10 +153,11 @@ const bool CLasagne::Render()
 
 				if (event.key.keysym.sym == SDLK_DOWN)
 				{
-					if (m_audioVolume < 4) 
+					if (m_audioVolume < 4) {
 						m_audioVolume = 0;
-					else
+					} else {
 						m_audioVolume = m_audioVolume - 4;
+					}
 					
 					Mix_Volume(-1, m_audioVolume);
 					Mix_VolumeMusic(m_audioVolume);
@@ -168,6 +179,7 @@ const bool CLasagne::Render()
             {
                 if (event.jbutton.button == 6)
                 {
+					m_isRunning = false;
                     return false;
                 }
             }
@@ -183,6 +195,7 @@ const bool CLasagne::Render()
 
 	ProFy::GetInstance().StartTimer(m_timer[Timer::Render]);
 
+	m_currentMethod = "CLasagneEntity::Render";
 	for (int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
 		std::vector<CLasagneEntity*> entities = m_entity[depthLevel];
@@ -198,6 +211,7 @@ const bool CLasagne::Render()
 		}
 	}
 
+	m_currentMethod = "CLasagneText::Render";
 	for (unsigned int textIndex = 0; textIndex < m_textEntity.size(); ++textIndex)
 	{
 		CLasagneText *const text = m_textEntity[textIndex];
@@ -206,6 +220,7 @@ const bool CLasagne::Render()
 
 #if defined(SHOW_DEBUG_STATS)
     // show error messages
+	m_currentMethod = "CLasagneText::Render";
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
 		m_errorText[textIndex]->SetPosition(2, 2 + (textIndex * 14));
@@ -226,9 +241,14 @@ const bool CLasagne::Render()
         m_fps.text->SetText(buf.str());
     }
 
+	m_currentMethod = "CLasagneText::Render";
     m_fps.text->Render(m_screen);
 
-	if (m_showTimerGraphs) m_debugStats->Render(m_screen);
+	if (m_showTimerGraphs)
+	{
+		m_currentMethod = "CLasagneDebugStats::Render";
+		m_debugStats->Render(m_screen);
+	}
 #endif
 
     SDL_Flip(m_screen);

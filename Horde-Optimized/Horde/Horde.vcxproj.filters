@@ -58,6 +58,12 @@
     <Filter Include="Header Files\Horde\guns\bullets">
       <UniqueIdentifier>{f168a4ed-5992-4aa9-ad8e-bb6c392037bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Profiling">
+      <UniqueIdentifier>{18c4aa78-01f2-42d6-b1f0-923877e04473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Profiling">
+      <UniqueIdentifier>{5cac4943-0565-40bd-9beb-9b3c69082d6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp">
@@ -144,6 +150,9 @@
     <ClCompile Include="..\lasagne\lasagne-debug-stats.cpp">
       <Filter>Source Files\Lasagne</Filter>
     </ClCompile>
+    <ClCompile Include="..\profiling\ProFySampler.cpp">
+      <Filter>Source Files\Profiling</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lasagne\lasagne.h">
@@ -229,6 +238,9 @@
     </ClInclude>
     <ClInclude Include="..\lasagne\lasagne-debug-stats.h">
       <Filter>Header Files\Lasagne</Filter>
+    </ClInclude>
+    <ClInclude Include="..\profiling\ProFySampler.h">
+      <Filter>Header Files\Profiling</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
