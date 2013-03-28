@@ -17,6 +17,12 @@ int main (int argc, char *argv[])
 
 	engine->ShowTimers(false);
 
+	ProcessInfo *processInfo = new ProcessInfo();
+	processInfo->engine = engine;
+
+	// Create a sampling thread
+	SDL_Thread *samplingThread = SDL_CreateThread(SamplingThreadFunction, processInfo);
+
 	// show the one time startup splash screen
 	Uint32 updateTimer = SDL_GetTicks();
 	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.jpg", 9);
@@ -212,6 +218,7 @@ int main (int argc, char *argv[])
 	} while (engine->Render());
 
 	//ProFy::GetInstance().OutputTimer(updateTime, true);
+	SDL_WaitThread(samplingThread, NULL);
 
     // free up resources and allocated memory
 	ReleaseLevel();

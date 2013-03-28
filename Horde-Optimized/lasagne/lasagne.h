@@ -51,6 +51,7 @@ private:
 	std::vector<CLasagneAudioFile*>		m_audio;								//!< The list of audio samples loaded in the engine
 	
 	bool								m_isPaused;								//!< Is the renderer paused
+	bool								m_isRunning;							//!< Is the renderer running
 	unsigned char						m_audioVolume;							//!< The volume of the audio
 
 #if defined(SHOW_DEBUG_STATS)
@@ -75,6 +76,8 @@ private:
 	};
 
 	ProFy::TimerID						m_timer[Timer::Noof];
+
+	std::string							m_currentMethod;
 
 private:
                                         //! Class constructor
@@ -184,6 +187,16 @@ public:
 	const bool							IsPaused() const
 										{
 											return m_isPaused;
+										}
+
+	const bool							IsRunning() const
+										{
+											return m_isRunning;
+										}
+
+	const std::string					GetCurrentMethod() const
+										{
+											return m_currentMethod;
 										}
 };
 

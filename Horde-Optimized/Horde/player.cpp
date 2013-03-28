@@ -7,8 +7,7 @@ CPlayer::CPlayer() :
     m_entity(NULL),
     m_hurtHUD(NULL),
 	m_score(0),
-	m_health(100),
-	m_currentGun(NULL)
+	m_health(100)
 {
 	for (int gunType = 0; gunType < GunType::Noof; ++gunType)
 		m_gun[gunType] = NULL;
@@ -16,6 +15,7 @@ CPlayer::CPlayer() :
 	for (int audioIndex = 0; audioIndex < PlayerAudio::Noof; ++audioIndex)
 		m_audio[audioIndex] = NULL;
 
+	m_currentGun = GunType::Pistol;
 }
 
 CPlayer::~CPlayer()

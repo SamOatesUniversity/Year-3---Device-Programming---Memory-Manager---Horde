@@ -9,6 +9,7 @@
 #include "Horde/scenebase.h"
 #include "Horde/player.h"
 #include "Horde/enemy/enemyzombie.h"
+#include "profiling/ProFySampler.h"
 
 /************************************************************************/
 /* STRUCTURES                                                           */
