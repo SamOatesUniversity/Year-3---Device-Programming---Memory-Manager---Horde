@@ -24,6 +24,9 @@ CLasagneEntity::CLasagneEntity(
 		m_frameSize.w = m_image->w;
 		m_frameSize.h = m_image->h;
 
+		m_name = imagePath;
+		m_name = m_name.substr(m_name.find_last_of("/") + 1);
+
 		m_screenPosition.Set(0.0f, 0.0f);
 	}
 }
@@ -52,6 +55,9 @@ CLasagneEntity::CLasagneEntity(
 		m_frameSize.y = 0;
 		m_frameSize.w = m_image->w / m_noofFramesX;
 		m_frameSize.h = m_image->h / m_noofFramesY;
+
+		m_name = imagePath;
+		m_name = m_name.substr(m_name.find_last_of("/") + 1);
     }
 
     m_screenPosition.Set(0.0f, 0.0f);

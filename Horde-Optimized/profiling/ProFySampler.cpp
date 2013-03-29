@@ -15,8 +15,11 @@ int SamplingThreadFunction(void *rawPtr)
 		// hacky fall back, non thread safe sampling
 		noofSamples++;
 		const std::string currentMethod = processInfo->engine->GetCurrentMethod();
-		int noofPreviousSamples = samples[currentMethod];
-		samples[currentMethod] = noofPreviousSamples + 1;
+		if (!currentMethod.empty()) 
+		{
+			int noofPreviousSamples = samples[currentMethod];
+			samples[currentMethod] = noofPreviousSamples + 1;
+		}
 
 		// proper sampling
 
@@ -86,7 +89,7 @@ void OutputToHtml( std::map<std::string, float> &samples )
 	outputBuffer << "</script>";
 	outputBuffer << "</head>";
 	outputBuffer << "<body>";
-	outputBuffer << "<div id='chart_div' style='width: 900px; height: 500px;'></div>";
+	outputBuffer << "<div id='chart_div' style='width: 100%; height: 100%;'></div>";
 	outputBuffer << "</body>";
 	outputBuffer << "</html>";
 

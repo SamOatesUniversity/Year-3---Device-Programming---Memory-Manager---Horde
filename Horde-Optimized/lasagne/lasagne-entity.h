@@ -13,6 +13,7 @@ class CLasagneEntity {
 private:
 
     SDL_Surface                             *m_image;                       //!<
+	std::string                             m_name;
 
     TVector<float, 2>                       m_screenPosition;               //!<
     int                                     m_rotation;                     //!<
@@ -148,6 +149,12 @@ public:
 							)
 							{
 								m_fps = 1000 / fps;
+							}
+
+							//! Get the name of the entity
+	const std::string		GetName() const 
+							{
+								return m_name;
 							}
 };
 

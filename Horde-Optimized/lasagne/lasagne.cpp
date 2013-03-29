@@ -14,7 +14,7 @@ CLasagne::CLasagne() :
 	m_isPaused = false;
 	m_isRunning = false;
 	m_audioVolume = 64;
-	m_currentMethod = "CLasagne::CLasagne";
+	SetCurrentMethod("CLasagne::CLasagne");
 }
 
 /*
@@ -30,7 +30,7 @@ CLasagne::~CLasagne()
 */
 const bool CLasagne::Create()
 {
-	m_currentMethod = "CLasagne::Create";
+	SetCurrentMethod("CLasagne::Create");
 
     // try to initialize sdl video, audio and joystick
     const int result = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK);
@@ -121,7 +121,7 @@ const bool CLasagne::Create()
 */
 const bool CLasagne::Render()
 {
-	m_currentMethod = "CLasagne::Render";
+	SetCurrentMethod("CLasagne::Render");
 
     SDL_Event event;
     while (SDL_PollEvent (&event))
@@ -195,7 +195,7 @@ const bool CLasagne::Render()
 
 	ProFy::GetInstance().StartTimer(m_timer[Timer::Render]);
 
-	m_currentMethod = "CLasagneEntity::Render";
+	SetCurrentMethod("CLasagneEntity::Render");
 	for (int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
 		std::vector<CLasagneEntity*> entities = m_entity[depthLevel];
@@ -207,11 +207,14 @@ const bool CLasagne::Render()
 		const std::vector<CLasagneEntity*>::iterator end = entities.end();
 		for (entity = entity; entity != end; ++entity)
 		{
+			std::stringstream buf;
+			buf << "Render::" << (*entity)->GetName();;
+			SetCurrentMethod(buf.str());
 			(*entity)->Render(m_screen);
 		}
 	}
 
-	m_currentMethod = "CLasagneText::Render";
+	SetCurrentMethod("CLasagneText::Render");
 	for (unsigned int textIndex = 0; textIndex < m_textEntity.size(); ++textIndex)
 	{
 		CLasagneText *const text = m_textEntity[textIndex];
@@ -220,7 +223,6 @@ const bool CLasagne::Render()
 
 #if defined(SHOW_DEBUG_STATS)
     // show error messages
-	m_currentMethod = "CLasagneText::Render";
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
 		m_errorText[textIndex]->SetPosition(2, 2 + (textIndex * 14));
@@ -241,16 +243,16 @@ const bool CLasagne::Render()
         m_fps.text->SetText(buf.str());
     }
 
-	m_currentMethod = "CLasagneText::Render";
     m_fps.text->Render(m_screen);
 
 	if (m_showTimerGraphs)
 	{
-		m_currentMethod = "CLasagneDebugStats::Render";
+		SetCurrentMethod("CLasagneDebugStats::Render");
 		m_debugStats->Render(m_screen);
 	}
 #endif
 
+	SetCurrentMethod("CLasagne::Render");
     SDL_Flip(m_screen);
 
 	ProFy::GetInstance().EndTimer(m_timer[Timer::Render]);

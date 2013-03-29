@@ -78,6 +78,7 @@ private:
 	ProFy::TimerID						m_timer[Timer::Noof];
 
 	std::string							m_currentMethod;
+	bool								m_methodLock;
 
 private:
                                         //! Class constructor
@@ -196,7 +197,17 @@ public:
 
 	const std::string					GetCurrentMethod() const
 										{
+											if (m_methodLock) {
+												return "";
+											}
 											return m_currentMethod;
+										}
+
+	void								SetCurrentMethod(const std::string methodName)
+										{
+											m_methodLock = true;
+											m_currentMethod = methodName;
+											m_methodLock = false;
 										}
 };
 
