@@ -6,9 +6,6 @@
 
 struct ProcessInfo {
 	CLasagne *engine;
-	HANDLE process;
-	HANDLE thread;
-	HINSTANCE hInstance;
 };
 
 int SamplingThreadFunction(void *rawPtr);

@@ -21,10 +21,10 @@ public:
 
 										//!
 	void								AddTimer(
-											ProFy::TimerID timer							//!< 
+											ProFy::TimerID timer							//!<
 										);
 
-										//! 
+										//!
 	void								Render(
 											SDL_Surface *surface						   //!< The surface to blit our text surface too
 										);

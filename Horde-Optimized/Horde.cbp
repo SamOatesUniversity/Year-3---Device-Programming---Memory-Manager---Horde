@@ -10,19 +10,18 @@
 				<Option output=".host\Horde" prefix_auto="1" extension_auto="1" />
 				<Option object_output=".host" />
 				<Option type="0" />
-				<Option compiler="gcc" />
+				<Option compiler="caanoo_gnu_arm_gcc_compiler" />
 				<Compiler>
 					<Add option="-gstabs" />
-					<Add option="-DWIN32" />
 					<Add option="-D_DEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add directory="$(#gph.include)" />
 					<Add directory="$(#gph)\DGE\include" />
 					<Add directory="$(#gph)\DGE\include\SDL" />
 					<Add directory="..\SDL_ttf-2.0.11\include" />
+					<Add directory="..\..\profy-lib\ProFy\src" />
 				</Compiler>
 				<Linker>
-					<Add option="-lmingw32" />
 					<Add option="-lopengl32" />
 					<Add option="-lSDLmain" />
 					<Add option="-lSDL" />
@@ -32,9 +31,6 @@
 					<Add option="-lSDL_gfx" />
 					<Add option="-liconv" />
 					<Add option="-lbfd" />
-					<Add option="-liberty" />
-					<Add option="-lpsapi" />
-					<Add option="-limagehlp" />
 					<Add directory="$(#gph)\DGE\lib\host" />
 					<Add directory="$(#gph.lib)\host" />
 					<Add directory="..\SDL_ttf-2.0.11\lib\x86" />
@@ -53,6 +49,7 @@
 					<Add directory="$(#gph.include)" />
 					<Add directory="$(#gph)\DGE\include" />
 					<Add directory="$(#gph)\DGE\include\SDL" />
+					<Add directory="..\..\profy-lib\ProFy\src" />
 				</Compiler>
 				<Linker>
 					<Add option="-g" />
@@ -79,6 +76,17 @@
 			<Add option="-g" />
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="..\..\profy-lib\ProFy\src\Output\OutputHtml.cpp" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Output\OutputHtml.h" />
+		<Unit filename="..\..\profy-lib\ProFy\src\ProFy.cpp" />
+		<Unit filename="..\..\profy-lib\ProFy\src\ProFy.h" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Timers\TimerBase.cpp" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Timers\TimerBase.h" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Timers\TimerCPU.cpp" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Timers\TimerCPU.h" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Timers\TimerOpenGL.cpp" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Timers\TimerOpenGL.h" />
+		<Unit filename="..\..\profy-lib\ProFy\src\Timers\Timers.h" />
 		<Unit filename="Horde\Debug\SDL.dll" />
 		<Unit filename="Horde\Debug\SDL_gfx.dll" />
 		<Unit filename="Horde\Debug\SDL_image.dll" />
@@ -146,6 +154,8 @@
 		<Unit filename="lasagne\lasagne-3dentity.h" />
 		<Unit filename="lasagne\lasagne-audio.cpp" />
 		<Unit filename="lasagne\lasagne-audio.h" />
+		<Unit filename="lasagne\lasagne-debug-stats.cpp" />
+		<Unit filename="lasagne\lasagne-debug-stats.h" />
 		<Unit filename="lasagne\lasagne-entity.cpp" />
 		<Unit filename="lasagne\lasagne-entity.h" />
 		<Unit filename="lasagne\lasagne-music.cpp" />
@@ -157,6 +167,8 @@
 		<Unit filename="lasagne\lasagne.cpp" />
 		<Unit filename="lasagne\lasagne.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="profiling\ProFySampler.cpp" />
+		<Unit filename="profiling\ProFySampler.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

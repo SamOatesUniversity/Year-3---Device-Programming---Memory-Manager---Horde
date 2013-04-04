@@ -1,5 +1,4 @@
 #include "ProFySampler.h"
-#include <imagehlp.h>
 
 int SamplingThreadFunction(void *rawPtr)
 {
@@ -8,14 +7,14 @@ int SamplingThreadFunction(void *rawPtr)
 	std::map<std::string, int> samples;
 	int noofSamples = 0;
 
-	while (processInfo->engine->IsRunning()) 
+	while (processInfo->engine->IsRunning())
 	{
 		SDL_Delay(10);
 
 		// hacky fall back, non thread safe sampling
 		noofSamples++;
 		const std::string currentMethod = processInfo->engine->GetCurrentMethod();
-		if (!currentMethod.empty()) 
+		if (!currentMethod.empty())
 		{
 			int noofPreviousSamples = samples[currentMethod];
 			samples[currentMethod] = noofPreviousSamples + 1;
@@ -25,13 +24,13 @@ int SamplingThreadFunction(void *rawPtr)
 
 
 
-		
+
 	}
 
 	// convert the samples to percentages and output to a pie chart
 	float p = 100.0f / noofSamples;
 	std::map<std::string, float> percentageSamples;
-	
+
 	std::map<std::string, int>::iterator it;
 	for(it = samples.begin(); it != samples.end(); ++it)
 	{

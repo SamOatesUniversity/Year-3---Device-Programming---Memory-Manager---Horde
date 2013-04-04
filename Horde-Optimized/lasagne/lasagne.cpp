@@ -147,7 +147,7 @@ const bool CLasagne::Render()
 #if defined(SHOW_DEBUG_STATS)
 				if (event.key.keysym.sym == SDLK_TAB)
 				{
-					m_showTimerGraphs = !m_showTimerGraphs; 
+					m_showTimerGraphs = !m_showTimerGraphs;
 				}
 #endif
 
@@ -158,7 +158,7 @@ const bool CLasagne::Render()
 					} else {
 						m_audioVolume = m_audioVolume - 4;
 					}
-					
+
 					Mix_Volume(-1, m_audioVolume);
 					Mix_VolumeMusic(m_audioVolume);
 					break;
@@ -363,7 +363,7 @@ CLasagneAudioFile *CLasagne::LoadAudioFile(
 */
 CLasagneEntity *CLasagne::LoadImage(
         const char* imageFile,							//!< A path to an image to load
-		unsigned int depth								//!< 
+		unsigned int depth								//!<
     )
 {
     CLasagneEntity *entity = new CLasagneEntity(imageFile, m_screenSize);
@@ -415,7 +415,7 @@ CLasagneText* CLasagne::CreateText(
 /*
  * \brief Remove an entity form the engine and safely destroy it
 */
-void CLasagne::Destroy( 
+void CLasagne::Destroy(
 		CLasagneEntity **entity						//!< A pointer to the entity pointer to be destroyed
 	)
 {
@@ -440,7 +440,7 @@ void CLasagne::Destroy(
 /*
  * \brief Remove a text entity form the engine and safely destroy it
 */
-void CLasagne::Destroy( 
+void CLasagne::Destroy(
 		CLasagneText **text								//!< A pointer to the text entity pointer to be destroyed
 	)
 {
