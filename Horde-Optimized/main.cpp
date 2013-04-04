@@ -17,12 +17,6 @@ int main (int argc, char *argv[])
 
 	engine->ShowTimers(false);
 
-	ProcessInfo *processInfo = new ProcessInfo();
-	processInfo->engine = engine;
-
-	// Create a sampling thread
-	SDL_Thread *samplingThread = SDL_CreateThread(SamplingThreadFunction, processInfo);
-
 	// show the one time startup splash screen
 	Uint32 updateTimer = SDL_GetTicks();
 	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.jpg", 9);
@@ -32,6 +26,12 @@ int main (int argc, char *argv[])
 	{
 		engine->Render();
 	}
+
+	ProcessInfo *processInfo = new ProcessInfo();
+	processInfo->engine = engine;
+
+	// Create a sampling thread
+	SDL_Thread *samplingThread = SDL_CreateThread(SamplingThreadFunction, processInfo);
 
 	gameState = GameState::LoadingLevel;
 	// Load the first level into memory
@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
 	pausedScreen->SetVisible(false);
 
 	engine->Destroy(&splashScreen);
-	engine->ShowTimers(true);
+	engine->ShowTimers(false); 
 
 	gameState = GameState::InLevel;
 
