@@ -887,7 +887,7 @@
 	<sstream>
 	<ctime>
 
-1365162171 c:\users\j9060283\desktop\horde-optimized\sogi\sogi.h
+1365167166 c:\users\j9060283\desktop\horde-optimized\sogi\sogi.h
 	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
@@ -1055,8 +1055,10 @@
 	"../lasagne/lasagne.h"
 	<string>
 
-1365162171 source:c:\users\j9060283\desktop\horde-optimized\sogi\sogi.cpp
+1365168067 source:c:\users\j9060283\desktop\horde-optimized\sogi\sogi.cpp
 	"SOGI.h"
+	<sstream>
+	<ctime>
 
 1365162171 source:c:\users\j9060283\desktop\horde-optimized\sogi\stack\stack.cpp
 	<cassert>
@@ -1105,7 +1107,7 @@
 1365162189 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1365162179 source:c:\users\j9060283\desktop\horde-optimized\main.cpp
+1365168672 source:c:\users\j9060283\desktop\horde-optimized\main.cpp
 	"main.h"
 
 1365162189 c:\users\j9060283\desktop\horde-optimized\main.h
@@ -1131,10 +1133,10 @@
 1365162405 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timercpu.cpp
 	"TimerCPU.h"
 
-1365162405 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timeropengl.cpp
+1365164496 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timeropengl.cpp
 	"TimerOpenGL.h"
 
-1365162405 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timeropengl.h
+1365164492 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timeropengl.h
 	"TimerBase.h"
 	<tgl.h>
 

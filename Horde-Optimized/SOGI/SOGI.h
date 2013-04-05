@@ -52,6 +52,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 class CSOGI {
 private:
 
+	std::string				m_logPath;
+
 private:
 							//! Class constructor
 							CSOGI();

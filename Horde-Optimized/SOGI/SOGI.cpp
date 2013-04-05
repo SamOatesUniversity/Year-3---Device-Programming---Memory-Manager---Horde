@@ -15,12 +15,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SOGI.h"
 
+#include <sstream>
+#include <ctime>
+
 /*
  * \brief Class constructor
 */
 CSOGI::CSOGI()
 {
+	time_t t = time(0);   // get time now
+    struct tm now;
+#ifdef _MSC_VER
+    localtime_s(&now, &t);
+#else
+    now = *localtime(&t);
+#endif
 
+	std::stringstream date;
+	date << now.tm_mday << '-' << (now.tm_mon + 1) << '-' << (now.tm_year + 1900) << " " << now.tm_hour << "-" << now.tm_min;
+	m_logPath = "./logs/SOGI-Log-" + date.str() + ".log";
+
+	system("mkdir logs");
 }
 
 /*
@@ -72,16 +87,16 @@ void CSOGI::LogError(
 {
     // open our log file for writting
     std::ofstream logFile;
-    logFile.open("SOGI-ErrorLog.log", std::ios::out | std::ios::app);
+	logFile.open(m_logPath.c_str(), std::ios::out | std::ios::app);
 
-    // write our error messgae
-    logFile << "[" << file << " (" << line << ")] " << errorMessage << "\n";
+	if (logFile.is_open())
+	{
+		// write our error messgae
+		logFile << "[" << file << " (" << line << ")] - " << errorMessage << "\n";
 
-    // close the file as we have written to it
-    logFile.close();
-
-    std::cout << "[" << file << "(" << line << ")] " << errorMessage << "\n";
-
+		// close the file as we have written to it
+		logFile.close();
+	}
 }
 
 /*

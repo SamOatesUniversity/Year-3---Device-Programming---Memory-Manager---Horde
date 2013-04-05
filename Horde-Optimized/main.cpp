@@ -22,7 +22,7 @@ int main (int argc, char *argv[])
 	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.jpg", 9);
 	gameState = GameState::SplashScreen;
 
-	while (SDL_GetTicks() - updateTimer < 3000) 
+	while (SDL_GetTicks() - updateTimer < 3000)
 	{
 		engine->Render();
 	}
@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
 	pausedScreen->SetVisible(false);
 
 	engine->Destroy(&splashScreen);
-	engine->ShowTimers(false); 
+	engine->ShowTimers(false);
 
 	gameState = GameState::InLevel;
 
@@ -71,7 +71,7 @@ int main (int argc, char *argv[])
 		}
 		else
 		{
-			if (gameState == GameState::Paused) 
+			if (gameState == GameState::Paused)
 			{
 				gameState = GameState::InLevel;
 				pausedScreen->SetVisible(false);
