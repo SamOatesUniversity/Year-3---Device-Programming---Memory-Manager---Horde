@@ -146,9 +146,12 @@ void CLasagneEntity::Render(
 				fmt->Rmask, fmt->Gmask, fmt->Bmask, fmt->Amask
 			);
 
-			m_rotateFrame = rotozoomSurface(frame, m_rotation, 1, 0);
-
-			SDL_FreeSurface(frame);
+			if (m_rotation != 0.0f) {
+				m_rotateFrame = rotozoomSurface(frame, m_rotation, 1, 0);
+				SDL_FreeSurface(frame);
+			} else {
+				m_rotateFrame = frame;
+			}
         }
 
 		static SDL_Rect rcRect;

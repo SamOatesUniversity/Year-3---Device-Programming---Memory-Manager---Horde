@@ -27,6 +27,7 @@ const bool CScene::Load(
     for (int backgroundIndex = 0; backgroundIndex < NOOF_BACKGROUNDS; ++backgroundIndex)
 	{
         m_background[backgroundIndex] = engine->LoadImage(backgroundLocation.c_str(), 0);
+		//m_background[backgroundIndex]->SetVisible(false);
 	}
 
     for (int x = -1; x <= 1; ++x)

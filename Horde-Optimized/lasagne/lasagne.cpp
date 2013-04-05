@@ -123,6 +123,8 @@ const bool CLasagne::Render()
 {
 	SetCurrentMethod("CLasagne::Render");
 
+	//SDL_FillRect(m_screen, NULL, 0x000000); 
+
     SDL_Event event;
     while (SDL_PollEvent (&event))
     {
