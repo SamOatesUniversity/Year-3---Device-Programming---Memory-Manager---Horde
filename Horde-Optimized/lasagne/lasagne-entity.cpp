@@ -10,7 +10,8 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesY(0),
     m_currentFrame(0),
     m_fps(50),
-    m_visible(true)
+    m_visible(true),
+	m_rotateFrame(NULL)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -23,6 +24,9 @@ CLasagneEntity::CLasagneEntity(
 		m_frameSize.y = 0;
 		m_frameSize.w = m_image->w;
 		m_frameSize.h = m_image->h;
+
+		m_flags.allFlags = 0;
+		m_flags.animated = false;
 
 		m_name = imagePath;
 		m_name = m_name.substr(m_name.find_last_of("/") + 1);
@@ -42,7 +46,8 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesY(noofFrames.y()),
     m_currentFrame(0),
     m_fps(50),
-    m_visible(true)
+    m_visible(true),
+	m_rotateFrame(NULL)
 {
     m_image = IMG_Load(imagePath);
     if (m_image == NULL)
@@ -56,6 +61,9 @@ CLasagneEntity::CLasagneEntity(
 		m_frameSize.w = m_image->w / m_noofFramesX;
 		m_frameSize.h = m_image->h / m_noofFramesY;
 
+		m_flags.allFlags = 0;
+		m_flags.animated = true;
+
 		m_name = imagePath;
 		m_name = m_name.substr(m_name.find_last_of("/") + 1);
     }
@@ -67,6 +75,7 @@ CLasagneEntity::CLasagneEntity(
 
 CLasagneEntity::~CLasagneEntity()
 {
+	SDL_FreeSurface(m_rotateFrame);
 }
 
 void CLasagneEntity::Render(
@@ -79,10 +88,10 @@ void CLasagneEntity::Render(
 	if (!IsOnScreen())
 		return;
 
-    if (m_noofFramesX + m_noofFramesY == 0)
+	if (!m_flags.animated)
     {
          // draw the entity in its 3d position
-        SDL_Rect rcRect;
+        static SDL_Rect rcRect;
         rcRect.x = static_cast<Sint16>(m_screenPosition.x());
         rcRect.y = static_cast<Sint16>(m_screenPosition.y());
 
@@ -90,13 +99,6 @@ void CLasagneEntity::Render(
     }
     else
     {
-        int xOffset = m_currentFrame;
-        int yOffset = 0;
-        while (xOffset > m_noofFramesX - 1)
-        {
-            yOffset++;
-            xOffset -= m_noofFramesX;
-        }
 
         // update aniamtion
         if (SDL_GetTicks() - m_lastFrameTime > m_fps)
@@ -107,8 +109,9 @@ void CLasagneEntity::Render(
 
             if (m_currentAnimation.length() == 0)
             {
-                if (m_currentFrame >= (m_noofFramesX * m_noofFramesY))
+                if (m_currentFrame >= (m_noofFramesX * m_noofFramesY)) {
 					m_currentFrame = 0;
+				}
             }
             else
             {
@@ -116,32 +119,42 @@ void CLasagneEntity::Render(
                 IVec2 frames = animData.frames;
                 if (m_currentFrame >= frames.y())
 				{
-					if (animData.loop)
+					if (animData.loop) {
 						m_currentFrame = frames.x();
-					else
+					} else {
 						m_currentFrame = frames.y() - 1;
+					}
 				}
             }
+
+			SDL_FreeSurface(m_rotateFrame);
+
+			int xOffset = m_currentFrame;
+			int yOffset = 0;
+			while (xOffset > m_noofFramesX - 1)
+			{
+				yOffset++;
+				xOffset -= m_noofFramesX;
+			}
+
+			const int pixelOffset = ((m_image->w * m_frameSize.h) * yOffset) + (m_frameSize.w * xOffset);
+
+			SDL_PixelFormat *const fmt = m_image->format;
+			SDL_Surface *const frame = SDL_CreateRGBSurfaceFrom(
+				(void*)((unsigned int*)m_image->pixels + pixelOffset),
+				m_frameSize.w, m_frameSize.h, fmt->BitsPerPixel, m_image->pitch,
+				fmt->Rmask, fmt->Gmask, fmt->Bmask, fmt->Amask
+			);
+
+			m_rotateFrame = rotozoomSurface(frame, m_rotation, 1, 0);
+
+			SDL_FreeSurface(frame);
         }
 
-		const int pixelOffset = ((m_image->w * m_frameSize.h) * yOffset) + (m_frameSize.w * xOffset);
-
-		SDL_PixelFormat *const fmt = m_image->format;
-		SDL_Surface *const frame = SDL_CreateRGBSurfaceFrom(
-			(void*)((unsigned int*)m_image->pixels + pixelOffset),
-			m_frameSize.w, m_frameSize.h, fmt->BitsPerPixel, m_image->pitch,
-			fmt->Rmask, fmt->Gmask, fmt->Bmask, fmt->Amask
-		);
-
-        SDL_Surface *rotateFrame = rotozoomSurface(frame, m_rotation, 1, 0);
-
-		SDL_Rect rcRect;
+		static SDL_Rect rcRect;
         rcRect.x = static_cast<Sint16>(m_screenPosition.x());
         rcRect.y = static_cast<Sint16>(m_screenPosition.y());
-        SDL_BlitSurface(rotateFrame, NULL, screen, &rcRect);
-
-		SDL_FreeSurface(frame);
-        SDL_FreeSurface(rotateFrame);
+        SDL_BlitSurface(m_rotateFrame, NULL, screen, &rcRect);
     }
 }
 

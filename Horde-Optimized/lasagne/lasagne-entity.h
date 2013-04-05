@@ -9,6 +9,13 @@
 
 #include <map>
 
+struct EntityFlags {
+	union {
+		unsigned int animated : 1;
+	};
+	unsigned int allFlags;
+};
+
 class CLasagneEntity {
 private:
 
@@ -34,6 +41,10 @@ private:
 
     SDL_Rect								m_frameSize;
 	bool									m_visible;
+
+	SDL_Surface								*m_rotateFrame;
+
+	EntityFlags								m_flags;
 
 public:
                             //!

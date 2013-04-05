@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="target" />
-	<File name="Horde\enemy\enemyzombie.cpp" open="1" top="0" tabpos="6">
+	<File name="Horde\enemy\enemyzombie.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1141" topLine="27" />
 	</File>
-	<File name="Horde\guns\gunbase.cpp" open="1" top="0" tabpos="1">
+	<File name="Horde\guns\gunbase.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1622" topLine="23" />
 	</File>
 	<File name="Horde\guns\gunbase.h" open="0" top="0" tabpos="11">
 		<Cursor position="329" topLine="0" />
 	</File>
-	<File name="Horde\guns\gunpistol.cpp" open="1" top="0" tabpos="2">
+	<File name="Horde\guns\gunpistol.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="603" topLine="0" />
 	</File>
 	<File name="Horde\guns\gunpistol.h" open="0" top="0" tabpos="10">
@@ -28,11 +28,11 @@
 	<File name="Horde\scenebase.h" open="0" top="0" tabpos="3">
 		<Cursor position="428" topLine="0" />
 	</File>
-	<File name="SOGI\SOGI.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="3688" topLine="106" />
+	<File name="SOGI\SOGI.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="2312" topLine="72" />
 	</File>
-	<File name="SOGI\SOGI.h" open="0" top="0" tabpos="5">
-		<Cursor position="3881" topLine="70" />
+	<File name="SOGI\SOGI.h" open="1" top="0" tabpos="3">
+		<Cursor position="1462" topLine="24" />
 	</File>
 	<File name="SOGI\SOGITypes.h" open="0" top="0" tabpos="6">
 		<Cursor position="1212" topLine="23" />
@@ -58,7 +58,7 @@
 	<File name="lasagne\lasagne-entity.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2924" topLine="95" />
 	</File>
-	<File name="lasagne\lasagne-entity.h" open="1" top="0" tabpos="3">
+	<File name="lasagne\lasagne-entity.h" open="0" top="0" tabpos="3">
 		<Cursor position="2101" topLine="43" />
 	</File>
 	<File name="lasagne\lasagne-music.cpp" open="0" top="0" tabpos="6">
@@ -79,13 +79,13 @@
 	<File name="lasagne\lasagne-text.h" open="0" top="0" tabpos="5">
 		<Cursor position="884" topLine="0" />
 	</File>
-	<File name="lasagne\lasagne.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="4867" topLine="125" />
+	<File name="lasagne\lasagne.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="5166" topLine="164" />
 	</File>
 	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="5">
-		<Cursor position="293" topLine="0" />
+		<Cursor position="367" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="7">
-		<Cursor position="4661" topLine="155" />
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1403" topLine="36" />
 	</File>
 </CodeBlocks_layout_file>
