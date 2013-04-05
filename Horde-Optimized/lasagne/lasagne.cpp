@@ -121,10 +121,8 @@ const bool CLasagne::Create()
 */
 const bool CLasagne::Render()
 {
-    CSOGI::GetInstance().LogError("Settings Method", __FILE__, __LINE__);
 	SetCurrentMethod("CLasagne::Render");
 
-    CSOGI::GetInstance().LogError("Polling SDL Events", __FILE__, __LINE__);
     SDL_Event event;
     while (SDL_PollEvent (&event))
     {
@@ -195,10 +193,8 @@ const bool CLasagne::Render()
         }
     }
 
-    CSOGI::GetInstance().LogError("Starting Render Timer", __FILE__, __LINE__);
 	ProFy::GetInstance().StartTimer(m_timer[Timer::Render]);
 
-    CSOGI::GetInstance().LogError("Render Entities", __FILE__, __LINE__);
 	SetCurrentMethod("CLasagneEntity::Render");
 	for (int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
 	{
@@ -218,7 +214,6 @@ const bool CLasagne::Render()
 		}
 	}
 
-    CSOGI::GetInstance().LogError("Render Text", __FILE__, __LINE__);
 	SetCurrentMethod("CLasagneText::Render");
 	for (unsigned int textIndex = 0; textIndex < m_textEntity.size(); ++textIndex)
 	{
@@ -227,7 +222,6 @@ const bool CLasagne::Render()
 	}
 
 #if defined(SHOW_DEBUG_STATS)
-    CSOGI::GetInstance().LogError("Render Debug Stats", __FILE__, __LINE__);
     // show error messages
     for (unsigned int textIndex = 0; textIndex < m_errorText.size(); ++textIndex)
     {
@@ -258,11 +252,9 @@ const bool CLasagne::Render()
 	}
 #endif
 
-    CSOGI::GetInstance().LogError("Flip SDL", __FILE__, __LINE__);
 	SetCurrentMethod("CLasagne::Render");
     SDL_Flip(m_screen);
 
-    CSOGI::GetInstance().LogError("Stop Render Timer", __FILE__, __LINE__);
 	ProFy::GetInstance().EndTimer(m_timer[Timer::Render]);
 
     return true;
