@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
 	pausedScreen->SetVisible(false);
 
 	engine->Destroy(&splashScreen);
-	engine->ShowTimers(false);
+	engine->ShowTimers(true);
 
 	gameState = GameState::InLevel;
 
