@@ -182,7 +182,15 @@ const bool CLasagne::Render()
 					m_isRunning = false;
                     return false;
                 }
+
+#if defined(SHOW_DEBUG_STATS)
+                if (event.jbutton.button == 2)
+                {
+                    m_showTimerGraphs = !m_showTimerGraphs;
+                }
+#endif
             }
+
             break;
 #endif
             case SDL_MOUSEMOTION:
