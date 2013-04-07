@@ -195,16 +195,25 @@ public:
 											return m_isRunning;
 										}
 
-	const std::string					GetCurrentMethod() const
+	const std::string					GetCurrentMethod() 
 										{
 											if (m_methodLock) {
 												return "";
 											}
-											return m_currentMethod;
+											
+											m_methodLock = true;
+											const std::string tempBuf = m_currentMethod;
+											m_methodLock = false;
+											
+											return tempBuf;
 										}
 
-	void								SetCurrentMethod(const std::string methodName)
+	void								SetCurrentMethod(const std::string &methodName)
 										{
+											if (m_methodLock) {
+												return;
+											}
+											
 											m_methodLock = true;
 											m_currentMethod = methodName;
 											m_methodLock = false;
