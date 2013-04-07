@@ -20,7 +20,7 @@ const bool CScene::Load(
         const std::string& folderLocation
     )
 {
-    const std::string backgroundLocation = folderLocation + "background.jpg";
+    const std::string backgroundLocation = folderLocation + "background.png";
 
 	CLasagne *const engine = CLasagne::GetInstance();
 
