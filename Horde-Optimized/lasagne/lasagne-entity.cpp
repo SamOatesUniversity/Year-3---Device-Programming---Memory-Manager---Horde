@@ -9,7 +9,7 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesX(0),
     m_noofFramesY(0),
     m_currentFrame(0),
-    m_fps(50),
+    m_fps(75),
     m_visible(true),
 	m_rotateFrame(NULL)
 {
@@ -45,7 +45,7 @@ CLasagneEntity::CLasagneEntity(
     m_noofFramesX(noofFrames.x()),
     m_noofFramesY(noofFrames.y()),
     m_currentFrame(0),
-    m_fps(50),
+    m_fps(75),
     m_visible(true),
 	m_rotateFrame(NULL)
 {

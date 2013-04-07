@@ -19,7 +19,7 @@ int main (int argc, char *argv[])
 
 	// show the one time startup splash screen
 	Uint32 updateTimer = SDL_GetTicks();
-	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.jpg", 9);
+	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.png", 9);
 	gameState = GameState::SplashScreen;
 
 	while (SDL_GetTicks() - updateTimer < 3000)
