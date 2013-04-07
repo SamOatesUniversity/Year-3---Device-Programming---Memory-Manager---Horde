@@ -65,7 +65,7 @@ void OutputToHtml( std::map<std::string, float> &samples )
 	for(it = samples.begin(); it != samples.end(); ++it)
 	{
 		std::map<std::string, float>::iterator t = it;
-		t++;
+		++t;
 		if (t != samples.end())
 		{
 			// put a comma at the end
