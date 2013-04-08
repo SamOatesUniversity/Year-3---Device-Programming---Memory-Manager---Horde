@@ -17,7 +17,7 @@ public:
 
 							//!
 	virtual bool			CheckCollision(
-								CLasagneEntity *other
+								CLasagneEntity *other					//!< The thing to check against
 							);
 
 							//! The power of the bullet (represents the damage done to an enemy on contact)
@@ -25,6 +25,7 @@ public:
 							{
 								return 35;
 							}
+
 };
 
 #endif

@@ -20,7 +20,7 @@ void CGunPistol::Create()
 
 	m_audio = CLasagne::GetInstance()->LoadAudioFile("./data/sound/guns/pistol.wav");
 
-	static const int NoofBullets = 5;
+	static const int NoofBullets = 1;
 	for (int bulletIndex = 0; bulletIndex < NoofBullets; ++bulletIndex)
 	{
 		CBulletBase *bulletBase = new CBulletPistol();
