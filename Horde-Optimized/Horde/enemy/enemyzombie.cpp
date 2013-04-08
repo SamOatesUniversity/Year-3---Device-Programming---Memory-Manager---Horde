@@ -40,6 +40,8 @@ bool CEnemyZombie::Create(
 	else if (rand() % 5 == 0)
 		m_pickup = new CPickupMachineGun(player);
 
+	CLasagne::GetInstance()->DisableEntity(&m_entity);
+
 	return true;
 }
 
@@ -53,6 +55,10 @@ void CEnemyZombie::Update(
 
 	if (!m_entity->IsVisible())
 		return;
+
+	if (!m_entity->IsEnabled()) {
+		CLasagne::GetInstance()->EnableEntity(&m_entity);
+	}
 
 	if (m_health <= 0)
 	{

@@ -243,7 +243,8 @@ const bool CLasagne::Render()
     int ticks = SDL_GetTicks();
     if (ticks - m_fps.time >= 1000)
     {
-        m_fps.fps = m_fps.count;
+        m_fps.fps = static_cast<int>(m_fps.count);
+
         m_fps.time = ticks;
         m_fps.count = 0;
 
@@ -511,3 +512,48 @@ void CLasagne::SetEntityDepth(
 
 	m_entity[newDepth].push_back(entity);
 }
+
+void CLasagne::DisableEntity(	
+		CLasagneEntity **entity 
+	)
+{
+	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
+	{
+		std::vector<CLasagneEntity*>::iterator iter = m_entity[depthLevel].begin();
+		std::vector<CLasagneEntity*>::iterator endIter = m_entity[depthLevel].end();
+
+		for (iter = iter; iter != endIter; ++iter)
+		{
+			if ((*iter) == (*entity))
+			{
+				m_entity[depthLevel].erase(iter);
+				m_disabledentity[depthLevel].push_back(*entity);
+				(*entity)->SetEnabled(false);
+				break;
+			}
+		}
+	}
+}
+
+void CLasagne::EnableEntity(	
+		CLasagneEntity **entity 
+	)
+{
+	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
+	{
+		std::vector<CLasagneEntity*>::iterator iter = m_disabledentity[depthLevel].begin();
+		std::vector<CLasagneEntity*>::iterator endIter = m_disabledentity[depthLevel].end();
+
+		for (iter = iter; iter != endIter; ++iter)
+		{
+			if ((*iter) == (*entity))
+			{
+				m_disabledentity[depthLevel].erase(iter);
+				m_entity[depthLevel].push_back(*entity);
+				(*entity)->SetEnabled(true);
+				break;
+			}
+		}
+	}
+}
+
