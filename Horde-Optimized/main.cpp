@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
 	pausedScreen->SetVisible(false);
 
 	engine->Destroy(&splashScreen);
-	engine->ShowTimers(true);
+	engine->ShowTimers(false);
 
 	gameState = GameState::InLevel;
 
@@ -111,7 +111,7 @@ int main (int argc, char *argv[])
 					}
 				}
 
-				if (!CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 25.0f))
+				if (!CSOGI::GetInstance().IsAlmost(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff), 0.0f, 125.0f))
 				{
 					player->SetCurrentAnimation(const_cast<char*>("walk"));
 					if (!currentScene->Move(moveX, moveY))

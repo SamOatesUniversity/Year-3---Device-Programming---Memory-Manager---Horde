@@ -201,19 +201,12 @@ public:
 												return "";
 											}
 											
-											m_methodLock = true;
-											const std::string tempBuf = m_currentMethod;
-											m_methodLock = false;
-											
+											const std::string tempBuf = m_currentMethod;										
 											return tempBuf;
 										}
 
 	void								SetCurrentMethod(const std::string &methodName)
 										{
-											if (m_methodLock) {
-												return;
-											}
-											
 											m_methodLock = true;
 											m_currentMethod = methodName;
 											m_methodLock = false;

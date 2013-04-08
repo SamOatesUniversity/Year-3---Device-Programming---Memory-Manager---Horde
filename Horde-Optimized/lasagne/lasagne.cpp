@@ -218,7 +218,7 @@ const bool CLasagne::Render()
 		for (entity = entity; entity != end; ++entity)
 		{
 			std::stringstream buf;
-			buf << "Render::" << (*entity)->GetName();;
+			buf << "Render::" << (*entity)->GetName();
 			SetCurrentMethod(buf.str());
 			(*entity)->Render(m_screen);
 		}
