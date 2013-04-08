@@ -12,6 +12,7 @@
 struct EntityFlags {
 	union {
 		unsigned int animated : 1;
+		unsigned int enabled : 1;
 	};
 	unsigned int allFlags;
 };
@@ -47,6 +48,9 @@ private:
 	EntityFlags								m_flags;
 
 public:
+							//! 
+							CLasagneEntity();
+
                             //!
                             CLasagneEntity(
                                 const char* imagePath,
@@ -166,6 +170,20 @@ public:
 	const std::string		GetName() const 
 							{
 								return m_name;
+							}
+
+							//! 
+	const bool				IsEnabled() const 
+							{
+								return m_flags.enabled;
+							}
+
+							//! 
+	void					SetEnabled(
+									const bool enabled
+								)
+							{
+								m_flags.enabled = enabled;
 							}
 };
 

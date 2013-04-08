@@ -46,6 +46,8 @@ private:
     std::vector<CLasagneText*>          m_errorText;							//!< A list of on screen error messages (for debugging)
 
     std::vector<CLasagneEntity*>        m_entity[DEPTH_LEVELS];					//!< The list of entities loaded in the engine
+	std::vector<CLasagneEntity*>        m_disabledentity[DEPTH_LEVELS];			//!< The list of disabled entities loaded in the engine
+
 	std::vector<CLasagneText*>			m_textEntity;							//!< The list of text entities loaded in the engine
 	std::vector<CLasagneMusicFile*>		m_music;								//!< The list of music loaded in the engine
 	std::vector<CLasagneAudioFile*>		m_audio;								//!< The list of audio samples loaded in the engine
@@ -145,6 +147,16 @@ public:
 											char *text,										//!< Default text to display
 											int x,											//!< The x coord of the text
 											int y											//!< The y coord of the text
+										);
+
+										//! 
+	void								DisableEntity(
+											CLasagneEntity **entity
+										);
+
+										//! 
+	void								EnableEntity(
+											CLasagneEntity **entity
 										);
 
 										//! Remove an entity form the engine and safely destroy it
