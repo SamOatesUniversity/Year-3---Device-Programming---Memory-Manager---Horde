@@ -56,7 +56,7 @@ void CEnemyZombie::Update(
 	if (!m_entity->IsVisible())
 		return;
 
-	if (!m_entity->IsEnabled()) {
+	if (!m_entity->IsEnabled() && m_entity->IsOnScreen()) {
 		CLasagne::GetInstance()->EnableEntity(&m_entity);
 	}
 

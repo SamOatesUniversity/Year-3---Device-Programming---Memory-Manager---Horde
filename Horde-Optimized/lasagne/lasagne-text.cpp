@@ -3,7 +3,7 @@
 /*
 *   \brief Class constructor
 */
-CLasagneText::CLasagneText()
+CLasagneText::CLasagneText() : m_visible(true)
 {
 
 }
@@ -38,6 +38,9 @@ void CLasagneText::Render(
         SDL_Surface *surface         //!< The surface to blit our text surface too
     )
 {
+	if (!m_visible)
+		return;
+
 	stringColor(surface, m_position.x(), m_position.y(), m_text.c_str(), 0xFFFFFFFF);
 }
 
@@ -47,4 +50,9 @@ void CLasagneText::SetPosition(
 	)
 {
 	m_position.Set(x, y);
+}
+
+void CLasagneText::SetVisible( bool visible )
+{
+	m_visible = visible;
 }

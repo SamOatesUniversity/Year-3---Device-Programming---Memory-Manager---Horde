@@ -203,7 +203,9 @@ const bool CLasagne::Render()
         }
     }
 
+#if defined(SHOW_DEBUG_STATS)
 	ProFy::GetInstance().StartTimer(m_timer[Timer::Render]);
+#endif
 
 	SetCurrentMethod("CLasagneEntity::Render");
 	for (int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
@@ -217,9 +219,11 @@ const bool CLasagne::Render()
 		const std::vector<CLasagneEntity*>::iterator end = entities.end();
 		for (entity = entity; entity != end; ++entity)
 		{
+#if defined(SHOW_DEBUG_STATS)
 			std::stringstream buf;
 			buf << "Render::" << (*entity)->GetName();
 			SetCurrentMethod(buf.str());
+#endif
 			(*entity)->Render(m_screen);
 		}
 	}
@@ -266,7 +270,9 @@ const bool CLasagne::Render()
 	SetCurrentMethod("CLasagne::Render");
     SDL_Flip(m_screen);
 
+#if defined(SHOW_DEBUG_STATS)
 	ProFy::GetInstance().EndTimer(m_timer[Timer::Render]);
+#endif
 
     return true;
 }
