@@ -15,13 +15,22 @@ int main (int argc, char *argv[])
         return 0;
     }
 
+#if defined(SHOW_DEBUG_STATS)
 	engine->ShowTimers(false);
+#endif
 
 	// show the one time startup splash screen
 	Uint32 updateTimer = SDL_GetTicks();
 	CLasagneEntity *splashScreen = engine->LoadImage("./data/graphics/splash-screen.png", 9);
 	gameState = GameState::SplashScreen;
+	// render the splash then load the first level, so we are using the splash as a loading screen in secret... shhhh don't tell anyone!
+	engine->Render();
 
+	gameState = GameState::LoadingLevel;
+	// Load the first level into memory
+	LoadLevel(currentLevel);
+
+	gameState = GameState::SplashScreen;
 	while (SDL_GetTicks() - updateTimer < 3000)
 	{
 		engine->Render();
@@ -33,10 +42,6 @@ int main (int argc, char *argv[])
 	// Create a sampling thread
 	SDL_Thread *samplingThread = SDL_CreateThread(SamplingThreadFunction, processInfo);
 
-	gameState = GameState::LoadingLevel;
-	// Load the first level into memory
-	LoadLevel(currentLevel);
-
 	// store the game start time
     updateTimer = SDL_GetTicks();
 	Uint32 scoreTimer = updateTimer;
@@ -45,15 +50,23 @@ int main (int argc, char *argv[])
 	CLasagneMusicFile *ambiantMusic = engine->LoadMusicFile("./data/sound/ambiant.ogg");
 	ambiantMusic->Play();
 
+	scoreText->SetVisible(true);
+	healthText->SetVisible(true);
+
+#if defined(SHOW_DEBUG_STATS)
 	ProFy::TimerID updateTime;
 	ProFy::GetInstance().CreateTimer(updateTime, ProFy::TimerType::CPU, "Update Loop Time");
+#endif
 
 	CLasagneEntity *pausedScreen = engine->LoadImage("./data/graphics/paused-menu.png", 9);
 	pausedScreen->SetVisible(false);
 	engine->DisableEntity(&pausedScreen);
 
 	engine->Destroy(&splashScreen);
+
+#if defined(SHOW_DEBUG_STATS)
 	engine->ShowTimers(false);
+#endif
 
 	gameState = GameState::InLevel;
 
@@ -68,7 +81,10 @@ int main (int argc, char *argv[])
 				gameState = GameState::Paused;
 				pausedScreen->SetVisible(true);
 				engine->EnableEntity(&pausedScreen);
+
+#if defined(SHOW_DEBUG_STATS)
 				engine->ShowTimers(false);
+#endif
 			}
 		}
 		else
@@ -78,10 +94,11 @@ int main (int argc, char *argv[])
 				gameState = GameState::InLevel;
 				pausedScreen->SetVisible(false);
 				engine->DisableEntity(&pausedScreen);
-				engine->ShowTimers(true);
 			}
 
+#if defined(SHOW_DEBUG_STATS)
 			ProFy::GetInstance().StartTimer(updateTime);
+#endif
 
 			// update logic at 20 fps
 			if (SDL_GetTicks() - updateTimer > 50)
@@ -211,7 +228,10 @@ int main (int argc, char *argv[])
 				}
 
 				updateTimer = SDL_GetTicks();
+
+#if defined(SHOW_DEBUG_STATS)
 				ProFy::GetInstance().EndTimer(updateTime);
+#endif
 			}
 
 			// Update the players score
@@ -279,6 +299,9 @@ const bool LoadLevel(
 
 	scoreText = engine->CreateText(const_cast<char*>("Score: 0"), 4, 20);
 	healthText = engine->CreateText(const_cast<char*>("Health: 100"), 4, 4);
+
+	scoreText->SetVisible(false);
+	healthText->SetVisible(false);
 
 	playerDead = engine->LoadImage("./data/graphics/player-dead.png", 9);
 	playerDead->SetPosition(96, 56);

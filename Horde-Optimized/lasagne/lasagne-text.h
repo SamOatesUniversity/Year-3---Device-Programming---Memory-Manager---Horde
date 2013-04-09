@@ -14,6 +14,7 @@ private:
 
 	IVec2			m_position;						//!< 
 	std::string		m_text;							//!< 
+	bool			m_visible;						//!< 
 
 public:
                     //! Class constructor
@@ -43,6 +44,10 @@ public:
                         SDL_Surface *surface        //!< The surface to blit our text surface too
                     );
 
+					//! 
+	void			SetVisible( 
+						bool visible 
+					);
 };
 
 #endif
