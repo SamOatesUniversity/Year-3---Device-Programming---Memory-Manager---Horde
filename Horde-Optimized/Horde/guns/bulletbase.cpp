@@ -32,6 +32,7 @@ void CBulletBase::Fire(
 
 	m_entity->SetRotation(rotation);
 	m_entity->SetVisible(true);
+	//CLasagne::GetInstance()->EnableEntity(&m_entity);
 }
 
 void CBulletBase::Update()
@@ -51,4 +52,5 @@ void CBulletBase::Update()
 void CBulletBase::Destroy()
 {
 	m_entity->SetVisible(false);
+	//CLasagne::GetInstance()->DisableEntity(&m_entity);
 }

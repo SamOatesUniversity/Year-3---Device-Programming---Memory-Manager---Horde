@@ -18,6 +18,8 @@ void CGunPistol::Create()
 	if (!m_entity)
 		return;
 
+	CLasagne::GetInstance()->DisableEntity(&m_entity);
+
 	m_audio = CLasagne::GetInstance()->LoadAudioFile("./data/sound/guns/pistol.wav");
 
 	static const int NoofBullets = 1;

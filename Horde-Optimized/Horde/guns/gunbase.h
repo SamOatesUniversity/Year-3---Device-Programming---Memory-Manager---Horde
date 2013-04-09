@@ -52,6 +52,13 @@ public:
 									)
 									{
 										m_noofBullets = noofBullets;
+
+										CLasagne *const engine = CLasagne::GetInstance();
+										for (unsigned int bulletIndex = 0; bulletIndex < m_bullet.size(); ++bulletIndex) 
+										{
+											CLasagneEntity *bullet = m_bullet[bulletIndex]->GetEntity();
+											engine->EnableEntity(&bullet);
+										}
 									}
 
 };

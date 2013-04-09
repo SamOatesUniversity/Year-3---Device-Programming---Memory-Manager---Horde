@@ -9,8 +9,8 @@
 
 #include <map>
 
-struct EntityFlags {
-	union {
+union EntityFlags {
+	struct {
 		unsigned int animated : 1;
 		unsigned int enabled : 1;
 	};
@@ -42,6 +42,7 @@ private:
 
     SDL_Rect								m_frameSize;
 	bool									m_visible;
+	int										m_depth;
 
 	SDL_Surface								*m_rotateFrame;
 
@@ -185,6 +186,10 @@ public:
 							{
 								m_flags.enabled = enabled;
 							}
+
+	const unsigned int		GetDepth();
+
+	void					SetDepth(unsigned int depth) { m_depth = depth; }
 };
 
 #endif // LASAGNE_ENTITY_H_INCLUDED

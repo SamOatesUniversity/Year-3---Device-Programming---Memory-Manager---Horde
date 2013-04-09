@@ -42,5 +42,6 @@ void CPickupBase::Drop(
 		return;
 
 	m_entity->SetVisible(true);
+	CLasagne::GetInstance()->EnableEntity(&m_entity);
 	m_entity->SetPosition(x, y);
 }

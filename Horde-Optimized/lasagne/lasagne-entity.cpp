@@ -27,6 +27,7 @@ CLasagneEntity::CLasagneEntity(
 
 		m_flags.allFlags = 0;
 		m_flags.animated = false;
+		m_flags.enabled = true;
 
 		m_name = imagePath;
 		m_name = m_name.substr(m_name.find_last_of("/") + 1);
@@ -62,7 +63,8 @@ CLasagneEntity::CLasagneEntity(
 		m_frameSize.h = m_image->h / m_noofFramesY;
 
 		m_flags.allFlags = 0;
-		m_flags.animated = true;
+		m_flags.animated = m_noofFramesX + m_noofFramesY > 0;
+		m_flags.enabled = true;
 
 		m_name = imagePath;
 		m_name = m_name.substr(m_name.find_last_of("/") + 1);
@@ -131,10 +133,12 @@ void CLasagneEntity::Render(
 
 			int xOffset = m_currentFrame;
 			int yOffset = 0;
-			while (xOffset > m_noofFramesX - 1)
-			{
-				yOffset++;
-				xOffset -= m_noofFramesX;
+			if (m_noofFramesX != 0) {
+				while (xOffset > m_noofFramesX - 1)
+				{
+					yOffset++;
+					xOffset -= m_noofFramesX;
+				}
 			}
 
 			const int pixelOffset = ((m_image->w * m_frameSize.h) * yOffset) + (m_frameSize.w * xOffset);
@@ -235,4 +239,9 @@ bool CLasagneEntity::IsOnScreen() const
 		return false;
 
 	return true;
+}
+
+const unsigned int CLasagneEntity::GetDepth()
+{
+	return m_depth;
 }

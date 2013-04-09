@@ -44,6 +44,7 @@ const bool CPlayer::Load(
 
 	m_hurtHUD = CLasagne::GetInstance()->LoadImage("./data/graphics/characters/hurt.png", 9);
 	m_hurtHUD->SetVisible(false);
+	CLasagne::GetInstance()->DisableEntity(&m_hurtHUD);
 
 	m_audio[PlayerAudio::Hurt] = CLasagne::GetInstance()->LoadAudioFile("./data/sound/character/hurt.wav");
 	m_audio[PlayerAudio::Die] = CLasagne::GetInstance()->LoadAudioFile("./data/sound/character/die.wav");
@@ -131,22 +132,31 @@ void CPlayer::Update(
 			}
 
 			m_hurtHUD->SetVisible(true);
+			CLasagne::GetInstance()->EnableEntity(&m_hurtHUD);
 			m_audio[PlayerAudio::Hurt]->Play();
 			return;
 		}
 	}
 
 	m_hurtHUD->SetVisible(false);
+	CLasagne::GetInstance()->DisableEntity(&m_hurtHUD);
 }
 
 void CPlayer::SetGun(
 		GunType::Enum gunType
 	)
 {
-	m_gun[m_currentGun]->GetEntity()->SetVisible(false);
+	CLasagneEntity *gun = m_gun[m_currentGun]->GetEntity();
+	if (m_currentGun != GunType::Pistol) m_gun[m_currentGun]->SetNoofBullets(0);
+	gun->SetVisible(false);
+	CLasagne::GetInstance()->DisableEntity(&gun);
+
+	//update the gun type
 	m_currentGun = gunType;
 
-	m_gun[m_currentGun]->GetEntity()->SetVisible(true);
+	gun = m_gun[m_currentGun]->GetEntity();
+	gun->SetVisible(true);
+	CLasagne::GetInstance()->EnableEntity(&gun);
 
 	if (m_currentGun == GunType::Shotgun)
 		m_gun[m_currentGun]->SetNoofBullets(6);
