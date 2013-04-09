@@ -1,6 +1,8 @@
 
 #include "lasagne.h"
 
+CLasagne *CLasagne::instance = new CLasagne();
+
 /*
  * \brief Class constructor
 */

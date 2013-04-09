@@ -55,7 +55,7 @@
 	<File name="lasagne\lasagne-audio.h" open="0" top="0" tabpos="4">
 		<Cursor position="1107" topLine="0" />
 	</File>
-	<File name="lasagne\lasagne-debug-stats.h" open="1" top="1" tabpos="6">
+	<File name="lasagne\lasagne-debug-stats.h" open="1" top="0" tabpos="6">
 		<Cursor position="392" topLine="0" />
 	</File>
 	<File name="lasagne\lasagne-entity.cpp" open="0" top="0" tabpos="6">
@@ -82,11 +82,11 @@
 	<File name="lasagne\lasagne-text.h" open="0" top="0" tabpos="5">
 		<Cursor position="884" topLine="0" />
 	</File>
-	<File name="lasagne\lasagne.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="5072" topLine="151" />
+	<File name="lasagne\lasagne.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="5072" topLine="142" />
 	</File>
 	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="5">
-		<Cursor position="280" topLine="0" />
+		<Cursor position="1299" topLine="12" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="1403" topLine="36" />

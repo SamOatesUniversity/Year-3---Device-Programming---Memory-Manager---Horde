@@ -121,7 +121,7 @@ void CPlayer::Update(
 		const float xDiff = currentEnemy->GetEntity()->GetPosition().x() - m_entity->GetPosition().x();
 		const float yDiff = currentEnemy->GetEntity()->GetPosition().y() - m_entity->GetPosition().y();
 
-		if (CSOGI::GetInstance().IsAlmost(sqrt(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff)), 0.0f, 12.0f))
+		if (CSOGI::GetInstance().IsAlmost(static_cast<float>(xDiff * xDiff) + static_cast<float>(yDiff * yDiff), 0.0f, 3.5f))
 		{
 			m_health--;
 			if (m_health <= 0)
