@@ -44,8 +44,8 @@
     <IntDir>$(Configuration)\interm\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>E:\University Work\UNI Year Three\GDP\GPH_SDK\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;E:\University-Work\UNI Year Three\GDP\GPH_SDK\include;E:\University-Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University-Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;E:\University-Work\UNI Year Three\RTG\ProFy\ProFy\src;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\lib\;E:\University Work\UNI Year Three\GDP\GPH_SDK\lib\host;E:\University-Work\UNI Year Three\GDP\GPH_SDK\DGE\lib\;E:\University-Work\UNI Year Three\GDP\GPH_SDK\lib\host;E:\University-Work\UNI Year Three\RTG\ProFy\Release;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\University Work\UNI Year Three\GDP\GPH_SDK\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;E:\University-Work\UNI Year Three\GDP\GPH_SDK\include;E:\University-Work\UNI Year Three\GDP\GPH_SDK\DGE\include;E:\University-Work\UNI Year Three\GDP\GPH_SDK\DGE\include\SDL;E:\University-Work\UNI Year Three\RTG\ProFy\ProFy\src;C:\GPH_SDK\include;C:\GPH_SDK\DGE\include;C:\GPH_SDK\DGE\include\SDL;C:\Users\j9060283\Desktop\profy-lib\ProFy\src;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\University Work\UNI Year Three\GDP\GPH_SDK\DGE\lib\;E:\University Work\UNI Year Three\GDP\GPH_SDK\lib\host;E:\University-Work\UNI Year Three\GDP\GPH_SDK\DGE\lib\;E:\University-Work\UNI Year Three\GDP\GPH_SDK\lib\host;E:\University-Work\UNI Year Three\RTG\ProFy\Release;C:\GPH_SDK\DGE\lib\;C:\GPH_SDK\lib\host;C:\Users\j9060283\Desktop\Horde-Optimized\libs;C:\Users\j9060283\Desktop\Horde-Optimized\profy-lib\Release;$(LibraryPath)</LibraryPath>
     <IntDir>$(Configuration)\interm\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -75,6 +75,8 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FloatingPointModel>Fast</FloatingPointModel>
       <PreprocessorDefinitions>SHOW_FPS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>

@@ -24,7 +24,7 @@
 /************************************************************************/
 
 // Make sure show FPS is on
-//#define SHOW_DEBUG_STATS
+#define SHOW_DEBUG_STATS
 
 #define DEPTH_LEVELS	10
 
@@ -51,7 +51,7 @@ private:
 	std::vector<CLasagneText*>			m_textEntity;							//!< The list of text entities loaded in the engine
 	std::vector<CLasagneMusicFile*>		m_music;								//!< The list of music loaded in the engine
 	std::vector<CLasagneAudioFile*>		m_audio;								//!< The list of audio samples loaded in the engine
-	
+
 	bool								m_isPaused;								//!< Is the renderer paused
 	bool								m_isRunning;							//!< Is the renderer running
 	unsigned char						m_audioVolume;							//!< The volume of the audio
@@ -82,6 +82,8 @@ private:
 	std::string							m_currentMethod;
 	bool								m_methodLock;
 
+	 static CLasagne					*instance;
+
 private:
                                         //! Class constructor
                                         CLasagne();
@@ -99,7 +101,6 @@ public:
                                         //! Get the instance of the singleton
 	static CLasagne			            *GetInstance()
                                         {
-                                            static CLasagne *instance = new CLasagne();
                                             return instance;
                                         }
 
@@ -132,7 +133,7 @@ public:
                                         //! Load an image
     CLasagneEntity                      *LoadImage(
                                              const char* imageFile,							//!< A path to an image to load
-											 unsigned int depth								//!< 
+											 unsigned int depth								//!<
                                         );
 
                                         //! Load an animated image
@@ -149,12 +150,12 @@ public:
 											int y											//!< The y coord of the text
 										);
 
-										//! 
+										//!
 	void								DisableEntity(
 											CLasagneEntity **entity
 										);
 
-										//! 
+										//!
 	void								EnableEntity(
 											CLasagneEntity **entity
 										);
@@ -172,7 +173,7 @@ public:
 										//! Remove an audio sample form the engine and safely destroy it
 	void								Destroy(
 											CLasagneAudioFile **audio						//!< A pointer to the audio sample pointer to be destroyed
-										);	
+										);
 
                                         //! Get the stored mouse position
     const TVector<int, 2>               *GetMousePosition() const
@@ -207,13 +208,13 @@ public:
 											return m_isRunning;
 										}
 
-	const std::string					GetCurrentMethod() 
+	const std::string					GetCurrentMethod()
 										{
 											if (m_methodLock) {
 												return "";
 											}
-											
-											const std::string tempBuf = m_currentMethod;										
+
+											const std::string tempBuf = m_currentMethod;
 											return tempBuf;
 										}
 

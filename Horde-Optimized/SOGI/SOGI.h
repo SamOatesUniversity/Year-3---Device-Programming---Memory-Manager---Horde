@@ -67,11 +67,13 @@ private:
                             //! Returns an array of char arrays of the call stack (depth = MAXSTACKTRACE)
 	const char              **GetCallStack();
 
+
+	static CSOGI			instance;
+
 public:
 							//! Get the instance of the singlton
 	static CSOGI&			GetInstance()
                             {
-                                static CSOGI instance;
                                 return instance;
                             }
 
