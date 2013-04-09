@@ -70,6 +70,7 @@ void CEnemyZombie::Update(
 			if (SDL_GetTicks() - m_dieTimer > (fadeAfterDeath + 2000))
 			{
 				m_entity->SetVisible(false);
+				CLasagne::GetInstance()->DisableEntity(&m_entity);
 				return;
 			}
 			m_entity->SetCurrentAnimation(const_cast<char*>("fade"));

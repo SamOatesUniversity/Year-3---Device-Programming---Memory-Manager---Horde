@@ -81,6 +81,15 @@ bool CScene::Move(
 void CScene::UpdateClouds(int xmove, int ymove)
 {
 	TVector<float, 2> pos = m_cloud->GetPosition();
+
+	if (m_cloud->IsEnabled() && !m_cloud->IsOnScreen()) {
+		CLasagne::GetInstance()->DisableEntity(&m_cloud);
+	}
+
+	if (!m_cloud->IsEnabled() && m_cloud->IsOnScreen()) {
+		CLasagne::GetInstance()->EnableEntity(&m_cloud);
+	}
+
 	if (pos.x() > 960)
 		m_cloud->SetPosition(-320, 0);
 	else

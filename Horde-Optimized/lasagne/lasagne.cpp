@@ -386,6 +386,7 @@ CLasagneEntity *CLasagne::LoadImage(
 
 	depth = depth >= DEPTH_LEVELS ? DEPTH_LEVELS - 1 : depth;
     m_entity[depth].push_back(entity);
+	entity->SetDepth(depth);
 
     return entity;
 }
@@ -403,6 +404,7 @@ CLasagneEntity *CLasagne::LoadAnimatedImage(
 
 	depth = depth >= DEPTH_LEVELS ? DEPTH_LEVELS - 1 : depth;
     m_entity[depth].push_back(entity);
+	entity->SetDepth(depth);
 
     return entity;
 }
@@ -511,26 +513,26 @@ void CLasagne::SetEntityDepth(
 	}
 
 	m_entity[newDepth].push_back(entity);
+	entity->SetDepth(newDepth);
 }
 
 void CLasagne::DisableEntity(	
 		CLasagneEntity **entity 
 	)
 {
-	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
-	{
-		std::vector<CLasagneEntity*>::iterator iter = m_entity[depthLevel].begin();
-		std::vector<CLasagneEntity*>::iterator endIter = m_entity[depthLevel].end();
+	const unsigned int depth = (*entity)->GetDepth();
 
-		for (iter = iter; iter != endIter; ++iter)
+	std::vector<CLasagneEntity*>::iterator iter = m_entity[depth].begin();
+	std::vector<CLasagneEntity*>::iterator endIter = m_entity[depth].end();
+
+	for (iter = iter; iter != endIter; ++iter)
+	{
+		if ((*iter) == (*entity))
 		{
-			if ((*iter) == (*entity))
-			{
-				m_entity[depthLevel].erase(iter);
-				m_disabledentity[depthLevel].push_back(*entity);
-				(*entity)->SetEnabled(false);
-				break;
-			}
+			m_entity[depth].erase(iter);
+			m_disabledentity[depth].push_back(*entity);
+			(*entity)->SetEnabled(false);
+			break;
 		}
 	}
 }
@@ -539,20 +541,19 @@ void CLasagne::EnableEntity(
 		CLasagneEntity **entity 
 	)
 {
-	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
-	{
-		std::vector<CLasagneEntity*>::iterator iter = m_disabledentity[depthLevel].begin();
-		std::vector<CLasagneEntity*>::iterator endIter = m_disabledentity[depthLevel].end();
+	
+	const unsigned int depth = (*entity)->GetDepth();
+	std::vector<CLasagneEntity*>::iterator iter = m_disabledentity[depth].begin();
+	std::vector<CLasagneEntity*>::iterator endIter = m_disabledentity[depth].end();
 
-		for (iter = iter; iter != endIter; ++iter)
+	for (iter = iter; iter != endIter; ++iter)
+	{
+		if ((*iter) == (*entity))
 		{
-			if ((*iter) == (*entity))
-			{
-				m_disabledentity[depthLevel].erase(iter);
-				m_entity[depthLevel].push_back(*entity);
-				(*entity)->SetEnabled(true);
-				break;
-			}
+			m_disabledentity[depth].erase(iter);
+			m_entity[depth].push_back(*entity);
+			(*entity)->SetEnabled(true);
+			break;
 		}
 	}
 }

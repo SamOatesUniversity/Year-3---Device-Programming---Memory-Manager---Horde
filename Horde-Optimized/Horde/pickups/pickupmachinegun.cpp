@@ -10,6 +10,7 @@ CPickupMachineGun::CPickupMachineGun(
 	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./data/graphics/pickups/machinegun.png", frameLayout, 4);
 	m_entity->SetFPS(5);
 	m_entity->SetVisible(false);
+	CLasagne::GetInstance()->DisableEntity(&m_entity);
 }
 
 CPickupMachineGun::~CPickupMachineGun()
@@ -25,4 +26,5 @@ void CPickupMachineGun::OnPickup()
 	m_player->SetGun(GunType::Machinegun);
 
 	m_entity->SetVisible(false);
+	CLasagne::GetInstance()->DisableEntity(&m_entity);
 }

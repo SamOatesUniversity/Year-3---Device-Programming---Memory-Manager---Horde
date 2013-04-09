@@ -68,4 +68,5 @@ void CBulletShotgun::Fire(
 
 	m_entity->SetRotation(rotation);
 	m_entity->SetVisible(true);
+	//CLasagne::GetInstance()->EnableEntity(&m_entity);
 }

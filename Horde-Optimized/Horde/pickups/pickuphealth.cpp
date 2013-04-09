@@ -9,6 +9,7 @@ CPickupHealth::CPickupHealth(
 	frameLayout.Set(4, 1);
 	m_entity = CLasagne::GetInstance()->LoadAnimatedImage("./data/graphics/pickups/health.png", frameLayout, 4);
 	m_entity->SetVisible(false);
+	CLasagne::GetInstance()->DisableEntity(&m_entity);
 }
 
 CPickupHealth::~CPickupHealth()
@@ -23,4 +24,5 @@ void CPickupHealth::OnPickup()
 
 	m_player->IncreaseHealth(10);
 	m_entity->SetVisible(false);
+	CLasagne::GetInstance()->DisableEntity(&m_entity);
 }

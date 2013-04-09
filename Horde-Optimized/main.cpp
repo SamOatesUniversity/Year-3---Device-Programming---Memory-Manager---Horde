@@ -50,6 +50,7 @@ int main (int argc, char *argv[])
 
 	CLasagneEntity *pausedScreen = engine->LoadImage("./data/graphics/paused-menu.png", 9);
 	pausedScreen->SetVisible(false);
+	engine->DisableEntity(&pausedScreen);
 
 	engine->Destroy(&splashScreen);
 	engine->ShowTimers(false);
@@ -66,6 +67,7 @@ int main (int argc, char *argv[])
 			{
 				gameState = GameState::Paused;
 				pausedScreen->SetVisible(true);
+				engine->EnableEntity(&pausedScreen);
 				engine->ShowTimers(false);
 			}
 		}
@@ -75,6 +77,7 @@ int main (int argc, char *argv[])
 			{
 				gameState = GameState::InLevel;
 				pausedScreen->SetVisible(false);
+				engine->DisableEntity(&pausedScreen);
 				engine->ShowTimers(true);
 			}
 
@@ -143,6 +146,7 @@ int main (int argc, char *argv[])
 				if (enemy.size() - noofDead == 0 && gameState == GameState::InLevel && player->GetHealth() != 0)
 				{
 					levelComplete->SetVisible(true);
+					CLasagne::GetInstance()->EnableEntity(&levelComplete);
 					gameState = GameState::LevelComplete;
 					levelEndTimer = SDL_GetTicks();
 				}
@@ -162,8 +166,11 @@ int main (int argc, char *argv[])
 				// if player health is zero, the player has died
 				if (player->GetHealth() == 0 && gameState == GameState::InLevel)
 				{
-					if (!playerDead->IsVisible())
+					if (!playerDead->IsVisible()) 
+					{
 						playerDead->SetVisible(true);
+						CLasagne::GetInstance()->EnableEntity(&playerDead);
+					}
 
 					gameState = GameState::Dead;
 					levelEndTimer = SDL_GetTicks();
@@ -276,10 +283,12 @@ const bool LoadLevel(
 	playerDead = engine->LoadImage("./data/graphics/player-dead.png", 9);
 	playerDead->SetPosition(96, 56);
 	playerDead->SetVisible(false);
+	engine->DisableEntity(&playerDead);
 
 	levelComplete = engine->LoadImage("./data/graphics/level-complete.png", 9);
 	levelComplete->SetPosition(96, 56);
 	levelComplete->SetVisible(false);
+	engine->DisableEntity(&levelComplete);
 
 	return true;
 }
