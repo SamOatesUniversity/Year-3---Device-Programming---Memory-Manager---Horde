@@ -68,8 +68,21 @@ bool CScene::Move(
         for (int y = -1; y <= 1; ++y)
         {
 			const unsigned int bgrIndex = ((x+1) * 3) + (y+1);
-            TVector<float, 2> pos = m_background[bgrIndex]->GetPosition();
-            m_background[bgrIndex]->SetPosition(pos.x() - xmove, pos.y() - ymove);
+
+			CLasagneEntity *bgr = m_background[bgrIndex];
+            TVector<float, 2> pos = bgr->GetPosition();
+            bgr->SetPosition(pos.x() - xmove, pos.y() - ymove);
+
+			if(bgr->IsEnabled() && !bgr->IsOnScreen())
+			{
+				CLasagne::GetInstance()->DisableEntity(&bgr);
+			}
+
+			if(!bgr->IsEnabled() && bgr->IsOnScreen())
+			{
+				CLasagne::GetInstance()->EnableEntity(&bgr);
+			}
+
         }
     }
 

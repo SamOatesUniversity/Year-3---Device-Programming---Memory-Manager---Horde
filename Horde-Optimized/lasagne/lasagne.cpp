@@ -111,6 +111,11 @@ const bool CLasagne::Create()
 	m_debugStats->AddTimer(m_timer[Timer::Render]);
 #endif
 
+	for (int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
+	{
+		m_entity[depthLevel].reserve(50);
+	}
+
 	m_isRunning = true;
 
     return true;
@@ -291,6 +296,12 @@ void CLasagne::Release()
 			SafeDelete(m_entity[depthLevel][entityIndex]);
 		}
 		m_entity[depthLevel].clear();
+
+		for (unsigned int entityIndex = 0; entityIndex < m_disabledentity[depthLevel].size(); ++entityIndex)
+		{
+			SafeDelete(m_disabledentity[depthLevel][entityIndex]);
+		}
+		m_disabledentity[depthLevel].clear();
 	}
 
 	for (unsigned int musicIndex = 0; musicIndex < m_music.size(); ++musicIndex)
@@ -438,7 +449,8 @@ void CLasagne::Destroy(
 		CLasagneEntity **entity						//!< A pointer to the entity pointer to be destroyed
 	)
 {
-	for (unsigned int depthLevel = 0; depthLevel < DEPTH_LEVELS; ++depthLevel)
+	const unsigned int depthLevel = (*entity)->GetDepth();
+	if ((*entity)->IsEnabled()) 
 	{
 		std::vector<CLasagneEntity*>::iterator iter = m_entity[depthLevel].begin();
 		std::vector<CLasagneEntity*>::iterator endIter = m_entity[depthLevel].end();
@@ -448,6 +460,18 @@ void CLasagne::Destroy(
 			if ((*iter) == (*entity))
 			{
 				m_entity[depthLevel].erase(iter);
+				break;
+			}
+		}
+	} else {
+		std::vector<CLasagneEntity*>::iterator iter = m_disabledentity[depthLevel].begin();
+		std::vector<CLasagneEntity*>::iterator endIter = m_disabledentity[depthLevel].end();
+
+		for (iter = iter; iter != endIter; ++iter)
+		{
+			if ((*iter) == (*entity))
+			{
+				m_disabledentity[depthLevel].erase(iter);
 				break;
 			}
 		}
