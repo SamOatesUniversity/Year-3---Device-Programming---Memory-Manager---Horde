@@ -24,7 +24,7 @@
 /************************************************************************/
 
 // Make sure show FPS is on
-//#define SHOW_DEBUG_STATS
+#define SHOW_DEBUG_STATS
 
 #define DEPTH_LEVELS	10
 
