@@ -96,13 +96,13 @@ int main (int argc, char *argv[])
 				engine->DisableEntity(&pausedScreen);
 			}
 
-#if defined(SHOW_DEBUG_STATS)
-			ProFy::GetInstance().StartTimer(updateTime);
-#endif
-
 			// update logic at 20 fps
 			if (SDL_GetTicks() - updateTimer > 50)
 			{
+#if defined(SHOW_DEBUG_STATS)
+                ProFy::GetInstance().StartTimer(updateTime);
+#endif
+
 				const int xDiff = engine->GetMousePosition()->x() - 160;
 				const int yDiff = engine->GetMousePosition()->y() - 120;
 
@@ -183,7 +183,7 @@ int main (int argc, char *argv[])
 				// if player health is zero, the player has died
 				if (player->GetHealth() == 0 && gameState == GameState::InLevel)
 				{
-					if (!playerDead->IsVisible()) 
+					if (!playerDead->IsVisible())
 					{
 						playerDead->SetVisible(true);
 						CLasagne::GetInstance()->EnableEntity(&playerDead);
@@ -244,7 +244,9 @@ int main (int argc, char *argv[])
 
 	} while (engine->Render());
 
-	//ProFy::GetInstance().OutputTimer(updateTime, true);
+    std::vector<ProFy::TimerID> timers;
+	timers.push_back(1); timers.push_back(2);
+	ProFy::GetInstance().OutputTimers("Update and Render", timers, GraphType::Line, true);
 	SDL_WaitThread(samplingThread, NULL);
 
     // free up resources and allocated memory
