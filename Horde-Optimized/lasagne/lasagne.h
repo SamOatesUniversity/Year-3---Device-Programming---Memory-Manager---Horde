@@ -5,7 +5,11 @@
 /* HEADER FILES                                                         */
 /************************************************************************/
 
+#ifdef _MSC_VER
+#include <ProFy.h>
+#else
 #include "../ProFy/ProFy.h"
+#endif
 
 #include "../SOGI/SOGI.h"
 #include "lasagne-text.h"
