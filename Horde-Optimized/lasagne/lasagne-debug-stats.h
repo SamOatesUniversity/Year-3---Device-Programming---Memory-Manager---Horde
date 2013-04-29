@@ -2,7 +2,7 @@
 #define LASAGNE_DEBUGSTATS_HEADER
 
 #include <vector>
-#include <ProFy.h>
+#include "../ProFy/ProFy.h"
 #include <SDL.h>
 #include <SDL_gfxPrimitives.h>
 

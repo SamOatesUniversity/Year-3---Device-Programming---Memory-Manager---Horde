@@ -5,7 +5,7 @@
 /* HEADER FILES                                                         */
 /************************************************************************/
 
-#include <ProFy.h>
+#include "../ProFy/ProFy.h"
 
 #include "../SOGI/SOGI.h"
 #include "lasagne-text.h"

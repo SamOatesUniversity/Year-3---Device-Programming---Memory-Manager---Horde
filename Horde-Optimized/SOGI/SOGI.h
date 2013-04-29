@@ -107,7 +107,7 @@ public:
 								float value,
 								float varience = 1.0f
 							);
-							
+
 };
 
 /**

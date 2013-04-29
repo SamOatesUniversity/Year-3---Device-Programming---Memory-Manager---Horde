@@ -10,8 +10,8 @@ CLasagneDebugStats::~CLasagneDebugStats()
 
 }
 
-void CLasagneDebugStats::AddTimer( 
-		ProFy::TimerID timer /*!< */ 
+void CLasagneDebugStats::AddTimer(
+		ProFy::TimerID timer /*!< */
 	)
 {
 	m_timers.push_back(timer);
@@ -26,7 +26,7 @@ void CLasagneDebugStats::Render(
 
 	for (unsigned int timerIndex = 0; timerIndex < m_timers.size(); ++timerIndex)
 	{
-		std::vector<unsigned int> results = ProFy::GetInstance().GetTimerResults(m_timers[timerIndex], 10);
+		std::vector<float> results = ProFy::GetInstance().GetTimerResults(m_timers[timerIndex], 10);
 		if (results.empty()) {
 			continue;
 		}
@@ -35,7 +35,7 @@ void CLasagneDebugStats::Render(
 		float minTime = 0xFFFFFFFF;
 		for (unsigned int resultIndex = 0; resultIndex < results.size(); ++resultIndex)
 		{
-			const float resultTime = static_cast<float>(results[resultIndex]);
+			const float resultTime = results[resultIndex];
 			if (resultTime > maxTime) maxTime = resultTime;
 			if (resultTime < minTime) minTime = resultTime;
 		}
@@ -60,10 +60,10 @@ void CLasagneDebugStats::Render(
 		xPos += xSpacing;
 		const int bottomOfTimer = yPos + static_cast<unsigned int>(timerHeight);
 
-		unsigned int lastTime = 0;
+		float lastTime = 0;
 		for (unsigned int resultIndex = 0; resultIndex < results.size(); ++resultIndex)
 		{
-			const unsigned int resultTime = results[resultIndex];
+			const float resultTime = results[resultIndex];
 
 			if (resultIndex == 0) {
 				lastTime = resultTime;
@@ -80,13 +80,13 @@ void CLasagneDebugStats::Render(
 		xPos = 4 + xSpacing;
 		for (unsigned int resultIndex = 0; resultIndex < results.size(); ++resultIndex)
 		{
-			const unsigned int resultTime = results[resultIndex];
+			const float resultTime = results[resultIndex];
 
 			filledCircleColor(surface, xPos, static_cast<int>(bottomOfTimer - (resultTime * scale)), 2, 0xFF0000FF);
 
 			xPos += xSpacing;
 		}
 
-		yPos += static_cast<int>(timerHeight + 6);		
+		yPos += static_cast<int>(timerHeight + 6);
 	}
 }
