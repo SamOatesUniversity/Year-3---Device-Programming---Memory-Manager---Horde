@@ -136,6 +136,17 @@
 		<Unit filename="Horde\player.h" />
 		<Unit filename="Horde\scenebase.cpp" />
 		<Unit filename="Horde\scenebase.h" />
+		<Unit filename="ProFy\Output\OutputHtml.cpp" />
+		<Unit filename="ProFy\Output\OutputHtml.h" />
+		<Unit filename="ProFy\ProFy.cpp" />
+		<Unit filename="ProFy\ProFy.h" />
+		<Unit filename="ProFy\Timers\TimerBase.cpp" />
+		<Unit filename="ProFy\Timers\TimerBase.h" />
+		<Unit filename="ProFy\Timers\TimerCPU.cpp" />
+		<Unit filename="ProFy\Timers\TimerCPU.h" />
+		<Unit filename="ProFy\Timers\TimerOpenGL.cpp" />
+		<Unit filename="ProFy\Timers\TimerOpenGL.h" />
+		<Unit filename="ProFy\Timers\Timers.h" />
 		<Unit filename="SOGI\SOGI.cpp" />
 		<Unit filename="SOGI\SOGI.h" />
 		<Unit filename="SOGI\SOGITypes.h" />
@@ -162,17 +173,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="profiling\ProFySampler.cpp" />
 		<Unit filename="profiling\ProFySampler.h" />
-		<Unit filename="profy-lib\ProFy\src\Output\OutputHtml.cpp" />
-		<Unit filename="profy-lib\ProFy\src\Output\OutputHtml.h" />
-		<Unit filename="profy-lib\ProFy\src\ProFy.cpp" />
-		<Unit filename="profy-lib\ProFy\src\ProFy.h" />
-		<Unit filename="profy-lib\ProFy\src\Timers\TimerBase.cpp" />
-		<Unit filename="profy-lib\ProFy\src\Timers\TimerBase.h" />
-		<Unit filename="profy-lib\ProFy\src\Timers\TimerCPU.cpp" />
-		<Unit filename="profy-lib\ProFy\src\Timers\TimerCPU.h" />
-		<Unit filename="profy-lib\ProFy\src\Timers\TimerOpenGL.cpp" />
-		<Unit filename="profy-lib\ProFy\src\Timers\TimerOpenGL.h" />
-		<Unit filename="profy-lib\ProFy\src\Timers\Timers.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
