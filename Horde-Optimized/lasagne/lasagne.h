@@ -29,6 +29,26 @@
 #define DEPTH_LEVELS	10
 
 /************************************************************************/
+/* Key Press Bit Flags													*/
+/************************************************************************/
+
+union CaanooKeys
+{
+    struct
+    {
+        unsigned int x      : 1;
+        unsigned int a      : 1;
+        unsigned int b      : 1;
+        unsigned int y      : 1;
+        unsigned int r      : 1;
+        unsigned int l      : 1;
+        unsigned int home   : 1;
+    };
+
+    unsigned int allflags;
+};
+
+/************************************************************************/
 /* CLASS DESCRIPTION													*/
 /************************************************************************/
 
@@ -69,6 +89,8 @@ private:
 
 #endif
 
+    CaanooKeys                          m_key;
+    unsigned int                        m_closeValue;
 
 	struct Timer {
 		enum Enum {

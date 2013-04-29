@@ -3,6 +3,14 @@
 
 CLasagne *CLasagne::instance = new CLasagne();
 
+static const int CAANOO_KEY_X = 0;
+static const int CAANOO_KEY_A = 1;
+static const int CAANOO_KEY_B = 2;
+static const int CAANOO_KEY_Y = 3;
+static const int CAANOO_KEY_L = 4;
+static const int CAANOO_KEY_R = 5;
+static const int CAANOO_KEY_HOME = 6;
+
 /*
  * \brief Class constructor
 */
@@ -17,6 +25,12 @@ CLasagne::CLasagne() :
 	m_isRunning = false;
 	m_audioVolume = 64;
 	SetCurrentMethod("CLasagne::CLasagne");
+	m_key.allflags = 0;
+	m_key.l = true;
+	m_key.r = true;
+	m_key.home = true;
+	m_closeValue = m_key.allflags;
+	m_key.allflags = 0;
 }
 
 /*
@@ -130,8 +144,6 @@ const bool CLasagne::Render()
 {
 	SetCurrentMethod("CLasagne::Render");
 
-	//SDL_FillRect(m_screen, NULL, 0x000000); 
-
     SDL_Event event;
     while (SDL_PollEvent (&event))
     {
@@ -186,14 +198,24 @@ const bool CLasagne::Render()
 #else
             case SDL_JOYBUTTONUP:
             {
-                if (event.jbutton.button == 6)
+                if (event.jbutton.button == CAANOO_KEY_L) // L
                 {
-					m_isRunning = false;
-                    return false;
+                    m_key.l = true;
+                }
+
+                if (event.jbutton.button == CAANOO_KEY_R) // R
+                {
+                    m_key.r = true;
+                }
+
+                if (event.jbutton.button == CAANOO_KEY_HOME)
+                {
+                    m_isPaused = !m_isPaused;
+                    m_key.home = true;
                 }
 
 #if defined(SHOW_DEBUG_STATS)
-                if (event.jbutton.button == 2)
+                if (event.jbutton.button == CAANOO_KEY_B)
                 {
                     m_showTimerGraphs = !m_showTimerGraphs;
                 }
@@ -208,6 +230,12 @@ const bool CLasagne::Render()
             }
             break;
         }
+    }
+
+    if (m_key.allflags == m_closeValue)
+    {
+        m_isRunning = false;
+        return false;
     }
 
 #if defined(SHOW_DEBUG_STATS)
@@ -452,7 +480,7 @@ void CLasagne::Destroy(
 	)
 {
 	const unsigned int depthLevel = (*entity)->GetDepth();
-	if ((*entity)->IsEnabled()) 
+	if ((*entity)->IsEnabled())
 	{
 		std::vector<CLasagneEntity*>::iterator iter = m_entity[depthLevel].begin();
 		std::vector<CLasagneEntity*>::iterator endIter = m_entity[depthLevel].end();
@@ -548,8 +576,8 @@ void CLasagne::SetEntityDepth(
 	entity->SetDepth(newDepth);
 }
 
-void CLasagne::DisableEntity(	
-		CLasagneEntity **entity 
+void CLasagne::DisableEntity(
+		CLasagneEntity **entity
 	)
 {
 	const unsigned int depth = (*entity)->GetDepth();
@@ -569,11 +597,11 @@ void CLasagne::DisableEntity(
 	}
 }
 
-void CLasagne::EnableEntity(	
-		CLasagneEntity **entity 
+void CLasagne::EnableEntity(
+		CLasagneEntity **entity
 	)
 {
-	
+
 	const unsigned int depth = (*entity)->GetDepth();
 	std::vector<CLasagneEntity*>::iterator iter = m_disabledentity[depth].begin();
 	std::vector<CLasagneEntity*>::iterator endIter = m_disabledentity[depth].end();
