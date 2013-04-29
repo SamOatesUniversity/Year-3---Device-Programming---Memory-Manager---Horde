@@ -28,11 +28,23 @@
 	<File name="Horde\scenebase.h" open="0" top="0" tabpos="3">
 		<Cursor position="428" topLine="0" />
 	</File>
-	<File name="SOGI\SOGI.cpp" open="1" top="0" tabpos="2">
+	<File name="ProFy\Output\OutputHtml.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="5286" topLine="169" />
+	</File>
+	<File name="ProFy\ProFy.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1705" topLine="71" />
+	</File>
+	<File name="ProFy\Timers\TimerBase.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="863" topLine="39" />
+	</File>
+	<File name="ProFy\Timers\TimerOpenGL.h" open="0" top="0" tabpos="0">
+		<Cursor position="70" topLine="0" />
+	</File>
+	<File name="SOGI\SOGI.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="2312" topLine="72" />
 	</File>
-	<File name="SOGI\SOGI.h" open="1" top="0" tabpos="3">
-		<Cursor position="1462" topLine="24" />
+	<File name="SOGI\SOGI.h" open="0" top="0" tabpos="3">
+		<Cursor position="6163" topLine="191" />
 	</File>
 	<File name="SOGI\SOGITypes.h" open="0" top="0" tabpos="6">
 		<Cursor position="1212" topLine="23" />
@@ -55,8 +67,11 @@
 	<File name="lasagne\lasagne-audio.h" open="0" top="0" tabpos="4">
 		<Cursor position="1107" topLine="0" />
 	</File>
-	<File name="lasagne\lasagne-debug-stats.h" open="1" top="0" tabpos="6">
-		<Cursor position="392" topLine="0" />
+	<File name="lasagne\lasagne-debug-stats.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2643" topLine="58" />
+	</File>
+	<File name="lasagne\lasagne-debug-stats.h" open="0" top="0" tabpos="6">
+		<Cursor position="118" topLine="0" />
 	</File>
 	<File name="lasagne\lasagne-entity.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2924" topLine="95" />
@@ -82,16 +97,13 @@
 	<File name="lasagne\lasagne-text.h" open="0" top="0" tabpos="5">
 		<Cursor position="884" topLine="0" />
 	</File>
-	<File name="lasagne\lasagne.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="5072" topLine="142" />
+	<File name="lasagne\lasagne.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="6451" topLine="207" />
 	</File>
-	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="5">
-		<Cursor position="1299" topLine="12" />
+	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="2">
+		<Cursor position="2759" topLine="50" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1">
+	<File name="main.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1403" topLine="36" />
-	</File>
-	<File name="profy-lib\ProFy\src\Output\OutputHtml.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="94" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>
