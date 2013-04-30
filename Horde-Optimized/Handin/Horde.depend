@@ -1,0 +1,1531 @@
+# depslib dependency file v1.0
+1350925800 source:e:\university work\uni year three\gdp\horde\sogi\sogi.cpp
+	"SOGI.h"
+
+1354219147 e:\university work\uni year three\gdp\horde\sogi\sogi.h
+	"SOGITypes.h"
+	"stack/stack.h"
+	<windows.h>
+	<io.h>
+	<share.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+
+1350932800 e:\university work\uni year three\gdp\horde\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+
+1350925800 e:\university work\uni year three\gdp\horde\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1350925800 source:e:\university work\uni year three\gdp\horde\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+
+1353669710 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-3dentity.cpp
+	"lasagne-3dentity.h"
+
+1352113807 e:\university work\uni year three\gdp\horde\lasagne\lasagne-3dentity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+
+1352113807 e:\university work\uni year three\gdp\horde\lasagne\lasagne-surface.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	"SDL_config_amiga.h"
+	"SDL_config_dreamcast.h"
+	"SDL_config_macos.h"
+	"SDL_config_macosx.h"
+	"SDL_config_win32.h"
+	"SDL_config_os2.h"
+	"SDL_config_minimal.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_platform.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_amiga.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_dreamcast.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_macos.h
+	"SDL_platform.h"
+	<MacTypes.h>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_macosx.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_win32.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_os2.h
+	"SDL_platform.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_config_minimal.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\begin_code.h
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\close_code.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1261116408 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_keysym.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"pollux_fb_ioctl.h"
+	"close_code.h"
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\pollux_fb_ioctl.h
+	"pollux_fb_cfg.h"
+
+1260435650 e:\university work\uni year three\gdp\gph_sdk\dge\include\pollux_fb_cfg.h
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1354219320 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-audio.cpp
+	"lasagne-audio.h"
+
+1354219314 e:\university work\uni year three\gdp\horde\lasagne\lasagne-audio.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_types.h
+	"SDL_stdinc.h"
+
+1354219324 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-music.cpp
+	"lasagne-music.h"
+
+1354219358 e:\university work\uni year three\gdp\horde\lasagne\lasagne-music.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1353669741 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-surface.cpp
+	"lasagne-surface.h"
+
+1354219482 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-text.cpp
+	"lasagne-text.h"
+
+1353672455 e:\university work\uni year three\gdp\horde\lasagne\lasagne-text.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+	<sstream>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1355169413 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1355169392 e:\university work\uni year three\gdp\horde\lasagne\lasagne.h
+	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	"lasagne-entity.h"
+	"lasagne-music.h"
+	"lasagne-audio.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<vector>
+
+1355169417 source:e:\university work\uni year three\gdp\horde\main.cpp
+	"lasagne/lasagne.h"
+	"Horde/scenebase.h"
+	"Horde/player.h"
+
+1355163230 source:e:\university work\uni year three\gdp\horde\horde\scenebase.cpp
+	"scenebase.h"
+
+1355163213 e:\university work\uni year three\gdp\horde\horde\scenebase.h
+	"../lasagne/lasagne.h"
+	<string>
+
+1355169802 source:e:\university work\uni year three\gdp\horde\lasagne\lasagne-entity.cpp
+	"lasagne-entity.h"
+
+1355169386 e:\university work\uni year three\gdp\horde\lasagne\lasagne-entity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_rotozoom.h>
+	<map>
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1355169401 source:e:\university work\uni year three\gdp\horde\horde\player.cpp
+	"player.h"
+
+1355169406 e:\university work\uni year three\gdp\horde\horde\player.h
+	"../lasagne/lasagne.h"
+	<map>
+
+1358511703 source:c:\users\j9060283\desktop\horde\horde\player.cpp
+	"player.h"
+	"guns/gunpistol.h"
+	"guns/gunshotgun.h"
+	"guns/gunmachinegun.h"
+
+1358510844 c:\users\j9060283\desktop\horde\horde\player.h
+	"../lasagne/lasagne.h"
+	<map>
+
+1358510846 c:\users\j9060283\desktop\horde\lasagne\lasagne.h
+	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	"lasagne-entity.h"
+	"lasagne-music.h"
+	"lasagne-audio.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<vector>
+
+1358510846 c:\users\j9060283\desktop\horde\sogi\sogi.h
+	"SOGITypes.h"
+	"stack/stack.h"
+	<windows.h>
+	<io.h>
+	<share.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+
+1358511166 c:\users\j9060283\desktop\horde\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+	<math.h>
+
+1358510846 c:\users\j9060283\desktop\horde\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-text.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+	<sstream>
+
+1247535246 c:\gph_sdk\dge\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	"SDL_config_amiga.h"
+	"SDL_config_dreamcast.h"
+	"SDL_config_macos.h"
+	"SDL_config_macosx.h"
+	"SDL_config_win32.h"
+	"SDL_config_os2.h"
+	"SDL_config_minimal.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_platform.h
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_amiga.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_dreamcast.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_macos.h
+	"SDL_platform.h"
+	<MacTypes.h>
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_macosx.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_win32.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_os2.h
+	"SDL_platform.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_config_minimal.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1260439250 c:\gph_sdk\dge\include\sdl\begin_code.h
+
+1260439250 c:\gph_sdk\dge\include\sdl\close_code.h
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1261120008 c:\gph_sdk\dge\include\sdl\sdl_keysym.h
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"pollux_fb_ioctl.h"
+	"close_code.h"
+
+1260439250 c:\gph_sdk\dge\include\sdl\pollux_fb_ioctl.h
+	"pollux_fb_cfg.h"
+
+1268987098 c:\gph_sdk\dge\include\sdl\pollux_fb_cfg.h
+
+1282632388 c:\gph_sdk\dge\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-entity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_rotozoom.h>
+	<map>
+
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-surface.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1358510847 c:\users\j9060283\desktop\horde\lasagne\lasagne-music.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_types.h
+	"SDL_stdinc.h"
+
+1358510846 c:\users\j9060283\desktop\horde\lasagne\lasagne-audio.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\scenebase.cpp
+	"scenebase.h"
+
+1358510846 c:\users\j9060283\desktop\horde\horde\scenebase.h
+	"../lasagne/lasagne.h"
+	<string>
+
+1358511825 source:c:\users\j9060283\desktop\horde\sogi\sogi.cpp
+	"SOGI.h"
+
+1358510846 source:c:\users\j9060283\desktop\horde\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-3dentity.cpp
+	"lasagne-3dentity.h"
+
+1358510846 c:\users\j9060283\desktop\horde\lasagne\lasagne-3dentity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-audio.cpp
+	"lasagne-audio.h"
+
+1358512001 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-entity.cpp
+	"lasagne-entity.h"
+
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-music.cpp
+	"lasagne-music.h"
+
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-surface.cpp
+	"lasagne-surface.h"
+
+1358510847 source:c:\users\j9060283\desktop\horde\lasagne\lasagne-text.cpp
+	"lasagne-text.h"
+
+1358512033 source:c:\users\j9060283\desktop\horde\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1358511523 source:c:\users\j9060283\desktop\horde\main.cpp
+	"main.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_gfxprimitives.h
+	<math.h>
+	"SDL.h"
+
+1260435348 e:\university work\uni year three\gdp\gph_sdk\dge\include\sdl\sdl_rotozoom.h
+	<math.h>
+	"SDL.h"
+
+1355175674 source:e:\university work\uni year three\gdp\horde\horde\guns\gunbase.cpp
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_rotozoom.h
+	<math.h>
+	"SDL.h"
+
+1358510845 c:\users\j9060283\desktop\horde\horde\guns\gunpistol.h
+	"gunbase.h"
+	"bulletpistol.h"
+
+1358510845 c:\users\j9060283\desktop\horde\horde\guns\gunbase.h
+	<vector>
+	"bulletbase.h"
+	"../../lasagne/lasagne.h"
+
+1358510845 c:\users\j9060283\desktop\horde\horde\guns\bulletbase.h
+	"../../lasagne/lasagne.h"
+	"../enemy/enemybase.h"
+
+1358510845 c:\users\j9060283\desktop\horde\horde\enemy\enemybase.h
+	"../../lasagne/lasagne.h"
+	"../pickups/pickupbase.h"
+	"../player.h"
+
+1358510846 c:\users\j9060283\desktop\horde\horde\pickups\pickupbase.h
+	"../../lasagne/lasagne.h"
+	"../player.h"
+
+1358511267 c:\users\j9060283\desktop\horde\horde\guns\bulletpistol.h
+	"bulletbase.h"
+
+1358511366 c:\users\j9060283\desktop\horde\main.h
+	"lasagne/lasagne.h"
+	"Horde/scenebase.h"
+	"Horde/player.h"
+	"Horde/enemy/enemyzombie.h"
+
+1358511253 c:\users\j9060283\desktop\horde\horde\enemy\enemyzombie.h
+	"enemybase.h"
+	"../pickups/pickuphealth.h"
+	"../pickups/pickupshotgun.h"
+	"../pickups/pickupmachinegun.h"
+
+1358511250 c:\users\j9060283\desktop\horde\horde\pickups\pickuphealth.h
+	"pickupbase.h"
+
+1358511306 source:c:\users\j9060283\desktop\horde\horde\guns\gunbase.cpp
+	"gunbase.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\gunpistol.cpp
+	"gunpistol.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\enemy\enemybase.cpp
+	"enemybase.h"
+
+1358511595 source:c:\users\j9060283\desktop\horde\horde\enemy\enemyzombie.cpp
+	"enemyzombie.h"
+
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupbase.cpp
+	"pickupbase.h"
+
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickuphealth.cpp
+	"pickuphealth.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletbase.cpp
+	"bulletbase.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletpistol.cpp
+	"bulletpistol.h"
+
+1358511208 c:\users\j9060283\desktop\horde\horde\pickups\pickupshotgun.h
+	"pickupbase.h"
+
+1358511200 c:\users\j9060283\desktop\horde\horde\pickups\pickupmachinegun.h
+	"pickupbase.h"
+
+1358511193 c:\users\j9060283\desktop\horde\horde\guns\gunshotgun.h
+	"gunbase.h"
+	"bulletshotgun.h"
+
+1358511171 c:\users\j9060283\desktop\horde\horde\guns\bulletshotgun.h
+	"bulletbase.h"
+
+1358511181 c:\users\j9060283\desktop\horde\horde\guns\gunmachinegun.h
+	"gunbase.h"
+	"bulletmachinegun.h"
+
+1358511150 c:\users\j9060283\desktop\horde\horde\guns\bulletmachinegun.h
+	"bulletbase.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletmachinegun.cpp
+	"bulletmachinegun.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\bulletshotgun.cpp
+	"bulletshotgun.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\gunmachinegun.cpp
+	"gunmachinegun.h"
+
+1358510845 source:c:\users\j9060283\desktop\horde\horde\guns\gunshotgun.cpp
+	"gunshotgun.h"
+
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupmachinegun.cpp
+	"pickupmachinegun.h"
+
+1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupshotgun.cpp
+	"pickupshotgun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemybase.cpp
+	"enemybase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemybase.h
+	"../../lasagne/lasagne.h"
+	"../pickups/pickupbase.h"
+	"../player.h"
+
+1367321066 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne.h
+	<ProFy.h>
+	"../ProFy/ProFy.h"
+	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	"lasagne-entity.h"
+	"lasagne-music.h"
+	"lasagne-audio.h"
+	"lasagne-debug-stats.h"
+	<SDL.h>
+	<vector>
+
+1365519935 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\profy.h
+	"Timers/Timers.h"
+	"Output/OutputHtml.h"
+	<vector>
+
+1365519935 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timers.h
+	"TimerBase.h"
+	"TimerCPU.h"
+
+1365519935 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timerbase.h
+	<vector>
+	<string>
+
+1365519935 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timercpu.h
+	"TimerBase.h"
+	<windows.h>
+	<sys/time.h>
+
+1365519935 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\output\outputhtml.h
+	"../Timers/TimerBase.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<ctime>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\sogi\sogi.h
+	"SOGITypes.h"
+	"stack/stack.h"
+	<windows.h>
+	<io.h>
+	<share.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+	<math.h>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1367318616 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-text.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+	<SDL_gfxPrimitives.h>
+	<string>
+	<sstream>
+
+1260438948 c:\gph_sdk\dge\include\sdl\sdl_gfxprimitives.h
+	<math.h>
+	"SDL.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-entity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_rotozoom.h>
+	<map>
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-surface.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-music.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-audio.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1367318616 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-debug-stats.h
+	<vector>
+	<ProFy.h>
+	"../ProFy/ProFy.h"
+	<SDL.h>
+	<SDL_gfxPrimitives.h>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupbase.h
+	"../../lasagne/lasagne.h"
+	"../player.h"
+
+1367318611 c:\users\j9060283\desktop\horde-optimized\horde\player.h
+	"../lasagne/lasagne.h"
+	<map>
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemyzombie.cpp
+	"enemyzombie.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemyzombie.h
+	"enemybase.h"
+	"../pickups/pickuphealth.h"
+	"../pickups/pickupshotgun.h"
+	"../pickups/pickupmachinegun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickuphealth.h
+	"pickupbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupshotgun.h
+	"pickupbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupmachinegun.h
+	"pickupbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletbase.cpp
+	"bulletbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletbase.h
+	"../../lasagne/lasagne.h"
+	"../enemy/enemybase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletmachinegun.cpp
+	"bulletmachinegun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletmachinegun.h
+	"bulletbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletpistol.cpp
+	"bulletpistol.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletpistol.h
+	"bulletbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletshotgun.cpp
+	"bulletshotgun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletshotgun.h
+	"bulletbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunbase.cpp
+	"gunbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunbase.h
+	<vector>
+	"bulletbase.h"
+	"../../lasagne/lasagne.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunmachinegun.cpp
+	"gunmachinegun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunmachinegun.h
+	"gunbase.h"
+	"bulletmachinegun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunpistol.cpp
+	"gunpistol.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunpistol.h
+	"gunbase.h"
+	"bulletpistol.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunshotgun.cpp
+	"gunshotgun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunshotgun.h
+	"gunbase.h"
+	"bulletshotgun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupbase.cpp
+	"pickupbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickuphealth.cpp
+	"pickuphealth.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupmachinegun.cpp
+	"pickupmachinegun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupshotgun.cpp
+	"pickupshotgun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\player.cpp
+	"player.h"
+	"guns/gunpistol.h"
+	"guns/gunshotgun.h"
+	"guns/gunmachinegun.h"
+
+1367318612 source:c:\users\j9060283\desktop\horde-optimized\horde\scenebase.cpp
+	"scenebase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\scenebase.h
+	"../lasagne/lasagne.h"
+	<string>
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\sogi\sogi.cpp
+	"SOGI.h"
+	<sstream>
+	<ctime>
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\entity\entity3d.cpp
+	"entity3D.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\entity\entity3d.h
+	"../../SOGI/SOGITypes.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-3dentity.cpp
+	"lasagne-3dentity.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-3dentity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-audio.cpp
+	"lasagne-audio.h"
+
+1367321021 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-entity.cpp
+	"lasagne-entity.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-music.cpp
+	"lasagne-music.h"
+
+1367318616 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-surface.cpp
+	"lasagne-surface.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-text.cpp
+	"lasagne-text.h"
+
+1367321063 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1367318614 source:c:\users\j9060283\desktop\horde-optimized\main.cpp
+	"main.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\main.h
+	"lasagne/lasagne.h"
+	"Horde/scenebase.h"
+	"Horde/player.h"
+	"Horde/enemy/enemyzombie.h"
+	"profiling/ProFySampler.h"
+
+1367318608 c:\users\j9060283\desktop\horde-optimized\profiling\profysampler.h
+	"SDL_thread.h"
+	"../lasagne/lasagne.h"
+
+1365519935 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\output\outputhtml.cpp
+	"OutputHtml.h"
+
+1365519935 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\profy.cpp
+	"ProFy.h"
+
+1365519935 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timerbase.cpp
+	"TimerBase.h"
+
+1365519935 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timercpu.cpp
+	"TimerCPU.h"
+
+1365519935 source:c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timeropengl.cpp
+	"TimerOpenGL.h"
+
+1365519935 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\timers\timeropengl.h
+	"TimerBase.h"
+	<tgl.h>
+
+1367318608 source:c:\users\j9060283\desktop\horde-optimized\profiling\profysampler.cpp
+	"ProFySampler.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-debug-stats.cpp
+	"lasagne-debug-stats.h"
+
+1365421658 source:c:\users\j9060283\desktop\profy-lib\profy\src\output\outputhtml.cpp
+	"OutputHtml.h"
+
+1365421658 c:\users\j9060283\desktop\profy-lib\profy\src\output\outputhtml.h
+	"../Timers/TimerBase.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<ctime>
+
+1365421659 c:\users\j9060283\desktop\profy-lib\profy\src\timers\timerbase.h
+	<vector>
+	<string>
+
+1365421659 source:c:\users\j9060283\desktop\profy-lib\profy\src\profy.cpp
+	"ProFy.h"
+
+1365421659 c:\users\j9060283\desktop\profy-lib\profy\src\profy.h
+	"Timers/Timers.h"
+	"Output/OutputHtml.h"
+	<vector>
+
+1365421659 c:\users\j9060283\desktop\profy-lib\profy\src\timers\timers.h
+	"TimerBase.h"
+	"TimerCPU.h"
+
+1365421659 c:\users\j9060283\desktop\profy-lib\profy\src\timers\timercpu.h
+	"TimerBase.h"
+	<windows.h>
+	<sys/time.h>
+
+1365421659 source:c:\users\j9060283\desktop\profy-lib\profy\src\timers\timerbase.cpp
+	"TimerBase.h"
+
+1365421659 source:c:\users\j9060283\desktop\profy-lib\profy\src\timers\timercpu.cpp
+	"TimerCPU.h"
+
+1365421659 source:c:\users\j9060283\desktop\profy-lib\profy\src\timers\timeropengl.cpp
+	"TimerOpenGL.h"
+
+1365421659 c:\users\j9060283\desktop\profy-lib\profy\src\timers\timeropengl.h
+	"TimerBase.h"
+	<tgl.h>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\profy.h
+	"Timers/Timers.h"
+	"Output/OutputHtml.h"
+	<vector>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timers.h
+	"TimerBase.h"
+	"TimerCPU.h"
+	"TimerOpenGL.h"
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timerbase.h
+	<vector>
+	<string>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timercpu.h
+	"TimerBase.h"
+	<windows.h>
+	<sys/time.h>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timeropengl.h
+	"TimerBase.h"
+	<tgl.h>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\output\outputhtml.h
+	"../Timers/TimerBase.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<ctime>
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\output\outputhtml.cpp
+	"OutputHtml.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\profy.cpp
+	"ProFy.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timercpu.cpp
+	"TimerCPU.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timeropengl.cpp
+	"TimerOpenGL.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timerbase.cpp
+	"TimerBase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\enemy\enemybase.cpp
+	"enemybase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\enemy\enemybase.h
+	"../../lasagne/lasagne.h"
+	"../pickups/pickupbase.h"
+	"../player.h"
+
+1367327108 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne.h
+	<ProFy.h>
+	"../ProFy/ProFy.h"
+	"../SOGI/SOGI.h"
+	"lasagne-text.h"
+	"lasagne-entity.h"
+	"lasagne-music.h"
+	"lasagne-audio.h"
+	"lasagne-debug-stats.h"
+	<SDL.h>
+	<vector>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\handin\profy\profy.h
+	"Timers/Timers.h"
+	"Output/OutputHtml.h"
+	<vector>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\handin\profy\timers\timers.h
+	"TimerBase.h"
+	"TimerCPU.h"
+	"TimerOpenGL.h"
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\handin\profy\timers\timerbase.h
+	<vector>
+	<string>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\handin\profy\timers\timercpu.h
+	"TimerBase.h"
+	<windows.h>
+	<sys/time.h>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\handin\profy\timers\timeropengl.h
+	"TimerBase.h"
+	<tgl.h>
+
+1367318609 c:\users\j9060283\desktop\horde-optimized\handin\profy\output\outputhtml.h
+	"../Timers/TimerBase.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<ctime>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\sogi\sogi.h
+	"SOGITypes.h"
+	"stack/stack.h"
+	<windows.h>
+	<io.h>
+	<share.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<fcntl.h>
+	<errno.h>
+	<sys\stat.h>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\sogi\sogitypes.h
+	"SOGI.h"
+	<string.h>
+	<math.h>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\sogi\stack\stack.h
+	<string>
+	<list>
+	<iosfwd>
+
+1367318616 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-text.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+	<SDL_gfxPrimitives.h>
+	<string>
+	<sstream>
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-entity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_rotozoom.h>
+	<map>
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-surface.h
+	"../SOGI/SOGI.h"
+	<SDL.h>
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-music.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-audio.h
+	"SDL.h"
+	"SDL_mixer.h"
+
+1367318616 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-debug-stats.h
+	<vector>
+	<ProFy.h>
+	"../ProFy/ProFy.h"
+	<SDL.h>
+	<SDL_gfxPrimitives.h>
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickupbase.h
+	"../../lasagne/lasagne.h"
+	"../player.h"
+
+1367318611 c:\users\j9060283\desktop\horde-optimized\handin\horde\player.h
+	"../lasagne/lasagne.h"
+	<map>
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\enemy\enemyzombie.cpp
+	"enemyzombie.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\enemy\enemyzombie.h
+	"enemybase.h"
+	"../pickups/pickuphealth.h"
+	"../pickups/pickupshotgun.h"
+	"../pickups/pickupmachinegun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickuphealth.h
+	"pickupbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickupshotgun.h
+	"pickupbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickupmachinegun.h
+	"pickupbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletbase.cpp
+	"bulletbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletbase.h
+	"../../lasagne/lasagne.h"
+	"../enemy/enemybase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletmachinegun.cpp
+	"bulletmachinegun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletmachinegun.h
+	"bulletbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletpistol.cpp
+	"bulletpistol.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletpistol.h
+	"bulletbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletshotgun.cpp
+	"bulletshotgun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\bulletshotgun.h
+	"bulletbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunbase.cpp
+	"gunbase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunbase.h
+	<vector>
+	"bulletbase.h"
+	"../../lasagne/lasagne.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunmachinegun.cpp
+	"gunmachinegun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunmachinegun.h
+	"gunbase.h"
+	"bulletmachinegun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunpistol.cpp
+	"gunpistol.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunpistol.h
+	"gunbase.h"
+	"bulletpistol.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunshotgun.cpp
+	"gunshotgun.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\guns\gunshotgun.h
+	"gunbase.h"
+	"bulletshotgun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickupbase.cpp
+	"pickupbase.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickuphealth.cpp
+	"pickuphealth.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickupmachinegun.cpp
+	"pickupmachinegun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\pickups\pickupshotgun.cpp
+	"pickupshotgun.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\player.cpp
+	"player.h"
+	"guns/gunpistol.h"
+	"guns/gunshotgun.h"
+	"guns/gunmachinegun.h"
+
+1367318612 source:c:\users\j9060283\desktop\horde-optimized\handin\horde\scenebase.cpp
+	"scenebase.h"
+
+1367318613 c:\users\j9060283\desktop\horde-optimized\handin\horde\scenebase.h
+	"../lasagne/lasagne.h"
+	<string>
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\handin\profy\output\outputhtml.cpp
+	"OutputHtml.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\handin\profy\profy.cpp
+	"ProFy.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\handin\profy\timers\timerbase.cpp
+	"TimerBase.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\handin\profy\timers\timercpu.cpp
+	"TimerCPU.h"
+
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\handin\profy\timers\timeropengl.cpp
+	"TimerOpenGL.h"
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\sogi\sogi.cpp
+	"SOGI.h"
+	<sstream>
+	<ctime>
+
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\handin\sogi\stack\stack.cpp
+	<cassert>
+	<cstring>
+	<cstdlib>
+	<iomanip>
+	<ostream>
+	<stdexcept>
+	<sstream>
+	"stack.h"
+	<windows.h>
+	<imagehlp.h>
+	<bfd.h>
+	<psapi.h>
+	<cxxabi.h>
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\entity\entity3d.cpp
+	"entity3D.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\entity\entity3d.h
+	"../../SOGI/SOGITypes.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-3dentity.cpp
+	"lasagne-3dentity.h"
+
+1367318617 c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-3dentity.h
+	"../SOGI/SOGI.h"
+	"lasagne-surface.h"
+	<SDL.h>
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-audio.cpp
+	"lasagne-audio.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-debug-stats.cpp
+	"lasagne-debug-stats.h"
+
+1367322913 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-entity.cpp
+	"lasagne-entity.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-music.cpp
+	"lasagne-music.h"
+
+1367318616 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-surface.cpp
+	"lasagne-surface.h"
+
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne-text.cpp
+	"lasagne-text.h"
+
+1367327108 source:c:\users\j9060283\desktop\horde-optimized\handin\lasagne\lasagne.cpp
+	"lasagne.h"
+
+1367318608 source:c:\users\j9060283\desktop\horde-optimized\handin\profiling\profysampler.cpp
+	"ProFySampler.h"
+
+1367318608 c:\users\j9060283\desktop\horde-optimized\handin\profiling\profysampler.h
+	"SDL_thread.h"
+	"../lasagne/lasagne.h"
+
