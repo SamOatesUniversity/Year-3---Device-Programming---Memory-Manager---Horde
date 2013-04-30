@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="target" />
+	<File name="Horde\enemy\enemyzombie.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="1141" topLine="27" />
+	</File>
+	<File name="Horde\guns\gunbase.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1622" topLine="23" />
+	</File>
+	<File name="Horde\guns\gunbase.h" open="0" top="0" tabpos="11">
+		<Cursor position="329" topLine="0" />
+	</File>
+	<File name="Horde\guns\gunpistol.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="603" topLine="0" />
+	</File>
+	<File name="Horde\guns\gunpistol.h" open="0" top="0" tabpos="10">
+		<Cursor position="76" topLine="0" />
+	</File>
+	<File name="Horde\player.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="164" topLine="0" />
+	</File>
+	<File name="Horde\player.h" open="0" top="0" tabpos="7">
+		<Cursor position="608" topLine="0" />
+	</File>
+	<File name="Horde\scenebase.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1210" topLine="19" />
+	</File>
+	<File name="Horde\scenebase.h" open="0" top="0" tabpos="3">
+		<Cursor position="428" topLine="0" />
+	</File>
+	<File name="ProFy\Output\OutputHtml.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="5286" topLine="169" />
+	</File>
+	<File name="ProFy\ProFy.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1705" topLine="71" />
+	</File>
+	<File name="ProFy\Timers\TimerBase.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="863" topLine="39" />
+	</File>
+	<File name="ProFy\Timers\TimerOpenGL.h" open="0" top="0" tabpos="0">
+		<Cursor position="70" topLine="0" />
+	</File>
+	<File name="SOGI\SOGI.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="2312" topLine="72" />
+	</File>
+	<File name="SOGI\SOGI.h" open="0" top="0" tabpos="3">
+		<Cursor position="6163" topLine="191" />
+	</File>
+	<File name="SOGI\SOGITypes.h" open="0" top="0" tabpos="6">
+		<Cursor position="1212" topLine="23" />
+	</File>
+	<File name="SOGI\stack\stack.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="11856" topLine="0" />
+	</File>
+	<File name="SOGI\stack\stack.h" open="0" top="0" tabpos="2">
+		<Cursor position="2113" topLine="26" />
+	</File>
+	<File name="lasagne\lasagne-3dentity.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="461" topLine="10" />
+	</File>
+	<File name="lasagne\lasagne-3dentity.h" open="0" top="0" tabpos="3">
+		<Cursor position="217" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne-audio.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="655" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne-audio.h" open="0" top="0" tabpos="4">
+		<Cursor position="1107" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne-debug-stats.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2643" topLine="58" />
+	</File>
+	<File name="lasagne\lasagne-debug-stats.h" open="0" top="0" tabpos="6">
+		<Cursor position="118" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne-entity.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="2924" topLine="95" />
+	</File>
+	<File name="lasagne\lasagne-entity.h" open="0" top="0" tabpos="3">
+		<Cursor position="2101" topLine="43" />
+	</File>
+	<File name="lasagne\lasagne-music.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="549" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne-music.h" open="0" top="0" tabpos="7">
+		<Cursor position="348" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne-surface.cpp" open="0" top="0" tabpos="9">
+		<Cursor position="1270" topLine="8" />
+	</File>
+	<File name="lasagne\lasagne-surface.h" open="0" top="0" tabpos="10">
+		<Cursor position="179" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne-text.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="1413" topLine="34" />
+	</File>
+	<File name="lasagne\lasagne-text.h" open="0" top="0" tabpos="5">
+		<Cursor position="884" topLine="0" />
+	</File>
+	<File name="lasagne\lasagne.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="6451" topLine="207" />
+	</File>
+	<File name="lasagne\lasagne.h" open="1" top="0" tabpos="2">
+		<Cursor position="2759" topLine="50" />
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="6776" topLine="229" />
+	</File>
+</CodeBlocks_layout_file>
