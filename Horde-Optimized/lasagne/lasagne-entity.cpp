@@ -13,13 +13,23 @@ CLasagneEntity::CLasagneEntity(
     m_visible(true),
 	m_rotateFrame(NULL)
 {
-    m_image = IMG_Load(imagePath);
-    if (m_image == NULL)
+    SDL_Surface *image = IMG_Load(imagePath);
+    if (image == NULL)
     {
         SHOWLOGERROR("Failed to load image");
     }
 	else
 	{
+		if (image->format->BytesPerPixel == 1)
+		{
+			m_image = SDL_DisplayFormat(image);
+			SDL_FreeSurface(image);
+		}
+		else
+		{
+			m_image = image;
+		}
+
 		m_frameSize.x = 0;
 		m_frameSize.y = 0;
 		m_frameSize.w = m_image->w;
@@ -50,13 +60,15 @@ CLasagneEntity::CLasagneEntity(
     m_visible(true),
 	m_rotateFrame(NULL)
 {
-    m_image = IMG_Load(imagePath);
-    if (m_image == NULL)
+    SDL_Surface *image = IMG_Load(imagePath);
+    if (image == NULL)
     {
         SHOWLOGERROR("Failed to load image");
     }
     else
     {
+        m_image = image;
+
         m_frameSize.x = 0;
 		m_frameSize.y = 0;
 		m_frameSize.w = m_image->w / m_noofFramesX;

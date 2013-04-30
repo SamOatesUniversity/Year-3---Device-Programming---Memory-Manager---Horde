@@ -350,7 +350,6 @@ void CLasagne::Release()
 	SafeDelete(m_fps.text);
 #endif
 
-    TTF_Quit();
     SafeFreeSurface(m_screen);
     SDL_Quit();
 

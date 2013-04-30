@@ -843,15 +843,16 @@
 1358510846 source:c:\users\j9060283\desktop\horde\horde\pickups\pickupshotgun.cpp
 	"pickupshotgun.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemybase.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemybase.cpp
 	"enemybase.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemybase.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemybase.h
 	"../../lasagne/lasagne.h"
 	"../pickups/pickupbase.h"
 	"../player.h"
 
-1367273229 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne.h
+1367321066 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne.h
+	<ProFy.h>
 	"../ProFy/ProFy.h"
 	"../SOGI/SOGI.h"
 	"lasagne-text.h"
@@ -860,7 +861,6 @@
 	"lasagne-audio.h"
 	"lasagne-debug-stats.h"
 	<SDL.h>
-	<SDL_ttf.h>
 	<vector>
 
 1365519935 c:\users\j9060283\desktop\horde-optimized\profy-lib\profy\src\profy.h
@@ -888,7 +888,7 @@
 	<sstream>
 	<ctime>
 
-1367269913 c:\users\j9060283\desktop\horde-optimized\sogi\sogi.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\sogi\sogi.h
 	"SOGITypes.h"
 	"stack/stack.h"
 	<windows.h>
@@ -904,17 +904,17 @@
 	<errno.h>
 	<sys\stat.h>
 
-1367235992 c:\users\j9060283\desktop\horde-optimized\sogi\sogitypes.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\sogi\sogitypes.h
 	"SOGI.h"
 	<string.h>
 	<math.h>
 
-1367235992 c:\users\j9060283\desktop\horde-optimized\sogi\stack\stack.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\sogi\stack\stack.h
 	<string>
 	<list>
 	<iosfwd>
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-text.h
+1367318616 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-text.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 	<SDL_gfxPrimitives.h>
@@ -925,7 +925,7 @@
 	<math.h>
 	"SDL.h"
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-entity.h
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-entity.h
 	"../SOGI/SOGI.h"
 	"lasagne-surface.h"
 	<SDL.h>
@@ -933,135 +933,136 @@
 	<SDL_rotozoom.h>
 	<map>
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-surface.h
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-surface.h
 	"../SOGI/SOGI.h"
 	<SDL.h>
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-music.h
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-music.h
 	"SDL.h"
 	"SDL_mixer.h"
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-audio.h
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-audio.h
 	"SDL.h"
 	"SDL_mixer.h"
 
-1367270365 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-debug-stats.h
+1367318616 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-debug-stats.h
 	<vector>
+	<ProFy.h>
 	"../ProFy/ProFy.h"
 	<SDL.h>
 	<SDL_gfxPrimitives.h>
 
-1367235992 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupbase.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupbase.h
 	"../../lasagne/lasagne.h"
 	"../player.h"
 
-1367235989 c:\users\j9060283\desktop\horde-optimized\horde\player.h
+1367318611 c:\users\j9060283\desktop\horde-optimized\horde\player.h
 	"../lasagne/lasagne.h"
 	<map>
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemyzombie.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemyzombie.cpp
 	"enemyzombie.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemyzombie.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\enemy\enemyzombie.h
 	"enemybase.h"
 	"../pickups/pickuphealth.h"
 	"../pickups/pickupshotgun.h"
 	"../pickups/pickupmachinegun.h"
 
-1367235992 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickuphealth.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickuphealth.h
 	"pickupbase.h"
 
-1367235992 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupshotgun.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupshotgun.h
 	"pickupbase.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupmachinegun.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupmachinegun.h
 	"pickupbase.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletbase.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletbase.cpp
 	"bulletbase.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletbase.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletbase.h
 	"../../lasagne/lasagne.h"
 	"../enemy/enemybase.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletmachinegun.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletmachinegun.cpp
 	"bulletmachinegun.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletmachinegun.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletmachinegun.h
 	"bulletbase.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletpistol.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletpistol.cpp
 	"bulletpistol.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletpistol.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletpistol.h
 	"bulletbase.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletshotgun.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletshotgun.cpp
 	"bulletshotgun.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletshotgun.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\bulletshotgun.h
 	"bulletbase.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunbase.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunbase.cpp
 	"gunbase.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunbase.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunbase.h
 	<vector>
 	"bulletbase.h"
 	"../../lasagne/lasagne.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunmachinegun.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunmachinegun.cpp
 	"gunmachinegun.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunmachinegun.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunmachinegun.h
 	"gunbase.h"
 	"bulletmachinegun.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunpistol.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunpistol.cpp
 	"gunpistol.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunpistol.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunpistol.h
 	"gunbase.h"
 	"bulletpistol.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunshotgun.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\guns\gunshotgun.cpp
 	"gunshotgun.h"
 
-1367235991 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunshotgun.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\guns\gunshotgun.h
 	"gunbase.h"
 	"bulletshotgun.h"
 
-1367235992 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupbase.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupbase.cpp
 	"pickupbase.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickuphealth.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickuphealth.cpp
 	"pickuphealth.h"
 
-1367235992 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupmachinegun.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupmachinegun.cpp
 	"pickupmachinegun.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupshotgun.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\pickups\pickupshotgun.cpp
 	"pickupshotgun.h"
 
-1367235991 source:c:\users\j9060283\desktop\horde-optimized\horde\player.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\horde\player.cpp
 	"player.h"
 	"guns/gunpistol.h"
 	"guns/gunshotgun.h"
 	"guns/gunmachinegun.h"
 
-1367235990 source:c:\users\j9060283\desktop\horde-optimized\horde\scenebase.cpp
+1367318612 source:c:\users\j9060283\desktop\horde-optimized\horde\scenebase.cpp
 	"scenebase.h"
 
-1367235992 c:\users\j9060283\desktop\horde-optimized\horde\scenebase.h
+1367318613 c:\users\j9060283\desktop\horde-optimized\horde\scenebase.h
 	"../lasagne/lasagne.h"
 	<string>
 
-1367235992 source:c:\users\j9060283\desktop\horde-optimized\sogi\sogi.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\sogi\sogi.cpp
 	"SOGI.h"
 	<sstream>
 	<ctime>
 
-1367235992 source:c:\users\j9060283\desktop\horde-optimized\sogi\stack\stack.cpp
+1367318613 source:c:\users\j9060283\desktop\horde-optimized\sogi\stack\stack.cpp
 	<cassert>
 	<cstring>
 	<cstdlib>
@@ -1076,49 +1077,49 @@
 	<psapi.h>
 	<cxxabi.h>
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\lasagne\entity\entity3d.cpp
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\entity\entity3d.cpp
 	"entity3D.h"
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\lasagne\entity\entity3d.h
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\entity\entity3d.h
 	"../../SOGI/SOGITypes.h"
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-3dentity.cpp
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-3dentity.cpp
 	"lasagne-3dentity.h"
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-3dentity.h
+1367318617 c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-3dentity.h
 	"../SOGI/SOGI.h"
 	"lasagne-surface.h"
 	<SDL.h>
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-audio.cpp
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-audio.cpp
 	"lasagne-audio.h"
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-entity.cpp
+1367321021 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-entity.cpp
 	"lasagne-entity.h"
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-music.cpp
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-music.cpp
 	"lasagne-music.h"
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-surface.cpp
+1367318616 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-surface.cpp
 	"lasagne-surface.h"
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-text.cpp
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-text.cpp
 	"lasagne-text.h"
 
-1367272419 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne.cpp
+1367321063 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne.cpp
 	"lasagne.h"
 
-1367235993 source:c:\users\j9060283\desktop\horde-optimized\main.cpp
+1367318614 source:c:\users\j9060283\desktop\horde-optimized\main.cpp
 	"main.h"
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\main.h
+1367318617 c:\users\j9060283\desktop\horde-optimized\main.h
 	"lasagne/lasagne.h"
 	"Horde/scenebase.h"
 	"Horde/player.h"
 	"Horde/enemy/enemyzombie.h"
 	"profiling/ProFySampler.h"
 
-1367235994 c:\users\j9060283\desktop\horde-optimized\profiling\profysampler.h
+1367318608 c:\users\j9060283\desktop\horde-optimized\profiling\profysampler.h
 	"SDL_thread.h"
 	"../lasagne/lasagne.h"
 
@@ -1141,10 +1142,10 @@
 	"TimerBase.h"
 	<tgl.h>
 
-1367235994 source:c:\users\j9060283\desktop\horde-optimized\profiling\profysampler.cpp
+1367318608 source:c:\users\j9060283\desktop\horde-optimized\profiling\profysampler.cpp
 	"ProFySampler.h"
 
-1367270940 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-debug-stats.cpp
+1367318617 source:c:\users\j9060283\desktop\horde-optimized\lasagne\lasagne-debug-stats.cpp
 	"lasagne-debug-stats.h"
 
 1365421658 source:c:\users\j9060283\desktop\profy-lib\profy\src\output\outputhtml.cpp
@@ -1191,48 +1192,48 @@
 	"TimerBase.h"
 	<tgl.h>
 
-1367236009 c:\users\j9060283\desktop\horde-optimized\profy\profy.h
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\profy.h
 	"Timers/Timers.h"
 	"Output/OutputHtml.h"
 	<vector>
 
-1367236009 c:\users\j9060283\desktop\horde-optimized\profy\timers\timers.h
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timers.h
 	"TimerBase.h"
 	"TimerCPU.h"
 	"TimerOpenGL.h"
 
-1367236009 c:\users\j9060283\desktop\horde-optimized\profy\timers\timerbase.h
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timerbase.h
 	<vector>
 	<string>
 
-1367236009 c:\users\j9060283\desktop\horde-optimized\profy\timers\timercpu.h
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timercpu.h
 	"TimerBase.h"
 	<windows.h>
 	<sys/time.h>
 
-1367236009 c:\users\j9060283\desktop\horde-optimized\profy\timers\timeropengl.h
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\timers\timeropengl.h
 	"TimerBase.h"
 	<tgl.h>
 
-1367236009 c:\users\j9060283\desktop\horde-optimized\profy\output\outputhtml.h
+1367318609 c:\users\j9060283\desktop\horde-optimized\profy\output\outputhtml.h
 	"../Timers/TimerBase.h"
 	<iostream>
 	<fstream>
 	<sstream>
 	<ctime>
 
-1367270643 source:c:\users\j9060283\desktop\horde-optimized\profy\output\outputhtml.cpp
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\output\outputhtml.cpp
 	"OutputHtml.h"
 
-1367270750 source:c:\users\j9060283\desktop\horde-optimized\profy\profy.cpp
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\profy.cpp
 	"ProFy.h"
 
-1367236009 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timercpu.cpp
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timercpu.cpp
 	"TimerCPU.h"
 
-1367236009 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timeropengl.cpp
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timeropengl.cpp
 	"TimerOpenGL.h"
 
-1367270878 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timerbase.cpp
+1367318609 source:c:\users\j9060283\desktop\horde-optimized\profy\timers\timerbase.cpp
 	"TimerBase.h"
 
